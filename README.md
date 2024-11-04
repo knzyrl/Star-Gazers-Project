@@ -9,7 +9,7 @@ Erin Xu: **xuerin**
 
 Alex Tin Long Young: **alexxxtl**
 
-**User Stories: **
+**User Stories:**
 
 1. Alice is interested in seeing what the sky will look like tonight at their location. She inputs her coordinates and time and receives a star chart with those parameters. _(Team User Story)_
 2. Bob would like to see the current phase of the moon so that they can plan stargazing activities. He uses the “Moon Phase” function and inputs his current location to receive an answer. _(Assigned to: Aryan)_
