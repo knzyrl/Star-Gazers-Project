@@ -60,6 +60,7 @@ public class DisplayStarChartView extends JPanel {
         this.add(backButtonPanel);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setPreferredSize(new Dimension(600, 600)); // Adjust width and height as needed
     }
 
     public static void main(String[] args) throws IOException {
