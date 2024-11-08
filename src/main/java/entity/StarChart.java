@@ -1,6 +1,7 @@
 package entity;
 
 public class StarChart {
+
     private String longitude;
     private String latitude;
     private String date;
@@ -28,4 +29,5 @@ public class StarChart {
     public String getImgURL() {
         return imgURL;
     }
+
 }
