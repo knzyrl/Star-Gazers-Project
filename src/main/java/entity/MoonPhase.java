@@ -12,4 +12,20 @@ public class MoonPhase {
         this.date = date;
         this.imageURL = imageURL;
     }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getImgURL() {
+        return imageURL;
+    }
 }
