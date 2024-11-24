@@ -8,7 +8,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class EventsView extends JPanel {
     private final String viewName = "events";
@@ -51,6 +53,13 @@ public class EventsView extends JPanel {
                             String dateStart = dateStartInputField.getText();
                             String dateEnd = dateEndInputField.getText();
                             String body = comboBox.getSelectedItem().toString();
+                            try {
+                                fmt.parse(dateStart);
+                                fmt.parse(dateEnd);
+                            } catch (ParseException ex) {
+                                JOptionPane.showMessageDialog(new JDialog(), "Please input dates in the correct format (YYYY-MM-DD).", "Date Format Error", JOptionPane.ERROR_MESSAGE);
+                                return;
+                            }
                             if (NumberFormatChecker.checkDouble(longitude) && NumberFormatChecker.checkDouble(latitude)) {
                                 eventsController.execute(longitude, latitude, dateStart, dateEnd, body);
                             }
