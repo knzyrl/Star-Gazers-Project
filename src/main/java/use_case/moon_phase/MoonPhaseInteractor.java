@@ -24,7 +24,7 @@ public class MoonPhaseInteractor {
         final String ra = Double.toString(AstronomyCalculations.calcRA(longitude, date));
         final String declination = Double.toString(Math.round(Double.parseDouble(latitude)));
 
-        final String query = String.format("{\"style\":\"inverted\",\"observer\":{\"latitude\":%s,\"longitude\":%s,\"date\":\"%s\"},\"view\":{\"type\":\"area\",\"parameters\":{\"position\":{\"equatorial\":{\"rightAscension\":%s,\"declination\":%s}},\"zoom\":6}}}", latitude, longitude, date, ra, declination);
+        final String query = String.format("{\"style\":{\"moonStyle\":\"default\",\"backgroundStyle\":\"stars\",\"backgroundColor\":\"#000000\",\"headingColor\":\"#ffffff\",\"textColor\":\"#ffffff\"},\"observer\":{\"latitude\":%s,\"longitude\":%s,\"date\":\"%s\"},\"view\":{\"type\":\"portrait-simple\",\"parameters\":{}}}", latitude, longitude, date);
         final String imageURL = moonPhaseDAO.executeQuery(query);
 
         final MoonPhase moonPhase = new MoonPhase(latitude, longitude, date, imageURL);
