@@ -1,6 +1,6 @@
 package use_case.apod_date;
 
-import data_access.APODDateAPIDataAccessObject;
+import data_access.APODdateAPIDataAccessObject;
 import org.json.JSONObject;
 
 public class APODInteractor implements APODInputBoundary {

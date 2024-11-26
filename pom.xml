@@ -32,6 +32,13 @@
             <groupId>com.konghq</groupId>
             <artifactId>unirest-modules-gson</artifactId>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20230618</version>
+        </dependency>
     </dependencies>
 
     <properties>
