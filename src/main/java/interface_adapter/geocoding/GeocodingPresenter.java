@@ -1,10 +1,11 @@
 package interface_adapter.geocoding;
 
 import entity.Location;
+import use_case.geocoding.GeocodingOutputBoundary;
 import view.DisplayGeocoderView;
 import view.ViewManager;
 
-public class GeocodingPresenter {
+public class GeocodingPresenter implements GeocodingOutputBoundary {
     private ViewManager viewManager;
     private DisplayGeocoderView displayGeocoderView;
 
