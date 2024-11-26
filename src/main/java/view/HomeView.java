@@ -11,6 +11,7 @@ public class HomeView extends JPanel {
     private String viewName = "home";
     private HomeController homeController;
     private JButton starChart;
+    private JButton events;
     private JButton moonPhase;
 
     public HomeView() {
@@ -45,8 +46,24 @@ public class HomeView extends JPanel {
                 }
         );
 
+        final JPanel eventsButtonPanel = new JPanel();
+        events = new JButton("Show Events");
+        eventsButtonPanel.add(events);
+        events.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(events)) {
+                            System.out.println("events pressed");
+                            homeController.execute("events");
+                        }
+                    }
+                }
+        );
+
         this.add(title);
         this.add(starChartButtonPanel);
+        this.add(eventsButtonPanel);
         this.add(moonPhaseButtonPanel);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
