@@ -11,6 +11,7 @@ public class Main {
                 .addDisplayStarChartView()
                 .addEventsView()
                 .addDisplayEventsView()
+                .addAPODView()
                 .addHomeInterface()
                 .addStarChartUseCase()
                 .addDisplayStarChartInterface()

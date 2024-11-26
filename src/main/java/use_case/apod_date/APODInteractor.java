@@ -1,42 +1,34 @@
 package use_case.apod_date;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Scanner;
 
+import data_access.APODDateAPIDataAccessObject;
 import org.json.JSONObject;
 
-
-public class APODInteractor {
+public class APODInteractor implements APODInputBoundary {
     private final APODOutputBoundary outputBoundary;
+    private final APODDateAPIDataAccessObject dataAccessObject;
 
-    public APODInteractor(APODOutputBoundary outputBoundary) {
+    public APODInteractor(APODOutputBoundary outputBoundary, APODDateAPIDataAccessObject dataAccessObject) {
         this.outputBoundary = outputBoundary;
+        this.dataAccessObject = dataAccessObject;
     }
 
     @Override
     public void fetchRandomAPOD() {
         try {
-            String apiUrl = "https://api.nasa.gov/planetary/apod?api_key=t0ffL1YMYJdWoGmEwkozuorP21pLnPtVaPvXdsi2";
-            HttpURLConnection connection = (HttpURLConnection) new URL(apiUrl).openConnection();
-            connection.setRequestMethod("GET");
+            // Delegate API call to the Data Access Object
+            String response = dataAccessObject.fetchRandomAPOD();
 
-            int responseCode = connection.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                String response = new Scanner(connection.getInputStream()).useDelimiter("\\A").next();
-                JSONObject json = new JSONObject(response);
+            // Parse the JSON response
+            JSONObject json = new JSONObject(response);
+            String imageUrl = json.optString("url", "No Image Available");
+            String description = json.optString("explanation", "No Description Available");
+            String title = json.optString("title", "Untitled");
 
-                String imageUrl = json.optString("url", "No Image Available");
-                String description = json.optString("explanation", "No Description Available");
-                String title = json.optString("title", "Untitled");
-
-                APODOutputData outputData = new APODOutputData(imageUrl, description, title);
-                outputBoundary.presentAPOD(outputData);
-            } else {
-                System.out.println("Error: API response code " + responseCode);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+            // Create the output data and pass it to the output boundary
+            APODOutputData outputData = new APODOutputData(imageUrl, description, title);
+            outputBoundary.presentAPOD(outputData);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to process APOD data: " + e.getMessage(), e);
         }
     }
 }

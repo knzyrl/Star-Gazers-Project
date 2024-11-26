@@ -14,6 +14,11 @@ import interface_adapter.star_chart.StarChartController;
 import interface_adapter.star_chart.StarChartPresenter;
 import use_case.events.EventsInteractor;
 import use_case.star_chart.StarChartInteractor;
+import data_access.APODDateAPIDataAccessObject;
+//import interface_adapter.APODController;
+//import interface_adapter.APODPresenter;
+import use_case.APODInteractor;
+import view.APODView; // not sure if I need this?
 import view.*;
 
 import javax.swing.*;
@@ -30,6 +35,8 @@ public class AppBuilder {
     private DisplayStarChartView displayStarChartView;
     private EventsView eventsView;
     private DisplayEventsView displayEventsView;
+    private APODView apodView; // Add APOD View
+
 
     public AppBuilder() {
         cardPanel.setLayout(cardLayout);
@@ -38,6 +45,23 @@ public class AppBuilder {
     public AppBuilder addHomeView() {
         homeView = new HomeView();
         cardPanel.add(homeView, homeView.getViewName());
+        return this;
+    }
+
+    // Add APOD view to the card layout
+    public AppBuilder addAPODView() {
+        apodView = new APODView();
+        cardPanel.add(apodView, apodView.getViewName());
+        return this;
+    }
+
+    // Connect APOD presenter and controller
+    public AppBuilder addAPODInterface() {
+        APODPresenterView presenterView = new APODPresenterView(viewManager);
+        APODDateAPIDataAccessObject dataAccessObject = new APODDateAPIDataAccessObject();
+        APODInteractor interactor = new APODInteractor(presenterView, dataAccessObject);
+        APODPresenterController controller = new APODPresenterController(interactor);
+//        apodView.setAPODController(controller); haven't implemented file yet
         return this;
     }
 
