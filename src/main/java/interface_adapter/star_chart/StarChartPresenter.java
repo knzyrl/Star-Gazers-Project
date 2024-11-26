@@ -21,7 +21,6 @@ public class StarChartPresenter {
     public void displayStarChart(StarChart starChart) throws IOException {
         displayStarChartView.setStarChart(starChart);
         displayStarChartView.refresh();
-        viewManager.getViews().add(displayStarChartView, "display star chart");
         viewManager.show("display star chart");
     }
 

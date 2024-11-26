@@ -1,7 +1,6 @@
 package view;
 
-import helper.NumberFormatChecker;
-import interface_adapter.star_chart.StarChartController;
+import interface_adapter.moon_phase.MoonPhaseController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,12 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class StarChartView extends JPanel {
-    private final String viewName = "star chart";
-    private StarChartController starChartController;
+public class MoonPhaseView extends JPanel {
+    private final String viewName = "moon phase";
+    private MoonPhaseController moonPhaseController;
     private final JTextField longInputField = new JTextField(20);
     private final JTextField latInputField = new JTextField(20);
     private final DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
@@ -22,8 +20,8 @@ public class StarChartView extends JPanel {
     private final JButton generate;
     private final JButton back;
 
-    public StarChartView() {
-        final JLabel title = new JLabel("Star Chart Screen");
+    public MoonPhaseView() {
+        final JLabel title = new JLabel("Moon Phase Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         final LabelTextPanel longInfo = new LabelTextPanel(new JLabel("Longitude"), longInputField);
@@ -43,22 +41,10 @@ public class StarChartView extends JPanel {
                             String latitude = latInputField.getText();
                             String date = dateInputField.getText();
                             try {
-                                fmt.parse(date);
-                            } catch (ParseException ex) {
-                                JOptionPane.showMessageDialog(new JDialog(), "Please input date in the correct format (YYYY-MM-DD).", "Date Format Error", JOptionPane.ERROR_MESSAGE);
-                                return;
+                                moonPhaseController.execute(longitude, latitude, date);
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
                             }
-                            if (NumberFormatChecker.checkDouble(longitude) && NumberFormatChecker.checkDouble(latitude)) {
-                                try {
-                                    starChartController.execute(longitude, latitude, date);
-                                } catch (IOException ex) {
-                                    throw new RuntimeException(ex);
-                                }
-                            }
-                            else {
-                                JOptionPane.showMessageDialog(new JDialog(), "Please input decimals for latitude and longitude.", "Number Format Error", JOptionPane.ERROR_MESSAGE);
-                            }
-
                         }
                     }
                 }
@@ -72,7 +58,7 @@ public class StarChartView extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource().equals(back)) {
-                            starChartController.execute();
+                            moonPhaseController.execute();
                         }
                     }
                 }
@@ -86,14 +72,13 @@ public class StarChartView extends JPanel {
         this.add(backButtonPanel);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
     }
 
     public String getViewName() {
         return this.viewName;
     }
 
-    public void setStarChartController(StarChartController starChartController) {
-        this.starChartController = starChartController;
+    public void setMoonPhaseController(MoonPhaseController moonPhaseController) {
+        this.moonPhaseController = moonPhaseController;
     }
 }
