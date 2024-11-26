@@ -29,8 +29,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.konghq</groupId>
-            <artifactId>unirest-modules-gson</artifactId>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20230618</version>
         </dependency>
     </dependencies>
 
