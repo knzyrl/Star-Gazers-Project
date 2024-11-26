@@ -13,6 +13,7 @@ public class HomeView extends JPanel {
     private JButton starChart;
     private JButton events;
     private JButton moonPhase;
+    private JButton geocoder;
 
     public HomeView() {
         final JLabel title = new JLabel("Home Screen");
@@ -61,10 +62,28 @@ public class HomeView extends JPanel {
                 }
         );
 
+        final JPanel geocoderButtonPanel = new JPanel();
+        geocoder = new JButton("Access Geocoder");
+        geocoderButtonPanel.add(geocoder);
+        geocoder.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(geocoder)) {
+                            System.out.println("Geocoder pressed");
+                            homeController.execute("Geocoder view");
+                        }
+                    }
+                }
+        );
+
+
+
         this.add(title);
         this.add(starChartButtonPanel);
         this.add(eventsButtonPanel);
         this.add(moonPhaseButtonPanel);
+        this.add(geocoderButtonPanel);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
