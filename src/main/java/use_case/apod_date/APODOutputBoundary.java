@@ -1,4 +1,5 @@
 package use_case.apod_date;
 
-public class APODOutputBoundary {
+public interface APODOutputBoundary {
+    void presentAPOD(APODOutputData outputData);
 }

@@ -1,4 +1,5 @@
 package use_case.apod_date;
 
-public class APODInputBoundary {
+public interface APODInputBoundary {
+    void fetchRandomAPOD();
 }
