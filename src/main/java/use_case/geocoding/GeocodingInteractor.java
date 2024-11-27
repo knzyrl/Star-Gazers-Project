@@ -10,10 +10,10 @@ public class GeocodingInteractor {
 
     //private final GeocodingOutputBoundary geocodingOutputBoundary;
     private final GeocoderDataAccessObject geocoderDataAccessObject;
-    private final GeocodingPresenter geocodingPresenter;
+    private final GeocodingOutputBoundary geocodingPresenter;
 
     public GeocodingInteractor(GeocoderDataAccessObject geocoderDataAccessObject,
-                               GeocodingPresenter geocodingPresenter) {
+                               GeocodingOutputBoundary geocodingPresenter) {
 
 
         this.geocoderDataAccessObject = geocoderDataAccessObject;
