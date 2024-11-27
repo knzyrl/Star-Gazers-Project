@@ -1,7 +1,10 @@
 package app;
 
+import data_access.APODdateAPIDataAccessObject;
 import data_access.EventsDataAccessObject;
 import data_access.StarChartDataAccessObject;
+import interface_adapter.APOD_date.APODController;
+import interface_adapter.APOD_date.APODPresenter;
 import interface_adapter.display_events.DisplayEventsController;
 import interface_adapter.display_events.DisplayEventsPresenter;
 import interface_adapter.display_star_chart.DisplayStarChartController;
@@ -12,17 +15,20 @@ import interface_adapter.home.HomeController;
 import interface_adapter.home.HomePresenter;
 import interface_adapter.star_chart.StarChartController;
 import interface_adapter.star_chart.StarChartPresenter;
+import use_case.apod_date.APODInteractor;
 import use_case.events.EventsInteractor;
 import use_case.star_chart.StarChartInteractor;
-import data_access.APODdateAPIDataAccessObject;
-import interface_adapter.APOD_date.APODController;
-import interface_adapter.APOD_date.APODPresenter;
-import use_case.apod_date.APODInteractor;
-import view.APODView; // not sure if I need this?
-import view.*;
+import view.APODView;
+import view.DisplayEventsView;
+import view.DisplayStarChartView;
+import view.EventsView;
+import view.HomeView;
+import view.StarChartView;
+import view.ViewManager;
 
 import javax.swing.*;
 import java.awt.*;
+
 
 public class AppBuilder {
     private final JPanel cardPanel = new JPanel();
@@ -43,27 +49,32 @@ public class AppBuilder {
     }
 
     public AppBuilder addHomeView() {
+        // Create the HomeView
         homeView = new HomeView();
         cardPanel.add(homeView, homeView.getViewName());
+
+        // Create and set the HomeController
+        HomePresenter homePresenter = new HomePresenter(viewManager);
+        HomeController homeController = new HomeController(homePresenter);
+        homeView.setHomeController(homeController);
+
         return this;
     }
 
-    // Add APOD view to the card layout
+
     public AppBuilder addAPODView() {
         apodView = new APODView();
         cardPanel.add(apodView, apodView.getViewName());
+
+        APODPresenter presenter = new APODPresenter(apodView);
+        APODdateAPIDataAccessObject dataAccessObject = new APODdateAPIDataAccessObject();
+        APODInteractor interactor = new APODInteractor(presenter, dataAccessObject);
+        APODController controller = new APODController(interactor);
+
+        apodView.setController(controller); // Ensure this is called
         return this;
     }
 
-    // Connect APOD presenter and controller
-    public AppBuilder addAPODInterface() {
-        APODPresenter presenterView = new APODPresenter(viewManager);
-        APODdateAPIDataAccessObject dataAccessObject = new APODdateAPIDataAccessObject();
-        APODInteractor interactor = new APODInteractor(presenterView, dataAccessObject);
-        APODController controller = new APODController(interactor);
-        apodView.setDisplayAPODController(controller);
-        return this;
-    }
 
     public AppBuilder addStarChartView() {
         starChartView = new StarChartView();

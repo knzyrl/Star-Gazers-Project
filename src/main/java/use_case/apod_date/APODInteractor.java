@@ -1,43 +1,32 @@
 package use_case.apod_date;
 
 import data_access.APODdateAPIDataAccessObject;
-import interface_adapter.APOD_date.APODPresenter;
 import org.json.JSONObject;
 
 public class APODInteractor implements APODInputBoundary {
-    private final APODPresenter outputBoundary;
+    private final APODOutputBoundary outputBoundary;
     private final APODdateAPIDataAccessObject dataAccessObject;
 
-    public APODInteractor(APODPresenter outputBoundary, APODdateAPIDataAccessObject dataAccessObject) {
+    public APODInteractor(APODOutputBoundary outputBoundary, APODdateAPIDataAccessObject dataAccessObject) {
         this.outputBoundary = outputBoundary;
         this.dataAccessObject = dataAccessObject;
     }
 
-    //interactor execute
-    public void execute() {
-        fetchRandomAPOD();
-    }
-
-
     @Override
-    public void fetchRandomAPOD() {
-        try {
-            // Delegate API call to the Data Access Object
-            String response = dataAccessObject.fetchRandomAPOD();
+    public void fetchAPOD() {
+        // Fetch data from API
+        String jsonResponse = dataAccessObject.fetchAPOD();
+        System.out.println("APODInteractor: API Response - " + jsonResponse);
 
-            // Parse the JSON response
-            JSONObject json = new JSONObject(response);
-            String imageUrl = json.optString("url", "No Image Available");
-            String description = json.optString("explanation", "No Description Available");
-            String title = json.optString("title", "Untitled");
+        // Parse the JSON response
+        JSONObject json = new JSONObject(jsonResponse);
+        String title = json.optString("title", "No Title");
+        String description = json.optString("explanation", "No Description");
+        String imageUrl = json.optString("url", "");
 
-            // Create the output data and pass it to the output boundary
-            APODOutputData outputData = new APODOutputData(imageUrl, description, title);
-            outputBoundary.execute();
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to process APOD data: " + e.getMessage(), e);
-        }
+        // Create output data and send to presenter
+        APODOutputData outputData = new APODOutputData(title, description, imageUrl);
+        System.out.println("Parsed Data - Title: " + title + ", URL: " + imageUrl);
+        outputBoundary.presentAPOD(outputData);
     }
 }
-
-

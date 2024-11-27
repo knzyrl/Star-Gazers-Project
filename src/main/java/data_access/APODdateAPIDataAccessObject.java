@@ -1,47 +1,46 @@
 package data_access;
-import kong.unirest.core.HttpResponse;
-import kong.unirest.core.Unirest;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class APODdateAPIDataAccessObject {
+    private static final String API_KEY = "t0ffL1YMYJdWoGmEwkozuorP21pLnPtVaPvXdsi2"; // Replace with your NASA API key
     private static final String BASE_URL = "https://api.nasa.gov/planetary/apod";
-    private static final String API_KEY = "t0ffL1YMYJdWoGmEwkozuorP21pLnPtVaPvXdsi2";
 
     /**
-     * Fetches the Astronomy Picture of the Day data from NASA's APOD API for a specific date.
+     * Fetches APOD data from the NASA API.
      *
-     * @param date The date for which to fetch APOD data (YYYY-MM-DD).
-     * @return Raw JSON response from the API.
+     * @return JSON response as a string.
      */
-    public String fetchAPODByDate(String date) {
-        String query = String.format("?date=%s&api_key=%s", date, API_KEY);
+    public String fetchAPOD() {
+        try {
+            // Construct the URL
+            URL url = new URL(BASE_URL + "?api_key=" + API_KEY);
 
-        HttpResponse<String> response = Unirest.get(BASE_URL + query)
-                .asString();
+            // Open connection
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
 
-        if (response.getStatus() == 200) {
-            return response.getBody();
-        } else {
-            throw new RuntimeException("Failed to fetch data. HTTP Response Code: " + response.getStatus());
+            // Read the response
+            int responseCode = connection.getResponseCode();
+            if (responseCode == 200) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                return response.toString(); // Return JSON response
+            } else {
+                throw new RuntimeException("Failed to fetch APOD: HTTP error code " + responseCode);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error fetching APOD data: " + e.getMessage(), e);
         }
     }
-
-    /**
-     * Fetches the Astronomy Picture of the Day data for a random date.
-     * If no date is specified, the API defaults to today's date.
-     *
-     * @return Raw JSON response from the API.
-     */
-    public String fetchRandomAPOD() {
-        String query = String.format("?api_key=%s", API_KEY);
-
-        HttpResponse<String> response = Unirest.get(BASE_URL + query)
-                .asString();
-
-        if (response.getStatus() == 200) {
-            return response.getBody();
-        } else {
-            throw new RuntimeException("Failed to fetch data. HTTP Response Code: " + response.getStatus());
-        }
-    }
-
 }

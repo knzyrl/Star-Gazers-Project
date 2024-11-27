@@ -1,16 +1,22 @@
 package interface_adapter.APOD_date;
 
-import view.ViewManager;
+import use_case.apod_date.APODOutputBoundary;
+import use_case.apod_date.APODOutputData;
+import view.APODView;
 
-public class APODPresenter {
-    private final ViewManager viewManager;
+public class APODPresenter implements APODOutputBoundary {
+    private final APODView view;
 
-    public APODPresenter(ViewManager viewManager) {
-        this.viewManager = viewManager;
+    public APODPresenter(APODView view) {
+        this.view = view;
     }
 
-    public void execute() {
-        // Navigate to the APOD view using the ViewManager
-        viewManager.show("apod"); // Ensure "apod" is registered in your ViewManager
+    @Override
+    public void presentAPOD(APODOutputData outputData) {
+        // Print the URL for debugging
+        System.out.println("APOD URL: " + outputData.getImageUrl());
+
+        // Update the view
+        view.displayAPOD(outputData.getTitle(), outputData.getDescription(), outputData.getImageUrl());
     }
 }

@@ -1,16 +1,16 @@
 package interface_adapter.APOD_date;
 
-import interface_adapter.APOD_date.APODPresenter;
-import use_case.apod_date.APODInteractor;
+import use_case.apod_date.APODInputBoundary;
 
 public class APODController {
-    private APODInteractor displayAPODInteractor;
+    private final APODInputBoundary interactor;
 
-    public APODController(APODInteractor displayAPODInteractor) {
-        this.displayAPODInteractor = displayAPODInteractor;
+    public APODController(APODInputBoundary interactor) {
+        this.interactor = interactor;
     }
 
-    public void execute(){
-        displayAPODInteractor.execute();
+    public void fetchAPOD() {
+        System.out.println("APODController: fetchAPOD called");
+        interactor.fetchAPOD();
     }
 }

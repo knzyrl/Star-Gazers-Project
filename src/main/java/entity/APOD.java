@@ -1,11 +1,11 @@
-package use_case.apod_date;
+package entity;
 
-public class APODOutputData {
+public class APOD {
     private final String title;
     private final String description;
     private final String imageUrl;
 
-    public APODOutputData(String title, String description, String imageUrl) {
+    public APOD(String title, String description, String imageUrl) {
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
