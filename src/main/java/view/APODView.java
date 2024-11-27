@@ -1,6 +1,6 @@
 package view;
 
-import interface_adapter.display_apod.DisplayAPODController;
+import interface_adapter.APOD_date.APODController;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,7 +16,7 @@ public class APODView extends JPanel {
     private String description;
     private String imgURL;
     private final String viewName = "APOD";
-    private DisplayAPODController displayAPODController;
+    private APODController displayAPODController;
     private JButton back;
 
     public void setAPODData(String title, String description, String imgURL) {
@@ -29,7 +29,7 @@ public class APODView extends JPanel {
         return this.viewName;
     }
 
-    public void setDisplayAPODController(DisplayAPODController displayAPODController) {
+    public void setDisplayAPODController(APODController displayAPODController) {
         this.displayAPODController = displayAPODController;
     }
 

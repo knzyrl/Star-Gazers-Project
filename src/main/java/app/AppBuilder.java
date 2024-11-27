@@ -14,10 +14,10 @@ import interface_adapter.star_chart.StarChartController;
 import interface_adapter.star_chart.StarChartPresenter;
 import use_case.events.EventsInteractor;
 import use_case.star_chart.StarChartInteractor;
-import data_access.APODDateAPIDataAccessObject;
-//import interface_adapter.APODController;
-//import interface_adapter.APODPresenter;
-import use_case.APODInteractor;
+import data_access.APODdateAPIDataAccessObject;
+import interface_adapter.APOD_date.APODController;
+import interface_adapter.APOD_date.APODPresenter;
+import use_case.apod_date.APODInteractor;
 import view.APODView; // not sure if I need this?
 import view.*;
 
@@ -57,11 +57,11 @@ public class AppBuilder {
 
     // Connect APOD presenter and controller
     public AppBuilder addAPODInterface() {
-        APODPresenterView presenterView = new APODPresenterView(viewManager);
-        APODDateAPIDataAccessObject dataAccessObject = new APODDateAPIDataAccessObject();
+        APODPresenter presenterView = new APODPresenter(viewManager);
+        APODdateAPIDataAccessObject dataAccessObject = new APODdateAPIDataAccessObject();
         APODInteractor interactor = new APODInteractor(presenterView, dataAccessObject);
-        APODPresenterController controller = new APODPresenterController(interactor);
-//        apodView.setAPODController(controller); haven't implemented file yet
+        APODController controller = new APODController(interactor);
+        apodView.setDisplayAPODController(controller);
         return this;
     }
 

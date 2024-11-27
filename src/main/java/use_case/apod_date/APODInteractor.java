@@ -1,16 +1,19 @@
 package use_case.apod_date;
 
 import data_access.APODdateAPIDataAccessObject;
+import interface_adapter.APOD_date.APODPresenter;
 import org.json.JSONObject;
 
 public class APODInteractor implements APODInputBoundary {
-    private final APODOutputBoundary outputBoundary;
-    private final APODDateAPIDataAccessObject dataAccessObject;
+    private final APODPresenter outputBoundary;
+    private final APODdateAPIDataAccessObject dataAccessObject;
 
-    public APODInteractor(APODOutputBoundary outputBoundary, APODDateAPIDataAccessObject dataAccessObject) {
+    public APODInteractor(APODPresenter outputBoundary, APODdateAPIDataAccessObject dataAccessObject) {
         this.outputBoundary = outputBoundary;
         this.dataAccessObject = dataAccessObject;
     }
+
+    //interactor execute
 
     @Override
     public void fetchRandomAPOD() {
@@ -26,9 +29,11 @@ public class APODInteractor implements APODInputBoundary {
 
             // Create the output data and pass it to the output boundary
             APODOutputData outputData = new APODOutputData(imageUrl, description, title);
-            outputBoundary.presentAPOD(outputData);
+            outputBoundary.execute();
         } catch (Exception e) {
             throw new RuntimeException("Failed to process APOD data: " + e.getMessage(), e);
         }
     }
 }
+
+
