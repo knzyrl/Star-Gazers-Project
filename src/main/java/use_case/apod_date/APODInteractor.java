@@ -14,6 +14,10 @@ public class APODInteractor implements APODInputBoundary {
     }
 
     //interactor execute
+    public void execute() {
+        fetchRandomAPOD();
+    }
+
 
     @Override
     public void fetchRandomAPOD() {
