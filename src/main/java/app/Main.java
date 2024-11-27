@@ -13,6 +13,8 @@ public class Main {
                 .addDisplayMoonPhaseView()
                 .addEventsView()
                 .addDisplayEventsView()
+                .addNEOView()
+                .addDisplayNEOView()
                 .addHomeInterface()
                 .addStarChartUseCase()
                 .addDisplayStarChartInterface()
@@ -20,6 +22,8 @@ public class Main {
                 .addDisplayMoonPhaseInterface()
                 .addEventsUseCase()
                 .addDisplayEventsInterface()
+                .addNEOUseCase()
+                .addDisplayNEOInterface()
                 .build();
 
         application.pack();
