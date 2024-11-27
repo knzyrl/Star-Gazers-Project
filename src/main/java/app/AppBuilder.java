@@ -68,7 +68,7 @@ public class AppBuilder {
 
         APODPresenter presenter = new APODPresenter(apodView);
         APODdateAPIDataAccessObject dataAccessObject = new APODdateAPIDataAccessObject();
-        APODInteractor interactor = new APODInteractor(presenter, dataAccessObject);
+        APODInteractor interactor = new APODInteractor(presenter, dataAccessObject, viewManager);
         APODController controller = new APODController(interactor);
 
         apodView.setController(controller); // Ensure this is called

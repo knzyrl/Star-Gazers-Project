@@ -2,14 +2,17 @@ package use_case.apod_date;
 
 import data_access.APODdateAPIDataAccessObject;
 import org.json.JSONObject;
+import view.ViewManager;
 
 public class APODInteractor implements APODInputBoundary {
     private final APODOutputBoundary outputBoundary;
     private final APODdateAPIDataAccessObject dataAccessObject;
+    private final ViewManager viewManager;
 
-    public APODInteractor(APODOutputBoundary outputBoundary, APODdateAPIDataAccessObject dataAccessObject) {
+    public APODInteractor(APODOutputBoundary outputBoundary, APODdateAPIDataAccessObject dataAccessObject, ViewManager viewManager) {
         this.outputBoundary = outputBoundary;
         this.dataAccessObject = dataAccessObject;
+        this.viewManager = viewManager;
     }
 
     @Override
@@ -28,5 +31,10 @@ public class APODInteractor implements APODInputBoundary {
         APODOutputData outputData = new APODOutputData(title, description, imageUrl);
         System.out.println("Parsed Data - Title: " + title + ", URL: " + imageUrl);
         outputBoundary.presentAPOD(outputData);
+    }
+
+    public void goBackToHome(){
+        System.out.println("APODInteractor: navigating back to home");
+        viewManager.show("home"); // Navigate to the home view
     }
 }

@@ -4,6 +4,8 @@ import interface_adapter.APOD_date.APODController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URL;
 
 public class APODView extends JPanel {
@@ -11,12 +13,14 @@ public class APODView extends JPanel {
     private final JTextArea descriptionArea = new JTextArea();
     private final JLabel imageLabel = new JLabel();
     private final JButton fetchButton = new JButton("Fetch APOD");
+    private final JButton backButton = new JButton("Back");
 
     public APODView() {
         setLayout(new BorderLayout());
 
         // Title label
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         add(titleLabel, BorderLayout.NORTH);
 
         // Description area
@@ -31,6 +35,16 @@ public class APODView extends JPanel {
 
         // Fetch button (action tied to controller)
         add(fetchButton, BorderLayout.SOUTH);
+
+        // Button Panel
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        fetchButton.setPreferredSize(new Dimension(150, 30));
+        backButton.setPreferredSize(new Dimension(100, 30));
+
+        buttonPanel.add(fetchButton);
+        buttonPanel.add(backButton);
+        add(buttonPanel, BorderLayout.SOUTH);
     }
 
     public String getViewName() {
@@ -41,6 +55,13 @@ public class APODView extends JPanel {
         fetchButton.addActionListener(e -> {
             System.out.println("Fetch APOD button clicked!");
             controller.fetchAPOD();
+        });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.navigateToHome();
+            }
         });
 
     }

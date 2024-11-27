@@ -13,4 +13,9 @@ public class APODController {
         System.out.println("APODController: fetchAPOD called");
         interactor.fetchAPOD();
     }
+
+    public void navigateToHome() {
+        System.out.println("APODController: navigateToHome called");
+        interactor.goBackToHome(); // Delegate navigation to interactor
+    }
 }
