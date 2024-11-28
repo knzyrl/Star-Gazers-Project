@@ -1,4 +1,11 @@
 package use_case.geocoding;
 
-public class GeocodingOutputBoundary {
+import entity.Location;
+
+public interface GeocodingOutputBoundary {
+    void execute(Location location);
+
+    void executeBack();
+
+    void noAddressFound();
 }

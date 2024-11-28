@@ -12,7 +12,9 @@ public class HomeView extends JPanel {
     private HomeController homeController;
     private JButton starChart;
     private JButton events;
-    private JButton apod; // Button for Astronomy Picture of the Day
+    private JButton apod;
+    private JButton moonPhase;
+    private JButton geocoder;
 
     public HomeView() {
         final JLabel title = new JLabel("Home Screen");
@@ -29,6 +31,19 @@ public class HomeView extends JPanel {
                         if (e.getSource().equals(starChart)) {
                             System.out.println("star chart pressed");
                             homeController.execute("star chart");
+                        }
+                    }
+                }
+        );
+        final JPanel moonPhaseButtonPanel = new JPanel();
+        moonPhase = new JButton("Generate Moon Phase");
+        moonPhaseButtonPanel.add(moonPhase);
+        moonPhase.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(moonPhase)) {
+                            System.out.println("moon phase pressed");
+                            homeController.execute("moon phase");
                         }
                     }
                 }
@@ -71,6 +86,29 @@ public class HomeView extends JPanel {
         this.add(starChartButtonPanel);
         this.add(eventsButtonPanel);
         this.add(apodButtonPanel);
+
+        final JPanel geocoderButtonPanel = new JPanel();
+        geocoder = new JButton("Access Geocoder");
+        geocoderButtonPanel.add(geocoder);
+        geocoder.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(geocoder)) {
+                            System.out.println("Geocoder pressed");
+                            homeController.execute("Geocoder view");
+                        }
+                    }
+                }
+        );
+
+
+
+        this.add(title);
+        this.add(starChartButtonPanel);
+        this.add(eventsButtonPanel);
+        this.add(moonPhaseButtonPanel);
+        this.add(geocoderButtonPanel);
 
         // Layout
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

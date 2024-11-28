@@ -9,12 +9,20 @@ public class Main {
                 .addHomeView()
                 .addStarChartView()
                 .addDisplayStarChartView()
+                .addMoonPhaseView()
+                .addDisplayMoonPhaseView()
+                .addGeocodingView()
+                .addDisplayGeocoderView()
+                .addNoAddressFoundView()
+                .addGeocoderUseCase()
                 .addEventsView()
                 .addDisplayEventsView()
                 .addAPODView()
                 .addHomeInterface()
                 .addStarChartUseCase()
                 .addDisplayStarChartInterface()
+                .addMoonPhaseUseCase()
+                .addDisplayMoonPhaseInterface()
                 .addEventsUseCase()
                 .addDisplayEventsInterface()
                 .build();
@@ -22,3 +30,5 @@ public class Main {
         application.setVisible(true);
     }
 }
+
+
