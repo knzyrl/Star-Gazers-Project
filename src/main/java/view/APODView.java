@@ -14,6 +14,8 @@ public class APODView extends JPanel {
     private final JLabel imageLabel = new JLabel();
     private final JButton fetchButton = new JButton("Fetch APOD");
     private final JButton backButton = new JButton("Back");
+    private final JButton fetchByDateButton = new JButton("Fetch by Date");
+    private final JTextField dateInputField = new JTextField("YYYY-MM-DD", 10);
 
     public APODView() {
         setLayout(new BorderLayout());
@@ -40,10 +42,14 @@ public class APODView extends JPanel {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         fetchButton.setPreferredSize(new Dimension(150, 30));
+        fetchByDateButton.setPreferredSize(new Dimension(150, 30));
         backButton.setPreferredSize(new Dimension(100, 30));
 
         buttonPanel.add(fetchButton);
+        buttonPanel.add(dateInputField);
+        buttonPanel.add(fetchByDateButton);
         buttonPanel.add(backButton);
+
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
@@ -51,7 +57,14 @@ public class APODView extends JPanel {
         return "apod";
     }
 
-    public void setController(APODController controller) {
+    public void setController(APODController controller) {;
+        // Fetch by Date Button Action
+        fetchByDateButton.addActionListener(e -> {
+            String date = dateInputField.getText();
+            System.out.println("Fetching APOD for date: " + date);
+            controller.fetchAPODByDate(date);
+        });
+
         fetchButton.addActionListener(e -> {
             System.out.println("Fetch APOD button clicked!");
             controller.fetchAPOD();

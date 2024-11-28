@@ -17,24 +17,26 @@ public class APODInteractor implements APODInputBoundary {
 
     @Override
     public void fetchAPOD() {
-        // Fetch data from API
         String jsonResponse = dataAccessObject.fetchAPOD();
-        System.out.println("APODInteractor: API Response - " + jsonResponse);
+        processResponse(jsonResponse);
+    }
 
-        // Parse the JSON response
+    public void fetchAPODByDate(String date) {
+        String jsonResponse = dataAccessObject.fetchAPODByDate(date);
+        processResponse(jsonResponse);
+    }
+
+    public void goBackToHome() {
+        viewManager.show("home");
+    }
+
+    private void processResponse(String jsonResponse) {
         JSONObject json = new JSONObject(jsonResponse);
         String title = json.optString("title", "No Title");
         String description = json.optString("explanation", "No Description");
         String imageUrl = json.optString("url", "");
 
-        // Create output data and send to presenter
         APODOutputData outputData = new APODOutputData(title, description, imageUrl);
-        System.out.println("Parsed Data - Title: " + title + ", URL: " + imageUrl);
         outputBoundary.presentAPOD(outputData);
-    }
-
-    public void goBackToHome(){
-        System.out.println("APODInteractor: navigating back to home");
-        viewManager.show("home"); // Navigate to the home view
     }
 }
