@@ -16,6 +16,9 @@ public class APODView extends JPanel {
     private final JButton backButton = new JButton("Back");
     private final JButton fetchByDateButton = new JButton("Fetch by Date");
     private final JTextField dateInputField = new JTextField("YYYY-MM-DD", 10);
+    private final JPanel persistentButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Persistent Buttons
+    private JButton playButton = null;
+    private String currentImageUrl;
 
     public APODView() {
         setLayout(new BorderLayout());
@@ -35,29 +38,25 @@ public class APODView extends JPanel {
         imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(imageLabel, BorderLayout.EAST);
 
-        // Fetch button (action tied to controller)
-        add(fetchButton, BorderLayout.SOUTH);
-
-        // Button Panel
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        // Persistent Buttons
         fetchButton.setPreferredSize(new Dimension(150, 30));
         fetchByDateButton.setPreferredSize(new Dimension(150, 30));
         backButton.setPreferredSize(new Dimension(100, 30));
+        dateInputField.setPreferredSize(new Dimension(100, 30));
 
-        buttonPanel.add(fetchButton);
-        buttonPanel.add(dateInputField);
-        buttonPanel.add(fetchByDateButton);
-        buttonPanel.add(backButton);
+        persistentButtonPanel.add(fetchButton);
+        persistentButtonPanel.add(dateInputField);
+        persistentButtonPanel.add(fetchByDateButton);
+        persistentButtonPanel.add(backButton);
 
-        add(buttonPanel, BorderLayout.SOUTH);
+        add(persistentButtonPanel, BorderLayout.SOUTH);
     }
 
     public String getViewName() {
         return "apod";
     }
 
-    public void setController(APODController controller) {;
+    public void setController(APODController controller) {
         // Fetch by Date Button Action
         fetchByDateButton.addActionListener(e -> {
             String date = dateInputField.getText();
@@ -65,33 +64,66 @@ public class APODView extends JPanel {
             controller.fetchAPODByDate(date);
         });
 
+        // Fetch Button Action
         fetchButton.addActionListener(e -> {
             System.out.println("Fetch APOD button clicked!");
             controller.fetchAPOD();
         });
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controller.navigateToHome();
-            }
-        });
-
+        // Back Button Action
+        backButton.addActionListener(e -> controller.navigateToHome());
     }
 
-    public void displayAPOD(String title, String description, String imageUrl) {
+    public void displayAPOD(String title, String description, String mediaType, String url, String thumbnailUrl) {
         SwingUtilities.invokeLater(() -> {
             titleLabel.setText(title);
             descriptionArea.setText(description);
 
+            // Store the current URL for saving or playing
+            currentImageUrl = mediaType.equals("image") ? url : thumbnailUrl;
+
             try {
-                ImageIcon image = new ImageIcon(new URL(imageUrl)); // Load image from URL
-                imageLabel.setIcon(image);
+                if (mediaType.equals("image")) {
+                    // Display the image
+                    ImageIcon image = new ImageIcon(new URL(url));
+                    imageLabel.setIcon(image);
+
+                    // Remove the Play Video button if it exists
+                    if (playButton != null) {
+                        persistentButtonPanel.remove(playButton);
+                        playButton = null;
+                    }
+                } else if (mediaType.equals("video")) {
+                    // Display the video thumbnail
+                    ImageIcon thumbnail = new ImageIcon(new URL(thumbnailUrl));
+                    imageLabel.setIcon(thumbnail);
+
+                    // Add a "Play Video" button for video playback
+                    if (playButton == null) {
+                        playButton = new JButton("Play Video");
+                        playButton.setPreferredSize(new Dimension(150, 30)); // Match other button sizes
+                        playButton.addActionListener(e -> {
+                            try {
+                                Desktop.getDesktop().browse(new URL(url).toURI());
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                                JOptionPane.showMessageDialog(this, "Failed to open video.", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        });
+                        persistentButtonPanel.add(playButton);
+                    }
+                }
+
+                // Refresh the persistent button panel
+                persistentButtonPanel.revalidate();
+                persistentButtonPanel.repaint();
+
+                revalidate(); // Refresh the overall layout
+                repaint();
             } catch (Exception e) {
                 e.printStackTrace();
-                imageLabel.setText("Failed to load image.");
+                imageLabel.setText("Failed to load media.");
             }
         });
     }
-
 }

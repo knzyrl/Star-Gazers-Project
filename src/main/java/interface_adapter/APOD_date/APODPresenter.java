@@ -4,6 +4,8 @@ import use_case.apod_date.APODOutputBoundary;
 import use_case.apod_date.APODOutputData;
 import view.APODView;
 
+import javax.swing.*;
+
 public class APODPresenter implements APODOutputBoundary {
     private final APODView view;
 
@@ -14,9 +16,16 @@ public class APODPresenter implements APODOutputBoundary {
     @Override
     public void presentAPOD(APODOutputData outputData) {
         // Print the URL for debugging
-        System.out.println("APOD URL: " + outputData.getImageUrl());
+        System.out.println("APOD URL: " + outputData.getUrl());
 
-        // Update the view
-        view.displayAPOD(outputData.getTitle(), outputData.getDescription(), outputData.getImageUrl());
+        SwingUtilities.invokeLater(() -> {
+            String title = outputData.getTitle();
+            String description = outputData.getDescription();
+            String mediaType = outputData.getMediaType();
+            String url = outputData.getUrl();
+            String thumbnailUrl = outputData.getThumbnailUrl();
+
+            view.displayAPOD(title, description, mediaType, url, thumbnailUrl);
+        });
     }
 }

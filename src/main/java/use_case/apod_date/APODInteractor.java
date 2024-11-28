@@ -34,9 +34,11 @@ public class APODInteractor implements APODInputBoundary {
         JSONObject json = new JSONObject(jsonResponse);
         String title = json.optString("title", "No Title");
         String description = json.optString("explanation", "No Description");
-        String imageUrl = json.optString("url", "");
+        String mediaType = json.optString("media_type", "image");
+        String url = json.optString("url", "");
+        String thumbnailUrl = json.optString("thumbnail_url", url); // Use thumbnail for videos
 
-        APODOutputData outputData = new APODOutputData(title, description, imageUrl);
+        APODOutputData outputData = new APODOutputData(title, description, mediaType, url, thumbnailUrl);
         outputBoundary.presentAPOD(outputData);
     }
 }
