@@ -17,6 +17,8 @@ public class Main {
                 .addGeocoderUseCase()
                 .addEventsView()
                 .addDisplayEventsView()
+                .addNEOView()
+                .addDisplayNEOView()
                 .addAPODView()
                 .addHomeInterface()
                 .addStarChartUseCase()
@@ -25,6 +27,8 @@ public class Main {
                 .addDisplayMoonPhaseInterface()
                 .addEventsUseCase()
                 .addDisplayEventsInterface()
+                .addNEOUseCase()
+                .addDisplayNEOInterface()
                 .build();
         application.pack();
         application.setVisible(true);
