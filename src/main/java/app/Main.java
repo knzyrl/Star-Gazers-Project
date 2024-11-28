@@ -17,6 +17,7 @@ public class Main {
                 .addGeocoderUseCase()
                 .addEventsView()
                 .addDisplayEventsView()
+                .addAPODView()
                 .addHomeInterface()
                 .addStarChartUseCase()
                 .addDisplayStarChartInterface()
