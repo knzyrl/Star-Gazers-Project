@@ -12,6 +12,7 @@ public class HomeView extends JPanel {
     private HomeController homeController;
     private JButton starChart;
     private JButton events;
+    private JButton apod;
     private JButton moonPhase;
     private JButton geocoder;
 
@@ -19,6 +20,7 @@ public class HomeView extends JPanel {
         final JLabel title = new JLabel("Home Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        // Star Chart Button
         final JPanel starChartButtonPanel = new JPanel();
         starChart = new JButton("Generate Star Chart");
         starChartButtonPanel.add(starChart);
@@ -47,6 +49,7 @@ public class HomeView extends JPanel {
                 }
         );
 
+        // Events Button
         final JPanel eventsButtonPanel = new JPanel();
         events = new JButton("Show Events");
         eventsButtonPanel.add(events);
@@ -61,6 +64,28 @@ public class HomeView extends JPanel {
                     }
                 }
         );
+
+        // APOD Button
+        final JPanel apodButtonPanel = new JPanel();
+        apod = new JButton("View Astronomy Picture of the Day");
+        apodButtonPanel.add(apod);
+        apod.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource().equals(apod)) {
+                            System.out.println("apod pressed");
+                            homeController.execute("apod");
+                        }
+                    }
+                }
+        );
+
+        // Add Components
+        this.add(title);
+        this.add(starChartButtonPanel);
+        this.add(eventsButtonPanel);
+        this.add(apodButtonPanel);
 
         final JPanel geocoderButtonPanel = new JPanel();
         geocoder = new JButton("Access Geocoder");
@@ -85,6 +110,7 @@ public class HomeView extends JPanel {
         this.add(moonPhaseButtonPanel);
         this.add(geocoderButtonPanel);
 
+        // Layout
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 

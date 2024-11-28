@@ -24,7 +24,7 @@ public class GeocodingPresenter implements GeocodingOutputBoundary {
     }
 
     public void executeBack() {
-        viewManager.show("Geocoder view");
+        viewManager.show("home");
     }
 
     public void noAddressFound() {

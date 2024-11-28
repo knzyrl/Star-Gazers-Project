@@ -11,10 +11,15 @@ public class Main {
                 .addDisplayStarChartView()
                 .addMoonPhaseView()
                 .addDisplayMoonPhaseView()
+                .addGeocodingView()
+                .addDisplayGeocoderView()
+                .addNoAddressFoundView()
+                .addGeocoderUseCase()
                 .addEventsView()
                 .addDisplayEventsView()
                 .addNEOView()
                 .addDisplayNEOView()
+                .addAPODView()
                 .addHomeInterface()
                 .addStarChartUseCase()
                 .addDisplayStarChartInterface()
@@ -25,8 +30,9 @@ public class Main {
                 .addNEOUseCase()
                 .addDisplayNEOInterface()
                 .build();
-
         application.pack();
         application.setVisible(true);
     }
 }
+
+
