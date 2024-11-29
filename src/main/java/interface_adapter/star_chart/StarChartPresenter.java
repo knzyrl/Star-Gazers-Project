@@ -1,12 +1,13 @@
 package interface_adapter.star_chart;
 
 import entity.StarChart;
+import use_case.star_chart.StarChartOutputBoundary;
 import view.DisplayStarChartView;
 import view.ViewManager;
 
 import java.io.IOException;
 
-public class StarChartPresenter {
+public class StarChartPresenter implements StarChartOutputBoundary {
     private ViewManager viewManager;
     private DisplayStarChartView displayStarChartView;
 
@@ -18,7 +19,8 @@ public class StarChartPresenter {
         this.displayStarChartView = displayStarChartView;
     }
 
-    public void displayStarChart(StarChart starChart) throws IOException {
+    @Override
+    public void displayStarChart(StarChart starChart) {
         displayStarChartView.setStarChart(starChart);
         displayStarChartView.refresh();
         viewManager.show("display star chart");
