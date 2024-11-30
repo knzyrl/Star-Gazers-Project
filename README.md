@@ -51,7 +51,7 @@ Confirm when prompted to open it as a Maven project.
    - To run the file: Right click the file and press run
 6. Common issues:
    - Maven not recognized: Ensure Maven is added to your system's PATH.
-   - Dependency errors: Run mvn clean install to resolve missing dependencies.
+   - Dependency errors: Run ```mvn clean install``` to resolve missing dependencies.
    - IDE errors: Ensure the correct JDK version is configured for the project.
 7. Technical requirements:
    - Operating System: Windows, macOS, or Linux.
