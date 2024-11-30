@@ -48,7 +48,7 @@ Confirm when prompted to open it as a Maven project.
      ```
 5. Locate the **Main.java** file and run it
    - The file directory is src/main/java
-   - To run the file: Right click the file and press run
+   - To run the file: Right click the file and press run, or run via command line.
 6. Common issues:
    - Maven not recognized: Ensure Maven is added to your system's PATH.
    - Dependency errors: Run ```mvn clean install``` to resolve missing dependencies.
@@ -58,13 +58,28 @@ Confirm when prompted to open it as a Maven project.
    - Hardware: Minimum 4GB RAM and an internet connection for fetching astronomical data.
 
 ## Usage Guide
+1. Launch the application:
+  - Run the program by executing the **Main.java** file in your IDE or via the command line.
+2. Interact with the Graphical User Interface (GUI) that pops up:
+   - Click on the buttons depending on what you want to do: Generate star charts, view the astronomy picture of the day (APOD), check moon phases, or learn an interesting astronomy fact!
+   - Press the **Back** button to go back to the home screen, which will allow you to explore the other features we have.
+
+Example usage: View a star chart
+1. Open the application GUI
+2. Click the **Generate Star Chart** button
+3.  The main interface for generating a star chart allows you to input longtitude, latitude, and date.
+4.  If you don't know your precise coordinates, you can use the **Geocoding** function.
+5.  After entering your details and clicking th e**Generate** button, the GUI will display an interactive star chart visualization.
+6.  The visualization includes constellations, stars, and other celestial phenomena visible at the specified time and location.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
 
 ## Feedback
+We appreciate your interest in the Star Gazers project! However, we are not accepting feedback at this time.
 
 ## Contributions
+At the moment, we are not accepting external contributions. 
 
 ## User Stories:
 
