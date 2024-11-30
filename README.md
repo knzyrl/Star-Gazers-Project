@@ -27,10 +27,10 @@ This project was created to make astronomy more accessible and engaging for peop
 
 ## Installation Instructions
 1. Before installing the project, ensure the following are installed on your system:
-   - [Java Development Kit (JDK): Version 11 or higher.](https://www.oracle.com/java/technologies/downloads/#java11?er=221886)
-   - [Apache Maven: Latest version.](https://maven.apache.org/download.cgi)
+   - [Java Development Kit (JDK): Version 11 or higher](https://www.oracle.com/java/technologies/downloads/#java11?er=221886)
+   - [Apache Maven: Latest version](https://maven.apache.org/download.cgi)
    - [Git (optional)](https://git-scm.com/)
-   - [IDE (optional, but recommended): IntelliJ IDEA for Java project support](https://www.jetbrains.com/idea/download/?section=mac)
+   - [IDE: IntelliJ IDEA](https://www.jetbrains.com/idea/download/?section=mac)
 2. Clone/download the project:
    - Clone the repository using Git:
      ```
@@ -60,6 +60,7 @@ Confirm when prompted to open it as a Maven project.
 ## Usage Guide
 
 ## License
+This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
 
 ## Feedback
 
