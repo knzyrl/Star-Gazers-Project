@@ -14,6 +14,7 @@ Alex Tin Long Young: **alexxxtl**
 
 ## Table of Contents
 ### [Authors and Contributors](#authors-and-contributors)
+### [Summary and Purpose](#summary-and-purpose)
 ### [Features](#features)
 ### [Installation Instructions](#installation-instructions)
 ### [Usage Guide](#usage-guide)
