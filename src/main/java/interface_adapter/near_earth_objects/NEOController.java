@@ -19,4 +19,5 @@ public class NEOController {
         NEOInputData inputData = new NEOInputData(startDate, endDate);
         interactor.fetchNEOData(inputData);
     }
+
 }

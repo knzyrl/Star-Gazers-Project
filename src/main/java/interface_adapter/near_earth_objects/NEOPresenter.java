@@ -2,19 +2,36 @@ package interface_adapter.near_earth_objects;
 
 import entity.NEOEntity;
 import use_case.near_earth_objects.NEOOutputBoundary;
+import view.DisplayNEOView;
+import view.ViewManager;
 
 import java.util.List;
 
 public class NEOPresenter implements NEOOutputBoundary {
+    private final ViewManager viewManager;
+    private DisplayNEOView displayNEOView;
+
+    public NEOPresenter(ViewManager viewManager) {
+        this.viewManager = viewManager;
+    }
+
+    public void setDisplayNEOView(DisplayNEOView displayNEOView) {
+        this.displayNEOView = displayNEOView;
+    }
 
     @Override
-    public void presentNEOData(List<NEOEntity> neoData) {
-        System.out.println("Nearby Asteroids:");
-        for (NEOEntity asteroid : neoData) {
-            System.out.printf("Name: %s, Closest Approach Date: %s, Distance: %.2f km%n",
-                    asteroid.getName(),
-                    asteroid.getClosestApproachDate(),
-                    asteroid.getClosestDistanceKm());
-        }
+    public void presentNEOData(List<NEOEntity> neoEntities) {
+        displayNEOView.displayNEOData(neoEntities);
+        viewManager.getViews().add(displayNEOView, displayNEOView.getViewName());
+        viewManager.show(displayNEOView.getViewName());
+    }
+
+    public void back() {
+        viewManager.show("home");
+    }
+
+    public void noDataFound() {
+        System.out.println("No Near-Earth Objects data found.");
+        viewManager.show("home");
     }
 }
