@@ -13,6 +13,13 @@ Alex Tin Long Young: **alexxxtl**
 ## Summary and Purpose
 
 ## Table of Contents
+### [Authors and Contributors] (#authors-and-contributors)
+### [Features] (#features)
+### [Installation Instructions] (#installation-instructions)
+### [Usage Guide] (#usage-guide)
+### [License] (#license)
+### [Contributions] (#contributions)
+### [User Stories] (#user-stories)
 
 ## Features 
 
