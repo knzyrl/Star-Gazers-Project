@@ -24,6 +24,7 @@ This project was created to make astronomy more accessible and engaging for peop
 ### [User Stories](#user-stories)
 
 ## Features 
+i'll write this later
 
 ## Installation Instructions
 1. Before installing the project, ensure the following are installed on your system:
