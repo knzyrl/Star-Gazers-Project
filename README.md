@@ -43,9 +43,9 @@ Go to File > Open and select the project directory.
 Confirm when prompted to open it as a Maven project.
 4. Build the project:
    - Open a terminal, navigate to the project directory, and execute the following command:
-```
-mvn clean install
-```
+   ```
+   mvn clean install
+   ```
 5. Locate the **Main.java** file and run it
    - The file directory is src/main/java
    - To run the file: Right click the file and press run
