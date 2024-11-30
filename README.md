@@ -1,4 +1,5 @@
 # Star-Gazers-Project
+## Authors and Contributors
 Khangerel Batzul: **knzyrl**
 
 Shiqi Kuang: **ck-7725**
@@ -8,6 +9,22 @@ Aryan Hrishikesh Nair: **AryanNair-24**
 Erin Xu: **xuerin**
 
 Alex Tin Long Young: **alexxxtl**
+
+## Summary and Purpose
+
+## Table of Contents
+
+## Features 
+
+## Installation Instructions
+
+## Usage Guide
+
+## License
+
+## Feedback
+
+## Contributions
 
 ## User Stories:
 
