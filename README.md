@@ -36,6 +36,7 @@ This project was created to make astronomy more accessible and engaging for peop
 ```
 git clone https://github.com/knzyrl/Star-Gazers-Project.git
 ```
+
    - Or, download the ZIP file from the repository to your computer and extract it.
 3. Open your IDE and import the project:
    - For IntelliJ IDEA:
@@ -46,7 +47,6 @@ Confirm when prompted to open it as a Maven project.
 ```
 mvn clean install
 ```
-   - This will download dependencies, compile the code, and package the application.
 5. Locate the **Main.java** file and run it
    - The file directory is src/main/java
    - To run the file: Right click the file and press run
