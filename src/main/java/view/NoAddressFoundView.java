@@ -10,6 +10,9 @@ import java.io.IOException;
 import interface_adapter.geocoding.GeocodingController;
 import interface_adapter.geocoding.GeocodingPresenter;
 
+/**
+ * Display when the address cannot be found.
+ */
 public class NoAddressFoundView extends JPanel {
 
     private final JButton retry;
@@ -20,7 +23,7 @@ public class NoAddressFoundView extends JPanel {
         final JLabel title = new JLabel("No Address Found");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-
+        // Button to retry the use case
         final JPanel retryPanel = new JPanel();
         retry = new JButton("Retry");
         retryPanel.add(retry);
@@ -39,8 +42,10 @@ public class NoAddressFoundView extends JPanel {
                     }
                 }
         );
-        this.add(title, BorderLayout.NORTH);
-        this.add(retryPanel, BorderLayout.SOUTH);
+        this.add(title);
+        this.add(retryPanel);
+
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
     public void setGeocodingController(GeocodingController geocodingController) {
