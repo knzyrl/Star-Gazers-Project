@@ -11,6 +11,7 @@ Erin Xu: **xuerin**
 Alex Tin Long Young: **alexxxtl**
 
 ## Summary and Purpose
+This project was created to make astronomy more accessible and engaging for people of all backgrounds, whether they are casual stargazers, students, or enthusiasts. By providing users with real-time astronomical data and visualizations, it addresses the common problem of finding out about accurate and up-to-date information about celestial phenomena, which often requires specialized knowledge or expensive equipment. With this project, users can explore and learn about stars, planets, and other celestial events directly from their computers, making it an invaluable tool for those who want to deepen their understanding of the universe without needing prior expertise or advanced tools. Whether you're curious about the constellations visible tonight, tracking the phases of the moon, or planning a stargazing event, this project offers a simple yet powerful solution tailored to your needs.
 
 ## Table of Contents
 ### [Authors and Contributors](#authors-and-contributors)
@@ -25,6 +26,37 @@ Alex Tin Long Young: **alexxxtl**
 ## Features 
 
 ## Installation Instructions
+1. Before installing the project, ensure the following are installed on your system:
+   - [Java Development Kit (JDK): Version 11 or higher.](https://www.oracle.com/java/technologies/downloads/#java11?er=221886)
+   - [Apache Maven: Latest version.](https://maven.apache.org/download.cgi)
+   - [Git (optional)](https://git-scm.com/)
+   - [IDE (optional, but recommended): IntelliJ IDEA for Java project support](https://www.jetbrains.com/idea/download/?section=mac)
+2. Clone/download the project:
+   - Clone the repository using Git:
+```
+git clone https://github.com/knzyrl/Star-Gazers-Project.git
+```
+   - Or, download the ZIP file from the repository to your computer and extract it.
+3. Open your IDE and import the project:
+   - For IntelliJ IDEA:
+Go to File > Open and select the project directory.
+Confirm when prompted to open it as a Maven project.
+4. Build the project:
+   - Open a terminal, navigate to the project directory, and execute the following command:
+```
+mvn clean install
+```
+   - This will download dependencies, compile the code, and package the application.
+5. Locate the **Main.java** file and run it
+   - The file directory is src/main/java
+   - To run the file: Right click the file and press run
+6. Common issues:
+   - Maven not recognized: Ensure Maven is added to your system's PATH.
+   - Dependency errors: Run mvn clean install to resolve missing dependencies.
+   - IDE errors: Ensure the correct JDK version is configured for the project.
+7. Technical requirements:
+   - Operating System: Windows, macOS, or Linux.
+   - Hardware: Minimum 4GB RAM and an internet connection for fetching astronomical data.
 
 ## Usage Guide
 
