@@ -7,16 +7,17 @@ import interface_adapter.star_chart.StarChartPresenter;
 
 import java.io.IOException;
 
-public class StarChartInteractor {
+public class StarChartInteractor implements StarChartInputBoundary {
     private final StarChartDataAccessObject starChartDAO;
-    private final StarChartPresenter starChartPresenter;
+    private final StarChartOutputBoundary starChartPresenter;
 
-    public StarChartInteractor(StarChartDataAccessObject starChartDAO, StarChartPresenter starChartPresenter) {
+    public StarChartInteractor(StarChartDataAccessObject starChartDAO, StarChartOutputBoundary starChartPresenter) {
         this.starChartDAO = starChartDAO;
         this.starChartPresenter = starChartPresenter;
     }
 
-    public void execute(StarChartInputData starChartInputData) throws IOException {
+    @Override
+    public void execute(StarChartInputData starChartInputData) {
         final String longitude = starChartInputData.getLongitude();
         final String latitude = starChartInputData.getLatitude();
         final String date = starChartInputData.getDate();

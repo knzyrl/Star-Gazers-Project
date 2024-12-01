@@ -6,15 +6,16 @@ import interface_adapter.events.EventsPresenter;
 import kong.unirest.core.json.JSONArray;
 import kong.unirest.core.json.JSONObject;
 
-public class EventsInteractor {
+public class EventsInteractor implements EventsInputBoundary {
     private final EventsDataAccessObject eventsDAO;
-    private final EventsPresenter eventsPresenter;
+    private final EventsOutputBoundary eventsPresenter;
 
-    public EventsInteractor(EventsDataAccessObject eventsDAO,EventsPresenter eventsPresenter) {
+    public EventsInteractor(EventsDataAccessObject eventsDAO, EventsOutputBoundary eventsPresenter) {
         this.eventsDAO = eventsDAO;
         this.eventsPresenter = eventsPresenter;
     }
 
+    @Override
     public void execute(EventsInputData eventsInputData) {
         final String longitude = eventsInputData.getLongitude();
         final String latitude = eventsInputData.getLatitude();

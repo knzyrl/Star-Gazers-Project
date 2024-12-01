@@ -1,14 +1,14 @@
 package interface_adapter.moon_phase;
 
+import use_case.moon_phase.MoonPhaseInputBoundary;
 import use_case.moon_phase.MoonPhaseInputData;
-import use_case.moon_phase.MoonPhaseInteractor;
 
 import java.io.IOException;
 
 public class MoonPhaseController {
-    private final MoonPhaseInteractor moonPhaseInteractor;
+    private final MoonPhaseInputBoundary moonPhaseInteractor;
 
-    public MoonPhaseController(MoonPhaseInteractor moonPhaseInteractor) {
+    public MoonPhaseController(MoonPhaseInputBoundary moonPhaseInteractor) {
         this.moonPhaseInteractor = moonPhaseInteractor;
     }
 
