@@ -26,16 +26,19 @@ public class GeocodingInteractor implements GeocodingInputBoundary {
 
         final List<String> longlat = geocoderDataAccessObject.converter(address);
 
+        Location location = new Location(longlat.get(2), longlat.get(0), longlat.get(1));
+
         // Occurs when no address is found
-        if (longlat.get(0) == null) {
+        if (location.getLatitude() == null) {
             geocodingPresenter.noAddressFound();
         }
 
         // Gives lat and long for an address found
         else{
-            Location location = new Location(longlat.get(2), longlat.get(0), longlat.get(1));
+            GeocodingOutputData geocodingOutputData = new GeocodingOutputData(location.getAddress(),
+                    location.getLongtitude(), location.getLatitude(), false);
 
-            geocodingPresenter.execute(location);
+            geocodingPresenter.execute(geocodingOutputData);
         }
 
 

@@ -8,9 +8,9 @@ import entity.Location;
 public interface GeocodingOutputBoundary {
     /**
      * Displays the longtitude and latitude of the address.
-     * @param location output data.
+     * @param geocodingOutputData output data.
      */
-    void execute(Location location);
+    void execute(GeocodingOutputData geocodingOutputData);
 
     /**
      * Takes user back to homepage.
