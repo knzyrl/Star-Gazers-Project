@@ -3,16 +3,15 @@ package use_case.moon_phase;
 import data_access.MoonPhaseDataAccessObject;
 import entity.MoonPhase;
 import helper.AstronomyCalculations;
-import interface_adapter.moon_phase.MoonPhasePresenter;
 
 import java.io.IOException;
 
-public class MoonPhaseInteractor {
+public class MoonPhaseInteractor implements MoonPhaseInputBoundary {
 
     private final MoonPhaseDataAccessObject moonPhaseDAO;
-    private final MoonPhasePresenter moonPhasePresenter;
+    private final MoonPhaseOutputBoundary moonPhasePresenter;
 
-    public MoonPhaseInteractor(MoonPhaseDataAccessObject moonPhaseDAO, MoonPhasePresenter moonPhasePresenter) {
+    public MoonPhaseInteractor(MoonPhaseDataAccessObject moonPhaseDAO, MoonPhaseOutputBoundary moonPhasePresenter) {
         this.moonPhaseDAO = moonPhaseDAO;
         this.moonPhasePresenter = moonPhasePresenter;
     }
@@ -28,7 +27,21 @@ public class MoonPhaseInteractor {
         final String imageURL = moonPhaseDAO.executeQuery(query);
 
         final MoonPhase moonPhase = new MoonPhase(latitude, longitude, date, imageURL);
-        moonPhasePresenter.displayMoonPhase(moonPhase);
+
+        if (!(moonPhase.validLatitude()) && (moonPhase.validLongitude())) {
+            moonPhasePresenter.prepareFailView("Invalid Latitude. Please try again.");
+        } else if (!(moonPhase.validLongitude()) && (moonPhase.validLatitude())) {
+            moonPhasePresenter.prepareFailView("Invalid Longitude. Please try again.");
+        } else if (!(moonPhase.validLatitude()) && !(moonPhase.validLongitude()) && moonPhase.validDate()) {
+            moonPhasePresenter.prepareFailView("Invalid Latitude and Longitude. Please try again.");
+        } else if (!(moonPhase.validDate())) {
+            moonPhasePresenter.prepareFailView("Invalid Date. Please try again.");
+        }
+        else {
+            MoonPhaseOutputData moonPhaseOutputData = new MoonPhaseOutputData(moonPhase.getLatitude(), moonPhase.getLongitude(), moonPhase.getDate(), moonPhase.getImgURL(), false);
+            moonPhasePresenter.displayMoonPhase(moonPhaseOutputData);
+        }
+
     }
 
     public void execute() {
