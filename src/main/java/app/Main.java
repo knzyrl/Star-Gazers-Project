@@ -1,5 +1,7 @@
 package app;
 
+import view.NameGeocoderView;
+
 import javax.swing.*;
 
 public class Main {
@@ -12,6 +14,7 @@ public class Main {
                 .addMoonPhaseView()
                 .addDisplayMoonPhaseView()
                 .addGeocodingView()
+                .addNameGeocoderView()
                 .addDisplayGeocoderView()
                 .addNoAddressFoundView()
                 .addGeocoderUseCase()
@@ -34,5 +37,3 @@ public class Main {
         application.setVisible(true);
     }
 }
-
-
