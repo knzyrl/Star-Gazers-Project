@@ -28,16 +28,13 @@ public class MoonPhaseInteractor implements MoonPhaseInputBoundary {
 
         final MoonPhase moonPhase = new MoonPhase(latitude, longitude, date, imageURL);
 
-        if (!(moonPhase.validLatitude()) && (moonPhase.validLongitude())) {
-            moonPhasePresenter.prepareFailView("Invalid Latitude. Please try again.");
-        } else if (!(moonPhase.validLongitude()) && (moonPhase.validLatitude())) {
-            moonPhasePresenter.prepareFailView("Invalid Longitude. Please try again.");
-        } else if (!(moonPhase.validLatitude()) && !(moonPhase.validLongitude()) && moonPhase.validDate()) {
-            moonPhasePresenter.prepareFailView("Invalid Latitude and Longitude. Please try again.");
-        } else if (!(moonPhase.validDate())) {
-            moonPhasePresenter.prepareFailView("Invalid Date. Please try again.");
-        }
-        else {
+        if (!(moonPhase.validLatitudeFormat()) || !(moonPhase.validLongitudeFormat()) || !(moonPhase.validDateFormat())) {
+            moonPhasePresenter.prepareFailView("Invalid format. Please ensure that the date is in YYYY-MM-DD format, and that the latitude and longitude are both in decimal format.");
+        } else if (!(moonPhase.validLatitudeValue())) {
+            moonPhasePresenter.prepareFailView("Incorrect value for latitude. Ensure that latitude is between -90.00 and 90.00.");
+        } else if (!(moonPhase.validLongitudeValue())) {
+            moonPhasePresenter.prepareFailView("Incorrect value for longitude. Ensure that longitude is between -180.00 and 180.00.");
+        } else {
             MoonPhaseOutputData moonPhaseOutputData = new MoonPhaseOutputData(moonPhase.getLatitude(), moonPhase.getLongitude(), moonPhase.getDate(), moonPhase.getImgURL(), false);
             moonPhasePresenter.displayMoonPhase(moonPhaseOutputData);
         }
