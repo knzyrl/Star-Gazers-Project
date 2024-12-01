@@ -5,6 +5,9 @@ import use_case.geocoding.GeocodingOutputBoundary;
 import view.DisplayGeocoderView;
 import view.ViewManager;
 
+/**
+ * Presenter for the geocoding use case.
+ */
 public class GeocodingPresenter implements GeocodingOutputBoundary {
     private ViewManager viewManager;
     private DisplayGeocoderView displayGeocoderView;
@@ -24,10 +27,18 @@ public class GeocodingPresenter implements GeocodingOutputBoundary {
     }
 
     public void executeBack() {
-        viewManager.show("home");
+        viewManager.show("Geocoder view");
     }
 
     public void noAddressFound() {
         viewManager.show("No address found");
     }
+
+    public void executeHome() {
+        viewManager.show("home");
+    }
+
+    public void executeName() { viewManager.show("Name Geocoder view"); }
 }
+
+
