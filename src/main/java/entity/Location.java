@@ -2,20 +2,20 @@ package entity;
 
 public class Location {
     private String address;
-    private String longtitude;
+    private String longitude;
     private String latitude;
 
-    public Location(String address, String longtitude, String latitude) {
+    public Location(String address, String longitude, String latitude) {
         this.address = address;
-        this.longtitude = longtitude;
+        this.longitude = longitude;
         this.latitude = latitude;
     }
 
     public String getAddress() {
         return address;
     }
-    public String getLongtitude() {
-        return longtitude;
+    public String getLongitude() {
+        return longitude;
     }
     public String getLatitude() {
         return latitude;

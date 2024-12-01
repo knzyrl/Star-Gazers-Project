@@ -36,7 +36,7 @@ public class GeocodingInteractor implements GeocodingInputBoundary {
         // Gives lat and long for an address found
         else{
             GeocodingOutputData geocodingOutputData = new GeocodingOutputData(location.getAddress(),
-                    location.getLongtitude(), location.getLatitude(), false);
+                    location.getLongitude(), location.getLatitude(), false);
 
             geocodingPresenter.execute(geocodingOutputData);
         }
