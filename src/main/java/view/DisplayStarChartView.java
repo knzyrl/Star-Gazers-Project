@@ -30,15 +30,20 @@ public class DisplayStarChartView extends JPanel {
         this.displayStarChartController = displayStarChartController;
     }
 
-    public void refresh() throws IOException {
+    public void refresh() {
         this.removeAll();
 
         final JLabel title = new JLabel(String.format("Star Chart for %s, %s on %s", starChart.getLongitude(), starChart.getLatitude(), starChart.getDate()));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         String imgURL = starChart.getImgURL();
-        URL url = new URL(imgURL);
-        BufferedImage image = ImageIO.read(url);
+        BufferedImage image = null;
+        try {
+            URL url = new URL(imgURL);
+            image = ImageIO.read(url);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
         JLabel starChartImg = new JLabel(new ImageIcon(image));
 
         final JPanel backButtonPanel = new JPanel();
