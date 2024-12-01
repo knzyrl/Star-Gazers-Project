@@ -33,18 +33,28 @@ public class MoonPhase {
         return imageURL;
     }
 
-    public boolean validLatitude() {
-        final float floatLatitude = parseFloat(latitude);
-        return floatLatitude >= -90 && floatLatitude <= 90;
+    public boolean validLatitudeFormat() {
+        final String latitudePattern = "[-+]?[0-9]*\\.?[0-9]+";
+        return latitude.matches(latitudePattern);
     }
 
-    public boolean validLongitude() {
-        final float floatLongitude = parseFloat(longitude);
-        return floatLongitude >= -180 && floatLongitude <= 180;
+    public boolean validLongitudeFormat() {
+        final String longitudePattern = "[-+]?[0-9]*\\.?[0-9]+";
+        return longitude.matches(longitudePattern);
     }
 
-    public boolean validDate() {
+    public boolean validDateFormat() {
         final String datePattern = "^\\d{4}-\\d{2}-\\d{2}$";
         return Pattern.matches(datePattern, date);
+    }
+
+    public boolean validLatitudeValue() {
+        float floatLatitude = parseFloat(latitude);
+        return floatLatitude >= -90.00 && floatLatitude <= 90.00;
+    }
+
+    public boolean validLongitudeValue() {
+        float floatLongitude = parseFloat(longitude);
+        return floatLongitude >= -180.0 && floatLongitude <= 180.0;
     }
 }

@@ -1,6 +1,5 @@
 package view;
 
-import entity.MoonPhase;
 import interface_adapter.display_moon_phase.DisplayMoonPhaseController;
 import use_case.moon_phase.MoonPhaseOutputData;
 
@@ -14,14 +13,9 @@ import java.io.IOException;
 import java.net.URL;
 
 public class DisplayMoonPhaseView extends JPanel {
-//    private MoonPhase moonPhase;
     private final String viewName = "display Moon Phase";
     private DisplayMoonPhaseController displayMoonPhaseController;
     private JButton back;
-
-//    public void setMoonPhase(MoonPhase moonPhase) {
-//        this.moonPhase = moonPhase;
-//    }
 
     public String getViewName() {
         return this.viewName;
@@ -66,7 +60,6 @@ public class DisplayMoonPhaseView extends JPanel {
     public static void main(String[] args) throws IOException {
         MoonPhaseOutputData moonPhaseOutputData = new MoonPhaseOutputData("33.775867", "-84.39733", "2024-11-06", "https://widgets.astronomyapi.com/moon-phase/generated/bba7ff5f078c4d3002bb8651b1cca6b2896720cf95d0ad798c3f2f32fb5e9248.png", false);
         DisplayMoonPhaseView displayMoonPhaseView = new DisplayMoonPhaseView();
-//        displayMoonPhaseView.setMoonPhase(moonPhase);
         displayMoonPhaseView.refresh(moonPhaseOutputData);
         final JFrame app = new JFrame();
         app.add(displayMoonPhaseView);
