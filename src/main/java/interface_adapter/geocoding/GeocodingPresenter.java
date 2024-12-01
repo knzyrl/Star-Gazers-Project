@@ -40,3 +40,5 @@ public class GeocodingPresenter implements GeocodingOutputBoundary {
 
     public void executeName() { viewManager.show("Name Geocoder view"); }
 }
+
+

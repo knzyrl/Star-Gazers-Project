@@ -55,4 +55,3 @@ public class GeocodingController {
         geocodingPresenter.executeName();
     }
 }
-
