@@ -1,5 +1,6 @@
 package use_case;
 
+import data_access.AstronomyAPIDataAccessObject;
 import data_access.MoonPhaseDataAccessObject;
 import org.junit.Test;
 import use_case.moon_phase.*;
@@ -14,7 +15,7 @@ public class MoonPhaseInteractorTest {
     public void moonPhaseSuccessTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-84.39733", "33.775867", "2024-11-06");
         //refactor reqd. below to make it of type AstronomyAPIDataAccessObject
-        MoonPhaseDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
             }
@@ -48,7 +49,7 @@ public class MoonPhaseInteractorTest {
     @Test
     public void moonPhaseIncorrectLatitudeFormatTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-84.39733", "incorrect format", "2024-11-06");
-        MoonPhaseDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
             }
@@ -79,7 +80,7 @@ public class MoonPhaseInteractorTest {
     @Test
     public void moonPhaseIncorrectLongitudeFormatTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("incorrect format", "33.775867", "2024-11-06");
-        MoonPhaseDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
             }
@@ -110,7 +111,7 @@ public class MoonPhaseInteractorTest {
     @Test
     public void moonPhaseIncorrectDateFormatTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-84.39733", "33.775867", "incorrect format");
-        MoonPhaseDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
             }
@@ -141,7 +142,7 @@ public class MoonPhaseInteractorTest {
     @Test
     public void moonPhaseIncorrectLatitudeValueTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-84.39733", "-200.00", "2024-11-06");
-        MoonPhaseDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
             }
@@ -172,7 +173,7 @@ public class MoonPhaseInteractorTest {
     @Test
     public void moonPhaseIncorrectLongitudeValueTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-200.00", "33.775867", "2024-11-06");
-        MoonPhaseDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
             }
@@ -203,7 +204,7 @@ public class MoonPhaseInteractorTest {
     @Test
     public void moonPhaseIncorrectLatitudeAndLongitudeValueTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-200.00", "-200.00", "2024-11-06");
-        MoonPhaseDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
             }
