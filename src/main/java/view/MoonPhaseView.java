@@ -11,16 +11,23 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class MoonPhaseView extends JPanel {
+
     private final String viewName = "moon phase";
+
     private MoonPhaseController moonPhaseController;
+
     private final JTextField longInputField = new JTextField(20);
     private final JTextField latInputField = new JTextField(20);
+
     private final DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+
     private final JFormattedTextField dateInputField = new JFormattedTextField(fmt);
+
     private final JButton generate;
     private final JButton back;
 
     public MoonPhaseView() {
+
         final JLabel title = new JLabel("Moon Phase Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
