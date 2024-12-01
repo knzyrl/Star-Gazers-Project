@@ -3,6 +3,7 @@ package view;
 import entity.EventsList;
 import entity.Event;
 import interface_adapter.display_events.DisplayEventsController;
+import use_case.events.EventsOutputData;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +11,6 @@ import java.awt.event.ActionListener;
 
 public class DisplayEventsView extends JPanel {
     private final String viewName = "display events view";
-    private EventsList eventsList;
     private DisplayEventsController displayEventsController;
     private JButton back;
 
@@ -18,28 +18,24 @@ public class DisplayEventsView extends JPanel {
         return this.viewName;
     }
 
-    public void setEventsList(EventsList eventsList) {
-        this.eventsList = eventsList;
-    }
-
     public void setDisplayEventsController(DisplayEventsController displayEventsController) {
         this.displayEventsController = displayEventsController;
     }
 
-    public void refresh() {
+    public void refresh(EventsOutputData eventsOutputData) {
         this.removeAll();
 
         JPanel titlePanel = new JPanel();
-        final JLabel title = new JLabel(String.format("<html><div style='text-align: center;'>Events for the %s <br/> at %s, %s <br/> from %s to %s</div></html>", eventsList.getBody(), eventsList.getLongitude(), eventsList.getLatitude(), eventsList.getDateStart(), eventsList.getDateEnd()));
+        final JLabel title = new JLabel(String.format("<html><div style='text-align: center;'>Events for the %s <br/> at %s, %s <br/> from %s to %s</div></html>", eventsOutputData.getBody(), eventsOutputData.getLongitude(), eventsOutputData.getLatitude(), eventsOutputData.getDateStart(), eventsOutputData.getDateEnd()));
         titlePanel.add(title);
 
         JPanel eventsPanel = new JPanel();
-        if (eventsList.getEventsList().isEmpty()) {
+        if (eventsOutputData.getEventsList().isEmpty()) {
             final JLabel noEvents = new JLabel("No events were found for your query specifications.");
             eventsPanel.add(noEvents);
         }
         else {
-            eventsPanel = generateEventsPanel();
+            eventsPanel = generateEventsPanel(eventsOutputData);
         }
 
         final JPanel backButtonPanel = new JPanel();
@@ -63,9 +59,9 @@ public class DisplayEventsView extends JPanel {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
-    private JPanel generateEventsPanel() {
+    private JPanel generateEventsPanel(EventsOutputData eventsOutputData) {
         final JPanel eventsPanel = new JPanel();
-        for (Event event : eventsList.getEventsList()) {
+        for (Event event : eventsOutputData.getEventsList()) {
             String eventType = switch (event.getType()) {
                 case "total_solar_eclipse" -> "Total Solar Eclipse";
                 case "annular_solar_eclipse" -> "Annular Solar Eclipse";

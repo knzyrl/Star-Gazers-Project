@@ -1,20 +1,15 @@
 package use_case;
 
 import data_access.StarChartDataAccessObject;
-import entity.StarChart;
-import org.junit.Test;
-import use_case.star_chart.StarChartInputBoundary;
-import use_case.star_chart.StarChartInputData;
-import use_case.star_chart.StarChartInteractor;
-import use_case.star_chart.StarChartOutputBoundary;
+import org.junit.jupiter.api.Test;
+import use_case.star_chart.*;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class StarChartInteractorTest {
+class StarChartInteractorTest {
 
     @Test
-    public void starChartTest() {
-        StarChartInputData inputData = new StarChartInputData("0.00", "0.00", "1970-01-01");
+    void successTest() {
         StarChartDataAccessObject mockDAO = new StarChartDataAccessObject() {
             @Override
             public String executeQuery(String query) {
@@ -22,13 +17,20 @@ public class StarChartInteractorTest {
             }
         };
 
+        StarChartInputData inputData = new StarChartInputData("0.00", "0.00", "1970-01-01");
+
         StarChartOutputBoundary starChartPresenter = new StarChartOutputBoundary() {
             @Override
-            public void displayStarChart(StarChart starChart) {
-                assertEquals("0.00", starChart.getLongitude());
-                assertEquals("0.00", starChart.getLatitude());
-                assertEquals("1970-01-01", starChart.getDate());
-                assertEquals("starChartImgURL.png", starChart.getImgURL());
+            public void displayStarChart(StarChartOutputData starChartOutputData) {
+                assertEquals("0.00", starChartOutputData.getLongitude());
+                assertEquals("0.00", starChartOutputData.getLatitude());
+                assertEquals("1970-01-01", starChartOutputData.getDate());
+                assertEquals("starChartImgURL.png", starChartOutputData.getImgURL());
+            }
+
+            @Override
+            public void prepareFailView(String errorMessage) {
+                fail("Failure unexpected.");
             }
 
             @Override
@@ -40,4 +42,175 @@ public class StarChartInteractorTest {
         StarChartInputBoundary starChartInteractor = new StarChartInteractor(mockDAO, starChartPresenter);
         starChartInteractor.execute(inputData);
     }
+
+    @Test
+    void longitudeFormatFailTest() {
+        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject();
+
+        StarChartInputData inputData = new StarChartInputData("longitude", "0.00", "1970-01-01");
+
+        StarChartOutputBoundary starChartPresenter = new StarChartOutputBoundary() {
+            @Override
+            public void displayStarChart(StarChartOutputData starChartOutputData) {
+                fail("Success unexpected");
+            }
+
+            @Override
+            public void prepareFailView(String errorMessage) {
+                assertEquals("Longitude value invalid. Please ensure the input is a decimal " +
+                        "between -180.00 and 180.00.", errorMessage);
+            }
+
+            @Override
+            public void back() {
+                fail("Return to home view unexpected.");
+            }
+        };
+
+        StarChartInputBoundary starChartInteractor = new StarChartInteractor(mockDAO, starChartPresenter);
+        starChartInteractor.execute(inputData);
+    }
+
+    @Test
+    void longitudeBoundFailTest() {
+        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject();
+
+        StarChartInputData inputData = new StarChartInputData("9999.99", "0.00", "1970-01-01");
+
+        StarChartOutputBoundary starChartPresenter = new StarChartOutputBoundary() {
+            @Override
+            public void displayStarChart(StarChartOutputData starChartOutputData) {
+                fail("Success unexpected");
+            }
+
+            @Override
+            public void prepareFailView(String errorMessage) {
+                assertEquals("Longitude value invalid. Please ensure the input is a decimal " +
+                        "between -180.00 and 180.00.", errorMessage);
+            }
+
+            @Override
+            public void back() {
+                fail("Return to home view unexpected.");
+            }
+        };
+
+        StarChartInputBoundary starChartInteractor = new StarChartInteractor(mockDAO, starChartPresenter);
+        starChartInteractor.execute(inputData);
+    }
+
+    @Test
+    void latitudeFormatFailTest() {
+        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject();
+
+        StarChartInputData inputData = new StarChartInputData("0.00", "latitude", "1970-01-01");
+
+        StarChartOutputBoundary starChartPresenter = new StarChartOutputBoundary() {
+            @Override
+            public void displayStarChart(StarChartOutputData starChartOutputData) {
+                fail("Success unexpected");
+            }
+
+            @Override
+            public void prepareFailView(String errorMessage) {
+                assertEquals("Latitude value invalid. Please ensure the input is a decimal " +
+                        "between -90.00 and 90.00.", errorMessage);
+            }
+
+            @Override
+            public void back() {
+                fail("Return to home view unexpected.");
+            }
+        };
+
+        StarChartInputBoundary starChartInteractor = new StarChartInteractor(mockDAO, starChartPresenter);
+        starChartInteractor.execute(inputData);
+    }
+
+    @Test
+    void latitudeBoundFailTest() {
+        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject();
+
+        StarChartInputData inputData = new StarChartInputData("0.00", "-9999.99", "1970-01-01");
+
+        StarChartOutputBoundary starChartPresenter = new StarChartOutputBoundary() {
+            @Override
+            public void displayStarChart(StarChartOutputData starChartOutputData) {
+                fail("Success unexpected");
+            }
+
+            @Override
+            public void prepareFailView(String errorMessage) {
+                assertEquals("Latitude value invalid. Please ensure the input is a decimal " +
+                        "between -90.00 and 90.00.", errorMessage);
+            }
+
+            @Override
+            public void back() {
+                fail("Return to home view unexpected.");
+            }
+        };
+
+        StarChartInputBoundary starChartInteractor = new StarChartInteractor(mockDAO, starChartPresenter);
+        starChartInteractor.execute(inputData);
+    }
+
+    @Test
+    void dateFormatFailTest() {
+        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject();
+
+        StarChartInputData inputData = new StarChartInputData("0.00", "0.00", "date");
+
+        StarChartOutputBoundary starChartPresenter = new StarChartOutputBoundary() {
+            @Override
+            public void displayStarChart(StarChartOutputData starChartOutputData) {
+                fail("Success unexpected");
+            }
+
+            @Override
+            public void prepareFailView(String errorMessage) {
+                assertEquals("Date invalid. Please ensure the input is a valid date in YYYY-MM-DD format.",
+                        errorMessage);
+            }
+
+            @Override
+            public void back() {
+                fail("Return to home view unexpected.");
+            }
+        };
+
+        StarChartInputBoundary starChartInteractor = new StarChartInteractor(mockDAO, starChartPresenter);
+        starChartInteractor.execute(inputData);
+    }
+
+    @Test
+    void backTest() {
+        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject() {
+            @Override
+            public String executeQuery(String query) {
+                return "starChartImgURL.png";
+            }
+        };
+
+        StarChartOutputBoundary starChartPresenter = new StarChartOutputBoundary() {
+            @Override
+            public void displayStarChart(StarChartOutputData starChartOutputData) {
+                fail("Success unexpected");
+            }
+
+            @Override
+            public void prepareFailView(String errorMessage) {
+                fail("Failure unexpected");
+            }
+
+            @Override
+            public void back() {
+                // This is expected
+            }
+        };
+
+        StarChartInputBoundary starChartInteractor = new StarChartInteractor(mockDAO, starChartPresenter);
+        starChartInteractor.execute();
+    }
+
 }

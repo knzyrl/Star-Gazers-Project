@@ -2,6 +2,7 @@ package view;
 
 import entity.StarChart;
 import interface_adapter.display_star_chart.DisplayStarChartController;
+import use_case.star_chart.StarChartOutputData;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -14,7 +15,6 @@ import java.net.URL;
 
 public class DisplayStarChartView extends JPanel {
     private final String viewName = "display star chart";
-    private StarChart starChart;
     private DisplayStarChartController displayStarChartController;
     private JButton back;
 
@@ -22,27 +22,23 @@ public class DisplayStarChartView extends JPanel {
         return this.viewName;
     }
 
-    public void setStarChart(StarChart starChart) {
-        this.starChart = starChart;
-    }
-
     public void setDisplayStarChartController(DisplayStarChartController displayStarChartController) {
         this.displayStarChartController = displayStarChartController;
     }
 
-    public void refresh() {
+    public void refresh(StarChartOutputData starChartOutputData) {
         this.removeAll();
 
-        final JLabel title = new JLabel(String.format("Star Chart for %s, %s on %s", starChart.getLongitude(), starChart.getLatitude(), starChart.getDate()));
+        final JLabel title = new JLabel(String.format("Star Chart for %s, %s on %s", starChartOutputData.getLongitude(), starChartOutputData.getLatitude(), starChartOutputData.getDate()));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        String imgURL = starChart.getImgURL();
+        String imgURL = starChartOutputData.getImgURL();
         BufferedImage image = null;
         try {
             URL url = new URL(imgURL);
             image = ImageIO.read(url);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
         JLabel starChartImg = new JLabel(new ImageIcon(image));
 
@@ -68,10 +64,9 @@ public class DisplayStarChartView extends JPanel {
     }
 
     public static void main(String[] args) throws IOException {
-        StarChart starChart = new StarChart("-84.39733", "33.775867", "2024-11-06", "https://widgets.astronomyapi.com/star-chart/generated/b54d8700720a2ec9c9e5532f8f18924ea6b68e7d9bbb8c587a0429271b4aaece.png");
+        StarChartOutputData starChartOutputData = new StarChartOutputData("-84.39733", "33.775867", "2024-11-06", "https://widgets.astronomyapi.com/star-chart/generated/b54d8700720a2ec9c9e5532f8f18924ea6b68e7d9bbb8c587a0429271b4aaece.png");
         DisplayStarChartView displayStarChartView = new DisplayStarChartView();
-        displayStarChartView.setStarChart(starChart);
-        displayStarChartView.refresh();
+        displayStarChartView.refresh(starChartOutputData);
         final JFrame app = new JFrame();
         app.add(displayStarChartView);
         app.pack();
