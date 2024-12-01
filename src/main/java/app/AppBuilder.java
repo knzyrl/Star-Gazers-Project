@@ -1,9 +1,13 @@
 package app;
 
+import data_access.APODdateAPIDataAccessObject;
 import data_access.EventsDataAccessObject;
 import data_access.MoonPhaseDataAccessObject;
 import data_access.StarChartDataAccessObject;
+import interface_adapter.APOD_date.APODController;
+import interface_adapter.APOD_date.APODPresenter;
 import data_access.GeocoderDataAccessObject;
+import data_access.NASANeoDataAccessObject;
 import interface_adapter.display_events.DisplayEventsController;
 import interface_adapter.display_events.DisplayEventsPresenter;
 import interface_adapter.display_moon_phase.DisplayMoonPhaseController;
@@ -20,14 +24,28 @@ import interface_adapter.moon_phase.MoonPhaseController;
 import interface_adapter.moon_phase.MoonPhasePresenter;
 import interface_adapter.star_chart.StarChartController;
 import interface_adapter.star_chart.StarChartPresenter;
+import interface_adapter.near_earth_objects.NEOController;
+import interface_adapter.near_earth_objects.NEOPresenter;
+import use_case.apod_date.APODInteractor;
 import use_case.events.EventsInteractor;
 import use_case.moon_phase.MoonPhaseInteractor;
 import use_case.geocoding.GeocodingInteractor;
 import use_case.star_chart.StarChartInteractor;
+import use_case.near_earth_objects.NEOInteractor;
 import view.*;
+import view.APODView;
+import view.DisplayEventsView;
+import view.DisplayStarChartView;
+import view.EventsView;
+import view.HomeView;
+import view.StarChartView;
+import view.NEOView;
+import view.DisplayNEOView;
+import view.ViewManager;
 
 import javax.swing.*;
 import java.awt.*;
+
 
 public class AppBuilder {
     private final JPanel cardPanel = new JPanel();
@@ -37,27 +55,53 @@ public class AppBuilder {
     private final EventsDataAccessObject eventsDAO = new EventsDataAccessObject();
     private final MoonPhaseDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject();
     private final GeocoderDataAccessObject geocoderDAO = new GeocoderDataAccessObject();
+    private final NASANeoDataAccessObject nasaNeoDAO = new NASANeoDataAccessObject();
     private HomeView homeView;
     private StarChartView starChartView;
     private MoonPhaseView moonPhaseView;
     private DisplayStarChartView displayStarChartView;
     private EventsView eventsView;
     private DisplayEventsView displayEventsView;
+    private APODView apodView;
     private DisplayMoonPhaseView displayMoonPhaseView;
     private GeocoderView geocoderView;
     private NameGeocoderView nameGeocoderView;
     private DisplayGeocoderView displayGeocoderView;
     private NoAddressFoundView noAddressFoundView;
+    private NEOView neoView;
+    private DisplayNEOView displayNEOView;
 
     public AppBuilder() {
         cardPanel.setLayout(cardLayout);
     }
 
     public AppBuilder addHomeView() {
+        // Create the HomeView
         homeView = new HomeView();
         cardPanel.add(homeView, homeView.getViewName());
+
+        // Create and set the HomeController
+        HomePresenter homePresenter = new HomePresenter(viewManager);
+        HomeController homeController = new HomeController(homePresenter);
+        homeView.setHomeController(homeController);
+
         return this;
     }
+
+
+    public AppBuilder addAPODView() {
+        apodView = new APODView();
+        cardPanel.add(apodView, apodView.getViewName());
+
+        APODPresenter presenter = new APODPresenter(apodView);
+        APODdateAPIDataAccessObject dataAccessObject = new APODdateAPIDataAccessObject();
+        APODInteractor interactor = new APODInteractor(presenter, dataAccessObject, viewManager);
+        APODController controller = new APODController(interactor);
+
+        apodView.setController(controller); // Ensure this is called
+        return this;
+    }
+
 
     public AppBuilder addStarChartView() {
         starChartView = new StarChartView();
@@ -116,6 +160,18 @@ public class AppBuilder {
     public AppBuilder addDisplayMoonPhaseView() {
         displayMoonPhaseView = new DisplayMoonPhaseView();
         cardPanel.add(displayMoonPhaseView, displayMoonPhaseView.getViewName());
+        return this;
+    }
+
+    public AppBuilder addNEOView() {
+        neoView = new NEOView();
+        cardPanel.add(neoView, neoView.getViewName());
+        return this;
+    }
+
+    public AppBuilder addDisplayNEOView() {
+        displayNEOView = new DisplayNEOView();
+        cardPanel.add(displayNEOView, displayNEOView.getViewName());
         return this;
     }
 
@@ -190,6 +246,23 @@ public class AppBuilder {
         displayMoonPhaseView.setDisplayMoonPhaseController(displayMoonPhaseController);
         return this;
     }
+
+    public AppBuilder addNEOUseCase() {
+        NEOPresenter neoPresenter = new NEOPresenter(viewManager);
+        neoPresenter.setDisplayNEOView(displayNEOView);
+        NEOInteractor neoInteractor = new NEOInteractor(nasaNeoDAO, neoPresenter);
+        NEOController neoController = new NEOController(neoInteractor);
+        neoView.setNEOController(neoController);
+        return this;
+    }
+
+    public AppBuilder addDisplayNEOInterface() {
+        NEOPresenter displayNEOPresenter = new NEOPresenter(viewManager);
+        displayNEOPresenter.setDisplayNEOView(displayNEOView);
+        displayNEOView.setPresenter(displayNEOPresenter);
+        return this;
+    }
+
 
     public JFrame build() {
         final JFrame application = new JFrame("Star Gazers App");
