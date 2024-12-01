@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GeocodingInteractorTest {
 
-    private Location setLocation;
+    private GeocodingOutputData setData;
     @Test
     public void successTest() {
         GeocodingInputData geocodingInputData = new GeocodingInputData("40 Bay St., Toronto");
@@ -23,8 +23,8 @@ public class GeocodingInteractorTest {
         GeocodingOutputBoundary geocodingPresenter = new GeocodingOutputBoundary() {
 
             @Override
-            public void execute(Location location) {
-                setLocation = location;
+            public void execute(GeocodingOutputData geocodingOutputData) {
+                setData = geocodingOutputData;
             }
 
             @Override
@@ -47,8 +47,8 @@ public class GeocodingInteractorTest {
 
         geocodingInteractor.execute(geocodingInputData);
 
-        assertEquals("-79.37907772483726", setLocation.getLongtitude());
-        assertEquals("43.64343375", setLocation.getLatitude());
+        assertEquals("-79.37907772483726", setData.getLongitude());
+        assertEquals("43.64343375", setData.getLatitude());
 
     }
 
@@ -59,8 +59,8 @@ public class GeocodingInteractorTest {
         GeocodingOutputBoundary geocodingPresenter = new GeocodingOutputBoundary() {
 
             @Override
-            public void execute(Location location) {
-                setLocation = location;
+            public void execute(GeocodingOutputData geocodingOutputData) {
+                setData = geocodingOutputData;
             }
 
             @Override
@@ -83,6 +83,6 @@ public class GeocodingInteractorTest {
 
         geocodingInteractor.execute(geocodingInputData);
 
-        assertNull(setLocation);
+        assertNull(setData);
     }
 }
