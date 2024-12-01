@@ -14,6 +14,11 @@ public class APODController {
         interactor.fetchAPOD();
     }
 
+    public void fetchAPODByDate(String date) {
+        System.out.println("APODController: fetchAPODByDate called for date " + date);
+        interactor.fetchAPODByDate(date);
+    }
+
     public void navigateToHome() {
         System.out.println("APODController: navigateToHome called");
         interactor.goBackToHome(); // Delegate navigation to interactor
