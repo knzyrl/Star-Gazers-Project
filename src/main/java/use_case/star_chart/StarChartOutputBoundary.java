@@ -1,9 +1,9 @@
 package use_case.star_chart;
 
-import entity.StarChart;
-
 public interface StarChartOutputBoundary {
-    void displayStarChart(StarChart starChart);
+    void displayStarChart(StarChartOutputData starChart);
+
+    void prepareFailView(String errorMessage);
 
     void back();
 }

@@ -53,19 +53,7 @@ public class EventsView extends JPanel {
                             String dateStart = dateStartInputField.getText();
                             String dateEnd = dateEndInputField.getText();
                             String body = comboBox.getSelectedItem().toString();
-                            try {
-                                fmt.parse(dateStart);
-                                fmt.parse(dateEnd);
-                            } catch (ParseException ex) {
-                                JOptionPane.showMessageDialog(new JDialog(), "Please input dates in the correct format (YYYY-MM-DD).", "Date Format Error", JOptionPane.ERROR_MESSAGE);
-                                return;
-                            }
-                            if (NumberFormatChecker.checkDouble(longitude) && NumberFormatChecker.checkDouble(latitude)) {
-                                eventsController.execute(longitude, latitude, dateStart, dateEnd, body);
-                            }
-                            else {
-                                JOptionPane.showMessageDialog(new JDialog(), "Please input decimals for latitude and longitude.", "Number Format Error", JOptionPane.ERROR_MESSAGE);
-                            }
+                            eventsController.execute(longitude, latitude, dateStart, dateEnd, body);
                         }
                     }
                 }
