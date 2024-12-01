@@ -1,4 +1,5 @@
 # Star-Gazers-Project
+## Authors and Contributors
 Khangerel Batzul: **knzyrl**
 
 Shiqi Kuang: **ck-7725**
@@ -8,6 +9,78 @@ Aryan Hrishikesh Nair: **AryanNair-24**
 Erin Xu: **xuerin**
 
 Alex Tin Long Young: **alexxxtl**
+
+## Summary and Purpose
+This project was created to make astronomy more accessible and engaging for people of all backgrounds, whether they are casual stargazers, students, or enthusiasts. By providing users with real-time astronomical data and visualizations, it addresses the common problem of finding out about accurate and up-to-date information about celestial phenomena, which often requires specialized knowledge or expensive equipment. With this project, users can explore and learn about stars, planets, and other celestial events directly from their computers, making it an invaluable tool for those who want to deepen their understanding of the universe without needing prior expertise or advanced tools. Whether you're curious about the constellations visible tonight, tracking the phases of the moon, or planning a stargazing event, this project offers a simple yet powerful solution tailored to your needs.
+
+## Table of Contents
+### [Authors and Contributors](#authors-and-contributors)
+### [Summary and Purpose](#summary-and-purpose)
+### [Features](#features)
+### [Installation Instructions](#installation-instructions)
+### [Usage Guide](#usage-guide)
+### [License](#license)
+### [Contributions](#contributions)
+### [User Stories](#user-stories)
+
+## Features 
+i'll write this later
+
+## Installation Instructions
+1. Before installing the project, ensure the following are installed on your system:
+   - [Java Development Kit (JDK): Version 11 or higher](https://www.oracle.com/java/technologies/downloads/#java11?er=221886)
+   - [Apache Maven: Latest version](https://maven.apache.org/download.cgi)
+   - [Git (optional)](https://git-scm.com/)
+   - [IDE: IntelliJ IDEA](https://www.jetbrains.com/idea/download/?section=mac)
+2. Clone/download the project:
+   - Clone the repository using Git:
+     ```
+     git clone https://github.com/knzyrl/Star-Gazers-Project.git
+     ```
+   - Or, download the ZIP file from the repository to your computer and extract it.
+3. Open your IDE and import the project:
+   - For IntelliJ IDEA:
+Go to File > Open and select the project directory.
+Confirm when prompted to open it as a Maven project.
+4. Build the project:
+   - Open a terminal, navigate to the project directory, and execute the following command:
+     ```
+     mvn clean install
+     ```
+5. Locate the **Main.java** file and run it
+   - The file directory is src/main/java
+   - To run the file: Right click the file and press run, or run via command line.
+6. Common issues:
+   - Maven not recognized: Ensure Maven is added to your system's PATH.
+   - Dependency errors: Run ```mvn clean install``` to resolve missing dependencies.
+   - IDE errors: Ensure the correct JDK version is configured for the project.
+7. Technical requirements:
+   - Operating System: Windows, macOS, or Linux.
+   - Hardware: Minimum 4GB RAM and an internet connection for fetching astronomical data.
+
+## Usage Guide
+1. Launch the application:
+  - Run the program by executing the **Main.java** file in your IDE or via the command line.
+2. Interact with the Graphical User Interface (GUI) that pops up:
+   - Click on the buttons depending on what you want to do: Generate star charts, view the astronomy picture of the day (APOD), check moon phases, or learn an interesting astronomy fact!
+   - Press the **Back** button to go back to the home screen, which will allow you to explore the other features we have.
+
+Example usage: View a star chart
+1. Open the application GUI
+2. Click the **Generate Star Chart** button
+3.  The main interface for generating a star chart allows you to input longtitude, latitude, and date.
+4.  If you don't know your precise coordinates, you can use the **Geocoding** function.
+5.  After entering your details and clicking th e**Generate** button, the GUI will display an interactive star chart visualization.
+6.  The visualization includes constellations, stars, and other celestial phenomena visible at the specified time and location.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
+
+## Feedback
+We appreciate your interest in the Star Gazers project! However, we are not accepting feedback at this time.
+
+## Contributions
+At the moment, we are not accepting external contributions. 
 
 ## User Stories:
 

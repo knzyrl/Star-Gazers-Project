@@ -1,5 +1,7 @@
 package app;
 
+import view.NameGeocoderView;
+
 import javax.swing.*;
 
 public class Main {
@@ -9,14 +11,27 @@ public class Main {
                 .addHomeView()
                 .addStarChartView()
                 .addDisplayStarChartView()
+                .addMoonPhaseView()
+                .addDisplayMoonPhaseView()
+                .addGeocodingView()
+                .addNameGeocoderView()
+                .addDisplayGeocoderView()
+                .addNoAddressFoundView()
+                .addGeocoderUseCase()
                 .addEventsView()
                 .addDisplayEventsView()
+                .addNEOView()
+                .addDisplayNEOView()
                 .addAPODView()
                 .addHomeInterface()
                 .addStarChartUseCase()
                 .addDisplayStarChartInterface()
+                .addMoonPhaseUseCase()
+                .addDisplayMoonPhaseInterface()
                 .addEventsUseCase()
                 .addDisplayEventsInterface()
+                .addNEOUseCase()
+                .addDisplayNEOInterface()
                 .build();
         application.pack();
         application.setVisible(true);

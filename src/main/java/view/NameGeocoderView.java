@@ -8,23 +8,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-/**
- * View for the geocoder use case.
- */
-public class GeocoderView extends JPanel {
+public class NameGeocoderView extends JPanel{
     private GeocodingController geocodingController;
-    private final String viewname = "Geocoder view";
-    private final JTextField addressInput = new JTextField(20);
+    private final String viewname = "Name Geocoder view";
+    private final JTextField nameInput = new JTextField(20);
     private final JButton convert;
     private final JButton home;
     private final JComboBox addressNameSwitch = new JComboBox(new String[] {"Address", "Name"});
 
-    public GeocoderView() {
+    public NameGeocoderView() {
         final JLabel title = new JLabel("Geocoder Converter");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        final JLabel instruction = new JLabel("Enter the name of a monument, historical place, etc. ");
+        instruction.setAlignmentX(Component.CENTER_ALIGNMENT);
         // Textbox for user to enter info
-        final LabelTextPanel addressInfo = new LabelTextPanel(new JLabel("Enter address"), addressInput);
+        final LabelTextPanel nameInfo = new LabelTextPanel(new JLabel("Enter name"), nameInput);
 
         // Button to convert the address
         final JPanel convertPanel = new JPanel();
@@ -36,7 +35,7 @@ public class GeocoderView extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource().equals(convert)) {
-                            String address = addressInput.getText();
+                            String address = nameInput.getText();
                             try {
                                 geocodingController.execute(address);
                             } catch (IOException ex) {
@@ -66,6 +65,7 @@ public class GeocoderView extends JPanel {
                 }
         );
         final JPanel switchPanel = new JPanel();
+        addressNameSwitch.setSelectedItem("Name");
         switchPanel.add(addressNameSwitch);
         addressNameSwitch.addActionListener(
                 new ActionListener() {
@@ -83,14 +83,13 @@ public class GeocoderView extends JPanel {
                             else{
                                 try {
                                     geocodingController.executeName();
-
                                 }
                                 catch (IOException ex) {
                                     throw new RuntimeException(ex);
                                 }
 
                             }
-                            addressNameSwitch.setSelectedItem("Address");
+                            addressNameSwitch.setSelectedItem("Name");
                         }
                     }
                 }
@@ -98,7 +97,8 @@ public class GeocoderView extends JPanel {
 
 
         this.add(title);
-        this.add(addressInfo);
+        this.add(instruction);
+        this.add(nameInfo);
         this.add(switchPanel);
         this.add(convertPanel, BorderLayout.WEST);
         this.add(backPanel, BorderLayout.EAST);
@@ -114,7 +114,3 @@ public class GeocoderView extends JPanel {
         return viewname;
     }
 }
-
-
-
-
