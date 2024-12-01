@@ -36,6 +36,11 @@ public class GeocodingInteractorTest {
             public void noAddressFound() {
 
             }
+
+            @Override
+            public void executeName() {
+
+            }
         };
 
         GeocodingInteractor geocodingInteractor = new GeocodingInteractor(geocoderDataAccessObject, geocodingPresenter);
@@ -65,6 +70,11 @@ public class GeocodingInteractorTest {
 
             @Override
             public void noAddressFound() {
+
+            }
+
+            @Override
+            public void executeName() {
 
             }
         };

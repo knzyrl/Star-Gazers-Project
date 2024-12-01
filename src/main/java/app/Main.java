@@ -12,6 +12,7 @@ public class Main {
                 .addMoonPhaseView()
                 .addDisplayMoonPhaseView()
                 .addGeocodingView()
+                .addNameGeocoderView()
                 .addDisplayGeocoderView()
                 .addNoAddressFoundView()
                 .addGeocoderUseCase()

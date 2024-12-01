@@ -45,6 +45,7 @@ public class AppBuilder {
     private DisplayEventsView displayEventsView;
     private DisplayMoonPhaseView displayMoonPhaseView;
     private GeocoderView geocoderView;
+    private NameGeocoderView nameGeocoderView;
     private DisplayGeocoderView displayGeocoderView;
     private NoAddressFoundView noAddressFoundView;
 
@@ -85,6 +86,12 @@ public class AppBuilder {
     public AppBuilder addNoAddressFoundView() {
         noAddressFoundView = new NoAddressFoundView();
         cardPanel.add(noAddressFoundView, noAddressFoundView.getViewName());
+        return this;
+    }
+
+    public AppBuilder addNameGeocoderView() {
+        nameGeocoderView = new NameGeocoderView();
+        cardPanel.add(nameGeocoderView, nameGeocoderView.getViewName());
         return this;
     }
 
@@ -149,6 +156,7 @@ public class AppBuilder {
 
         geocoderView.setGeoCodingController(geocodingController);
         noAddressFoundView.setGeocodingController(geocodingController);
+        nameGeocoderView.setGeoCodingController(geocodingController);
 
         return this;
     }
