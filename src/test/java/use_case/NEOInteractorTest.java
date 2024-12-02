@@ -28,7 +28,8 @@ public class NEOInteractorTest {
                                 "close_approach_data": [
                                     {
                                         "close_approach_date": "2024-11-01",
-                                        "miss_distance": { "kilometers": "120000.5" }
+                                        "miss_distance": { "kilometers": "120000.5" },
+                                        "relative_velocity": { "kilometers_per_hour": "45000.0" }
                                     }
                                 ]
                             },
@@ -37,7 +38,8 @@ public class NEOInteractorTest {
                                 "close_approach_data": [
                                     {
                                         "close_approach_date": "2024-11-01",
-                                        "miss_distance": { "kilometers": "340000.2" }
+                                        "miss_distance": { "kilometers": "340000.2" },
+                                        "relative_velocity": { "kilometers_per_hour": "36000.0" }
                                     }
                                 ]
                             }
@@ -61,8 +63,8 @@ public class NEOInteractorTest {
             public void displayNEOData(java.util.List<NearEarthObjectEntity> neoEntities) {
                 System.out.println("Displaying Near-Earth Objects:");
                 for (var neo : neoEntities) {
-                    System.out.printf("Name: %s, Closest Approach Date: %s, Distance: %.2f km%n",
-                            neo.getName(), neo.getClosestApproachDate(), neo.getClosestDistanceKm());
+                    System.out.printf("Name: %s, Closest Approach Date: %s, Distance: %.2f km%n, Velocity: %.2f km/h%n",
+                            neo.getName(), neo.getClosestApproachDate(), neo.getClosestDistanceKm(), neo.getRelativeVelocity());
                 }
             }
         };

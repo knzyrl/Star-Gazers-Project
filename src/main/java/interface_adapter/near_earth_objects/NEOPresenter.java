@@ -26,12 +26,18 @@ public class NEOPresenter implements NEOOutputBoundary {
         viewManager.show(displayNEOView.getViewName());
     }
 
+    /**
+     * Navigates back to the NEO input view.
+     */
     public void back() {
-        viewManager.show("home");
+        viewManager.show("NEO view"); // Navigate back to the input view for Near-Earth Objects
     }
 
+    /**
+     * Handles the case where no data is found for the requested dates.
+     */
     public void noDataFound() {
         System.out.println("No Near-Earth Objects data found.");
-        viewManager.show("home");
+        viewManager.show("NEO view"); // Navigate back to the input view
     }
 }

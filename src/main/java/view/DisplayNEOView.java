@@ -26,8 +26,14 @@ public class DisplayNEOView extends JPanel {
 
         // Back button panel
         final JPanel backPanel = new JPanel();
-        JButton back = new JButton("Back");
-        backPanel.add(back);
+        JButton backButton = new JButton("Back");
+        backPanel.add(backButton);
+
+        backButton.addActionListener(e -> {
+            if (presenter != null) {
+                presenter.back();
+            }
+        });
 
         // Layout setup
         this.setLayout(new BorderLayout());
@@ -35,15 +41,6 @@ public class DisplayNEOView extends JPanel {
         this.add(scrollPane, BorderLayout.CENTER);
         this.add(backPanel, BorderLayout.SOUTH);
 
-        // Back button action
-        back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (presenter != null) {
-                    presenter.back(); // Use the presenter for navigation
-                }
-            }
-        });
     }
 
     public void setPresenter(NEOPresenter presenter) {
@@ -62,6 +59,7 @@ public class DisplayNEOView extends JPanel {
                 builder.append(String.format("Name: %s%n", neo.getName()));
                 builder.append(String.format("Closest Approach Date: %s%n", neo.getClosestApproachDate()));
                 builder.append(String.format("Distance: %.2f km%n", neo.getClosestDistanceKm()));
+                builder.append(String.format("Relative Velocity: %.2f km/s%n", neo.getRelativeVelocity()));
                 builder.append("----------------------------------------\n");
             }
         }

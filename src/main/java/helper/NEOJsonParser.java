@@ -34,8 +34,9 @@ public class NEOJsonParser {
                     JSONObject firstCloseApproach = closeApproachData.getJSONObject(0);
                     String closestApproachDate = firstCloseApproach.getString("close_approach_date");
                     double closestDistanceKm = firstCloseApproach.getJSONObject("miss_distance").getDouble("kilometers");
+                    double relativeVelocity = firstCloseApproach.getJSONObject("relative_velocity").getDouble("kilometers_per_hour");
 
-                    neoEntities.add(new NearEarthObjectEntity(name, closestApproachDate, closestDistanceKm));
+                    neoEntities.add(new NearEarthObjectEntity(name, closestApproachDate, closestDistanceKm, relativeVelocity));
                 }
             }
 
