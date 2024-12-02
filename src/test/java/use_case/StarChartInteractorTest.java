@@ -1,5 +1,6 @@
 package use_case;
 
+import data_access.AstronomyAPIDataAccessObject;
 import data_access.StarChartDataAccessObject;
 import org.junit.jupiter.api.Test;
 import use_case.star_chart.*;
@@ -10,7 +11,7 @@ class StarChartInteractorTest {
 
     @Test
     void successTest() {
-        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject() {
+        AstronomyAPIDataAccessObject mockDAO = new StarChartDataAccessObject() {
             @Override
             public String executeQuery(String query) {
                 return "starChartImgURL.png";
@@ -45,7 +46,7 @@ class StarChartInteractorTest {
 
     @Test
     void longitudeFormatFailTest() {
-        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject();
+        AstronomyAPIDataAccessObject mockDAO = new StarChartDataAccessObject();
 
         StarChartInputData inputData = new StarChartInputData("longitude", "0.00", "1970-01-01");
 
@@ -73,7 +74,7 @@ class StarChartInteractorTest {
 
     @Test
     void longitudeBoundFailTest() {
-        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject();
+        AstronomyAPIDataAccessObject mockDAO = new StarChartDataAccessObject();
 
         StarChartInputData inputData = new StarChartInputData("9999.99", "0.00", "1970-01-01");
 
@@ -101,7 +102,7 @@ class StarChartInteractorTest {
 
     @Test
     void latitudeFormatFailTest() {
-        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject();
+        AstronomyAPIDataAccessObject mockDAO = new StarChartDataAccessObject();
 
         StarChartInputData inputData = new StarChartInputData("0.00", "latitude", "1970-01-01");
 
@@ -129,7 +130,7 @@ class StarChartInteractorTest {
 
     @Test
     void latitudeBoundFailTest() {
-        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject();
+        AstronomyAPIDataAccessObject mockDAO = new StarChartDataAccessObject();
 
         StarChartInputData inputData = new StarChartInputData("0.00", "-9999.99", "1970-01-01");
 
@@ -157,7 +158,7 @@ class StarChartInteractorTest {
 
     @Test
     void dateFormatFailTest() {
-        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject();
+        AstronomyAPIDataAccessObject mockDAO = new StarChartDataAccessObject();
 
         StarChartInputData inputData = new StarChartInputData("0.00", "0.00", "date");
 
@@ -185,7 +186,7 @@ class StarChartInteractorTest {
 
     @Test
     void backTest() {
-        StarChartDataAccessObject mockDAO = new StarChartDataAccessObject() {
+        AstronomyAPIDataAccessObject mockDAO = new StarChartDataAccessObject() {
             @Override
             public String executeQuery(String query) {
                 return "starChartImgURL.png";

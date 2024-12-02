@@ -1,5 +1,6 @@
 package use_case.events;
 
+import data_access.AstronomyAPIDataAccessObject;
 import data_access.EventsDataAccessObject;
 import entity.EventsList;
 import interface_adapter.events.EventsPresenter;
@@ -7,10 +8,10 @@ import kong.unirest.core.json.JSONArray;
 import kong.unirest.core.json.JSONObject;
 
 public class EventsInteractor implements EventsInputBoundary {
-    private final EventsDataAccessObject eventsDAO;
+    private final AstronomyAPIDataAccessObject eventsDAO;
     private final EventsOutputBoundary eventsPresenter;
 
-    public EventsInteractor(EventsDataAccessObject eventsDAO, EventsOutputBoundary eventsPresenter) {
+    public EventsInteractor(AstronomyAPIDataAccessObject eventsDAO, EventsOutputBoundary eventsPresenter) {
         this.eventsDAO = eventsDAO;
         this.eventsPresenter = eventsPresenter;
     }

@@ -1,5 +1,6 @@
 package use_case;
 
+import data_access.AstronomyAPIDataAccessObject;
 import data_access.MoonPhaseDataAccessObject;
 import org.junit.Test;
 import use_case.moon_phase.*;

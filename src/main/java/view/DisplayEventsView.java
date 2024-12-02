@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DisplayEventsView extends JPanel {
-    private final String viewName = "display events view";
+    private final String viewName = "display events";
     private DisplayEventsController displayEventsController;
     private JButton back;
 

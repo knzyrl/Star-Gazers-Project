@@ -8,20 +8,14 @@ import view.ViewManager;
 
 public class EventsPresenter implements EventsOutputBoundary {
     private ViewManager viewManager;
-    private DisplayEventsView displayEventsView;
 
     public EventsPresenter(ViewManager viewManager) {
         this.viewManager = viewManager;
     }
 
-    public void setDisplayEventsView(DisplayEventsView displayEventsView) {
-        this.displayEventsView = displayEventsView;
-    }
-
     @Override
     public void displayEvents(EventsOutputData eventsOutputData) {
-        displayEventsView.refresh(eventsOutputData);
-        viewManager.show(displayEventsView.getViewName());
+        viewManager.displayEvents(eventsOutputData);
     }
 
     @Override
