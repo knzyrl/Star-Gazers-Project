@@ -116,13 +116,13 @@ At the moment, we are not accepting external contributions.
 
    - Presenter: Displays the star chart reflecting the past sky.
    
-5. Alice wants to know the locations of nearby astronomical objects (asteroids, etc.) and if they may be viewed. She uses the “Near-Earth Objects” function and inputs her current location to receive a list of objects. _(Assigned to: Khangerel)_
+5. Alice wants to know details about nearby astronomical objects (such as asteroids), including their closest approach, distance, relative velocity, and visibility. She uses the “Near-Earth Objects” function, inputs the desired date range, and receives a list of objects along with relevant data. _(Assigned to: Khangerel)_
 
-   - Interactor: User selects “Near-Earth Objects” and inputs location.
+   - Interactor: User selects “Near-Earth Objects” and inputs a date range for observation.
 
-   - Controller: Calls NASA’s NeoWs API to fetch nearby astronomical objects based on location.
+   - Controller: Calls NASA’s NeoWs API to fetch nearby astronomical objects based on the input date range.
      
-   - Presenter: Formats and displays a list of objects, including names and distances.
+   - Presenter: Formats and displays a list of objects, including names, distances, and relative velocities for user readability.
    
 6. Bob would like to be exposed to new and pretty pictures of space and learn fun facts about astronomical phenomena. This is achieved through the NASA APOD API which allows the user to generate a random astronomical image along with a short description. _(Assigned to: Erin)_
 
