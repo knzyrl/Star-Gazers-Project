@@ -22,9 +22,7 @@ public class MoonPhasePresenter implements MoonPhaseOutputBoundary {
 
     public void displayMoonPhase(MoonPhaseOutputData moonPhaseOutputData) throws IOException {
 
-        displayMoonPhaseView.refresh(moonPhaseOutputData);
-        viewManager.getViews().add(displayMoonPhaseView, "display Moon Phase");
-        viewManager.show("display Moon Phase");
+        viewManager.displayMoonPhase(moonPhaseOutputData);
     }
 
     public void back() {
