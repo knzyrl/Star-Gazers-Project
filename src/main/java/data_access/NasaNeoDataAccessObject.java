@@ -10,6 +10,7 @@ import kong.unirest.core.Unirest;
 public class NasaNeoDataAccessObject {
     private static final String BASE_URL = "https://api.nasa.gov/neo/rest/v1/feed";
     private static final String API_KEY = "Qv2W2djvAWmcsnAxcB7l7A2iSmwh7t8Vc0s7OiXa";
+    private static final int HTTP_OK = 200;
 
     /**
      * Fetches Near-Earth Objects data from NASA's NeoWs API.
@@ -20,12 +21,13 @@ public class NasaNeoDataAccessObject {
      * @throws RuntimeException If the HTTP request fails or the API returns a non-200 status code.
      */
     public String fetchNearEarthObjects(String startDate, String endDate) {
+
         final String query = String.format("?start_date=%s&end_date=%s&api_key=%s", startDate, endDate, API_KEY);
 
         final HttpResponse<String> response = Unirest.get(BASE_URL + query)
                 .asString();
 
-        if (response.getStatus() == 200) {
+        if (response.getStatus() == HTTP_OK) {
             return response.getBody();
         }
         else {

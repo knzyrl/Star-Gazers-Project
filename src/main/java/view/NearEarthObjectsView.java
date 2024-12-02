@@ -1,21 +1,27 @@
 package view;
 
-import interface_adapter.near_earth_objects.NEOController;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NEOView extends JPanel {
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import interface_adapter.near_earth_objects.NearEarthObjectsController;
+
+public class NearEarthObjectsView extends JPanel {
     private final String viewName = "NEO view";
     private final JTextField startDateInput = new JTextField(10);
     private final JTextField endDateInput = new JTextField(10);
     private final JButton fetchButton;
     private final JButton clearButton;
-    private NEOController neoController;
+    private NearEarthObjectsController nearEarthObjectsController;
 
-    public NEOView() {
+    public NearEarthObjectsView() {
         final JLabel title = new JLabel("Near-Earth Object Data Fetcher");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -36,23 +42,28 @@ public class NEOView extends JPanel {
         buttonPanel.add(clearButton);
 
         // Add action listener to fetch button
-        fetchButton.addActionListener(e -> {
-            if (neoController != null) {
-                String startDate = startDateInput.getText();
-                String endDate = endDateInput.getText();
+        fetchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                if (nearEarthObjectsController != null) {
+                    final String startDate = startDateInput.getText();
+                    final String endDate = endDateInput.getText();
 
-                try {
-                    if (startDate.isEmpty() || endDate.isEmpty()) {
-                        throw new IllegalArgumentException("Start and End dates cannot be empty.");
+                    try {
+                        if (startDate.isEmpty() || endDate.isEmpty()) {
+                            throw new IllegalArgumentException("Start and End dates cannot be empty.");
+                        }
+                        nearEarthObjectsController.fetchNearEarthObjectsData(startDate, endDate);
                     }
-                    neoController.fetchNEOData(startDate, endDate);
-                } catch (IllegalArgumentException ex) {
-                    JOptionPane.showMessageDialog(NEOView.this, ex.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
+                    catch (IllegalArgumentException ex) {
+                        JOptionPane.showMessageDialog(NearEarthObjectsView.this, ex.getMessage(),
+                                "Input Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });
 
-        clearButton.addActionListener(e -> {
+        clearButton.addActionListener(event -> {
             startDateInput.setText("");
             endDateInput.setText("");
         });
@@ -65,8 +76,8 @@ public class NEOView extends JPanel {
         this.add(buttonPanel);
     }
 
-    public void setNEOController(NEOController controller) {
-        this.neoController = controller;
+    public void setNearEarthObjectsController(NearEarthObjectsController controller) {
+        this.nearEarthObjectsController = controller;
     }
 
     public String getViewName() {

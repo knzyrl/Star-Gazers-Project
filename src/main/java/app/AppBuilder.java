@@ -24,14 +24,14 @@ import interface_adapter.moon_phase.MoonPhaseController;
 import interface_adapter.moon_phase.MoonPhasePresenter;
 import interface_adapter.star_chart.StarChartController;
 import interface_adapter.star_chart.StarChartPresenter;
-import interface_adapter.near_earth_objects.NEOController;
-import interface_adapter.near_earth_objects.NEOPresenter;
+import interface_adapter.near_earth_objects.NearEarthObjectsController;
+import interface_adapter.near_earth_objects.NearEarthObjectsPresenter;
 import use_case.apod_date.APODInteractor;
 import use_case.events.EventsInteractor;
 import use_case.moon_phase.MoonPhaseInteractor;
 import use_case.geocoding.GeocodingInteractor;
 import use_case.star_chart.StarChartInteractor;
-import use_case.near_earth_objects.NEOInteractor;
+import use_case.near_earth_objects.NearEarthObjectsInteractor;
 import view.*;
 import view.APODView;
 import view.DisplayEventsView;
@@ -39,8 +39,8 @@ import view.DisplayStarChartView;
 import view.EventsView;
 import view.HomeView;
 import view.StarChartView;
-import view.NEOView;
-import view.DisplayNEOView;
+import view.NearEarthObjectsView;
+import view.DisplayNearEarthObjectsView;
 import view.ViewManager;
 
 import javax.swing.*;
@@ -68,8 +68,8 @@ public class AppBuilder {
     private NameGeocoderView nameGeocoderView;
     private DisplayGeocoderView displayGeocoderView;
     private NoAddressFoundView noAddressFoundView;
-    private NEOView neoView;
-    private DisplayNEOView displayNEOView;
+    private NearEarthObjectsView nearEarthObjectsView;
+    private DisplayNearEarthObjectsView displayNearEarthObjectsView;
 
     public AppBuilder() {
         cardPanel.setLayout(cardLayout);
@@ -164,14 +164,14 @@ public class AppBuilder {
     }
 
     public AppBuilder addNEOView() {
-        neoView = new NEOView();
-        cardPanel.add(neoView, neoView.getViewName());
+        nearEarthObjectsView = new NearEarthObjectsView();
+        cardPanel.add(nearEarthObjectsView, nearEarthObjectsView.getViewName());
         return this;
     }
 
     public AppBuilder addDisplayNEOView() {
-        displayNEOView = new DisplayNEOView();
-        cardPanel.add(displayNEOView, displayNEOView.getViewName());
+        displayNearEarthObjectsView = new DisplayNearEarthObjectsView();
+        cardPanel.add(displayNearEarthObjectsView, displayNearEarthObjectsView.getViewName());
         return this;
     }
 
@@ -246,18 +246,18 @@ public class AppBuilder {
     }
 
     public AppBuilder addNEOUseCase() {
-        NEOPresenter neoPresenter = new NEOPresenter(viewManager);
-        neoPresenter.setDisplayNEOView(displayNEOView);
-        NEOInteractor neoInteractor = new NEOInteractor(nasaNeoDAO, neoPresenter);
-        NEOController neoController = new NEOController(neoInteractor);
-        neoView.setNEOController(neoController);
+        NearEarthObjectsPresenter nearEarthObjectsPresenter = new NearEarthObjectsPresenter(viewManager);
+        nearEarthObjectsPresenter.setDisplayNeoView(displayNearEarthObjectsView);
+        NearEarthObjectsInteractor neoInteractor = new NearEarthObjectsInteractor(nasaNeoDAO, nearEarthObjectsPresenter);
+        NearEarthObjectsController nearEarthObjectsController = new NearEarthObjectsController(neoInteractor);
+        nearEarthObjectsView.setNearEarthObjectsController(nearEarthObjectsController);
         return this;
     }
 
     public AppBuilder addDisplayNEOInterface() {
-        NEOPresenter displayNEOPresenter = new NEOPresenter(viewManager);
-        displayNEOPresenter.setDisplayNEOView(displayNEOView);
-        displayNEOView.setPresenter(displayNEOPresenter);
+        NearEarthObjectsPresenter displayNearEarthObjectsPresenter = new NearEarthObjectsPresenter(viewManager);
+        displayNearEarthObjectsPresenter.setDisplayNeoView(displayNearEarthObjectsView);
+        displayNearEarthObjectsView.setPresenter(displayNearEarthObjectsPresenter);
         return this;
     }
 

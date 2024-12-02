@@ -1,35 +1,41 @@
 package view;
 
-import entity.NearEarthObjectEntity;
-import interface_adapter.near_earth_objects.NEOPresenter;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.util.List;
 
-public class DisplayNEOView extends JPanel {
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import entity.NearEarthObjectEntity;
+import interface_adapter.near_earth_objects.NearEarthObjectsPresenter;
+
+public class DisplayNearEarthObjectsView extends JPanel {
+    private static final int TEXT_AREA_ROWS = 15;
+    private static final int TEXT_AREA_COLUMNS = 40;
     private final String viewName = "display NEO view";
     private final JTextArea dataArea;
-    private NEOPresenter presenter;
+    private NearEarthObjectsPresenter presenter;
 
-    public DisplayNEOView() {
+    public DisplayNearEarthObjectsView() {
         // Title
         final JLabel title = new JLabel("Near-Earth Object Data");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Text area for displaying data
-        dataArea = new JTextArea(15, 40);
+        dataArea = new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS);
         dataArea.setEditable(false);
         final JScrollPane scrollPane = new JScrollPane(dataArea);
 
         // Back button panel
         final JPanel backPanel = new JPanel();
-        JButton backButton = new JButton("Back");
+        final JButton backButton = new JButton("Back");
         backPanel.add(backButton);
 
-        backButton.addActionListener(e -> {
+        backButton.addActionListener(event -> {
             if (presenter != null) {
                 presenter.back();
             }
@@ -43,16 +49,22 @@ public class DisplayNEOView extends JPanel {
 
     }
 
-    public void setPresenter(NEOPresenter presenter) {
+    public void setPresenter(NearEarthObjectsPresenter presenter) {
         this.presenter = presenter;
     }
 
-    public void displayNEOData(List<NearEarthObjectEntity> neoEntities) {
-        StringBuilder builder = new StringBuilder();
+    /**
+     * Displays the Near-Earth Object (NEO) data in the text area.
+     *
+     * @param neoEntities List of Near-Earth Object entities to display.
+     */
+    public void displayNearEarthObjectsData(List<NearEarthObjectEntity> neoEntities) {
+        final StringBuilder builder = new StringBuilder();
 
         if (neoEntities.isEmpty()) {
             builder.append("No Near-Earth Objects found for the specified date range.");
-        } else {
+        }
+        else {
             builder.append("Nearby Asteroids:\n");
             builder.append("========================================\n");
             for (NearEarthObjectEntity neo : neoEntities) {

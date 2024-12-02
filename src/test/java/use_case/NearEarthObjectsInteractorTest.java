@@ -2,17 +2,17 @@ package use_case;
 
 import data_access.NasaNeoDataAccessObject;
 import entity.NearEarthObjectEntity;
-import interface_adapter.near_earth_objects.NEOPresenter;
-import use_case.near_earth_objects.NEOInputData;
-import use_case.near_earth_objects.NEOInteractor;
-import view.DisplayNEOView;
+import interface_adapter.near_earth_objects.NearEarthObjectsPresenter;
+import use_case.near_earth_objects.NearEarthObjectsInputData;
+import use_case.near_earth_objects.NearEarthObjectsInteractor;
+import view.DisplayNearEarthObjectsView;
 import view.ViewManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class NEOInteractorTest {
+public class NearEarthObjectsInteractorTest {
     public static void main(String[] args) throws IOException {
 
         // Mock DAO simulating a realistic JSON response from the NASA API
@@ -57,10 +57,10 @@ public class NEOInteractorTest {
         // Instantiate the ViewManager with the CardLayout and JPanel
         ViewManager viewManager = new ViewManager(cardLayout, cardPanel);
 
-        // Mock DisplayNEOView to simulate rendering data
-        DisplayNEOView mockDisplayNEOView = new DisplayNEOView() {
+        // Mock DisplayNearEarthObjectsView to simulate rendering data
+        DisplayNearEarthObjectsView mockDisplayNearEarthObjectsView = new DisplayNearEarthObjectsView() {
             @Override
-            public void displayNEOData(java.util.List<NearEarthObjectEntity> neoEntities) {
+            public void displayNearEarthObjectsData(java.util.List<NearEarthObjectEntity> neoEntities) {
                 System.out.println("Displaying Near-Earth Objects:");
                 for (var neo : neoEntities) {
                     System.out.printf("Name: %s, Closest Approach Date: %s, Distance: %.2f km%n, Velocity: %.2f km/h%n",
@@ -69,14 +69,14 @@ public class NEOInteractorTest {
             }
         };
 
-        // Create Presenter and wire it with the ViewManager and DisplayNEOView
-        NEOPresenter presenter = new NEOPresenter(viewManager);
-        presenter.setDisplayNEOView(mockDisplayNEOView);
+        // Create Presenter and wire it with the ViewManager and DisplayNearEarthObjectsView
+        NearEarthObjectsPresenter presenter = new NearEarthObjectsPresenter(viewManager);
+        presenter.setDisplayNeoView(mockDisplayNearEarthObjectsView);
 
         // Create Interactor and wire it with the mock DAO and Presenter
-        NEOInteractor interactor = new NEOInteractor(mockDAO, presenter);
+        NearEarthObjectsInteractor interactor = new NearEarthObjectsInteractor(mockDAO, presenter);
 
         // Execute the use case
-        interactor.fetchNEOData(new NEOInputData("2024-11-01", "2024-11-07"));
+        interactor.fetchNearEarthObjectsData(new NearEarthObjectsInputData("2024-11-01", "2024-11-07"));
     }
 }
