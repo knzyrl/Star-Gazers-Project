@@ -7,8 +7,7 @@ import java.util.List;
  * Provides a base structure for implementing geocoding functionality, such as converting
  * an address into geographical coordinates or other location-based data.
  */
-public abstract class GeocoderApiDataAccessObject {
-    protected static final String API_KEY = "6733f872eb948162981545fld4fe0b0";
+public interface GeocoderApiDataAccessObject {
 
     /**
      * Converts a given address into geographical data, such as coordinates.
@@ -17,5 +16,5 @@ public abstract class GeocoderApiDataAccessObject {
      * @return A {@link List} of {@link String} containing the resulting geographical data.
      *         The structure of the list depends on the implementation (e.g., latitude and longitude).
      */
-    public abstract List<String> converter(String address);
+    List<String> converter(String address);
 }
