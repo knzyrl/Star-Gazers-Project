@@ -1,13 +1,13 @@
 package use_case.star_chart;
 
-import data_access.AstronomyAPIDataAccessObject;
+import data_access.AstronomyApiDataAccessObject;
 import entity.StarChart;
 
 public class StarChartInteractor implements StarChartInputBoundary {
-    private final AstronomyAPIDataAccessObject starChartDAO;
+    private final AstronomyApiDataAccessObject starChartDAO;
     private final StarChartOutputBoundary starChartPresenter;
 
-    public StarChartInteractor(AstronomyAPIDataAccessObject starChartDAO, StarChartOutputBoundary starChartPresenter) {
+    public StarChartInteractor(AstronomyApiDataAccessObject starChartDAO, StarChartOutputBoundary starChartPresenter) {
         this.starChartDAO = starChartDAO;
         this.starChartPresenter = starChartPresenter;
     }
@@ -31,8 +31,8 @@ public class StarChartInteractor implements StarChartInputBoundary {
             return;
         }
 
-        final String ra = starChart.calcRA();
-        final String dec = starChart.calcDEC();
+        final String ra = starChart.calcRa();
+        final String dec = starChart.calcdec();
 
         final String query = String.format("{\"style\":\"inverted\",\"observer\":{\"latitude\":%s,\"longitude\":%s," +
                         "\"date\":\"%s\"},\"view\":{\"type\":\"area\",\"parameters\":{\"position\":{\"equatorial\":" +

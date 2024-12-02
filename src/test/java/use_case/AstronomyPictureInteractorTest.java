@@ -1,7 +1,6 @@
 package use_case;
 
-import data_access.APODdateAPIDataAccessObject;
-import org.json.JSONObject;
+import data_access.AstronomyPictureApiDataAccessObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -12,16 +11,16 @@ import use_case.apod_date.APODOutputData;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-public class APODInteractorTest {
+public class AstronomyPictureInteractorTest {
 
     private APODInteractor interactor;
     private APODOutputBoundary mockOutputBoundary;
-    private APODdateAPIDataAccessObject mockDataAccessObject;
+    private AstronomyPictureApiDataAccessObject mockDataAccessObject;
 
     @BeforeEach
     public void setUp() {
         mockOutputBoundary = Mockito.mock(APODOutputBoundary.class);
-        mockDataAccessObject = Mockito.mock(APODdateAPIDataAccessObject.class);
+        mockDataAccessObject = Mockito.mock(AstronomyPictureApiDataAccessObject.class);
 
         interactor = new APODInteractor(mockOutputBoundary, mockDataAccessObject, null);
     }
@@ -31,14 +30,14 @@ public class APODInteractorTest {
         // Mock API response
         String jsonResponse = """
                 {
-                    "title": "Sample APOD",
-                    "explanation": "This is a test APOD description.",
+                    "title": "Sample AstronomyPicture",
+                    "explanation": "This is a test AstronomyPicture description.",
                     "url": "http://example.com/image.jpg",
                     "media_type": "image"
                 }
                 """;
 
-        when(mockDataAccessObject.fetchAPOD()).thenReturn(jsonResponse);
+        when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(jsonResponse);
 
         // Invoke the method
         interactor.fetchAPOD();
@@ -50,9 +49,9 @@ public class APODInteractorTest {
 
     public void testFetchAPOD_InvalidJSON() {
         // Mock API response with invalid JSON (missing a colon)
-        String invalidJsonResponse = "{ \"title\" \"Sample APOD\" }"; // Invalid JSON
+        String invalidJsonResponse = "{ \"title\" \"Sample AstronomyPicture\" }"; // Invalid JSON
 
-        when(mockDataAccessObject.fetchAPOD()).thenReturn(invalidJsonResponse);
+        when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(invalidJsonResponse);
 
         // Invoke the method and expect no crash (log or handle the error gracefully)
         interactor.fetchAPOD();
@@ -66,12 +65,12 @@ public class APODInteractorTest {
         // Mock API response with missing fields
         String jsonResponse = """
                 {
-                    "title": "Sample APOD",
+                    "title": "Sample AstronomyPicture",
                     "media_type": "image"
                 }
                 """;
 
-        when(mockDataAccessObject.fetchAPOD()).thenReturn(jsonResponse);
+        when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(jsonResponse);
 
         // Invoke the method
         interactor.fetchAPOD();

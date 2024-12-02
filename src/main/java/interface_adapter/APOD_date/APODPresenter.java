@@ -16,7 +16,7 @@ public class APODPresenter implements APODOutputBoundary {
     @Override
     public void presentAPOD(APODOutputData outputData) {
         // Print the URL for debugging
-        System.out.println("APOD URL: " + outputData.getUrl());
+        System.out.println("AstronomyPicture URL: " + outputData.getUrl());
 
         SwingUtilities.invokeLater(() -> {
             String title = outputData.getTitle();

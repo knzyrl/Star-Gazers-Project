@@ -12,7 +12,7 @@ public class APODView extends JPanel {
     private final JLabel titleLabel = new JLabel();
     private final JTextArea descriptionArea = new JTextArea();
     private final JLabel imageLabel = new JLabel();
-    private final JButton fetchButton = new JButton("Fetch APOD");
+    private final JButton fetchButton = new JButton("Fetch AstronomyPicture");
     private final JButton backButton = new JButton("Back");
     private final JButton fetchByDateButton = new JButton("Fetch by Date");
     private final JTextField dateInputField = new JTextField("YYYY-MM-DD", 10);
@@ -39,7 +39,7 @@ public class APODView extends JPanel {
         add(imageLabel, BorderLayout.EAST);
 
         // Persistent Buttons
-        fetchButton.setPreferredSize(new Dimension(150, 30));
+        fetchButton.setPreferredSize(new Dimension(200, 30));
         fetchByDateButton.setPreferredSize(new Dimension(150, 30));
         backButton.setPreferredSize(new Dimension(100, 30));
         dateInputField.setPreferredSize(new Dimension(100, 30));
@@ -60,13 +60,13 @@ public class APODView extends JPanel {
         // Fetch by Date Button Action
         fetchByDateButton.addActionListener(e -> {
             String date = dateInputField.getText();
-            System.out.println("Fetching APOD for date: " + date);
+            System.out.println("Fetching AstronomyPicture for date: " + date);
             controller.fetchAPODByDate(date);
         });
 
         // Fetch Button Action
         fetchButton.addActionListener(e -> {
-            System.out.println("Fetch APOD button clicked!");
+            System.out.println("Fetch AstronomyPicture button clicked!");
             controller.fetchAPOD();
         });
 

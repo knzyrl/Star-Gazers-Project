@@ -62,14 +62,4 @@ public class DisplayStarChartView extends JPanel {
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
-
-    public static void main(String[] args) throws IOException {
-        StarChartOutputData starChartOutputData = new StarChartOutputData("-84.39733", "33.775867", "2024-11-06", "https://widgets.astronomyapi.com/star-chart/generated/b54d8700720a2ec9c9e5532f8f18924ea6b68e7d9bbb8c587a0429271b4aaece.png");
-        DisplayStarChartView displayStarChartView = new DisplayStarChartView();
-        displayStarChartView.refresh(starChartOutputData);
-        final JFrame app = new JFrame();
-        app.add(displayStarChartView);
-        app.pack();
-        app.setVisible(true);
-    }
 }

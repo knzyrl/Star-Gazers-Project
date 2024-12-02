@@ -1,6 +1,6 @@
 package helper;
 
-import entity.NEOEntity;
+import entity.NearEarthObjectEntity;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -10,13 +10,13 @@ import java.util.List;
 public class NEOJsonParser {
 
     /**
-     * Parses raw JSON data into a list of NEOEntity objects.
+     * Parses raw JSON data into a list of NearEarthObjectEntity objects.
      *
      * @param rawJson The raw JSON string from NASA's NeoWs API.
-     * @return A list of NEOEntity objects.
+     * @return A list of NearEarthObjectEntity objects.
      */
-    public static List<NEOEntity> parse(String rawJson) {
-        List<NEOEntity> neoEntities = new ArrayList<>();
+    public static List<NearEarthObjectEntity> parse(String rawJson) {
+        List<NearEarthObjectEntity> neoEntities = new ArrayList<>();
 
         try {
 
@@ -35,7 +35,7 @@ public class NEOJsonParser {
                     String closestApproachDate = firstCloseApproach.getString("close_approach_date");
                     double closestDistanceKm = firstCloseApproach.getJSONObject("miss_distance").getDouble("kilometers");
 
-                    neoEntities.add(new NEOEntity(name, closestApproachDate, closestDistanceKm));
+                    neoEntities.add(new NearEarthObjectEntity(name, closestApproachDate, closestDistanceKm));
                 }
             }
 

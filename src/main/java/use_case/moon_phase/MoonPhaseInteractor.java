@@ -1,6 +1,6 @@
 package use_case.moon_phase;
 
-import data_access.AstronomyAPIDataAccessObject;
+import data_access.AstronomyApiDataAccessObject;
 import entity.MoonPhase;
 import helper.AstronomyCalculations;
 
@@ -8,10 +8,10 @@ import java.io.IOException;
 
 public class MoonPhaseInteractor implements MoonPhaseInputBoundary {
 
-    private final AstronomyAPIDataAccessObject moonPhaseDAO;
+    private final AstronomyApiDataAccessObject moonPhaseDAO;
     private final MoonPhaseOutputBoundary moonPhasePresenter;
 
-    public MoonPhaseInteractor(AstronomyAPIDataAccessObject moonPhaseDAO, MoonPhaseOutputBoundary moonPhasePresenter) {
+    public MoonPhaseInteractor(AstronomyApiDataAccessObject moonPhaseDAO, MoonPhaseOutputBoundary moonPhasePresenter) {
         this.moonPhaseDAO = moonPhaseDAO;
         this.moonPhasePresenter = moonPhasePresenter;
     }
@@ -35,7 +35,7 @@ public class MoonPhaseInteractor implements MoonPhaseInputBoundary {
         } else if (!(moonPhase.validLongitudeValue())) {
             moonPhasePresenter.prepareFailView("Incorrect value for longitude. Ensure that longitude is between -180.00 and 180.00.");
         } else {
-            MoonPhaseOutputData moonPhaseOutputData = new MoonPhaseOutputData(moonPhase.getLatitude(), moonPhase.getLongitude(), moonPhase.getDate(), moonPhase.getImgURL(), false);
+            MoonPhaseOutputData moonPhaseOutputData = new MoonPhaseOutputData(moonPhase.getLatitude(), moonPhase.getLongitude(), moonPhase.getDate(), moonPhase.getImgUrl(), false);
             moonPhasePresenter.displayMoonPhase(moonPhaseOutputData);
         }
 

@@ -1,17 +1,14 @@
 package use_case.events;
 
-import data_access.AstronomyAPIDataAccessObject;
-import data_access.EventsDataAccessObject;
+import data_access.AstronomyApiDataAccessObject;
 import entity.EventsList;
-import interface_adapter.events.EventsPresenter;
-import kong.unirest.core.json.JSONArray;
 import kong.unirest.core.json.JSONObject;
 
 public class EventsInteractor implements EventsInputBoundary {
-    private final AstronomyAPIDataAccessObject eventsDAO;
+    private final AstronomyApiDataAccessObject eventsDAO;
     private final EventsOutputBoundary eventsPresenter;
 
-    public EventsInteractor(AstronomyAPIDataAccessObject eventsDAO, EventsOutputBoundary eventsPresenter) {
+    public EventsInteractor(AstronomyApiDataAccessObject eventsDAO, EventsOutputBoundary eventsPresenter) {
         this.eventsDAO = eventsDAO;
         this.eventsPresenter = eventsPresenter;
     }
@@ -34,9 +31,10 @@ public class EventsInteractor implements EventsInputBoundary {
             return;
         }
 
-        final String query = String.format("https://api.astronomyapi.com/api/v2/bodies/events/moon?longitude=%s" +
-                        "&latitude=%s&elevation=1&from_date=%s&to_date=%s&time=%s", eventsList.getLongitude(),
-                eventsList.getLatitude(), eventsList.getDateStart(), eventsList.getDateEnd(), "00%3A00%3A00");
+        final String query = String.format("https://api.astronomyapi.com/api/v2/bodies/events/%s?longitude=%s" +
+                        "&latitude=%s&elevation=1&from_date=%s&to_date=%s&time=%s", eventsList.getBody(),
+                eventsList.getLongitude(), eventsList.getLatitude(), eventsList.getDateStart(),
+                eventsList.getDateEnd(), "00%3A00%3A00");
         final JSONObject response = eventsDAO.executeQuery(query);
 
         final EventsOutputData eventsOutputData = new EventsOutputData(eventsList.getLongitude(),

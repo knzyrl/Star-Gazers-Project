@@ -1,6 +1,6 @@
 package interface_adapter.near_earth_objects;
 
-import entity.NEOEntity;
+import entity.NearEarthObjectEntity;
 import use_case.near_earth_objects.NEOOutputBoundary;
 import view.DisplayNEOView;
 import view.ViewManager;
@@ -20,7 +20,7 @@ public class NEOPresenter implements NEOOutputBoundary {
     }
 
     @Override
-    public void presentNEOData(List<NEOEntity> neoEntities) {
+    public void presentNEOData(List<NearEarthObjectEntity> neoEntities) {
         displayNEOView.displayNEOData(neoEntities);
         viewManager.getViews().add(displayNEOView, displayNEOView.getViewName());
         viewManager.show(displayNEOView.getViewName());
