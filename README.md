@@ -133,7 +133,8 @@ At the moment, we are not accepting external contributions.
 
    - Presenter: Displays the star chart reflecting the past sky.
    
-5. Alice wants to know details about nearby astronomical objects (such as asteroids), including their closest approach, distance, relative velocity, and visibility. She uses the “Near-Earth Objects” function, inputs the desired date range, and receives a list of objects along with relevant data. _(Assigned to: Khangerel)_
+5. Alice wants to know details about nearby astronomical objects (such as asteroids). She uses the “Near-Earth Objects” function, inputs the desired date range, and receives their closest approach, distance, relative velocity, and visibility.
+NEO Use Case. _(Assigned to: Khangerel)_
 
    - Interactor: User selects “Near-Earth Objects” and inputs a date range for observation.
 
