@@ -6,7 +6,6 @@ import use_case.star_chart.StarChartOutputData;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 public class ViewManager {
     private final CardLayout cardLayout;
@@ -37,8 +36,8 @@ public class ViewManager {
         displayStarChartView.refresh(starChartOutputData);
     }
 
-    public void displayMoonPhase(MoonPhaseOutputData moonPhaseOutputData) throws IOException {
-        cardLayout.show(views, "display moon phase");
+    public void displayMoonPhase(MoonPhaseOutputData moonPhaseOutputData) {
+        cardLayout.show(views, "display Moon Phase");
         DisplayMoonPhaseView displayMoonPhaseView = (DisplayMoonPhaseView) getCurrentCard();
         displayMoonPhaseView.refresh(moonPhaseOutputData);
     }

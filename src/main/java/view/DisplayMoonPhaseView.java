@@ -25,15 +25,20 @@ public class DisplayMoonPhaseView extends JPanel {
         this.displayMoonPhaseController = displayMoonPhaseController;
     }
 
-    public void refresh(MoonPhaseOutputData moonPhaseOutputData) throws IOException {
+    public void refresh(MoonPhaseOutputData moonPhaseOutputData) {
         this.removeAll();
 
         final JLabel title = new JLabel(String.format("Moon Phase for %s, %s on %s", moonPhaseOutputData.getLongitude(), moonPhaseOutputData.getLatitude(), moonPhaseOutputData.getDate()));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         String imgURL = moonPhaseOutputData.getImageURL();
-        URL url = new URL(imgURL);
-        BufferedImage image = ImageIO.read(url);
+        BufferedImage image = null;
+        try {
+            URL url = new URL(imgURL);
+            image = ImageIO.read(url);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
         JLabel moonPhaseImg = new JLabel(new ImageIcon(image));
 
         final JPanel backButtonPanel = new JPanel();
