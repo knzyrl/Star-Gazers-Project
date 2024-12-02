@@ -43,22 +43,10 @@ public class StarChartView extends JPanel {
                             String latitude = latInputField.getText();
                             String date = dateInputField.getText();
                             try {
-                                fmt.parse(date);
-                            } catch (ParseException ex) {
-                                JOptionPane.showMessageDialog(new JDialog(), "Please input date in the correct format (YYYY-MM-DD).", "Date Format Error", JOptionPane.ERROR_MESSAGE);
-                                return;
+                                starChartController.execute(longitude, latitude, date);
+                            } catch (IOException ioException) {
+                                System.err.println(ioException.getMessage());
                             }
-                            if (NumberFormatChecker.checkDouble(longitude) && NumberFormatChecker.checkDouble(latitude)) {
-                                try {
-                                    starChartController.execute(longitude, latitude, date);
-                                } catch (IOException ex) {
-                                    throw new RuntimeException(ex);
-                                }
-                            }
-                            else {
-                                JOptionPane.showMessageDialog(new JDialog(), "Please input decimals for latitude and longitude.", "Number Format Error", JOptionPane.ERROR_MESSAGE);
-                            }
-
                         }
                     }
                 }

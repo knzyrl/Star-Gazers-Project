@@ -2,6 +2,7 @@ package interface_adapter.geocoding;
 
 import entity.Location;
 import use_case.geocoding.GeocodingOutputBoundary;
+import use_case.geocoding.GeocodingOutputData;
 import view.DisplayGeocoderView;
 import view.ViewManager;
 
@@ -17,8 +18,8 @@ public class GeocodingPresenter implements GeocodingOutputBoundary {
         this.displayGeocoderView = displayGeocoderView;
     }
 
-    public void execute(Location location) {
-        displayGeocoderView.setLocation(location);
+    public void execute(GeocodingOutputData geocodingOutputData) {
+        displayGeocoderView.setLocation(geocodingOutputData);
 
         displayGeocoderView.displayLocation();
 

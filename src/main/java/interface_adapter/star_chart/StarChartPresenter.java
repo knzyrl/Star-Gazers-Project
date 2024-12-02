@@ -1,29 +1,27 @@
 package interface_adapter.star_chart;
 
-import entity.StarChart;
 import use_case.star_chart.StarChartOutputBoundary;
+import use_case.star_chart.StarChartOutputData;
 import view.DisplayStarChartView;
 import view.ViewManager;
 
-import java.io.IOException;
-
 public class StarChartPresenter implements StarChartOutputBoundary {
     private ViewManager viewManager;
-    private DisplayStarChartView displayStarChartView;
 
     public StarChartPresenter(ViewManager viewManager) {
         this.viewManager = viewManager;
     }
 
-    public void setDisplayStarChartView(DisplayStarChartView displayStarChartView) {
-        this.displayStarChartView = displayStarChartView;
+    @Override
+    public void displayStarChart(StarChartOutputData starChartOutputData) {
+//        displayStarChartView.refresh(starChartOutputData);
+//        viewManager.show("display star chart");
+        viewManager.displayStarChart(starChartOutputData);
     }
 
     @Override
-    public void displayStarChart(StarChart starChart) {
-        displayStarChartView.setStarChart(starChart);
-        displayStarChartView.refresh();
-        viewManager.show("display star chart");
+    public void prepareFailView(String errorMessage) {
+        System.out.println("Star chart fail view triggered with error message: " + errorMessage);
     }
 
     public void back() {
