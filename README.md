@@ -8,7 +8,7 @@
 | **Erin Xu**              | [**xuerin**](https://github.com/xuerin)          |
 | **Alex Tin Long Young**  | [**alexxxtl**](https://github.com/alexxxtl)      |
 
-## 🌌 Summary and Purpose
+## 🌌 Summary
 This project was created to make astronomy more accessible and engaging for people of all backgrounds, whether they are casual stargazers, students, or enthusiasts. By providing users with real-time astronomical data and visualizations, it addresses the common problem of finding out about accurate and up-to-date information about celestial phenomena in one place. This previously required specialized knowledge or expensive equipment. With this project, users can explore and learn about stars, planets, and other celestial events directly from their computers, making it an invaluable tool for those who want to deepen their understanding of the universe without needing prior expertise or advanced tools. Whether you're curious about the constellations visible tonight, tracking the phases of the moon, or planning a stargazing event, this project offers a simple yet powerful solution tailored to your needs.
 
 ## 🌃 Table of Contents
