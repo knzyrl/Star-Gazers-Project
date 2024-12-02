@@ -39,7 +39,7 @@ public class APODView extends JPanel {
         add(imageLabel, BorderLayout.EAST);
 
         // Persistent Buttons
-        fetchButton.setPreferredSize(new Dimension(150, 30));
+        fetchButton.setPreferredSize(new Dimension(200, 30));
         fetchByDateButton.setPreferredSize(new Dimension(150, 30));
         backButton.setPreferredSize(new Dimension(100, 30));
         dateInputField.setPreferredSize(new Dimension(100, 30));
