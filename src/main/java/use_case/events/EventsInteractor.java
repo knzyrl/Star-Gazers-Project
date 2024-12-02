@@ -34,9 +34,10 @@ public class EventsInteractor implements EventsInputBoundary {
             return;
         }
 
-        final String query = String.format("https://api.astronomyapi.com/api/v2/bodies/events/moon?longitude=%s" +
-                        "&latitude=%s&elevation=1&from_date=%s&to_date=%s&time=%s", eventsList.getLongitude(),
-                eventsList.getLatitude(), eventsList.getDateStart(), eventsList.getDateEnd(), "00%3A00%3A00");
+        final String query = String.format("https://api.astronomyapi.com/api/v2/bodies/events/%s?longitude=%s" +
+                        "&latitude=%s&elevation=1&from_date=%s&to_date=%s&time=%s", eventsList.getBody(),
+                eventsList.getLongitude(), eventsList.getLatitude(), eventsList.getDateStart(),
+                eventsList.getDateEnd(), "00%3A00%3A00");
         final JSONObject response = eventsDAO.executeQuery(query);
 
         final EventsOutputData eventsOutputData = new EventsOutputData(eventsList.getLongitude(),

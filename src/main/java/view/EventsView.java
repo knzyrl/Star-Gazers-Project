@@ -91,12 +91,4 @@ public class EventsView extends JPanel {
     public void setEventsController(EventsController eventsController) {
         this.eventsController = eventsController;
     }
-
-    public static void main(String[] args) {
-        EventsView ev = new EventsView();
-        final JFrame app = new JFrame();
-        app.add(ev);
-        app.pack();
-        app.setVisible(true);
-    }
 }
