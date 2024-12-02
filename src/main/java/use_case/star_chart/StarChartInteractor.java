@@ -31,8 +31,8 @@ public class StarChartInteractor implements StarChartInputBoundary {
             return;
         }
 
-        final String ra = starChart.calcRA();
-        final String dec = starChart.calcDEC();
+        final String ra = starChart.calcRa();
+        final String dec = starChart.calcdec();
 
         final String query = String.format("{\"style\":\"inverted\",\"observer\":{\"latitude\":%s,\"longitude\":%s," +
                         "\"date\":\"%s\"},\"view\":{\"type\":\"area\",\"parameters\":{\"position\":{\"equatorial\":" +

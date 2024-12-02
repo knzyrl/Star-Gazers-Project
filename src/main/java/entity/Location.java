@@ -1,5 +1,8 @@
 package entity;
 
+/**
+ * Represents a geographical location with an address, longitude, and latitude.
+ */
 public class Location {
     private String address;
     private String longitude;
@@ -14,9 +17,11 @@ public class Location {
     public String getAddress() {
         return address;
     }
+
     public String getLongitude() {
         return longitude;
     }
+
     public String getLatitude() {
         return latitude;
     }

@@ -35,7 +35,7 @@ public class MoonPhaseInteractor implements MoonPhaseInputBoundary {
         } else if (!(moonPhase.validLongitudeValue())) {
             moonPhasePresenter.prepareFailView("Incorrect value for longitude. Ensure that longitude is between -180.00 and 180.00.");
         } else {
-            MoonPhaseOutputData moonPhaseOutputData = new MoonPhaseOutputData(moonPhase.getLatitude(), moonPhase.getLongitude(), moonPhase.getDate(), moonPhase.getImgURL(), false);
+            MoonPhaseOutputData moonPhaseOutputData = new MoonPhaseOutputData(moonPhase.getLatitude(), moonPhase.getLongitude(), moonPhase.getDate(), moonPhase.getImgUrl(), false);
             moonPhasePresenter.displayMoonPhase(moonPhaseOutputData);
         }
 

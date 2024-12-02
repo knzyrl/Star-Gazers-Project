@@ -1,6 +1,7 @@
 package use_case;
 
 import data_access.NasaNeoDataAccessObject;
+import entity.NearEarthObjectEntity;
 import interface_adapter.near_earth_objects.NEOPresenter;
 import use_case.near_earth_objects.NEOInputData;
 import use_case.near_earth_objects.NEOInteractor;
@@ -57,7 +58,7 @@ public class NEOInteractorTest {
         // Mock DisplayNEOView to simulate rendering data
         DisplayNEOView mockDisplayNEOView = new DisplayNEOView() {
             @Override
-            public void displayNEOData(java.util.List<entity.NEOEntity> neoEntities) {
+            public void displayNEOData(java.util.List<NearEarthObjectEntity> neoEntities) {
                 System.out.println("Displaying Near-Earth Objects:");
                 for (var neo : neoEntities) {
                     System.out.printf("Name: %s, Closest Approach Date: %s, Distance: %.2f km%n",
