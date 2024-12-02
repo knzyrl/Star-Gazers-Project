@@ -18,6 +18,7 @@ This project was created to make astronomy more accessible and engaging for peop
 ### [Installation](#%EF%B8%8F-installation)
 ### [Usage Guide](#-usage-guide)
 ### [License](#-license)
+### [Feedback](#-feedback)
 ### [Contributions](#-contributions)
 ### [User Stories](#-user-stories)
 
