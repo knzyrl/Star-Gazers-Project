@@ -13,13 +13,13 @@ This project was created to make astronomy more accessible and engaging for peop
 
 ## 🌃 Table of Contents
 ### [Authors and Contributors](#authors-and-contributors)
-### [Summary and Purpose](#summary-and-purpose)
-### [Features](#features)
-### [Installation Instructions](#installation-instructions)
-### [Usage Guide](#usage-guide)
-### [License](#license)
-### [Contributions](#contributions)
-### [User Stories](#user-stories)
+### [Summary](#-summary)
+### [Features](#-features)
+### [Installation Instructions](#-installation-instructions)
+### [Usage Guide](#-usage-guide)
+### [License](#-license)
+### [Contributions](#-contributions)
+### [User Stories](#-user-stories)
 
 ## ✨ Features 
 1. 🌠 **Generate Star Chart**
