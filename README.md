@@ -11,7 +11,7 @@
 ## 🌌 Summary and Purpose
 This project was created to make astronomy more accessible and engaging for people of all backgrounds, whether they are casual stargazers, students, or enthusiasts. By providing users with real-time astronomical data and visualizations, it addresses the common problem of finding out about accurate and up-to-date information about celestial phenomena in one place. This previously required specialized knowledge or expensive equipment. With this project, users can explore and learn about stars, planets, and other celestial events directly from their computers, making it an invaluable tool for those who want to deepen their understanding of the universe without needing prior expertise or advanced tools. Whether you're curious about the constellations visible tonight, tracking the phases of the moon, or planning a stargazing event, this project offers a simple yet powerful solution tailored to your needs.
 
-## Table of Contents
+## 🌃 Table of Contents
 ### [Authors and Contributors](#authors-and-contributors)
 ### [Summary and Purpose](#summary-and-purpose)
 ### [Features](#features)
@@ -39,10 +39,12 @@ This project was created to make astronomy more accessible and engaging for peop
    - Outputs: Asteroid details—name, distance, velocity.
 
 5. 🖼️ **Astronomy Picture of the Day (APOD)**
-   - Fetches daily space pictures with **descriptions**.
+   - Inputs: **Date**. 
+   - Outputs: Space pictures/videos with **descriptions**.
 
 6. 🌎 **Geocoding**
-   - Converts addresses to precise coordinates.
+   - Inputs: **Address**, **title of location**. 
+   - Output: Precise coordinates.
 
 Full walkthrough can be viewed ***[here!](https://www.loom.com/share/2884e8eeb202459ab3725b459c6b9d84?sid=dd837459-0795-4d0b-bc22-86443b1315e5)***
 
@@ -98,13 +100,13 @@ Full walkthrough can be viewed ***[here!](https://www.loom.com/share/2884e8eeb20
 ## 📜 License
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
 
-## Feedback
+## 📈 Feedback
 We appreciate your interest in the Star Gazers project! However, we are not accepting feedback at this time.
 
-## Contributions
+## 🌟 Contributions
 At the moment, we are not accepting external contributions. 
 
-## User Stories:
+## 🌠 User Stories:
 
 1. Alice is interested in seeing what the sky will look like tonight at their location. She inputs her coordinates and date and receives a star chart with those parameters. _(Team User Story)_
 
