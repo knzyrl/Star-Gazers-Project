@@ -1,5 +1,9 @@
 package entity;
 
+/**
+ * Represents an astronomical event with details about the celestial body, event type, and date.
+ * This class encapsulates the information associated with an event in the astronomy domain.
+ */
 public class Event {
     private String body;
     private String type;

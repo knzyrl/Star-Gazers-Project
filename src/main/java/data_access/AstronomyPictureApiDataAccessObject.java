@@ -62,7 +62,7 @@ public class AstronomyPictureApiDataAccessObject {
                 return response.toString();
             }
             else {
-                throw new RuntimeException("Failed to fetch APOD: HTTP error code " + responseCode);
+                throw new RuntimeException("Failed to fetch AstronomyPicture: HTTP error code " + responseCode);
             }
         }
         catch (MalformedURLException ex) {

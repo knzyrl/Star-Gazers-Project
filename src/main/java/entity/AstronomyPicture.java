@@ -1,11 +1,15 @@
 package entity;
 
-public class APOD {
+/**
+ * Represents an Astronomy Picture of the Day (AstronomyPicture) entity.
+ * Contains details such as the title, description, and image URL of the astronomy picture.
+ */
+public class AstronomyPicture {
     private final String title;
     private final String description;
     private final String imageUrl;
 
-    public APOD(String title, String description, String imageUrl) {
+    public AstronomyPicture(String title, String description, String imageUrl) {
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;

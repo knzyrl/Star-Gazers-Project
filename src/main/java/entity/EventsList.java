@@ -1,15 +1,18 @@
 package entity;
 
-import helper.NumberFormatChecker;
-import kong.unirest.core.json.JSONArray;
-import kong.unirest.core.json.JSONObject;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
+import helper.NumberFormatChecker;
+
+/**
+ * Represents a list of astronomical events for a specified celestial body and date range.
+ * Parses a JSON response to extract event details and encapsulates them in an {@link EventsList}.
+ */
 public class EventsList {
+    private static final double MIN_LONGITUDE_LATITUDE = -180.00;
+    private static final double MAX_LONGITUDE_LATITUDE = 180.00;
+
     private String longitude;
     private String latitude;
     private String dateStart;
@@ -17,6 +20,15 @@ public class EventsList {
     private String body;
     private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 
+    /**
+     * Constructor for creating an EventsList object.
+     *
+     * @param longitude Longitude of the event's location.
+     * @param latitude Latitude of the event's location.
+     * @param dateStart Start date of the event (YYYY-MM-DD).
+     * @param dateEnd End date of the event (YYYY-MM-DD).
+     * @param body Celestial body associated with the events.
+     */
     public EventsList(String longitude, String latitude, String dateStart, String dateEnd, String body) {
         this.longitude = longitude;
         this.latitude = latitude;
@@ -45,27 +57,47 @@ public class EventsList {
         return body;
     }
 
+    /**
+     * Validates the longitude format and range.
+     *
+     * @return {@code true} if longitude is valid, otherwise {@code false}.
+     */
     public boolean isValidLongitude() {
         if (!NumberFormatChecker.checkDouble(this.longitude)) {
             return false;
-        } else {
-            return (Double.parseDouble(this.longitude) >= -180.00) && Double.parseDouble(this.longitude) <= 180.00;
+        }
+        else {
+            return Double.parseDouble(this.longitude) >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.longitude)
+                    <= MAX_LONGITUDE_LATITUDE;
         }
     }
 
+    /**
+     * Validates the latitude format and range.
+     *
+     * @return {@code true} if latitude is valid, otherwise {@code false}.
+     */
     public boolean isValidLatitude() {
         if (!NumberFormatChecker.checkDouble(this.latitude)) {
             return false;
-        } else {
-            return (Double.parseDouble(this.latitude) >= -180.00) && Double.parseDouble(this.latitude) <= 180.00;
+        }
+        else {
+            return Double.parseDouble(this.latitude) >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.latitude)
+                    <= MAX_LONGITUDE_LATITUDE;
         }
     }
 
+    /**
+     * Validates the format of start and end dates.
+     *
+     * @return {@code true} if both dates are valid, otherwise {@code false}.
+     */
     public boolean isValidDates() {
         try {
             fmt.parse(this.dateStart);
             fmt.parse(this.dateEnd);
-        } catch (ParseException parseException) {
+        }
+        catch (ParseException parseException) {
             return false;
         }
         return true;

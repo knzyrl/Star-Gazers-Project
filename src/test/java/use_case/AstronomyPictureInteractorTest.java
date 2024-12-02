@@ -11,7 +11,7 @@ import use_case.apod_date.APODOutputData;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-public class APODInteractorTest {
+public class AstronomyPictureInteractorTest {
 
     private APODInteractor interactor;
     private APODOutputBoundary mockOutputBoundary;
@@ -30,8 +30,8 @@ public class APODInteractorTest {
         // Mock API response
         String jsonResponse = """
                 {
-                    "title": "Sample APOD",
-                    "explanation": "This is a test APOD description.",
+                    "title": "Sample AstronomyPicture",
+                    "explanation": "This is a test AstronomyPicture description.",
                     "url": "http://example.com/image.jpg",
                     "media_type": "image"
                 }
@@ -49,7 +49,7 @@ public class APODInteractorTest {
 
     public void testFetchAPOD_InvalidJSON() {
         // Mock API response with invalid JSON (missing a colon)
-        String invalidJsonResponse = "{ \"title\" \"Sample APOD\" }"; // Invalid JSON
+        String invalidJsonResponse = "{ \"title\" \"Sample AstronomyPicture\" }"; // Invalid JSON
 
         when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(invalidJsonResponse);
 
@@ -65,7 +65,7 @@ public class APODInteractorTest {
         // Mock API response with missing fields
         String jsonResponse = """
                 {
-                    "title": "Sample APOD",
+                    "title": "Sample AstronomyPicture",
                     "media_type": "image"
                 }
                 """;

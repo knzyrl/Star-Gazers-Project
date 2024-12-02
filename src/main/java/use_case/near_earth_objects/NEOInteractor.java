@@ -1,7 +1,7 @@
 package use_case.near_earth_objects;
 
 import data_access.NasaNeoDataAccessObject;
-import entity.NEOEntity;
+import entity.NearEarthObjectEntity;
 import helper.NEOJsonParser;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class NEOInteractor implements NEOInputBoundary {
     public void fetchNEOData(NEOInputData inputData) {
         try {
             String rawJson = dao.fetchNearEarthObjects(inputData.startDate(), inputData.endDate());
-            List<NEOEntity> neoEntities = NEOJsonParser.parse(rawJson);
+            List<NearEarthObjectEntity> neoEntities = NEOJsonParser.parse(rawJson);
             outputBoundary.presentNEOData(neoEntities);
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());

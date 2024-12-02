@@ -1,6 +1,6 @@
 package view;
 
-import entity.NEOEntity;
+import entity.NearEarthObjectEntity;
 import interface_adapter.near_earth_objects.NEOPresenter;
 
 import javax.swing.*;
@@ -50,7 +50,7 @@ public class DisplayNEOView extends JPanel {
         this.presenter = presenter;
     }
 
-    public void displayNEOData(List<NEOEntity> neoEntities) {
+    public void displayNEOData(List<NearEarthObjectEntity> neoEntities) {
         StringBuilder builder = new StringBuilder();
 
         if (neoEntities.isEmpty()) {
@@ -58,7 +58,7 @@ public class DisplayNEOView extends JPanel {
         } else {
             builder.append("Nearby Asteroids:\n");
             builder.append("========================================\n");
-            for (NEOEntity neo : neoEntities) {
+            for (NearEarthObjectEntity neo : neoEntities) {
                 builder.append(String.format("Name: %s%n", neo.getName()));
                 builder.append(String.format("Closest Approach Date: %s%n", neo.getClosestApproachDate()));
                 builder.append(String.format("Distance: %.2f km%n", neo.getClosestDistanceKm()));
