@@ -7,7 +7,7 @@ import data_access.StarChartDataAccessObject;
 import interface_adapter.APOD_date.APODController;
 import interface_adapter.APOD_date.APODPresenter;
 import data_access.GeocoderDataAccessObject;
-import data_access.NasaNeoDataAccessObject;
+import data_access.NasaNeoApiDataAccessObject;
 import interface_adapter.display_events.DisplayEventsController;
 import interface_adapter.display_events.DisplayEventsPresenter;
 import interface_adapter.display_moon_phase.DisplayMoonPhaseController;
@@ -55,7 +55,7 @@ public class AppBuilder {
     private final EventsDataAccessObject eventsDAO = new EventsDataAccessObject();
     private final MoonPhaseDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject();
     private final GeocoderDataAccessObject geocoderDAO = new GeocoderDataAccessObject();
-    private final NasaNeoDataAccessObject nasaNeoDAO = new NasaNeoDataAccessObject();
+    private final NasaNeoApiDataAccessObject nasaNeoDAO = new NasaNeoApiDataAccessObject();
     private HomeView homeView;
     private StarChartView starChartView;
     private MoonPhaseView moonPhaseView;
