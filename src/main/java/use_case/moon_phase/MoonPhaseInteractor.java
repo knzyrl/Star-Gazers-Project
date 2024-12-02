@@ -1,6 +1,6 @@
 package use_case.moon_phase;
 
-import data_access.AstronomyAPIDataAccessObject;
+import data_access.AstronomyApiDataAccessObject;
 import entity.MoonPhase;
 import helper.AstronomyCalculations;
 
@@ -8,10 +8,10 @@ import java.io.IOException;
 
 public class MoonPhaseInteractor implements MoonPhaseInputBoundary {
 
-    private final AstronomyAPIDataAccessObject moonPhaseDAO;
+    private final AstronomyApiDataAccessObject moonPhaseDAO;
     private final MoonPhaseOutputBoundary moonPhasePresenter;
 
-    public MoonPhaseInteractor(AstronomyAPIDataAccessObject moonPhaseDAO, MoonPhaseOutputBoundary moonPhasePresenter) {
+    public MoonPhaseInteractor(AstronomyApiDataAccessObject moonPhaseDAO, MoonPhaseOutputBoundary moonPhasePresenter) {
         this.moonPhaseDAO = moonPhaseDAO;
         this.moonPhasePresenter = moonPhasePresenter;
     }

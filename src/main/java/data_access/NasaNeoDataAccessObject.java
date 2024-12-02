@@ -3,7 +3,11 @@ package data_access;
 import kong.unirest.core.HttpResponse;
 import kong.unirest.core.Unirest;
 
-public class NASANeoDataAccessObject {
+/**
+ * Data Access Object for retrieving Near-Earth Object (NEO) data from NASA's NeoWs API.
+ * This class provides methods to fetch NEO data for a specified date range.
+ */
+public class NasaNeoDataAccessObject {
     private static final String BASE_URL = "https://api.nasa.gov/neo/rest/v1/feed";
     private static final String API_KEY = "Qv2W2djvAWmcsnAxcB7l7A2iSmwh7t8Vc0s7OiXa";
 
@@ -12,17 +16,19 @@ public class NASANeoDataAccessObject {
      *
      * @param startDate The start date for the data range (YYYY-MM-DD).
      * @param endDate The end date for the data range (YYYY-MM-DD).
-     * @return Raw JSON response from the API.
+     * @return A raw JSON response from the API containing NEO data.
+     * @throws RuntimeException If the HTTP request fails or the API returns a non-200 status code.
      */
     public String fetchNearEarthObjects(String startDate, String endDate) {
-        String query = String.format("?start_date=%s&end_date=%s&api_key=%s", startDate, endDate, API_KEY);
+        final String query = String.format("?start_date=%s&end_date=%s&api_key=%s", startDate, endDate, API_KEY);
 
-        HttpResponse<String> response = Unirest.get(BASE_URL + query)
+        final HttpResponse<String> response = Unirest.get(BASE_URL + query)
                 .asString();
 
         if (response.getStatus() == 200) {
             return response.getBody();
-        } else {
+        }
+        else {
             throw new RuntimeException("Failed to fetch data. HTTP Response Code: " + response.getStatus());
         }
     }

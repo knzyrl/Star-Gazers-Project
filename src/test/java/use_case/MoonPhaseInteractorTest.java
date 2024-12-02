@@ -1,6 +1,6 @@
 package use_case;
 
-import data_access.AstronomyAPIDataAccessObject;
+import data_access.AstronomyApiDataAccessObject;
 import data_access.MoonPhaseDataAccessObject;
 import org.junit.Test;
 import use_case.moon_phase.*;
@@ -15,7 +15,7 @@ public class MoonPhaseInteractorTest {
     public void moonPhaseSuccessTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-84.39733", "33.775867", "2024-11-06");
        
-        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyApiDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
             }
@@ -50,7 +50,7 @@ public class MoonPhaseInteractorTest {
     public void moonPhaseIncorrectLatitudeFormatTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-84.39733", "incorrect format", "2024-11-06");
 
-        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyApiDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
 
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
@@ -83,7 +83,7 @@ public class MoonPhaseInteractorTest {
     public void moonPhaseIncorrectLongitudeFormatTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("incorrect format", "33.775867", "2024-11-06");
 
-        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyApiDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
 
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
@@ -116,7 +116,7 @@ public class MoonPhaseInteractorTest {
     public void moonPhaseIncorrectDateFormatTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-84.39733", "33.775867", "incorrect format");
 
-        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyApiDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
 
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
@@ -149,7 +149,7 @@ public class MoonPhaseInteractorTest {
     public void moonPhaseIncorrectLatitudeValueTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-84.39733", "-200.00", "2024-11-06");
 
-        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyApiDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
 
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
@@ -182,7 +182,7 @@ public class MoonPhaseInteractorTest {
     public void moonPhaseIncorrectLongitudeValueTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-200.00", "33.775867", "2024-11-06");
 
-        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyApiDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
 
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
@@ -215,7 +215,7 @@ public class MoonPhaseInteractorTest {
     public void moonPhaseIncorrectLatitudeAndLongitudeValueTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-200.00", "-200.00", "2024-11-06");
 
-        AstronomyAPIDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+        AstronomyApiDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
 
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";

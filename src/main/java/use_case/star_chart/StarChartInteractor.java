@@ -1,13 +1,13 @@
 package use_case.star_chart;
 
-import data_access.AstronomyAPIDataAccessObject;
+import data_access.AstronomyApiDataAccessObject;
 import entity.StarChart;
 
 public class StarChartInteractor implements StarChartInputBoundary {
-    private final AstronomyAPIDataAccessObject starChartDAO;
+    private final AstronomyApiDataAccessObject starChartDAO;
     private final StarChartOutputBoundary starChartPresenter;
 
-    public StarChartInteractor(AstronomyAPIDataAccessObject starChartDAO, StarChartOutputBoundary starChartPresenter) {
+    public StarChartInteractor(AstronomyApiDataAccessObject starChartDAO, StarChartOutputBoundary starChartPresenter) {
         this.starChartDAO = starChartDAO;
         this.starChartPresenter = starChartPresenter;
     }

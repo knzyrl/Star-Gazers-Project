@@ -10,12 +10,12 @@ public class APODController {
     }
 
     public void fetchAPOD() {
-        System.out.println("APODController: fetchAPOD called");
+        System.out.println("APODController: fetchAstronomyPicture called");
         interactor.fetchAPOD();
     }
 
     public void fetchAPODByDate(String date) {
-        System.out.println("APODController: fetchAPODByDate called for date " + date);
+        System.out.println("APODController: fetchAstronomyPictureByDate called for date " + date);
         interactor.fetchAPODByDate(date);
     }
 

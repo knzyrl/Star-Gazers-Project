@@ -1,15 +1,15 @@
 package use_case.apod_date;
 
-import data_access.APODdateAPIDataAccessObject;
+import data_access.AstronomyPictureApiDataAccessObject;
 import org.json.JSONObject;
 import view.ViewManager;
 
 public class APODInteractor implements APODInputBoundary {
     private final APODOutputBoundary outputBoundary;
-    private final APODdateAPIDataAccessObject dataAccessObject;
+    private final AstronomyPictureApiDataAccessObject dataAccessObject;
     private final ViewManager viewManager;
 
-    public APODInteractor(APODOutputBoundary outputBoundary, APODdateAPIDataAccessObject dataAccessObject, ViewManager viewManager) {
+    public APODInteractor(APODOutputBoundary outputBoundary, AstronomyPictureApiDataAccessObject dataAccessObject, ViewManager viewManager) {
         this.outputBoundary = outputBoundary;
         this.dataAccessObject = dataAccessObject;
         this.viewManager = viewManager;
@@ -17,12 +17,12 @@ public class APODInteractor implements APODInputBoundary {
 
     @Override
     public void fetchAPOD() {
-        String jsonResponse = dataAccessObject.fetchAPOD();
+        String jsonResponse = dataAccessObject.fetchAstronomyPicture();
         processResponse(jsonResponse);
     }
 
     public void fetchAPODByDate(String date) {
-        String jsonResponse = dataAccessObject.fetchAPODByDate(date);
+        String jsonResponse = dataAccessObject.fetchAstronomyPictureByDate(date);
         processResponse(jsonResponse);
     }
 

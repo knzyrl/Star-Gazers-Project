@@ -1,17 +1,14 @@
 package use_case.events;
 
-import data_access.AstronomyAPIDataAccessObject;
-import data_access.EventsDataAccessObject;
+import data_access.AstronomyApiDataAccessObject;
 import entity.EventsList;
-import interface_adapter.events.EventsPresenter;
-import kong.unirest.core.json.JSONArray;
 import kong.unirest.core.json.JSONObject;
 
 public class EventsInteractor implements EventsInputBoundary {
-    private final AstronomyAPIDataAccessObject eventsDAO;
+    private final AstronomyApiDataAccessObject eventsDAO;
     private final EventsOutputBoundary eventsPresenter;
 
-    public EventsInteractor(AstronomyAPIDataAccessObject eventsDAO, EventsOutputBoundary eventsPresenter) {
+    public EventsInteractor(AstronomyApiDataAccessObject eventsDAO, EventsOutputBoundary eventsPresenter) {
         this.eventsDAO = eventsDAO;
         this.eventsPresenter = eventsPresenter;
     }
