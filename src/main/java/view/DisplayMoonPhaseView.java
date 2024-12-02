@@ -31,7 +31,7 @@ public class DisplayMoonPhaseView extends JPanel {
         final JLabel title = new JLabel(String.format("Moon Phase for %s, %s on %s", moonPhaseOutputData.getLongitude(), moonPhaseOutputData.getLatitude(), moonPhaseOutputData.getDate()));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        String imgURL = moonPhaseOutputData.getImageURL();
+        String imgURL = moonPhaseOutputData.getImageUrl();
         URL url = new URL(imgURL);
         BufferedImage image = ImageIO.read(url);
         JLabel moonPhaseImg = new JLabel(new ImageIcon(image));

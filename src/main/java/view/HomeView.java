@@ -67,7 +67,7 @@ public class HomeView extends JPanel {
 //                }
 //        );
 
-        // APOD Button
+        // AstronomyPicture Button
 //        final JPanel apodButtonPanel = new JPanel();
 //        apod = new JButton("View Astronomy Picture of the Day");
 //        apodButtonPanel.add(apod);

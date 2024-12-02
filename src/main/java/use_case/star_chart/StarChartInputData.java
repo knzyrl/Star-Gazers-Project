@@ -1,5 +1,9 @@
 package use_case.star_chart;
 
+/**
+ * Represents the input data required for the Star Chart use case.
+ * Encapsulates the longitude, latitude, and date for generating a star chart.
+ */
 public class StarChartInputData {
     private final String longitude;
     private final String latitude;

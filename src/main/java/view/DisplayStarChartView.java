@@ -36,7 +36,7 @@ public class DisplayStarChartView extends JPanel {
         final JLabel title = new JLabel(String.format("Star Chart for %s, %s on %s", starChart.getLongitude(), starChart.getLatitude(), starChart.getDate()));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        String imgURL = starChart.getImgURL();
+        String imgURL = starChart.getImgUrl();
         BufferedImage image = null;
         try {
             URL url = new URL(imgURL);

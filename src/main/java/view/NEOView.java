@@ -1,6 +1,6 @@
 package view;
 
-import interface_adapter.near_earth_objects.NEOController;
+import interface_adapter.near_earth_objects.NearEarthObjectsController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ public class NEOView extends JPanel {
     private final JTextField startDateInput = new JTextField(10);
     private final JTextField endDateInput = new JTextField(10);
     private final JButton fetchButton;
-    private NEOController neoController;
+    private NearEarthObjectsController nearEarthObjectsController;
 
     public NEOView() {
         final JLabel title = new JLabel("Near-Earth Object Data Fetcher");
@@ -36,12 +36,12 @@ public class NEOView extends JPanel {
         fetchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (neoController != null) {
+                if (nearEarthObjectsController != null) {
                     String startDate = startDateInput.getText();
                     String endDate = endDateInput.getText();
 
                     try {
-                        neoController.fetchNEOData(startDate, endDate);
+                        nearEarthObjectsController.fetchNearEarthObjectsData(startDate, endDate);
                     } catch (IllegalArgumentException ex) {
                         JOptionPane.showMessageDialog(NEOView.this, ex.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -57,8 +57,8 @@ public class NEOView extends JPanel {
         this.add(buttonPanel);
     }
 
-    public void setNEOController(NEOController controller) {
-        this.neoController = controller;
+    public void setNEOController(NearEarthObjectsController controller) {
+        this.nearEarthObjectsController = controller;
     }
 
     public String getViewName() {

@@ -1,7 +1,8 @@
 package view;
 
 import entity.NEOEntity;
-import interface_adapter.near_earth_objects.NEOPresenter;
+import entity.NearEarthObjectEntity;
+import interface_adapter.near_earth_objects.NearEarthObjectsPresenter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +13,7 @@ import java.util.List;
 public class DisplayNEOView extends JPanel {
     private final String viewName = "display NEO view";
     private final JTextArea dataArea;
-    private NEOPresenter presenter;
+    private NearEarthObjectsPresenter presenter;
 
     public DisplayNEOView() {
         // Title
@@ -46,11 +47,11 @@ public class DisplayNEOView extends JPanel {
         });
     }
 
-    public void setPresenter(NEOPresenter presenter) {
+    public void setPresenter(NearEarthObjectsPresenter presenter) {
         this.presenter = presenter;
     }
 
-    public void displayNEOData(List<NEOEntity> neoEntities) {
+    public void displayNEOData(List<NearEarthObjectEntity> neoEntities) {
         StringBuilder builder = new StringBuilder();
 
         if (neoEntities.isEmpty()) {

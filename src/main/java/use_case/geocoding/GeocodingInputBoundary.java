@@ -1,7 +1,7 @@
 package use_case.geocoding;
 
 /**
- * Use case for geocoder.
+ * Input boundary for geocoder use case.
  */
 public interface GeocodingInputBoundary {
 

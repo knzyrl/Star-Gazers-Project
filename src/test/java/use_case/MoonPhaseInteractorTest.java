@@ -13,7 +13,7 @@ public class MoonPhaseInteractorTest {
     @Test
     public void moonPhaseSuccessTest() throws IOException {
         MoonPhaseInputData moonPhaseInputData = new MoonPhaseInputData("-84.39733", "33.775867", "2024-11-06");
-        //refactor reqd. below to make it of type AstronomyAPIDataAccessObject
+        //refactor reqd. below to make it of type AstronomyApiDataAccessObject
         MoonPhaseDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
             public String executeQuery(String query) {
                 return "moonChartImgURL.png";
@@ -26,7 +26,7 @@ public class MoonPhaseInteractorTest {
                 assertEquals("-84.39733", moonPhaseOutputData.getLongitude());
                 assertEquals("33.775867", moonPhaseOutputData.getLatitude());
                 assertEquals("2024-11-06", moonPhaseOutputData.getDate());
-                assertEquals("moonChartImgURL.png", moonPhaseOutputData.getImageURL());
+                assertEquals("moonChartImgURL.png", moonPhaseOutputData.getImageUrl());
             }
 
             @Override
@@ -35,7 +35,7 @@ public class MoonPhaseInteractorTest {
             }
 
             @Override
-            public void prepareFailView(String s) {
+            public void prepareFailView(String input) {
                 fail("Fail view is unexpected");
             }
         };
@@ -67,8 +67,8 @@ public class MoonPhaseInteractorTest {
             }
 
             @Override
-            public void prepareFailView(String error) {
-                assertEquals("Invalid format. Please ensure that the date is in YYYY-MM-DD format, and that the latitude and longitude are both in decimal format.", error);
+            public void prepareFailView(String input) {
+                assertEquals("Invalid format. Please ensure that the date is in YYYY-MM-DD format, and that the latitude and longitude are both in decimal format.", input);
             }
         };
 
@@ -98,8 +98,8 @@ public class MoonPhaseInteractorTest {
             }
 
             @Override
-            public void prepareFailView(String error) {
-                assertEquals("Invalid format. Please ensure that the date is in YYYY-MM-DD format, and that the latitude and longitude are both in decimal format.", error);
+            public void prepareFailView(String input) {
+                assertEquals("Invalid format. Please ensure that the date is in YYYY-MM-DD format, and that the latitude and longitude are both in decimal format.", input);
             }
         };
 
@@ -129,8 +129,8 @@ public class MoonPhaseInteractorTest {
             }
 
             @Override
-            public void prepareFailView(String error) {
-                assertEquals("Invalid format. Please ensure that the date is in YYYY-MM-DD format, and that the latitude and longitude are both in decimal format.", error);
+            public void prepareFailView(String input) {
+                assertEquals("Invalid format. Please ensure that the date is in YYYY-MM-DD format, and that the latitude and longitude are both in decimal format.", input);
             }
         };
 
@@ -160,8 +160,8 @@ public class MoonPhaseInteractorTest {
             }
 
             @Override
-            public void prepareFailView(String error) {
-                assertEquals("Incorrect value for latitude. Ensure that latitude is between -90.00 and 90.00.", error);
+            public void prepareFailView(String input) {
+                assertEquals("Incorrect value for latitude. Ensure that latitude is between -90.00 and 90.00.", input);
             }
         };
 
@@ -191,8 +191,8 @@ public class MoonPhaseInteractorTest {
             }
 
             @Override
-            public void prepareFailView(String error) {
-                assertEquals("Incorrect value for longitude. Ensure that longitude is between -180.00 and 180.00.", error);
+            public void prepareFailView(String input) {
+                assertEquals("Incorrect value for longitude. Ensure that longitude is between -180.00 and 180.00.", input);
             }
         };
 
@@ -222,8 +222,8 @@ public class MoonPhaseInteractorTest {
             }
 
             @Override
-            public void prepareFailView(String error) {
-                assertEquals("Incorrect value for latitude and longitude. Ensure that latitude is between -90.00 and 90.00 and longitude is between -180.00 and 180.00.", error);
+            public void prepareFailView(String input) {
+                assertEquals("Incorrect value for latitude and longitude. Ensure that latitude is between -90.00 and 90.00 and longitude is between -180.00 and 180.00.", input);
             }
         };
 

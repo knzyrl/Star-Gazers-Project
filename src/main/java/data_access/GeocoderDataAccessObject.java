@@ -1,54 +1,58 @@
 package data_access;
 
-import kong.unirest.core.Unirest;
-
-import kong.unirest.core.HttpResponse;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeocoderDataAccessObject extends GeocoderAPIDataAccessObject {
+import kong.unirest.core.HttpResponse;
+import kong.unirest.core.Unirest;
+
+/**
+ * Concrete implementation of the {@link GeocoderApiDataAccessObject} for accessing geocoding data.
+ * This class interacts with the Geocode API to convert an address into its geographical
+ * coordinates (latitude and longitude) and retrieve the display name (full address).
+ */
+public class GeocoderDataAccessObject extends GeocoderApiDataAccessObject {
 
     public List<String> converter(String address){
-        List<String> longlat = new ArrayList();
+        final List<String> longlat = new ArrayList();
 
-        String encodedAddress = "1600+Amphitheatre+Parkway+Mountain+View";
-        String newAddress = address.replace("\\s", "+");
+        final String encodedAddress = "1600+Amphitheatre+Parkway+Mountain+View";
+        final String newAddress = address.replace("\\s", "+");
+        final String url = "https://geocode.maps.co/search?q=" + newAddress + "&api_key=" + APIkey;
 
-
-        String url = "https://geocode.maps.co/search?q=" + newAddress + "&api_key=" + APIkey;
-
-        HttpResponse<String> response = Unirest.get(url).asString();
+        final HttpResponse<String> response = Unirest.get(url).asString();
 
         // Handle the response
         if (response.getStatus() == 200) {
-            String responseBody = response.getBody();
+            final String responseBody = response.getBody();
 
             String lat = null;
             String lon = null;
             String properAddress = null;
 
             // Find the position of "lat" and extract its value
-            int latIndex = responseBody.indexOf("\"lat\":\"");
+            final int latIndex = responseBody.indexOf("\"lat\":\"");
             if (latIndex != -1) {
-                int latStart = latIndex + 7; // Length of "lat":" is 7
-                int latEnd = responseBody.indexOf("\"", latStart);
+                // Length of "lat":" is 7
+                final int latStart = latIndex + 7;
+                final int latEnd = responseBody.indexOf("\"", latStart);
                 lat = responseBody.substring(latStart, latEnd);
             }
 
             // Find the position of "lon" and extract its value
-            int lonIndex = responseBody.indexOf("\"lon\":\"");
+            final int lonIndex = responseBody.indexOf("\"lon\":\"");
             if (lonIndex != -1) {
-                int lonStart = lonIndex + 7; // Length of "lon":" is 7
-                int lonEnd = responseBody.indexOf("\"", lonStart);
+                // Length of "lon":" is 7
+                final int lonStart = lonIndex + 7;
+                final int lonEnd = responseBody.indexOf("\"", lonStart);
                 lon = responseBody.substring(lonStart, lonEnd);
             }
 
             // Find the full address of the location given
-            int addressIndex = responseBody.indexOf("\"display_name\":\"");
+            final int addressIndex = responseBody.indexOf("\"display_name\":\"");
             if (addressIndex != -1) {
-                int addressStart = addressIndex + 16;
-                int addressEnd = responseBody.indexOf("\"", addressStart);
+                final int addressStart = addressIndex + 16;
+                final int addressEnd = responseBody.indexOf("\"", addressStart);
                 properAddress = responseBody.substring(addressStart, addressEnd);
             }
 
@@ -58,22 +62,30 @@ public class GeocoderDataAccessObject extends GeocoderAPIDataAccessObject {
 
             return longlat;
 
-
-        } else {
+        }
+        else {
             return null;
         }
 
     }
+
+    /**
+     * Main method for testing the functionality of the GeocoderDataAccessObject.
+     * Sends a sample query to the Geocode API to fetch the latitude, longitude,
+     * and display name for a specified address.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
-        String encodedAddress = "CN+Tower";
+        final String encodedAddress = "CN+Tower";
 
-        String url = "https://geocode.maps.co/search?q=" + encodedAddress + "&api_key=" + APIkey;
+        final String url = "https://geocode.maps.co/search?q=" + encodedAddress + "&api_key=" + APIkey;
 
-        HttpResponse<String> response = Unirest.get(url).asString();
+        final HttpResponse<String> response = Unirest.get(url).asString();
 
         // Handle the response
         if (response.getStatus() == 200) {
-            String responseBody = response.getBody();
+            final String responseBody = response.getBody();
 
             System.out.println(responseBody);
 
@@ -82,32 +94,35 @@ public class GeocoderDataAccessObject extends GeocoderAPIDataAccessObject {
             String addres = null;
 
             // Find the position of "lat" and extract its value
-            int latIndex = responseBody.indexOf("\"lat\":\"");
+            final int latIndex = responseBody.indexOf("\"lat\":\"");
             if (latIndex != -1) {
-                int latStart = latIndex + 7; // Length of "lat":" is 7
-                int latEnd = responseBody.indexOf("\"", latStart);
+                // Length of "lat":" is 7
+                final int latStart = latIndex + 7;
+                final int latEnd = responseBody.indexOf("\"", latStart);
                 lat = responseBody.substring(latStart, latEnd);
             }
 
             // Find the position of "lon" and extract its value
-            int lonIndex = responseBody.indexOf("\"lon\":\"");
+            final int lonIndex = responseBody.indexOf("\"lon\":\"");
             if (lonIndex != -1) {
-                int lonStart = lonIndex + 7; // Length of "lon":" is 7
-                int lonEnd = responseBody.indexOf("\"", lonStart);
+                // Length of "lon":" is 7
+                final int lonStart = lonIndex + 7;
+                final int lonEnd = responseBody.indexOf("\"", lonStart);
                 lon = responseBody.substring(lonStart, lonEnd);
             }
 
-            int addressIndex = responseBody.indexOf("\"display_name\":\"");
+            final int addressIndex = responseBody.indexOf("\"display_name\":\"");
             if (addressIndex != -1) {
-                int addressStart = addressIndex + 16;
-                int addressEnd = responseBody.indexOf("\"", addressStart);
+                final int addressStart = addressIndex + 16;
+                final int addressEnd = responseBody.indexOf("\"", addressStart);
                 addres = responseBody.substring(addressStart, addressEnd);
             }
 
             System.out.println(lat + ", " + lon);
             System.out.println(addres);
 
-        } else {
+        }
+        else {
             System.out.println("Failed: " + response.getStatus() + " " + response.getBody());
         }
     }

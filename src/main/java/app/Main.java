@@ -1,10 +1,19 @@
 package app;
 
-import view.NameGeocoderView;
+import javax.swing.JFrame;
 
-import javax.swing.*;
-
+/**
+ * Entry point for the application.
+ * This class initializes the application by to constructing the views,
+ * controllers, and use cases, and displaying the main application window.
+ */
 public class Main {
+
+    /**
+     * Main method to launch the application.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         final AppBuilder appBuilder = new AppBuilder();
         final JFrame application = appBuilder
@@ -20,9 +29,9 @@ public class Main {
                 .addGeocoderUseCase()
                 .addEventsView()
                 .addDisplayEventsView()
-                .addNEOView()
-                .addDisplayNEOView()
-                .addAPODView()
+                .addNearEarthObjectsView()
+                .addDisplayNearEarthObjectsView()
+                .addAstronomyPictureView()
                 .addHomeInterface()
                 .addStarChartUseCase()
                 .addDisplayStarChartInterface()
@@ -30,8 +39,8 @@ public class Main {
                 .addDisplayMoonPhaseInterface()
                 .addEventsUseCase()
                 .addDisplayEventsInterface()
-                .addNEOUseCase()
-                .addDisplayNEOInterface()
+                .addNearEarthObjectsUseCase()
+                .addDisplayNearEarthObjectsInterface()
                 .build();
         application.pack();
         application.setVisible(true);

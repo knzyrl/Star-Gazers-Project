@@ -1,5 +1,9 @@
 package use_case.events;
 
+/**
+ * Data structure for transferring input data for the Events use case.
+ * Contains details such as location coordinates, date range, and celestial body.
+ */
 public class EventsInputData {
     private String longitude;
     private String latitude;

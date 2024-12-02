@@ -2,13 +2,10 @@ package use_case;
 
 import data_access.GeocoderDataAccessObject;
 import entity.Location;
-import interface_adapter.geocoding.GeocodingPresenter;
 import org.junit.jupiter.api.Test;
 import use_case.geocoding.GeocodingInputData;
 import use_case.geocoding.GeocodingInteractor;
 import use_case.geocoding.GeocodingOutputBoundary;
-import use_case.geocoding.GeocodingOutputData;
-import view.ViewManager;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
