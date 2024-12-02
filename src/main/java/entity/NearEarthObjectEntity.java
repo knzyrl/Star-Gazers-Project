@@ -10,7 +10,8 @@ public class NearEarthObjectEntity {
     private final double closestDistanceKm;
     private final double relativeVelocity;
 
-    public NearEarthObjectEntity(String name, String closestApproachDate, double closestDistanceKm, double relativeVelocity) {
+    public NearEarthObjectEntity(String name, String closestApproachDate, double closestDistanceKm,
+                                 double relativeVelocity) {
         this.name = name;
         this.closestApproachDate = closestApproachDate;
         this.closestDistanceKm = closestDistanceKm;
@@ -29,7 +30,7 @@ public class NearEarthObjectEntity {
         return closestDistanceKm;
     }
 
-    public double getRelativeVelocity() { // New getter
+    public double getRelativeVelocity() {
         return relativeVelocity;
     }
 }
