@@ -39,7 +39,7 @@ public class DisplayGeocoderView extends JPanel {
 
         // Label for the lat and long
         JLabel latitude = new JLabel("The latitude for the address is " +geocodingOutputData.getLatitude());
-        JLabel longtitude = new JLabel("The longtitude for the address is " +geocodingOutputData.getLongitude());
+        JLabel longtitude = new JLabel("The longitude for the address is " +geocodingOutputData.getLongitude());
 
         latitude.setAlignmentX(Component.CENTER_ALIGNMENT);
         longtitude.setAlignmentX(Component.CENTER_ALIGNMENT);
