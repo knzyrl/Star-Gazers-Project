@@ -12,6 +12,7 @@ public class NEOView extends JPanel {
     private final JTextField startDateInput = new JTextField(10);
     private final JTextField endDateInput = new JTextField(10);
     private final JButton fetchButton;
+    private final JButton clearButton;
     private NEOController neoController;
 
     public NEOView() {
@@ -30,23 +31,30 @@ public class NEOView extends JPanel {
         // Fetch button
         final JPanel buttonPanel = new JPanel();
         fetchButton = new JButton("Fetch Data");
+        clearButton = new JButton("Clear");
         buttonPanel.add(fetchButton);
+        buttonPanel.add(clearButton);
 
         // Add action listener to fetch button
-        fetchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (neoController != null) {
-                    String startDate = startDateInput.getText();
-                    String endDate = endDateInput.getText();
+        fetchButton.addActionListener(e -> {
+            if (neoController != null) {
+                String startDate = startDateInput.getText();
+                String endDate = endDateInput.getText();
 
-                    try {
-                        neoController.fetchNEOData(startDate, endDate);
-                    } catch (IllegalArgumentException ex) {
-                        JOptionPane.showMessageDialog(NEOView.this, ex.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
+                try {
+                    if (startDate.isEmpty() || endDate.isEmpty()) {
+                        throw new IllegalArgumentException("Start and End dates cannot be empty.");
                     }
+                    neoController.fetchNEOData(startDate, endDate);
+                } catch (IllegalArgumentException ex) {
+                    JOptionPane.showMessageDialog(NEOView.this, ex.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
+        });
+
+        clearButton.addActionListener(e -> {
+            startDateInput.setText("");
+            endDateInput.setText("");
         });
 
         // Layout setup
