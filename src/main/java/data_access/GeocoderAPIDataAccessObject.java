@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface GeocoderAPIDataAccessObject {
 
-    public abstract List<String> converter(String address);
+    List<String> converter(String address);
 }
