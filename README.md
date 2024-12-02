@@ -149,11 +149,11 @@ At the moment, we are not accepting external contributions.
 
    - Presenter: Displays the image along with the description and fun fact.
    
-7. Alice does not know what her precise coordinates are. She uses the “Geocoding” function to convert her address into coordinates to use in the other functions. _(Assigned to: Cissy)_
+7. Alice does not know what her precise coordinates are. She uses the “Geocoding” function to convert her address into coordinates to use in the other functions. _(Assigned to: Alex)_
 
     - Interactor: User inputs an address for geocoding.
 
-   - Controller: Calls Google Maps API to convert the address to coordinates.
+   - Controller: Calls Geocoding API to convert the address to coordinates.
 
    - Presenter: Displays the resulting latitude and longitude for use in other features.
    
