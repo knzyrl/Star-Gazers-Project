@@ -2,6 +2,7 @@ package use_case.apod_date;
 
 import data_access.AstronomyPictureApiDataAccessObject;
 import org.json.JSONObject;
+import org.json.JSONException;
 import view.ViewManager;
 
 public class APODInteractor implements APODInputBoundary {
@@ -31,14 +32,20 @@ public class APODInteractor implements APODInputBoundary {
     }
 
     private void processResponse(String jsonResponse) {
-        JSONObject json = new JSONObject(jsonResponse);
-        String title = json.optString("title", "No Title");
-        String description = json.optString("explanation", "No Description");
-        String mediaType = json.optString("media_type", "image");
-        String url = json.optString("url", "");
-        String thumbnailUrl = json.optString("thumbnail_url", url); // Use thumbnail for videos
+        try {
+            JSONObject json = new JSONObject(jsonResponse);
+            String title = json.optString("title", "No Title");
+            String description = json.optString("explanation", "No Description");
+            String mediaType = json.optString("media_type", "image");
+            String url = json.optString("url", "");
+            String thumbnailUrl = json.optString("thumbnail_url", url); // Use thumbnail for videos
 
-        APODOutputData outputData = new APODOutputData(title, description, mediaType, url, thumbnailUrl);
-        outputBoundary.presentAPOD(outputData);
+            APODOutputData outputData = new APODOutputData(title, description, mediaType, url, thumbnailUrl);
+            outputBoundary.presentAPOD(outputData);
+        } catch (JSONException e) {
+            // Handle invalid JSON gracefully (log, fail silently, etc.)
+            System.err.println("Failed to process response: Invalid JSON format");
+        }
     }
+
 }
