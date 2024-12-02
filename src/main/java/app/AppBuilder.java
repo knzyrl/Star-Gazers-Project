@@ -207,7 +207,6 @@ public class AppBuilder {
 
     public AppBuilder addMoonPhaseUseCase() {
         MoonPhasePresenter moonPhasePresenter = new MoonPhasePresenter(viewManager);
-        moonPhasePresenter.setDisplayMoonPhaseView(displayMoonPhaseView);
         MoonPhaseInteractor moonPhaseInteractor = new MoonPhaseInteractor(moonPhaseDAO, moonPhasePresenter);
         MoonPhaseController moonPhaseController = new MoonPhaseController(moonPhaseInteractor);
         moonPhaseView.setMoonPhaseController(moonPhaseController);

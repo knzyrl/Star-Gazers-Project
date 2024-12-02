@@ -1,10 +1,12 @@
 package view;
 
 import use_case.events.EventsOutputData;
+import use_case.moon_phase.MoonPhaseOutputData;
 import use_case.star_chart.StarChartOutputData;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class ViewManager {
     private final CardLayout cardLayout;
@@ -35,6 +37,12 @@ public class ViewManager {
         displayStarChartView.refresh(starChartOutputData);
     }
 
+    public void displayMoonPhase(MoonPhaseOutputData moonPhaseOutputData) throws IOException {
+        cardLayout.show(views, "display moon phase");
+        DisplayMoonPhaseView displayMoonPhaseView = (DisplayMoonPhaseView) getCurrentCard();
+        displayMoonPhaseView.refresh(moonPhaseOutputData);
+    }
+
     public void displayEvents(EventsOutputData eventsOutputData) {
         cardLayout.show(views, "display events");
         DisplayEventsView displayEventsView = (DisplayEventsView) getCurrentCard();
@@ -50,4 +58,5 @@ public class ViewManager {
         }
         return result;
     }
+
 }

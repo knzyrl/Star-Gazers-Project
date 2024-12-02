@@ -23,7 +23,7 @@ public class MoonPhaseInteractorTest {
 
         MoonPhaseOutputBoundary moonPhasePresenter = new MoonPhaseOutputBoundary() {
             @Override
-            public void displayMoonPhase(MoonPhaseOutputData moonPhaseOutputData) throws IOException {
+            public void displayMoonPhase(MoonPhaseOutputData moonPhaseOutputData) {
                 assertEquals("-84.39733", moonPhaseOutputData.getLongitude());
                 assertEquals("33.775867", moonPhaseOutputData.getLatitude());
                 assertEquals("2024-11-06", moonPhaseOutputData.getDate());
@@ -170,7 +170,7 @@ public class MoonPhaseInteractorTest {
 
             @Override
             public void prepareFailView(String error) {
-                assertEquals("Incorrect value for latitude. Ensure that latitude is between -90.00 and 90.00.", error);
+                assertEquals("Invalid value. Ensure that latitude is between -90.00 and 90.00 and longitude is between -180.00 and 180.00.", error);
             }
         };
 
@@ -203,7 +203,7 @@ public class MoonPhaseInteractorTest {
 
             @Override
             public void prepareFailView(String error) {
-                assertEquals("Incorrect value for longitude. Ensure that longitude is between -180.00 and 180.00.", error);
+                assertEquals("Invalid value. Ensure that latitude is between -90.00 and 90.00 and longitude is between -180.00 and 180.00.", error);
             }
         };
 
@@ -236,7 +236,7 @@ public class MoonPhaseInteractorTest {
 
             @Override
             public void prepareFailView(String error) {
-                assertEquals("Incorrect value for latitude and longitude. Ensure that latitude is between -90.00 and 90.00 and longitude is between -180.00 and 180.00.", error);
+                assertEquals("Invalid value. Ensure that latitude is between -90.00 and 90.00 and longitude is between -180.00 and 180.00.", error);
             }
         };
 

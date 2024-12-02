@@ -56,14 +56,4 @@ public class DisplayMoonPhaseView extends JPanel {
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
-
-    public static void main(String[] args) throws IOException {
-        MoonPhaseOutputData moonPhaseOutputData = new MoonPhaseOutputData("33.775867", "-84.39733", "2024-11-06", "https://widgets.astronomyapi.com/moon-phase/generated/bba7ff5f078c4d3002bb8651b1cca6b2896720cf95d0ad798c3f2f32fb5e9248.png", false);
-        DisplayMoonPhaseView displayMoonPhaseView = new DisplayMoonPhaseView();
-        displayMoonPhaseView.refresh(moonPhaseOutputData);
-        final JFrame app = new JFrame();
-        app.add(displayMoonPhaseView);
-        app.pack();
-        app.setVisible(true);
-    }
 }
