@@ -11,7 +11,7 @@ Erin Xu: **xuerin**
 Alex Tin Long Young: **alexxxtl**
 
 ## Summary and Purpose
-This project was created to make astronomy more accessible and engaging for people of all backgrounds, whether they are casual stargazers, students, or enthusiasts. By providing users with real-time astronomical data and visualizations, it addresses the common problem of finding out about accurate and up-to-date information about celestial phenomena, which often requires specialized knowledge or expensive equipment. With this project, users can explore and learn about stars, planets, and other celestial events directly from their computers, making it an invaluable tool for those who want to deepen their understanding of the universe without needing prior expertise or advanced tools. Whether you're curious about the constellations visible tonight, tracking the phases of the moon, or planning a stargazing event, this project offers a simple yet powerful solution tailored to your needs.
+This project was created to make astronomy more accessible and engaging for people of all backgrounds, whether they are casual stargazers, students, or enthusiasts. By providing users with real-time astronomical data and visualizations, it addresses the common problem of finding out about accurate and up-to-date information about celestial phenomena in one place. This previously required specialized knowledge or expensive equipment. With this project, users can explore and learn about stars, planets, and other celestial events directly from their computers, making it an invaluable tool for those who want to deepen their understanding of the universe without needing prior expertise or advanced tools. Whether you're curious about the constellations visible tonight, tracking the phases of the moon, or planning a stargazing event, this project offers a simple yet powerful solution tailored to your needs.
 
 ## Table of Contents
 ### [Authors and Contributors](#authors-and-contributors)
@@ -77,7 +77,7 @@ Confirm when prompted to open it as a Maven project.
 
 ## Usage Guide
 1. Launch the application:
-  - Run the program by executing the **Main.java** file in your IDE or via the command line.
+   - Run the program by executing the **Main.java** file in your IDE or via the command line.
 2. Interact with the Graphical User Interface (GUI) that pops up:
    - Click on the buttons depending on what you want to do: Generate star charts, view the astronomy picture of the day (APOD), check moon phases, or learn an interesting astronomy fact!
    - Press the **Back** button to go back to the home screen, which will allow you to explore the other features we have.
@@ -85,10 +85,10 @@ Confirm when prompted to open it as a Maven project.
 Example usage: View a star chart
 1. Open the application GUI
 2. Click the **Generate Star Chart** button
-3.  The main interface for generating a star chart allows you to input longtitude, latitude, and date.
-4.  If you don't know your precise coordinates, you can use the **Geocoding** function.
-5.  After entering your details and clicking the **Generate** button, the GUI will display an interactive star chart visualization.
-6.  The visualization includes constellations, stars, and other celestial phenomena visible at the specified time and location.
+3. The main interface for generating a star chart allows you to input longtitude, latitude, and date.
+4. If you don't know your precise coordinates, you can use the **Geocoding** function.
+5. After entering your details and clicking the **Generate** button, the GUI will display an interactive star chart visualization.
+6. The visualization includes constellations, stars, and other celestial phenomena visible at the specified time and location.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
