@@ -5,6 +5,7 @@ import entity.StarChart;
 import interface_adapter.display_star_chart.DisplayStarChartController;
 import interface_adapter.geocoding.DisplayGeocodingController;
 import interface_adapter.geocoding.GeocodingController;
+import use_case.geocoding.GeocodingOutputData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,13 +18,13 @@ import java.io.IOException;
  */
 public class DisplayGeocoderView extends JPanel {
     private final String viewName = "display geocoded information";
-    private Location location;
+    private GeocodingOutputData geocodingOutputData;
     private GeocodingController geocodingController;
     private JButton home;
     private DisplayGeocodingController displayGeocodingController;
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLocation(GeocodingOutputData geocodingOutputData) {
+        this.geocodingOutputData = geocodingOutputData;
     }
 
     public void setDisplayStarChartController(GeocodingController geocodingController) {
@@ -33,12 +34,12 @@ public class DisplayGeocoderView extends JPanel {
     public void displayLocation() {
         this.removeAll();
 
-        JLabel title = new JLabel(location.getAddress());
+        JLabel title = new JLabel(geocodingOutputData.getAddress());
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Label for the lat and long
-        JLabel latitude = new JLabel("The latitude for the address is " +location.getLatitude());
-        JLabel longtitude = new JLabel("The longtitude for the address is " +location.getLongtitude());
+        JLabel latitude = new JLabel("The latitude for the address is " +geocodingOutputData.getLatitude());
+        JLabel longtitude = new JLabel("The longtitude for the address is " +geocodingOutputData.getLongitude());
 
         latitude.setAlignmentX(Component.CENTER_ALIGNMENT);
         longtitude.setAlignmentX(Component.CENTER_ALIGNMENT);
