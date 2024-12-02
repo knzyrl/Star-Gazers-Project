@@ -14,14 +14,13 @@ public class StarChartPresenter implements StarChartOutputBoundary {
 
     @Override
     public void displayStarChart(StarChartOutputData starChartOutputData) {
-//        displayStarChartView.refresh(starChartOutputData);
-//        viewManager.show("display star chart");
         viewManager.displayStarChart(starChartOutputData);
     }
 
     @Override
     public void prepareFailView(String errorMessage) {
         System.out.println("Star chart fail view triggered with error message: " + errorMessage);
+        viewManager.showFailView(errorMessage);
     }
 
     public void back() {

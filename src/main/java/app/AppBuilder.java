@@ -16,6 +16,8 @@ import interface_adapter.display_star_chart.DisplayStarChartController;
 import interface_adapter.display_star_chart.DisplayStarChartPresenter;
 import interface_adapter.events.EventsController;
 import interface_adapter.events.EventsPresenter;
+import interface_adapter.fail.FailController;
+import interface_adapter.fail.FailPresenter;
 import interface_adapter.geocoding.GeocodingController;
 import interface_adapter.geocoding.GeocodingPresenter;
 import interface_adapter.home.HomeController;
@@ -57,6 +59,7 @@ public class AppBuilder {
     private final GeocoderDataAccessObject geocoderDAO = new GeocoderDataAccessObject();
     private final NasaNeoDataAccessObject nasaNeoDAO = new NasaNeoDataAccessObject();
     private HomeView homeView;
+    private FailView failView;
     private StarChartView starChartView;
     private MoonPhaseView moonPhaseView;
     private DisplayStarChartView displayStarChartView;
@@ -88,6 +91,11 @@ public class AppBuilder {
         return this;
     }
 
+    public AppBuilder addFailView() {
+        failView = new FailView();
+        cardPanel.add(failView, failView.getViewName());
+        return this;
+    }
 
     public AppBuilder addAPODView() {
         apodView = new APODView();
@@ -101,7 +109,6 @@ public class AppBuilder {
         apodView.setController(controller); // Ensure this is called
         return this;
     }
-
 
     public AppBuilder addStarChartView() {
         starChartView = new StarChartView();
@@ -179,6 +186,13 @@ public class AppBuilder {
         HomePresenter homePresenter = new HomePresenter(viewManager);
         HomeController homeController = new HomeController(homePresenter);
         homeView.setHomeController(homeController);
+        return this;
+    }
+
+    public AppBuilder addFailInterface() {
+        FailPresenter failPresenter = new FailPresenter(viewManager);
+        FailController failController = new FailController(failPresenter);
+        failView.setFailViewController(failController);
         return this;
     }
 

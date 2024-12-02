@@ -23,6 +23,12 @@ public class ViewManager {
         cardLayout.show(views, viewName);
     }
 
+    public void showFailView(String errorMessage) {
+        cardLayout.show(views, "fail");
+        FailView failView = (FailView) getCurrentCard();
+        failView.refresh(errorMessage);
+    }
+
     public void displayStarChart(StarChartOutputData starChartOutputData) {
         cardLayout.show(views, "display star chart");
         DisplayStarChartView displayStarChartView = (DisplayStarChartView) getCurrentCard();
