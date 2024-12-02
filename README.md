@@ -15,7 +15,7 @@ This project was created to make astronomy more accessible and engaging for peop
 ### [Authors and Contributors](#authors-and-contributors)
 ### [Summary](#-summary)
 ### [Features](#-features)
-### [Installation](#-installation)
+### [Installation](#%EF%B8%8F-installation)
 ### [Usage Guide](#-usage-guide)
 ### [License](#-license)
 ### [Contributions](#-contributions)
