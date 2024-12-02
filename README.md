@@ -24,7 +24,18 @@ This project was created to make astronomy more accessible and engaging for peop
 ### [User Stories](#user-stories)
 
 ## Features 
-i'll write this later
+1. Generate Star Chart: longitude, latitude, date
+   Provides a map of what the night sky looks like at a specific location and date. 
+2. Generate Moon Phase: longitude, latitude, date
+   Visualize the moon phase for any given date. Useful astronomy enthusiasts tracking celestial events. 
+3. Show Events: longitude, latitude, start date, end date, body (sun or moon)
+   Lists past or upcoming celestial events that can be viewed from a specific location and date. 
+4. Show Near-Earth Objects: start date, end date
+   Provides a list view of information about near-Earth objects (like asteroids): name, losest approach, distance, relative velocity, and visibility.
+5. View Astronomy Picture of the Day: fetch current, fetch by date
+   Fetch the daily (or past) image/video alongside official description, and title. Useful for those looking for new and exciting pictures.
+6. Access Geocoder: enter address or enter name of location
+   Feature that converts the address/name of place to precise coordinates. Provides encapsulation in terms of astronomical/geographical knowledge gaps.
 
 ## Installation Instructions
 1. Before installing the project, ensure the following are installed on your system:
@@ -70,7 +81,7 @@ Example usage: View a star chart
 2. Click the **Generate Star Chart** button
 3.  The main interface for generating a star chart allows you to input longtitude, latitude, and date.
 4.  If you don't know your precise coordinates, you can use the **Geocoding** function.
-5.  After entering your details and clicking th e**Generate** button, the GUI will display an interactive star chart visualization.
+5.  After entering your details and clicking the **Generate** button, the GUI will display an interactive star chart visualization.
 6.  The visualization includes constellations, stars, and other celestial phenomena visible at the specified time and location.
 
 ## License
@@ -84,7 +95,7 @@ At the moment, we are not accepting external contributions.
 
 ## User Stories:
 
-1. Alice is interested in seeing what the sky will look like tonight at their location. She inputs her coordinates and time and receives a star chart with those parameters. _(Team User Story)_
+1. Alice is interested in seeing what the sky will look like tonight at their location. She inputs her coordinates and date and receives a star chart with those parameters. _(Team User Story)_
 
    - Interactor: User inputs coordinates and time.
 
