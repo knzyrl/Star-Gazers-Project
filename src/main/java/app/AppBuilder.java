@@ -184,7 +184,6 @@ public class AppBuilder {
 
     public AppBuilder addStarChartUseCase() {
         StarChartPresenter starChartPresenter = new StarChartPresenter(viewManager);
-        starChartPresenter.setDisplayStarChartView(displayStarChartView);
         StarChartInteractor starChartInteractor = new StarChartInteractor(starChartDAO, starChartPresenter);
         StarChartController starChartController = new StarChartController(starChartInteractor);
         starChartView.setStarChartController(starChartController);
@@ -226,7 +225,6 @@ public class AppBuilder {
 
     public AppBuilder addEventsUseCase() {
         EventsPresenter eventsPresenter = new EventsPresenter(viewManager);
-        eventsPresenter.setDisplayEventsView(displayEventsView);
         EventsInteractor eventsInteractor = new EventsInteractor(eventsDAO, eventsPresenter);
         EventsController eventsController = new EventsController(eventsInteractor);
         eventsView.setEventsController(eventsController);

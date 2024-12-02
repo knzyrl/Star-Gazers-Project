@@ -7,20 +7,16 @@ import view.ViewManager;
 
 public class StarChartPresenter implements StarChartOutputBoundary {
     private ViewManager viewManager;
-    private DisplayStarChartView displayStarChartView;
 
     public StarChartPresenter(ViewManager viewManager) {
         this.viewManager = viewManager;
     }
 
-    public void setDisplayStarChartView(DisplayStarChartView displayStarChartView) {
-        this.displayStarChartView = displayStarChartView;
-    }
-
     @Override
     public void displayStarChart(StarChartOutputData starChartOutputData) {
-        displayStarChartView.refresh(starChartOutputData);
-        viewManager.show("display star chart");
+//        displayStarChartView.refresh(starChartOutputData);
+//        viewManager.show("display star chart");
+        viewManager.displayStarChart(starChartOutputData);
     }
 
     @Override
