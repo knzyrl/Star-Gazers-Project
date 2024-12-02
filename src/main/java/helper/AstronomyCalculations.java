@@ -14,6 +14,7 @@ public class AstronomyCalculations {
 
     // Sourced from https://www.ssec.wisc.edu/mcidas/software/v/javadoc/1.01/src-html/edu/wisc/ssec/
     // mcidasv/data/adde/sgp4/Sidereal.html
+
     /**
      * Calculates the Right Ascension (RA) based on the given longitude and date.
      *

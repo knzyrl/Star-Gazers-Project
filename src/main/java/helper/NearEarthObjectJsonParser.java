@@ -11,7 +11,6 @@ import entity.NearEarthObjectEntity;
 
 /**
  * Parses raw JSON data from NASA's NeoWs API into a list of {@link NearEarthObjectEntity} objects.
- * Handles the JSON structure and converts relevant fields into entity objects.
  */
 public class NearEarthObjectJsonParser {
 

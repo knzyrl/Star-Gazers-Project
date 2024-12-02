@@ -61,7 +61,7 @@ public class NumberFormatChecker {
                         +
                         ")[pP][+-]?" + digits + "))"
                         + "[fFdD]?))"
-                        // Optional trailing "whitespace"
+                        // Optional trailing
                         + "[\\x00-\\x20]*";
 
         return Pattern.matches(fpRegex, input);
