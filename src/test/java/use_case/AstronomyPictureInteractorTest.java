@@ -1,14 +1,17 @@
 package use_case;
+import use_case.apod_date.APODInputData;
 
 import data_access.AstronomyPictureApiDataAccessObject;
-import org.json.JSONException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.mockito.Mockito;
 import use_case.apod_date.APODInteractor;
 import use_case.apod_date.APODOutputBoundary;
 import use_case.apod_date.APODOutputData;
 import view.ViewManager;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -140,5 +143,71 @@ public class AstronomyPictureInteractorTest {
         interactor.fetchAPOD();
 
         verify(mockOutputBoundary, times(1)).presentAPOD(any(APODOutputData.class));
+    }
+
+    @Test
+    public void testAPODOutputData_AllFields() {
+        String title = "A Beautiful Galaxy";
+        String description = "A description of a beautiful galaxy.";
+        String mediaType = "image";
+        String url = "http://example.com/image.jpg";
+        String thumbnailUrl = "http://example.com/thumb.jpg";
+
+        // Create an APODOutputData object
+        APODOutputData outputData = new APODOutputData(title, description, mediaType, url, thumbnailUrl);
+
+        // Assert all fields
+        assertEquals(title, outputData.getTitle());
+        assertEquals(description, outputData.getDescription());
+        assertEquals(mediaType, outputData.getMediaType());
+        assertEquals(url, outputData.getUrl());
+        assertEquals(thumbnailUrl, outputData.getThumbnailUrl());
+    }
+
+    @Test
+    public void testAPODOutputData_DefaultThumbnailUrl() {
+        String title = "A Beautiful Galaxy";
+        String description = "A description of a beautiful galaxy.";
+        String mediaType = "image";
+        String url = "http://example.com/image.jpg";
+        String thumbnailUrl = "";
+
+        // Create an APODOutputData object
+        APODOutputData outputData = new APODOutputData(title, description, mediaType, url, thumbnailUrl);
+
+        // Assert all fields, including default thumbnail
+        assertEquals(title, outputData.getTitle());
+        assertEquals(description, outputData.getDescription());
+        assertEquals(mediaType, outputData.getMediaType());
+        assertEquals(url, outputData.getUrl());
+        assertEquals(thumbnailUrl, outputData.getThumbnailUrl());
+    }
+
+    @Test
+    public void testAPODOutputData_EmptyFields() {
+        String title = "";
+        String description = "";
+        String mediaType = "";
+        String url = "";
+        String thumbnailUrl = "";
+
+        // Create an APODOutputData object
+        APODOutputData outputData = new APODOutputData(title, description, mediaType, url, thumbnailUrl);
+
+        // Assert all fields
+        assertEquals(title, outputData.getTitle());
+        assertEquals(description, outputData.getDescription());
+        assertEquals(mediaType, outputData.getMediaType());
+        assertEquals(url, outputData.getUrl());
+        assertEquals(thumbnailUrl, outputData.getThumbnailUrl());
+    }
+
+    @Test
+    public void testAPODInputData_Instantiation() {
+        // Instantiate the APODInputData class
+        APODInputData inputData = new APODInputData();
+
+        // Verify that the instance is not null
+        assertNotNull(inputData, "APODInputData instance should not be null");
     }
 }
