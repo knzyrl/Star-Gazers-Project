@@ -25,16 +25,17 @@ This project was created to make astronomy more accessible and engaging for peop
 
 ## Features 
 1. Generate Star Chart: longitude, latitude, date
+   
    Provides a map of what the night sky looks like at a specific location and date. 
-2. Generate Moon Phase: longitude, latitude, date
+3. Generate Moon Phase: longitude, latitude, date
    Visualize the moon phase for any given date. Useful astronomy enthusiasts tracking celestial events. 
-3. Show Events: longitude, latitude, start date, end date, body (sun or moon)
+4. Show Events: longitude, latitude, start date, end date, body (sun or moon)
    Lists past or upcoming celestial events that can be viewed from a specific location and date. 
-4. Show Near-Earth Objects: start date, end date
+5. Show Near-Earth Objects: start date, end date
    Provides a list view of information about near-Earth objects (like asteroids): name, losest approach, distance, relative velocity, and visibility.
-5. View Astronomy Picture of the Day: fetch current, fetch by date
+6. View Astronomy Picture of the Day: fetch current, fetch by date
    Fetch the daily (or past) image/video alongside official description, and title. Useful for those looking for new and exciting pictures.
-6. Access Geocoder: enter address or enter name of location
+7. Access Geocoder: enter address or enter name of location
    Feature that converts the address/name of place to precise coordinates. Provides encapsulation in terms of astronomical/geographical knowledge gaps.
 
 ## Installation Instructions
