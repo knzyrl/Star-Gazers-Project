@@ -20,7 +20,7 @@ public class MoonPhaseInteractor implements MoonPhaseInputBoundary {
         final String latitude = moonPhaseInputData.getLatitude();
         final String longitude = moonPhaseInputData.getLongitude();
         final String date = moonPhaseInputData.getDate();
-        final String ra = Double.toString(AstronomyCalculations.calcRA(longitude, date));
+        final String ra = Double.toString(AstronomyCalculations.calcRa(longitude, date));
         final String declination = Double.toString(Math.round(Double.parseDouble(latitude)));
 
         final String query = String.format("{\"style\":{\"moonStyle\":\"default\",\"backgroundStyle\":\"stars\",\"backgroundColor\":\"#000000\",\"headingColor\":\"#ffffff\",\"textColor\":\"#ffffff\"},\"observer\":{\"latitude\":%s,\"longitude\":%s,\"date\":\"%s\"},\"view\":{\"type\":\"portrait-simple\",\"parameters\":{}}}", latitude, longitude, date);

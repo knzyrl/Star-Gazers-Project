@@ -88,7 +88,7 @@ public class StarChart {
      * @return The right ascension as a {@code String}.
      */
     public String calcRa() {
-        return Double.toString(AstronomyCalculations.calcRA(this.longitude, this.date));
+        return Double.toString(AstronomyCalculations.calcRa(this.longitude, this.date));
     }
 
     /**
