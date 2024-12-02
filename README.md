@@ -143,11 +143,11 @@ At the moment, we are not accepting external contributions.
    
 6. Bob would like to be exposed to new and pretty pictures of space and learn fun facts about astronomical phenomena. This is achieved through the NASA APOD API which allows the user to generate a random astronomical image along with a short description. _(Assigned to: Erin)_
 
-   - Interactor: User selects “Astronomy Picture of the Day” function.
+   - Interactor: User selects “Fetch Astronomy Picture of the Day” function or enters a date in the past.
 
-   - Controller: Calls NASA’s APOD API to fetch a random image and description.
+   - Controller: Calls NASA’s APOD API to fetch the corresponding image/video and description.
 
-   - Presenter: Displays the image along with the description and fun fact.
+   - Presenter: Displays the image along with the description, title, URL to image/video.
    
 7. Alice does not know what her precise coordinates are. She uses the “Geocoding” function to convert her address into coordinates to use in the other functions. _(Assigned to: Alex)_
 
