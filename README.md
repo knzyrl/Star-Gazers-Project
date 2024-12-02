@@ -90,7 +90,7 @@ Example usage: View a star chart
 5. After entering your details and clicking the **Generate** button, the GUI will display an interactive star chart visualization.
 6. The visualization includes constellations, stars, and other celestial phenomena visible at the specified time and location.
 
-Full walkthrough can be viewed [here!](https://www.loom.com/share/2884e8eeb202459ab3725b459c6b9d84?sid=dd837459-0795-4d0b-bc22-86443b1315e5)
+Full walkthrough can be viewed ***[here!](https://www.loom.com/share/2884e8eeb202459ab3725b459c6b9d84?sid=dd837459-0795-4d0b-bc22-86443b1315e5)***
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
