@@ -7,18 +7,18 @@ import entity.NearEarthObjectEntity;
 import helper.NearEarthObjectsJsonParser;
 
 public class NearEarthObjectsInteractor implements NearEarthObjectsInputBoundary {
-    private final NasaNeoDataAccessObject dao;
+    private final NasaNeoDataAccessObject api;
     private final NearEarthObjectsOutputBoundary outputBoundary;
 
-    public NearEarthObjectsInteractor(NasaNeoDataAccessObject dao, NearEarthObjectsOutputBoundary outputBoundary) {
-        this.dao = dao;
+    public NearEarthObjectsInteractor(NasaNeoDataAccessObject api, NearEarthObjectsOutputBoundary outputBoundary) {
+        this.api = api;
         this.outputBoundary = outputBoundary;
     }
 
     @Override
     public void fetchNearEarthObjectsData(NearEarthObjectsInputData inputData) {
         try {
-            final String rawJson = dao.fetchNearEarthObjects(inputData.startDate(), inputData.endDate());
+            final String rawJson = api.fetchNearEarthObjects(inputData.startDate(), inputData.endDate());
             final List<NearEarthObjectEntity> neoEntities = NearEarthObjectsJsonParser.parse(rawJson);
             outputBoundary.presentNearEarthObjectsData(neoEntities);
         }
