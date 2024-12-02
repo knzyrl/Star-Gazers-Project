@@ -20,7 +20,7 @@ public class NameGeocoderView extends JPanel{
         final JLabel title = new JLabel("Geocoder Converter");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        final JLabel instruction = new JLabel("Enter the name of a monument, historical place, etc. ");
+        final JLabel instruction = new JLabel("Enter the name of a monument, building, arena, etc. ");
         instruction.setAlignmentX(Component.CENTER_ALIGNMENT);
         // Textbox for user to enter info
         final LabelTextPanel nameInfo = new LabelTextPanel(new JLabel("Enter name"), nameInput);
