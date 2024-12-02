@@ -1,16 +1,16 @@
 package use_case.near_earth_objects;
 
-import data_access.NASANeoDataAccessObject;
+import data_access.NasaNeoDataAccessObject;
 import entity.NEOEntity;
 import helper.NEOJsonParser;
 
 import java.util.List;
 
 public class NEOInteractor implements NEOInputBoundary {
-    private final NASANeoDataAccessObject dao;
+    private final NasaNeoDataAccessObject dao;
     private final NEOOutputBoundary outputBoundary;
 
-    public NEOInteractor(NASANeoDataAccessObject dao, NEOOutputBoundary outputBoundary) {
+    public NEOInteractor(NasaNeoDataAccessObject dao, NEOOutputBoundary outputBoundary) {
         this.dao = dao;
         this.outputBoundary = outputBoundary;
     }

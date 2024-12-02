@@ -1,7 +1,6 @@
 package use_case;
 
-import data_access.APODdateAPIDataAccessObject;
-import org.json.JSONObject;
+import data_access.AstronomyPictureApiDataAccessObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -16,12 +15,12 @@ public class APODInteractorTest {
 
     private APODInteractor interactor;
     private APODOutputBoundary mockOutputBoundary;
-    private APODdateAPIDataAccessObject mockDataAccessObject;
+    private AstronomyPictureApiDataAccessObject mockDataAccessObject;
 
     @BeforeEach
     public void setUp() {
         mockOutputBoundary = Mockito.mock(APODOutputBoundary.class);
-        mockDataAccessObject = Mockito.mock(APODdateAPIDataAccessObject.class);
+        mockDataAccessObject = Mockito.mock(AstronomyPictureApiDataAccessObject.class);
 
         interactor = new APODInteractor(mockOutputBoundary, mockDataAccessObject, null);
     }
@@ -38,7 +37,7 @@ public class APODInteractorTest {
                 }
                 """;
 
-        when(mockDataAccessObject.fetchAPOD()).thenReturn(jsonResponse);
+        when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(jsonResponse);
 
         // Invoke the method
         interactor.fetchAPOD();
@@ -52,7 +51,7 @@ public class APODInteractorTest {
         // Mock API response with invalid JSON (missing a colon)
         String invalidJsonResponse = "{ \"title\" \"Sample APOD\" }"; // Invalid JSON
 
-        when(mockDataAccessObject.fetchAPOD()).thenReturn(invalidJsonResponse);
+        when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(invalidJsonResponse);
 
         // Invoke the method and expect no crash (log or handle the error gracefully)
         interactor.fetchAPOD();
@@ -71,7 +70,7 @@ public class APODInteractorTest {
                 }
                 """;
 
-        when(mockDataAccessObject.fetchAPOD()).thenReturn(jsonResponse);
+        when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(jsonResponse);
 
         // Invoke the method
         interactor.fetchAPOD();

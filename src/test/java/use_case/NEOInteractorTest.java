@@ -1,6 +1,6 @@
 package use_case;
 
-import data_access.NASANeoDataAccessObject;
+import data_access.NasaNeoDataAccessObject;
 import interface_adapter.near_earth_objects.NEOPresenter;
 import use_case.near_earth_objects.NEOInputData;
 import use_case.near_earth_objects.NEOInteractor;
@@ -15,7 +15,7 @@ public class NEOInteractorTest {
     public static void main(String[] args) throws IOException {
 
         // Mock DAO simulating a realistic JSON response from the NASA API
-        NASANeoDataAccessObject mockDAO = new NASANeoDataAccessObject() {
+        NasaNeoDataAccessObject mockDAO = new NasaNeoDataAccessObject() {
             @Override
             public String fetchNearEarthObjects(String startDate, String endDate) {
                 return """

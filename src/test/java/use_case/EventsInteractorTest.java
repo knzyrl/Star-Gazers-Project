@@ -1,6 +1,6 @@
 package use_case;
 
-import data_access.AstronomyAPIDataAccessObject;
+import data_access.AstronomyApiDataAccessObject;
 import data_access.EventsDataAccessObject;
 import kong.unirest.core.json.JSONArray;
 import kong.unirest.core.json.JSONObject;
@@ -13,7 +13,7 @@ class EventsInteractorTest {
     @Test
     void successTest() {
         EventsInputData inputData = new EventsInputData("0.00", "0.00", "1970-01-01", "1970-01-01", "body");
-        AstronomyAPIDataAccessObject mockDAO = new EventsDataAccessObject() {
+        AstronomyApiDataAccessObject mockDAO = new EventsDataAccessObject() {
             @Override
             public JSONObject executeQuery(String query) {
                 JSONObject response = new JSONObject();
@@ -61,7 +61,7 @@ class EventsInteractorTest {
 
     @Test
     void longitudeFormatFailTest() {
-        AstronomyAPIDataAccessObject mockDAO = new EventsDataAccessObject();
+        AstronomyApiDataAccessObject mockDAO = new EventsDataAccessObject();
 
         EventsInputData inputData = new EventsInputData("longitude", "0.00", "1970-01-01", "1970-01-01", "body");
 
@@ -89,7 +89,7 @@ class EventsInteractorTest {
 
     @Test
     void longitudeBoundFailTest() {
-        AstronomyAPIDataAccessObject mockDAO = new EventsDataAccessObject();
+        AstronomyApiDataAccessObject mockDAO = new EventsDataAccessObject();
 
         EventsInputData inputData = new EventsInputData("9999.99", "0.00", "1970-01-01", "1970-01-01", "body");
 
@@ -117,7 +117,7 @@ class EventsInteractorTest {
 
     @Test
     void latitudeFormatFailTest() {
-        AstronomyAPIDataAccessObject mockDAO = new EventsDataAccessObject();
+        AstronomyApiDataAccessObject mockDAO = new EventsDataAccessObject();
 
         EventsInputData inputData = new EventsInputData("0.00", "latitude", "1970-01-01", "1970-01-01", "body");
 
@@ -145,7 +145,7 @@ class EventsInteractorTest {
 
     @Test
     void latitudeBoundFailTest() {
-        AstronomyAPIDataAccessObject mockDAO = new EventsDataAccessObject();
+        AstronomyApiDataAccessObject mockDAO = new EventsDataAccessObject();
 
         EventsInputData inputData = new EventsInputData("0.00", "-9999.99", "1970-01-01", "1970-01-01", "body");
 
@@ -173,7 +173,7 @@ class EventsInteractorTest {
 
     @Test
     void dateFormatFailTest() {
-        AstronomyAPIDataAccessObject mockDAO = new EventsDataAccessObject();
+        AstronomyApiDataAccessObject mockDAO = new EventsDataAccessObject();
 
         EventsInputData inputData = new EventsInputData("0.00", "0.00", "dateStart", "dateEnd", "body");
 
@@ -201,7 +201,7 @@ class EventsInteractorTest {
 
     @Test
     void backTest() {
-        AstronomyAPIDataAccessObject mockDAO = new EventsDataAccessObject();
+        AstronomyApiDataAccessObject mockDAO = new EventsDataAccessObject();
 
         EventsOutputBoundary eventsPresenter = new EventsOutputBoundary() {
             @Override
