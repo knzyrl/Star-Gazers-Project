@@ -36,9 +36,4 @@ public class AstronomyCalculations {
         LocalDate gd = LocalDate.parse(date, DTF);
         return DAYS.between(MJD_START, gd);
     }
-
-    public static void main(String[] args) {
-        System.out.println(calcGMST("2024-11-07"));
-        System.out.println(calcRA("-75.798703", "2024-11-07"));
-    }
 }
