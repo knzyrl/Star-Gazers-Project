@@ -9,6 +9,7 @@ public class Main {
         final AppBuilder appBuilder = new AppBuilder();
         final JFrame application = appBuilder
                 .addHomeView()
+                .addFailView()
                 .addStarChartView()
                 .addDisplayStarChartView()
                 .addMoonPhaseView()
@@ -24,6 +25,7 @@ public class Main {
                 .addDisplayNEOView()
                 .addAPODView()
                 .addHomeInterface()
+                .addFailInterface()
                 .addStarChartUseCase()
                 .addDisplayStarChartInterface()
                 .addMoonPhaseUseCase()

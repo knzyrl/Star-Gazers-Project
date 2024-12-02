@@ -30,7 +30,8 @@ public class DisplayStarChartView extends JPanel {
         this.removeAll();
 
         final JLabel title = new JLabel(String.format("Star Chart for %s, %s on %s", starChartOutputData.getLongitude(), starChartOutputData.getLatitude(), starChartOutputData.getDate()));
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        final JPanel titlePanel = new JPanel();
+        titlePanel.add(title);
 
         String imgURL = starChartOutputData.getImgURL();
         BufferedImage image = null;
@@ -56,7 +57,7 @@ public class DisplayStarChartView extends JPanel {
                 }
         );
 
-        this.add(title);
+        this.add(titlePanel);
         this.add(starChartImg);
         this.add(backButtonPanel);
 

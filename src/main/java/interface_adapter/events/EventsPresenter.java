@@ -21,6 +21,7 @@ public class EventsPresenter implements EventsOutputBoundary {
     @Override
     public void prepareFailView(String errorMessage) {
         System.out.println("Events fail view triggered with error message: " + errorMessage);
+        viewManager.showFailView(errorMessage);
     }
 
     @Override
