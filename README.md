@@ -1,16 +1,14 @@
 # Star-Gazers-Project
-## Authors and Contributors
-Khangerel Batzul: **knzyrl**
+## **Authors and Contributors**
+| Name                     | GitHub Username          |
+|---------------------------|--------------------------|
+| **Khangerel Batzul**     | [**knzyrl**](https://github.com/knzyrl)          |
+| **Shiqi Kuang**          | [**ck-7725**](https://github.com/ck-7725)        |
+| **Aryan Hrishikesh Nair**| [**AryanNair-24**](https://github.com/AryanNair-24)|
+| **Erin Xu**              | [**xuerin**](https://github.com/xuerin)          |
+| **Alex Tin Long Young**  | [**alexxxtl**](https://github.com/alexxxtl)      |
 
-Shiqi Kuang: **ck-7725**
-
-Aryan Hrishikesh Nair: **AryanNair-24**
-
-Erin Xu: **xuerin**
-
-Alex Tin Long Young: **alexxxtl**
-
-## Summary and Purpose
+## 🌌 Summary and Purpose
 This project was created to make astronomy more accessible and engaging for people of all backgrounds, whether they are casual stargazers, students, or enthusiasts. By providing users with real-time astronomical data and visualizations, it addresses the common problem of finding out about accurate and up-to-date information about celestial phenomena in one place. This previously required specialized knowledge or expensive equipment. With this project, users can explore and learn about stars, planets, and other celestial events directly from their computers, making it an invaluable tool for those who want to deepen their understanding of the universe without needing prior expertise or advanced tools. Whether you're curious about the constellations visible tonight, tracking the phases of the moon, or planning a stargazing event, this project offers a simple yet powerful solution tailored to your needs.
 
 ## Table of Contents
@@ -23,27 +21,32 @@ This project was created to make astronomy more accessible and engaging for peop
 ### [Contributions](#contributions)
 ### [User Stories](#user-stories)
 
-## Features 
-1. **Generate Star Chart:** longitude, latitude, date
-   
-   Provides a map of what the night sky looks like at a specific location and date. 
-3. **Generate Moon Phase:** longitude, latitude, date
+## ✨ Features 
+1. 🌠 **Generate Star Chart**
+   - Inputs: **Longitude**, **latitude**, **date**.
+   - Outputs: A detailed visualization of the night sky.
 
-   Visualize the moon phase for any given date. Useful astronomy enthusiasts tracking celestial events. 
-5. **Show Events:** longitude, latitude, start date, end date, body (sun or moon)
+2. 🌙 **Visualize Moon Phase**
+   - Inputs: **Date**, **location**.
+   - Outputs: Current moon phase, illumination percentage.
 
-   Lists past or upcoming celestial events that can be viewed from a specific location and date. 
-7. **Show Near-Earth Objects:** start date, end date
-   
-   Provides a list view of information about near-Earth objects (like asteroids): name, losest approach, distance, relative velocity, and visibility.
-9. **View Astronomy Picture of the Day:** fetch current, fetch by date
-    
-   Fetch the daily (or past) image/video alongside official description, and title. Useful for those looking for new and exciting pictures.
-11. **Access Geocoder:** enter address or enter name of location
-    
-    Feature that converts the address/name of place to precise coordinates. Provides encapsulation in terms of astronomical/geographical knowledge gaps.
+3. 🌞 **Show Events**
+   - Inputs: **Date range**, **location**, **celestial body**.
+   - Outputs: List of past/upcoming celestial events.
 
-## Installation Instructions
+4. ☄️ **Near-Earth Objects**
+   - Inputs: **Date range**.
+   - Outputs: Asteroid details—name, distance, velocity.
+
+5. 🖼️ **Astronomy Picture of the Day (APOD)**
+   - Fetches daily space pictures with **descriptions**.
+
+6. 🌎 **Geocoding**
+   - Converts addresses to precise coordinates.
+
+Full walkthrough can be viewed ***[here!](https://www.loom.com/share/2884e8eeb202459ab3725b459c6b9d84?sid=dd837459-0795-4d0b-bc22-86443b1315e5)***
+
+## 🛠️ Installation
 1. Before installing the project, ensure the following are installed on your system:
    - [Java Development Kit (JDK): Version 11 or higher](https://www.oracle.com/java/technologies/downloads/#java11?er=221886)
    - [Apache Maven: Latest version](https://maven.apache.org/download.cgi)
@@ -75,7 +78,7 @@ Confirm when prompted to open it as a Maven project.
    - Operating System: Windows, macOS, or Linux.
    - Hardware: Minimum 4GB RAM and an internet connection for fetching astronomical data.
 
-## Usage Guide
+## 📖 Usage Guide
 1. Launch the application:
    - Run the program by executing the **Main.java** file in your IDE or via the command line.
 2. Interact with the Graphical User Interface (GUI) that pops up:
@@ -92,7 +95,7 @@ Example usage: View a star chart
 
 Full walkthrough can be viewed ***[here!](https://www.loom.com/share/2884e8eeb202459ab3725b459c6b9d84?sid=dd837459-0795-4d0b-bc22-86443b1315e5)***
 
-## License
+## 📜 License
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
 
 ## Feedback
