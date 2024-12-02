@@ -1,5 +1,6 @@
 package use_case.geocoding;
 
+import data_access.GeocoderApiDataAccessObject;
 import data_access.GeocoderDataAccessObject;
 import entity.Location;
 
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public class GeocodingInteractor implements GeocodingInputBoundary {
 
-    private final GeocoderDataAccessObject geocoderDataAccessObject;
+    private final GeocoderApiDataAccessObject geocoderDataAccessObject;
     private final GeocodingOutputBoundary geocodingPresenter;
 
     public GeocodingInteractor(GeocoderDataAccessObject geocoderDataAccessObject,
