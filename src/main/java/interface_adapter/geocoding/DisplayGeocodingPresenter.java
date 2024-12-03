@@ -2,6 +2,11 @@ package interface_adapter.geocoding;
 
 import view.ViewManager;
 
+/**
+ * Class for Presenter for DisplayGeocoding.
+ * Responsible for presenting the display of the use case.
+ * Allows the user to revert to the home screen.
+ */
 public class DisplayGeocodingPresenter {
     private ViewManager viewManager;
 

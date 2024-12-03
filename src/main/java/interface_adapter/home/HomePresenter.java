@@ -2,6 +2,10 @@ package interface_adapter.home;
 
 import view.ViewManager;
 
+/**
+ * Class for the Presenter for Home.
+ * Responsible for displaying a particular view to the user based on their input by communicating with the ViewManager.
+ */
 public class HomePresenter {
     private final ViewManager viewManager;
 

@@ -5,6 +5,11 @@ import java.io.IOException;
 import use_case.star_chart.StarChartInputData;
 import use_case.star_chart.StarChartInteractor;
 
+/**
+ * Class for the Controller for the Star Chart use case.
+ * Receives user input from the view, packages it, and sends it to StarChartInteractor.
+ */
+
 public class StarChartController {
     private final StarChartInteractor starChartInteractor;
 
