@@ -17,13 +17,24 @@ public class NearEarthObjectsInteractor implements NearEarthObjectsInputBoundary
 
     @Override
     public void fetchNearEarthObjectsData(NearEarthObjectsInputData inputData) {
+        if (inputData.startDate() == null || inputData.startDate().isEmpty()
+                || inputData.endDate() == null || inputData.endDate().isEmpty()) {
+            throw new IllegalArgumentException("Start and end dates must not be null or empty.");
+        }
+
         try {
             final String rawJson = api.fetchNearEarthObjects(inputData.startDate(), inputData.endDate());
             final List<NearEarthObjectEntity> neoEntities = NearEarthObjectsJsonParser.parse(rawJson);
-            outputBoundary.presentNearEarthObjectsData(neoEntities);
+
+            if (neoEntities.isEmpty()) {
+                outputBoundary.noDataFound();
+            }
+            else {
+                outputBoundary.presentNearEarthObjectsData(neoEntities);
+            }
         }
         catch (IllegalArgumentException exception) {
-            System.err.println("Error: Invalid data or response - " + exception.getMessage());
+            outputBoundary.noDataFound();
         }
     }
 }
