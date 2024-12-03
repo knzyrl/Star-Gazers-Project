@@ -7,6 +7,12 @@ import use_case.near_earth_objects.NearEarthObjectsOutputBoundary;
 import view.DisplayNearEarthObjectsView;
 import view.ViewManager;
 
+/**
+ * Class for the Presenter for the Near Earth Objects use case.
+ * Implements the NearEarthObjectsOutputBoundaryInterface.
+ * Receives output data to be presented from NearEarthObjectsInteractor.
+ * Updates the view displayed to the user by communicating with the ViewManager.
+ */
 public class NearEarthObjectsPresenter implements NearEarthObjectsOutputBoundary {
     private final ViewManager viewManager;
     private DisplayNearEarthObjectsView displayNearEarthObjectsView;

@@ -2,6 +2,11 @@ package interface_adapter.fail;
 
 import view.ViewManager;
 
+/**
+ * Class for Presenter for the Fail View.
+ * Responsible for presenting the error display.
+ * Allows the user to revert to the home screen.
+ */
 public class FailPresenter {
     private ViewManager viewManager;
 

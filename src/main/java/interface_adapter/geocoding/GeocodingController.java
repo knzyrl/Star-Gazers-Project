@@ -7,6 +7,7 @@ import use_case.geocoding.GeocodingInputData;
 
 /**
  * Controller for the geocoding use case.
+ * Gets input data from the View, packages it and sends it to the GeocodingInteractor.
  */
 public class GeocodingController {
     private GeocodingInputBoundary geocodingInteractor;

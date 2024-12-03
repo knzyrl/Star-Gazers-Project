@@ -5,6 +5,10 @@ import java.io.IOException;
 import use_case.moon_phase.MoonPhaseInputBoundary;
 import use_case.moon_phase.MoonPhaseInputData;
 
+/**
+ * Class for Controller for the Moon Phase use case.
+ * Receives user input from the View, packages the data and sends it to MoonPhaseInetractor.
+ */
 public class MoonPhaseController {
     private final MoonPhaseInputBoundary moonPhaseInteractor;
 

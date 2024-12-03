@@ -4,6 +4,12 @@ import use_case.events.EventsOutputBoundary;
 import use_case.events.EventsOutputData;
 import view.ViewManager;
 
+/**
+ * Class for Presenter for the Events class.
+ * Implements the EventsOutputBoundaryInterface.
+ * Gets output data from EventsInteractor.
+ * Updates the view displayed to the user by communicating with the ViewManager.
+ */
 public class EventsPresenter implements EventsOutputBoundary {
     private ViewManager viewManager;
 
