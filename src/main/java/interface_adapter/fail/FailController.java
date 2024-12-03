@@ -7,6 +7,9 @@ public class FailController {
         this.failPresenter = failPresenter;
     }
 
+    /**
+     * Calls the presenter to execute the return to home.
+     */
     public void execute() {
         failPresenter.execute();
     }

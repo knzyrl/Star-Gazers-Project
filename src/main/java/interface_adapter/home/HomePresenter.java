@@ -9,6 +9,10 @@ public class HomePresenter {
         this.viewManager = viewManager;
     }
 
+    /**
+     * Calls the ViewManager to switch to the specified view.
+     * @param viewName name of view to switch to
+     */
     public void execute(String viewName) {
         viewManager.show(viewName);
     }

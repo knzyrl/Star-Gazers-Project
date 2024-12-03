@@ -2,7 +2,6 @@ package interface_adapter.star_chart;
 
 import use_case.star_chart.StarChartOutputBoundary;
 import use_case.star_chart.StarChartOutputData;
-import view.DisplayStarChartView;
 import view.ViewManager;
 
 public class StarChartPresenter implements StarChartOutputBoundary {
@@ -23,6 +22,7 @@ public class StarChartPresenter implements StarChartOutputBoundary {
         viewManager.showFailView(errorMessage);
     }
 
+    @Override
     public void back() {
         viewManager.show("home");
     }
