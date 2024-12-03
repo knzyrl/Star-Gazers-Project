@@ -1,6 +1,6 @@
 package view;
 
-import interface_adapter.apod_date.ApodController;
+import interface_adapter.apod_date.ApodController; //rename
 
 import javax.swing.*;
 import java.awt.*;

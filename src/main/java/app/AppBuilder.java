@@ -6,14 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import data_access.AstronomyPictureApiDataAccessObject;
+import data_access.AstronomyPictureApiDataAccessObject; // will need to rename
 import data_access.EventsDataAccessObject;
 import data_access.GeocoderDataAccessObject;
 import data_access.MoonPhaseDataAccessObject;
 import data_access.NasaNeoApiDataAccessObject;
 import data_access.StarChartDataAccessObject;
-import interface_adapter.apod_date.ApodController;
-import interface_adapter.apod_date.ApodPresenter;
+import interface_adapter.apod_date.APODController;
+import interface_adapter.apod_date.APODPresenter;
 import interface_adapter.display_events.DisplayEventsController;
 import interface_adapter.display_events.DisplayEventsPresenter;
 import interface_adapter.display_moon_phase.DisplayMoonPhaseController;
@@ -117,16 +117,15 @@ public class AppBuilder {
      * Adds the APOD View to the application.
      * @return this builder
      */
-    public AppBuilder addApodView() {
+
+    public AppBuilder addApodView() { // will need to rename
         apodView = new APODView();
-        cardPanel.add(apodView, apodView.getViewName());
-
-        final ApodPresenter presenter = new ApodPresenter(apodView);
-        final AstronomyPictureApiDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
-        final APODInteractor interactor = new APODInteractor(presenter, dataAccessObject, viewManager);
-        final ApodController controller = new ApodController(interactor);
-
+        AstronomyPictureDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
+        APODPresenter presenter = new APODPresenter(apodView);
+        APODInteractor interactor = new APODInteractor(presenter, dataAccessObject, viewManager);
+        APODController controller = new APODController(interactor);
         apodView.setController(controller);
+        cardPanel.add(apodView, apodView.getViewName());
         return this;
     }
 
