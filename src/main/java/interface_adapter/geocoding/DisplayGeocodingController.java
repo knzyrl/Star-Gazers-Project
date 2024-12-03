@@ -7,6 +7,9 @@ public class DisplayGeocodingController {
         this.presenter = presenter;
     }
 
+    /**
+     * Calls the presenter to execute the return to home.
+     */
     public void execute() {
         presenter.execute();
     }

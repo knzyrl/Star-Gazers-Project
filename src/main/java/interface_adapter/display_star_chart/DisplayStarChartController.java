@@ -7,6 +7,9 @@ public class DisplayStarChartController {
         this.displayStarChartPresenter = displayStarChartPresenter;
     }
 
+    /**
+     * Calls the presenter to execute the return to home.
+     */
     public void execute() {
         displayStarChartPresenter.execute();
     }

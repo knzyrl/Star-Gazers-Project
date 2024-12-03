@@ -1,10 +1,12 @@
 package app;
 
-import view.NameGeocoderView;
-
-import javax.swing.*;
+import javax.swing.JFrame;
 
 public class Main {
+    /**
+     * Builds and runs the CA architecture of the application.
+     * @param args unused arguments
+     */
     public static void main(String[] args) {
         final AppBuilder appBuilder = new AppBuilder();
         final JFrame application = appBuilder
@@ -21,9 +23,9 @@ public class Main {
                 .addGeocoderUseCase()
                 .addEventsView()
                 .addDisplayEventsView()
-                .addNEOView()
-                .addDisplayNEOView()
-                .addAPODView()
+                .addNeoView()
+                .addDisplayNeoView()
+                .addApodView()
                 .addHomeInterface()
                 .addFailInterface()
                 .addStarChartUseCase()
@@ -32,8 +34,8 @@ public class Main {
                 .addDisplayMoonPhaseInterface()
                 .addEventsUseCase()
                 .addDisplayEventsInterface()
-                .addNEOUseCase()
-                .addDisplayNEOInterface()
+                .addNeoUseCase()
+                .addDisplayNeoInterface()
                 .build();
         application.pack();
         application.setVisible(true);

@@ -1,11 +1,9 @@
 package view;
 
-import interface_adapter.APOD_date.APODController;
+import interface_adapter.apod_date.ApodController;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.net.URL;
 
 public class APODView extends JPanel {
@@ -56,18 +54,18 @@ public class APODView extends JPanel {
         return "apod";
     }
 
-    public void setController(APODController controller) {
+    public void setController(ApodController controller) {
         // Fetch by Date Button Action
         fetchByDateButton.addActionListener(e -> {
             String date = dateInputField.getText();
             System.out.println("Fetching AstronomyPicture for date: " + date);
-            controller.fetchAPODByDate(date);
+            controller.fetchApodByDate(date);
         });
 
         // Fetch Button Action
         fetchButton.addActionListener(e -> {
             System.out.println("Fetch AstronomyPicture button clicked!");
-            controller.fetchAPOD();
+            controller.fetchApod();
         });
 
         // Back Button Action

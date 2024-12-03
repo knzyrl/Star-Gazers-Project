@@ -1,9 +1,9 @@
 package interface_adapter.geocoding;
 
+import java.io.IOException;
+
 import use_case.geocoding.GeocodingInputBoundary;
 import use_case.geocoding.GeocodingInputData;
-
-import java.io.IOException;
 
 /**
  * Controller for the geocoding use case.
@@ -20,17 +20,17 @@ public class GeocodingController {
     /**
      * Executes the geocode use case.
      * @param address The address that they want to geocode.
-     * @throws IOException
+     * @throws IOException Exception
      */
     public void execute(String address) throws IOException {
-        GeocodingInputData geocodingInputData = new GeocodingInputData(address);
+        final GeocodingInputData geocodingInputData = new GeocodingInputData(address);
 
         geocodingInteractor.execute(geocodingInputData);
     }
 
     /**
      * Allows the user to go back during the geocode use case.
-     * @throws IOException
+     * @throws IOException Exception
      */
     public void executeBack() throws IOException {
 
@@ -39,7 +39,7 @@ public class GeocodingController {
 
     /**
      * Allows the user to go back to the home view.
-     * @throws IOException
+     * @throws IOException Exception
      */
     public void executeHome() throws IOException {
 
@@ -48,7 +48,7 @@ public class GeocodingController {
 
     /**
      * Allows the user to go to the name view.
-     * @throws IOException
+     * @throws IOException Exception
      */
     public void executeName() throws IOException {
 
