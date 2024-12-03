@@ -12,8 +12,8 @@ import data_access.GeocoderDataAccessObject;
 import data_access.MoonPhaseDataAccessObject;
 import data_access.NasaNeoApiDataAccessObject;
 import data_access.StarChartDataAccessObject;
-import interface_adapter.apod_date.APODController;
-import interface_adapter.apod_date.APODPresenter;
+import interface_adapter.apod_date.ApodController;
+import interface_adapter.apod_date.ApodPresenter;
 import interface_adapter.display_events.DisplayEventsController;
 import interface_adapter.display_events.DisplayEventsPresenter;
 import interface_adapter.display_moon_phase.DisplayMoonPhaseController;
@@ -120,10 +120,10 @@ public class AppBuilder {
 
     public AppBuilder addApodView() { // will need to rename
         apodView = new APODView();
-        AstronomyPictureDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
-        APODPresenter presenter = new APODPresenter(apodView);
+        AstronomyPictureApiDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
+        ApodPresenter presenter = new ApodPresenter(apodView);
         APODInteractor interactor = new APODInteractor(presenter, dataAccessObject, viewManager);
-        APODController controller = new APODController(interactor);
+        ApodController controller = new ApodController(interactor);
         apodView.setController(controller);
         cardPanel.add(apodView, apodView.getViewName());
         return this;
