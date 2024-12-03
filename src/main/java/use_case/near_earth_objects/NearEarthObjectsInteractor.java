@@ -6,6 +6,12 @@ import data_access.NasaNeoDataAccessObject;
 import entity.NearEarthObjectEntity;
 import helper.NearEarthObjectsJsonParser;
 
+/**
+ * Interactor for the Near Earth Objects use case.
+ * Implements the NearEarthObjectsIntputBoundary.
+ * Receives input data from the controller, manipulates it according to the use case requirements and sends it to the
+ * OutputBoundary.
+ */
 public class NearEarthObjectsInteractor implements NearEarthObjectsInputBoundary {
     private final NasaNeoDataAccessObject api;
     private final NearEarthObjectsOutputBoundary outputBoundary;

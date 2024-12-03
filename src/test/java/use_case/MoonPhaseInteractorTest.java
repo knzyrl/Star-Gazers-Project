@@ -36,7 +36,7 @@ public class MoonPhaseInteractorTest {
             }
 
             @Override
-            public void prepareFailView(String s) {
+            public void prepareFailView(String error) {
                 fail("Fail view is unexpected");
             }
         };

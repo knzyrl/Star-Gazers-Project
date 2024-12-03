@@ -1,15 +1,15 @@
 package interface_adapter.apod_date;
 
-import use_case.apod_date.APODInputBoundary;
+import use_case.apod_date.AstronomicalPictureInputBoundary;
 
 /**
  * Class for controller for the Astronomical Picture of the Day (APOD) use case.
  * Gets input from the APODView, packages it, and sends it to the APODInteractor.
  */
 public class ApodController {
-    private final APODInputBoundary interactor;
+    private final AstronomicalPictureInputBoundary interactor;
 
-    public ApodController(APODInputBoundary interactor) {
+    public ApodController(AstronomicalPictureInputBoundary interactor) {
         this.interactor = interactor;
     }
 
@@ -18,7 +18,7 @@ public class ApodController {
      */
     public void fetchAPOD() {
         System.out.println("APODController: fetchAPOD called");
-        interactor.fetchAPOD();
+        interactor.fetchAstronomicalPictureOfTheDay();
     }
 
     /**
@@ -28,7 +28,7 @@ public class ApodController {
      */
     public void fetchAPODByDate(String date) {
         System.out.println("APODController: fetchAPODByDate called for date " + date);
-        interactor.fetchAPODByDate(date);
+        interactor.fetchAstronomicalPictureByDate(date);
     }
 
     /**

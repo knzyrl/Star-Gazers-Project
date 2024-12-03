@@ -34,9 +34,9 @@ public class MoonPhasePresenter implements MoonPhaseOutputBoundary {
 
     /**
      * Calls the ViewManager to show the fail view with a given error message.
-     * @param errorMessage message to be shown on the fail view.
+     * @param error message to be shown on the fail view.
      */
-    public void prepareFailView(String errorMessage) {
-        viewManager.showFailView(errorMessage);
+    public void prepareFailView(String error) {
+        viewManager.showFailView(error);
     }
 }

@@ -1,32 +1,49 @@
 package use_case.apod_date;
 
-import data_access.AstronomyPictureDataAccessObject;
-import org.json.JSONObject;
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import data_access.AstronomyPictureApiDataAccessObject;
 import view.ViewManager;
 
-public class APODInteractor implements APODInputBoundary {
-    private final APODOutputBoundary outputBoundary;
-    private final AstronomyPictureDataAccessObject dataAccessObject;
+/**
+ * Class for Interactor for the Astronomical Picture of the Day use case.
+ * Implements AstronomicalPictureInputBoundary.
+ * Receives input data from the Controller and process it with the help of the corresponding API and Entity.
+ * Sends the output data to the OutputBoundary for display.
+ */
+
+public class APODInteractor implements AstronomicalPictureInputBoundary {
+    private final AstronomicalPictureOutputBoundary outputBoundary;
+    private final AstronomyPictureApiDataAccessObject dataAccessObject;
     private final ViewManager viewManager;
 
-    public APODInteractor(APODOutputBoundary outputBoundary, AstronomyPictureDataAccessObject dataAccessObject, ViewManager viewManager) {
+    public APODInteractor(AstronomicalPictureOutputBoundary outputBoundary,
+                          AstronomyPictureApiDataAccessObject dataAccessObject,
+                          ViewManager viewManager) {
         this.outputBoundary = outputBoundary;
         this.dataAccessObject = dataAccessObject;
         this.viewManager = viewManager;
     }
 
     @Override
-    public void fetchAPOD() {
-        String jsonResponse = dataAccessObject.fetchAstronomyPicture();
+    public void fetchAstronomicalPictureOfTheDay() {
+        final String jsonResponse = dataAccessObject.fetchAstronomyPicture();
         processResponse(jsonResponse);
     }
 
-    public void fetchAPODByDate(String date) {
-        String jsonResponse = dataAccessObject.fetchAstronomyPictureByDate(date);
+    /**
+     * Concrete implementation of the fetchAstronomicalPictureByDate method in AstronomicalPictureInputBoundary.
+     * @param date the date specified by the user for which they wish to see the Astronomy Picture.
+     */
+    public void fetchAstronomicalPictureByDate(String date) {
+        final String jsonResponse = dataAccessObject.fetchAstronomyPictureByDate(date);
         processResponse(jsonResponse);
     }
 
+    /**
+     * Concrete implementation of the goBackToHome method in AstronomicalPictureInputBoundary.
+     */
     public void goBackToHome() {
         viewManager.show("home");
     }
@@ -41,9 +58,9 @@ public class APODInteractor implements APODInputBoundary {
             final String thumbnailUrl = json.optString("thumbnail_url", url);
 
             final APODOutputData outputData = new APODOutputData(title, description, mediaType, url, thumbnailUrl);
-            outputBoundary.presentAPOD(outputData);
+            outputBoundary.presentAstronomicalPicture(outputData);
         }
-        catch (JSONException e) {
+        catch (JSONException error) {
             System.err.println("Failed to process response: Invalid JSON format");
         }
     }

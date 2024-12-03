@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.mockito.Mockito;
 import use_case.apod_date.APODInteractor;
-import use_case.apod_date.APODOutputBoundary;
+import use_case.apod_date.AstronomicalPictureOutputBoundary;
 import use_case.apod_date.APODOutputData;
 import view.ViewManager;
 
@@ -19,13 +19,13 @@ import static org.mockito.Mockito.*;
 public class AstronomyPictureInteractorTest {
 
     private APODInteractor interactor;
-    private APODOutputBoundary mockOutputBoundary;
+    private AstronomicalPictureOutputBoundary mockOutputBoundary;
     private AstronomyPictureApiDataAccessObject mockDataAccessObject;
     private ViewManager mockViewManager;
 
     @BeforeEach
     public void setUp() {
-        mockOutputBoundary = Mockito.mock(APODOutputBoundary.class);
+        mockOutputBoundary = Mockito.mock(AstronomicalPictureOutputBoundary.class);
         mockDataAccessObject = Mockito.mock(AstronomyPictureApiDataAccessObject.class);
         mockViewManager = Mockito.mock(ViewManager.class);
 
@@ -45,9 +45,9 @@ public class AstronomyPictureInteractorTest {
 
         when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(jsonResponse);
 
-        interactor.fetchAPOD();
+        interactor.fetchAstronomicalPictureOfTheDay();
 
-        verify(mockOutputBoundary, times(1)).presentAPOD(any(APODOutputData.class));
+        verify(mockOutputBoundary, times(1)).presentAstronomicalPicture(any(APODOutputData.class));
     }
 
     @Test
@@ -57,10 +57,10 @@ public class AstronomyPictureInteractorTest {
         when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(invalidJsonResponse);
 
         // Invoke the method
-        interactor.fetchAPOD();
+        interactor.fetchAstronomicalPictureOfTheDay();
 
         // Ensure no output boundary calls were made
-        verify(mockOutputBoundary, never()).presentAPOD(any(APODOutputData.class));
+        verify(mockOutputBoundary, never()).presentAstronomicalPicture(any(APODOutputData.class));
     }
 
     @Test
@@ -74,9 +74,9 @@ public class AstronomyPictureInteractorTest {
 
         when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(jsonResponse);
 
-        interactor.fetchAPOD();
+        interactor.fetchAstronomicalPictureOfTheDay();
 
-        verify(mockOutputBoundary, times(1)).presentAPOD(any(APODOutputData.class));
+        verify(mockOutputBoundary, times(1)).presentAstronomicalPicture(any(APODOutputData.class));
     }
 
     @Test
@@ -93,9 +93,9 @@ public class AstronomyPictureInteractorTest {
         String date = "2023-12-01";
         when(mockDataAccessObject.fetchAstronomyPictureByDate(date)).thenReturn(jsonResponse);
 
-        interactor.fetchAPODByDate(date);
+        interactor.fetchAstronomicalPictureByDate(date);
 
-        verify(mockOutputBoundary, times(1)).presentAPOD(any(APODOutputData.class));
+        verify(mockOutputBoundary, times(1)).presentAstronomicalPicture(any(APODOutputData.class));
     }
 
     @Test
@@ -105,10 +105,10 @@ public class AstronomyPictureInteractorTest {
         when(mockDataAccessObject.fetchAstronomyPictureByDate("2023-12-01")).thenReturn(invalidJsonResponse);
 
         // Invoke the method
-        interactor.fetchAPODByDate("2023-12-01");
+        interactor.fetchAstronomicalPictureByDate("2023-12-01");
 
         // Ensure no output boundary calls were made
-        verify(mockOutputBoundary, never()).presentAPOD(any(APODOutputData.class));
+        verify(mockOutputBoundary, never()).presentAstronomicalPicture(any(APODOutputData.class));
     }
 
     @Test
@@ -124,9 +124,9 @@ public class AstronomyPictureInteractorTest {
 
         when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(emptyJsonResponse);
 
-        interactor.fetchAPOD();
+        interactor.fetchAstronomicalPictureOfTheDay();
 
-        verify(mockOutputBoundary, times(1)).presentAPOD(any(APODOutputData.class));
+        verify(mockOutputBoundary, times(1)).presentAstronomicalPicture(any(APODOutputData.class));
     }
 
     @Test
@@ -140,9 +140,9 @@ public class AstronomyPictureInteractorTest {
 
         when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(invalidDataTypeJson);
 
-        interactor.fetchAPOD();
+        interactor.fetchAstronomicalPictureOfTheDay();
 
-        verify(mockOutputBoundary, times(1)).presentAPOD(any(APODOutputData.class));
+        verify(mockOutputBoundary, times(1)).presentAstronomicalPicture(any(APODOutputData.class));
     }
 
     @Test

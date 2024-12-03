@@ -63,7 +63,7 @@ public class EventsList {
      * @return {@code true} if longitude is valid, otherwise {@code false}.
      */
     public boolean isValidLongitude() {
-        return !NumberFormatChecker.checkDouble(this.longitude) && Double.parseDouble(this.longitude)
+        return NumberFormatChecker.checkDouble(this.longitude) && Double.parseDouble(this.longitude)
                 >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.longitude) <= MAX_LONGITUDE_LATITUDE;
     }
 
@@ -73,7 +73,7 @@ public class EventsList {
      * @return {@code true} if latitude is valid, otherwise {@code false}.
      */
     public boolean isValidLatitude() {
-        return !NumberFormatChecker.checkDouble(this.latitude) && Double.parseDouble(this.latitude)
+        return NumberFormatChecker.checkDouble(this.latitude) && Double.parseDouble(this.latitude)
                 >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.latitude) <= MAX_LONGITUDE_LATITUDE;
     }
 
