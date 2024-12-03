@@ -3,7 +3,7 @@
 | Name                     | GitHub Username          |
 |---------------------------|--------------------------|
 | **Khangerel Batzul**     | [**knzyrl**](https://github.com/knzyrl)          |
-| **Shiqi Kuang**          | [**ck-7725**](https://github.com/ck-7725)        |
+| **Cissy Kuang**          | [**ck-7725**](https://github.com/ck-7725)        |
 | **Aryan Hrishikesh Nair**| [**AryanNair-24**](https://github.com/AryanNair-24)|
 | **Erin Xu**              | [**xuerin**](https://github.com/xuerin)          |
 | **Alex Tin Long Young**  | [**alexxxtl**](https://github.com/alexxxtl)      |
