@@ -21,13 +21,11 @@ public class GeocoderDataAccessObject implements GeocoderApiDataAccessObject {
      * @return A {@link List} of {@link String} containing the longitude, latitude, and display name.
      *         Returns {@code null} if the API request fails or the address is invalid.
      */
-
     public List<String> converter(String address) {
         final String apiKey = "6733f872eb948162981545fld4fe0b0";
         final List<String> longlat = new ArrayList();
         final int validResponseCode = 200;
 
-        final String encodedAddress = "1600+Amphitheatre+Parkway+Mountain+View";
         final String newAddress = address.replace("\\s", "+");
 
         final String url = "https://geocode.maps.co/search?q=" + newAddress + "&api_key=" + apiKey;

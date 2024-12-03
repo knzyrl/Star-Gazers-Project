@@ -1,5 +1,8 @@
 package use_case.star_chart;
 
+/**
+ * Class for output data for the Star Chart use case.
+ */
 public class StarChartOutputData {
     private String longitude;
     private String latitude;

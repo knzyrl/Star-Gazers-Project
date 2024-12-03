@@ -19,9 +19,11 @@ public class GeocodingOutputData {
     public String getAddress() {
         return address;
     }
+
     public String getLatitude() {
         return latitude;
     }
+
     public String getLongitude() {
         return longitude;
     }

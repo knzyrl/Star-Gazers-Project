@@ -1,5 +1,8 @@
 package use_case.moon_phase;
 
+/**
+ * Class for output data for the Moon Phase use case.
+ */
 public class MoonPhaseOutputData {
     private final String latitude;
     private final String longitude;

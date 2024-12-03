@@ -4,6 +4,10 @@ import java.util.List;
 
 import entity.NearEarthObjectEntity;
 
+/**
+ * Interface (Abstraction) between the Business Rules/Entities layers and Interface Adapter layer.
+ * Implemented by NearEarthObjectsPresenter.
+ */
 public interface NearEarthObjectsOutputBoundary {
 
     /**

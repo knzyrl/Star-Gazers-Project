@@ -1,5 +1,8 @@
 package use_case.apod_date;
 
+/**
+ * Class for output data for the Astronomy Picture of the Day use case.
+ */
 public class APODOutputData {
     private final String title;
     private final String description;
