@@ -12,4 +12,9 @@ public interface NearEarthObjectsOutputBoundary {
      * @param neoData The list of {@link NearEarthObjectEntity} objects containing processed NEO data.
      */
     void presentNearEarthObjectsData(List<NearEarthObjectEntity> neoData);
+
+    /**
+     * Handles the case where no data is found for the requested dates.
+     */
+    void noDataFound();
 }
