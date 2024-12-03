@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import data_access.AstronomyPictureApiDataAccessObject; // will need to rename
+import data_access.AstronomyPictureApiDataAccessObject;
 import data_access.EventsDataAccessObject;
 import data_access.GeocoderDataAccessObject;
 import data_access.MoonPhaseDataAccessObject;
@@ -34,7 +34,7 @@ import interface_adapter.near_earth_objects.NearEarthObjectsController;
 import interface_adapter.near_earth_objects.NearEarthObjectsPresenter;
 import interface_adapter.star_chart.StarChartController;
 import interface_adapter.star_chart.StarChartPresenter;
-import use_case.apod_date.APODInteractor;
+import use_case.apod_date.ApodInteractor;
 import use_case.events.EventsInteractor;
 import use_case.geocoding.GeocodingInteractor;
 import use_case.moon_phase.MoonPhaseInteractor;
@@ -118,12 +118,12 @@ public class AppBuilder {
      * @return this builder
      */
 
-    public AppBuilder addApodView() { // will need to rename
+    public AppBuilder addApodView() {
         apodView = new APODView();
-        AstronomyPictureApiDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
-        ApodPresenter presenter = new ApodPresenter(apodView);
-        APODInteractor interactor = new APODInteractor(presenter, dataAccessObject, viewManager);
-        ApodController controller = new ApodController(interactor);
+        final AstronomyPictureApiDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
+        final ApodPresenter presenter = new ApodPresenter(apodView);
+        final ApodInteractor interactor = new ApodInteractor(presenter, dataAccessObject, viewManager);
+        final ApodController controller = new ApodController(interactor);
         apodView.setController(controller);
         cardPanel.add(apodView, apodView.getViewName());
         return this;

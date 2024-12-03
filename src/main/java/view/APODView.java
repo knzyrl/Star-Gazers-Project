@@ -59,13 +59,13 @@ public class APODView extends JPanel {
         fetchByDateButton.addActionListener(e -> {
             String date = dateInputField.getText();
             System.out.println("Fetching AstronomyPicture for date: " + date);
-            controller.fetchAPODByDate(date);
+            controller.fetchApodByDate(date);
         });
 
         // Fetch Button Action
         fetchButton.addActionListener(e -> {
             System.out.println("Fetch AstronomyPicture button clicked!");
-            controller.fetchAPOD();
+            controller.fetchApod();
         });
 
         // Back Button Action
