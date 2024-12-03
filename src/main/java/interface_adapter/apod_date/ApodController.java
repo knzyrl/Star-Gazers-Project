@@ -2,6 +2,11 @@ package interface_adapter.apod_date;
 
 import use_case.apod_date.APODInputBoundary;
 
+/**
+ * Class for controller for the Astronomical Picture of the Day use case.
+ * Gets input from the ApodView, packages it and sends it to the ApodInteractor.
+ */
+
 public class ApodController {
     private final APODInputBoundary interactor;
 

@@ -1,5 +1,10 @@
 package interface_adapter.display_moon_phase;
 
+/**
+ * Class for DisplayMoonController.
+ * Calls the DisplayMoonPhasePresenter.
+ */
+
 public class DisplayMoonPhaseController {
     private DisplayMoonPhasePresenter displayMoonPhasePresenter;
 

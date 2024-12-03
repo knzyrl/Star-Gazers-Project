@@ -9,6 +9,10 @@ import org.json.JSONObject;
 
 import entity.NearEarthObjectEntity;
 
+/**
+ * Class to parse through raw JSON data for Near Earth Objects use case.
+ */
+
 public class NearEarthObjectsJsonParser {
 
     /**
