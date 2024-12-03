@@ -7,6 +7,10 @@ public class HomeController {
         this.homePresenter = homePresenter;
     }
 
+    /**
+     * Calls the presenter to switch to a given view.
+     * @param viewName name of view to switch to
+     */
     public void execute(String viewName) {
         homePresenter.execute(viewName);
     }

@@ -7,6 +7,9 @@ public class DisplayMoonPhaseController {
         this.displayMoonPhasePresenter = displayMoonPhasePresenter;
     }
 
+    /**
+     * Calls the presenter to execute the return to home.
+     */
     public void execute() {
         displayMoonPhasePresenter.execute();
     }

@@ -11,8 +11,10 @@ import helper.NumberFormatChecker;
  * Encapsulates the location (latitude and longitude), the observation date, and the image URL.
  */
 public class StarChart {
-    private static final double MIN_LONGITUDE_LATITUDE = -180.0;
-    private static final double MAX_LONGITUDE_LATITUDE = 180.0;
+    private static final double MAX_LONGITUDE = 180.0;
+    private static final double MIN_LONGITUDE = -180.0;
+    private static final double MAX_LATITUDE = 90.0;
+    private static final double MIN_LATITUDE = -90.0;
 
     private String longitude;
     private String latitude;
@@ -43,13 +45,15 @@ public class StarChart {
      * @return {@code true} if the longitude is valid, {@code false} otherwise.
      */
     public boolean isValidLongitude() {
+        boolean result = false;
         if (!NumberFormatChecker.checkDouble(this.longitude)) {
-            return false;
+            result = false;
         }
-        else {
-            return Double.parseDouble(this.longitude) >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.longitude)
-                    <= MAX_LONGITUDE_LATITUDE;
+        else if (Double.parseDouble(this.longitude) >= MIN_LONGITUDE && Double.parseDouble(this.longitude)
+                <= MAX_LONGITUDE) {
+            result = true;
         }
+        return result;
     }
 
     /**
@@ -58,13 +62,15 @@ public class StarChart {
      * @return {@code true} if the latitude is valid, {@code false} otherwise.
      */
     public boolean isValidLatitude() {
-        if (!NumberFormatChecker.checkDouble(this.latitude)) {
-            return false;
+        boolean result = false;
+        if (!NumberFormatChecker.checkDouble(this.longitude)) {
+            result = false;
         }
-        else {
-            return Double.parseDouble(this.latitude) >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.latitude)
-                    <= MAX_LONGITUDE_LATITUDE;
+        else if (Double.parseDouble(this.longitude) >= MIN_LATITUDE && Double.parseDouble(this.longitude)
+                <= MAX_LATITUDE) {
+            result = true;
         }
+        return result;
     }
 
     /**
@@ -73,13 +79,15 @@ public class StarChart {
      * @return {@code true} if the date format is valid, {@code false} otherwise.
      */
     public boolean isValidDate() {
+        boolean result = false;
         try {
             fmt.parse(this.date);
         }
         catch (ParseException parseException) {
-            return false;
+            result = false;
         }
-        return true;
+        result = true;
+        return result;
     }
 
     /**
@@ -88,7 +96,7 @@ public class StarChart {
      * @return The right ascension as a {@code String}.
      */
     public String calcRa() {
-        return Double.toString(AstronomyCalculations.calcRA(this.longitude, this.date));
+        return Double.toString(AstronomyCalculations.calcRa(this.longitude, this.date));
     }
 
     /**

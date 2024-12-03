@@ -1,15 +1,15 @@
-package interface_adapter.APOD_date;
+package interface_adapter.apod_date;
+
+import javax.swing.SwingUtilities;
 
 import use_case.apod_date.APODOutputBoundary;
 import use_case.apod_date.APODOutputData;
 import view.APODView;
 
-import javax.swing.*;
-
-public class APODPresenter implements APODOutputBoundary {
+public class ApodPresenter implements APODOutputBoundary {
     private final APODView view;
 
-    public APODPresenter(APODView view) {
+    public ApodPresenter(APODView view) {
         this.view = view;
     }
 
@@ -19,11 +19,11 @@ public class APODPresenter implements APODOutputBoundary {
         System.out.println("AstronomyPicture URL: " + outputData.getUrl());
 
         SwingUtilities.invokeLater(() -> {
-            String title = outputData.getTitle();
-            String description = outputData.getDescription();
-            String mediaType = outputData.getMediaType();
-            String url = outputData.getUrl();
-            String thumbnailUrl = outputData.getThumbnailUrl();
+            final String title = outputData.getTitle();
+            final String description = outputData.getDescription();
+            final String mediaType = outputData.getMediaType();
+            final String url = outputData.getUrl();
+            final String thumbnailUrl = outputData.getThumbnailUrl();
 
             view.displayAPOD(title, description, mediaType, url, thumbnailUrl);
         });

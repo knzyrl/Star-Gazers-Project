@@ -1,6 +1,5 @@
 package interface_adapter.geocoding;
 
-import entity.Location;
 import use_case.geocoding.GeocodingOutputBoundary;
 import use_case.geocoding.GeocodingOutputData;
 import view.DisplayGeocoderView;
@@ -18,6 +17,10 @@ public class GeocodingPresenter implements GeocodingOutputBoundary {
         this.displayGeocoderView = displayGeocoderView;
     }
 
+    /**
+     * Calls the ViewManager to display the result.
+     * @param geocodingOutputData the data from the interactor
+     */
     public void execute(GeocodingOutputData geocodingOutputData) {
         displayGeocoderView.setLocation(geocodingOutputData);
 
@@ -27,19 +30,31 @@ public class GeocodingPresenter implements GeocodingOutputBoundary {
         viewManager.show("display geocoder");
     }
 
+    /**
+     * Calls the ViewManager to return to the previous view.
+     */
     public void executeBack() {
         viewManager.show("Geocoder view");
     }
 
+    /**
+     * Calls the ViewManager to switch to the "no address found" view.
+     */
     public void noAddressFound() {
         viewManager.show("No address found");
     }
 
+    /**
+     * Calls the ViewManager to return to the home view.
+     */
     public void executeHome() {
         viewManager.show("home");
     }
 
-    public void executeName() { viewManager.show("Name Geocoder view"); }
+    /**
+     * Calls the ViewManager to swtich to the name geocoder view.
+     */
+    public void executeName() {
+        viewManager.show("Name Geocoder view");
+    }
 }
-
-

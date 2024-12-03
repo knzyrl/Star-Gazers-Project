@@ -7,6 +7,9 @@ public class DisplayEventsController {
         this.displayEventsPresenter = displayEventsPresenter;
     }
 
+    /**
+     * Calls the presenter to execute the return to home.
+     */
     public void execute() {
         displayEventsPresenter.execute();
     }

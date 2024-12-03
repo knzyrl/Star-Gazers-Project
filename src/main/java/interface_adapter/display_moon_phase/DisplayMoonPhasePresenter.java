@@ -9,6 +9,9 @@ public class DisplayMoonPhasePresenter {
         this.viewManager = viewManager;
     }
 
+    /**
+     * Calls the ViewManager to return to the home view.
+     */
     public void execute() {
         viewManager.show("home");
     }
