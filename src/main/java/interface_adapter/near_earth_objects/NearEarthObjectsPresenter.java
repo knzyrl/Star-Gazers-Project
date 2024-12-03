@@ -36,7 +36,7 @@ public class NearEarthObjectsPresenter implements NearEarthObjectsOutputBoundary
      * Navigates back to the NEO input view.
      */
     public void back() {
-        viewManager.show("NEO view");
+        viewManager.show("home");
     }
 
     /**
