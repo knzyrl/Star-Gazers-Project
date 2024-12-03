@@ -6,7 +6,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import data_access.*;
+import data_access.AstronomyPictureApiDataAccessObject; // will need to rename
+import data_access.EventsDataAccessObject;
+import data_access.GeocoderDataAccessObject;
+import data_access.MoonPhaseDataAccessObject;
+import data_access.NasaNeoApiDataAccessObject;
+import data_access.StarChartDataAccessObject;
 import interface_adapter.apod_date.APODController;
 import interface_adapter.apod_date.APODPresenter;
 import interface_adapter.display_events.DisplayEventsController;
@@ -113,7 +118,7 @@ public class AppBuilder {
      * @return this builder
      */
 
-    public AppBuilder addAPODView() {
+    public AppBuilder addApodView() { // will need to rename
         apodView = new APODView();
         AstronomyPictureDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
         APODPresenter presenter = new APODPresenter(apodView);

@@ -11,6 +11,7 @@ import java.net.URL;
  * Data Access Object for retrieving Astronomy Picture of the Day (APOD) data from NASA's API.
  * Implements the AstronomyPictureDataAccessObject interface.
  */
+
 public class AstronomyPictureApiDataAccessObject implements AstronomyPictureDataAccessObject {
     private static final String API_KEY = "t0ffL1YMYJdWoGmEwkozuorP21pLnPtVaPvXdsi2";
     private static final String BASE_URL = "https://api.nasa.gov/planetary/apod";
@@ -36,6 +37,7 @@ public class AstronomyPictureApiDataAccessObject implements AstronomyPictureData
             if (responseCode == 200) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 StringBuilder response = new StringBuilder();
+
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine);
