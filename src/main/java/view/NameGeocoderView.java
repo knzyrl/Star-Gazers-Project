@@ -1,14 +1,19 @@
 package view;
 
-import interface_adapter.geocoding.GeocodingController;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class NameGeocoderView extends JPanel{
+import javax.swing.*;
+
+import interface_adapter.geocoding.GeocodingController;
+
+/**
+ * Class for the view for the Geocoder use cas where the user enters the name of the location for which they wish to see
+ * the latitude and longitude.
+ */
+public class NameGeocoderView extends JPanel {
     private GeocodingController geocodingController;
     private final String viewname = "Name Geocoder view";
     private final JTextField nameInput = new JTextField(20);
@@ -35,10 +40,11 @@ public class NameGeocoderView extends JPanel{
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource().equals(convert)) {
-                            String address = nameInput.getText();
+                            final String address = nameInput.getText();
                             try {
                                 geocodingController.execute(address);
-                            } catch (IOException ex) {
+                            }
+                            catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
                         }
@@ -57,7 +63,8 @@ public class NameGeocoderView extends JPanel{
                         if (e.getSource().equals(home)) {
                             try {
                                 geocodingController.executeHome();
-                            } catch (IOException ex) {
+                            }
+                            catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
                         }
@@ -80,7 +87,7 @@ public class NameGeocoderView extends JPanel{
                                     throw new RuntimeException(ex);
                                 }
                             }
-                            else{
+                            else {
                                 try {
                                     geocodingController.executeName();
                                 }
@@ -94,7 +101,6 @@ public class NameGeocoderView extends JPanel{
                     }
                 }
         );
-
 
         this.add(title);
         this.add(instruction);

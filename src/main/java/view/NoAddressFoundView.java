@@ -1,14 +1,13 @@
 package view;
 
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.*;
+
 import interface_adapter.geocoding.GeocodingController;
-import interface_adapter.geocoding.GeocodingPresenter;
 
 /**
  * Display when the address cannot be found.
@@ -35,7 +34,8 @@ public class NoAddressFoundView extends JPanel {
                         if (e.getSource().equals(retry)) {
                             try {
                                 geocodingController.executeBack();
-                            } catch (IOException ex) {
+                            }
+                            catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
                         }
@@ -55,6 +55,5 @@ public class NoAddressFoundView extends JPanel {
     public String getViewName() {
         return viewname;
     }
-
 
 }

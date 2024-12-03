@@ -1,18 +1,21 @@
 package view;
 
-import helper.NumberFormatChecker;
-import interface_adapter.events.EventsController;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
+import javax.swing.*;
+
+import interface_adapter.events.EventsController;
+
+/**
+ * Class to display the events to the user.
+ */
 public class EventsView extends JPanel {
+    private static final int START_DATE_FIELD_COLUMNS = 200;
+    private static final int END_DATE_FIELD_COLUMNS = 200;
     private final String viewName = "events";
     private EventsController eventsController;
     private final JTextField longInputField = new JTextField(20);
@@ -30,9 +33,10 @@ public class EventsView extends JPanel {
 
         final LabelTextPanel longInfo = new LabelTextPanel(new JLabel("Longitude"), longInputField);
         final LabelTextPanel latInfo = new LabelTextPanel(new JLabel("Latitude"), latInputField);
-        dateStartInputField.setColumns(20);
-        final LabelTextPanel dateStartInfo = new LabelTextPanel(new JLabel("Start Date (YYYY-MM-DD)"), dateStartInputField);
-        dateEndInputField.setColumns(20);
+        dateStartInputField.setColumns(START_DATE_FIELD_COLUMNS);
+        final LabelTextPanel dateStartInfo = new LabelTextPanel(new JLabel("Start Date (YYYY-MM-DD)"),
+                dateStartInputField);
+        dateEndInputField.setColumns(END_DATE_FIELD_COLUMNS);
         final LabelTextPanel dateEndInfo = new LabelTextPanel(new JLabel("End Date (YYYY-MM-DD)"), dateEndInputField);
 
         final JPanel comboBoxPanel = new JPanel();
@@ -48,11 +52,11 @@ public class EventsView extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource().equals(show)) {
-                            String longitude = longInputField.getText();
-                            String latitude = latInputField.getText();
-                            String dateStart = dateStartInputField.getText();
-                            String dateEnd = dateEndInputField.getText();
-                            String body = comboBox.getSelectedItem().toString();
+                            final String longitude = longInputField.getText();
+                            final String latitude = latInputField.getText();
+                            final String dateStart = dateStartInputField.getText();
+                            final String dateEnd = dateEndInputField.getText();
+                            final String body = comboBox.getSelectedItem().toString();
                             eventsController.execute(longitude, latitude, dateStart, dateEnd, body);
                         }
                     }
