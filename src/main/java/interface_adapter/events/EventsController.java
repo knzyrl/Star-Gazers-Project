@@ -3,6 +3,11 @@ package interface_adapter.events;
 import use_case.events.EventsInputData;
 import use_case.events.EventsInteractor;
 
+/**
+ * Class for Controller for Events use case.
+ * Gets input data from the user through the View, packages it and passes it to EventsInteractor.
+ */
+
 public class EventsController {
     private final EventsInteractor eventsInteractor;
 

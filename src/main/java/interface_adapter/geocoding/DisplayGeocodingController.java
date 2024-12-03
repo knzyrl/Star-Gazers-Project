@@ -1,5 +1,9 @@
 package interface_adapter.geocoding;
 
+/**
+ * Class for the controller for Display Geocoding.
+ * Calls DisplayGeocodingPresenter when the user clicks the Back button.
+ */
 public class DisplayGeocodingController {
     private DisplayGeocodingPresenter presenter;
 

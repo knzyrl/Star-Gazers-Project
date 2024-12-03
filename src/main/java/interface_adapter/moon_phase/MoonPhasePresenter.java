@@ -4,6 +4,12 @@ import use_case.moon_phase.MoonPhaseOutputBoundary;
 import use_case.moon_phase.MoonPhaseOutputData;
 import view.ViewManager;
 
+/**
+ * Class for Presenter for the Moon Phase use case.
+ * Implements the MoonPhaseOutputBoundary interface.
+ * Receives output data from MoonPhaseInteractor.
+ * Updates the view displayed to the user by communicating with the ViewManager.
+ */
 public class MoonPhasePresenter implements MoonPhaseOutputBoundary {
     private ViewManager viewManager;
 

@@ -3,6 +3,10 @@ package interface_adapter.near_earth_objects;
 import use_case.near_earth_objects.NearEarthObjectsInputBoundary;
 import use_case.near_earth_objects.NearEarthObjectsInputData;
 
+/**
+ * Class for the Controller for the Near Earth Objects use case.
+ * Receives user input from the view, packages it, and sends it to NearEarthObjectsInteractor.
+ */
 public class NearEarthObjectsController {
     private final NearEarthObjectsInputBoundary interactor;
 
