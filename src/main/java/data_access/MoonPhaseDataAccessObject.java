@@ -7,6 +7,7 @@ import kong.unirest.core.Unirest;
 
 /**
  * Data Access Object for interacting with the Moon Phase API.
+ * Implements the AstronomyApiDataAccessObject interface.
  * Provides methods to execute queries for moon phase data using Astronomy API.
  */
 public class MoonPhaseDataAccessObject implements AstronomyApiDataAccessObject {
@@ -20,6 +21,8 @@ public class MoonPhaseDataAccessObject implements AstronomyApiDataAccessObject {
      *         The method trims unnecessary metadata from the response.
      * @throws RuntimeException If an error occurs while executing the query.
      */
+
+    @SuppressWarnings("checkstyle:MagicNumber")
     @Override
     public String executeQuery(String query) {
         final String appId = "44f82562-233e-4f52-af5d-ca47ea0decc6";
@@ -35,18 +38,4 @@ public class MoonPhaseDataAccessObject implements AstronomyApiDataAccessObject {
         return response.getBody().substring(21, response.getBody().length() - 3);
     }
 
-    /**
-     * Main method for testing the functionality of the MoonPhaseDataAccessObject.
-     * Sends a sample JSON query to the Moon Phase API and prints the result.
-     * The query includes the observer's location, date, and display style.
-     *
-     * @param args Command-line arguments (not used in this implementation).
-     */
-    public static void main(String[] args) {
-        final MoonPhaseDataAccessObject moondao = new MoonPhaseDataAccessObject();
-        System.out.println(moondao.executeQuery("{\"style\":{\"moonStyle\":\"default\","
-                + "\"backgroundStyle\":\"stars\",\"backgroundColor\":\"#000000\",\"headingColor\":\"#ffffff\","
-                + "\"textColor\":\"#ffffff\"},\"observer\":{\"latitude\":33.775867,\"longitude\":-84.39733,\"date"
-                + "\":\"2024-11-08\"},\"view\":{\"type\":\"portrait-simple\",\"parameters\":{}}}"));
-    }
 }

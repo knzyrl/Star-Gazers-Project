@@ -23,17 +23,22 @@ public class MoonPhaseInteractor implements MoonPhaseInputBoundary {
 //        final String ra = Double.toString(AstronomyCalculations.calcRA(longitude, date));
 //        final String declination = Double.toString(Math.round(Double.parseDouble(latitude)));
 
-        final String query = String.format("{\"style\":{\"moonStyle\":\"default\",\"backgroundStyle\":\"stars\",\"backgroundColor\":\"#000000\",\"headingColor\":\"#ffffff\",\"textColor\":\"#ffffff\"},\"observer\":{\"latitude\":%s,\"longitude\":%s,\"date\":\"%s\"},\"view\":{\"type\":\"portrait-simple\",\"parameters\":{}}}", latitude, longitude, date);
+        final String query = String.format("{\"style\":{\"moonStyle\":\"default\",\"backgroundStyle\":\"stars\",\"backgroundColor\":" +
+                "\"#000000\",\"headingColor\":\"#ffffff\",\"textColor\":\"#ffffff\"},\"observer\":{\"latitude\":%s,\"longitude\":%s," +
+                "\"date\":\"%s\"},\"view\":{\"type\":\"portrait-simple\",\"parameters\":{}}}", latitude, longitude, date);
         final String imageURL = moonPhaseDAO.executeQuery(query);
 
         final MoonPhase moonPhase = new MoonPhase(longitude, latitude, date, imageURL);
 
         if (!(moonPhase.validLatitudeFormat()) || !(moonPhase.validLongitudeFormat()) || !(moonPhase.validDateFormat())) {
-            moonPhasePresenter.prepareFailView("Invalid format. Please ensure that the date is in YYYY-MM-DD format, and that the latitude and longitude are both in decimal format.");
+            moonPhasePresenter.prepareFailView("Invalid format. Please ensure that the date is in YYYY-MM-DD format, and that the" +
+                    " latitude and longitude are both in decimal format.");
         } else if (!(moonPhase.validLatitudeValue()) || !(moonPhase.validLongitudeValue())) {
-            moonPhasePresenter.prepareFailView("Invalid value. Ensure that latitude is between -90.00 and 90.00 and longitude is between -180.00 and 180.00.");
+            moonPhasePresenter.prepareFailView("Invalid value. Ensure that latitude is between -90.00 and 90.00 and longitude is" +
+                    " between -180.00 and 180.00.");
         } else {
-            MoonPhaseOutputData moonPhaseOutputData = new MoonPhaseOutputData(moonPhase.getLatitude(), moonPhase.getLongitude(), moonPhase.getDate(), moonPhase.getImgUrl(), false);
+            MoonPhaseOutputData moonPhaseOutputData = new MoonPhaseOutputData(moonPhase.getLatitude(), moonPhase.getLongitude(),
+                    moonPhase.getDate(), moonPhase.getImgUrl(), false);
             moonPhasePresenter.displayMoonPhase(moonPhaseOutputData);
         }
 

@@ -1,5 +1,10 @@
 package interface_adapter.display_star_chart;
 
+/**
+ * Class for the controller for Display Star Chart.
+ * Calls the DisplayStarChartPresenter.
+ */
+
 public class DisplayStarChartController {
     private DisplayStarChartPresenter displayStarChartPresenter;
 
