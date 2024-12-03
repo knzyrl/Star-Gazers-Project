@@ -2,6 +2,12 @@ package interface_adapter.display_moon_phase;
 
 import view.ViewManager;
 
+/**
+ * Class for DisplayMoonPhasePresenter.
+ * Responsible for presenting the display of the use case.
+ * Allows the user to revert to the home screen.
+ */
+
 public class DisplayMoonPhasePresenter {
     private ViewManager viewManager;
 

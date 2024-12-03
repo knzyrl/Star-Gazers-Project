@@ -2,6 +2,10 @@ package helper;
 
 import java.util.regex.Pattern;
 
+/**
+ * Class to determine whether a given string's value is a double.
+ */
+
 public class NumberFormatChecker {
     /**
      * Checks whether the given string dits the pattern for a double or not.

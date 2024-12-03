@@ -12,6 +12,7 @@ import java.net.URL;
  * This class provides methods to fetch AstronomyPicture data for the current date or a specific date.
  */
 public class AstronomyPictureApiDataAccessObject {
+    private static final int VALID_RESPONSE_CODE = 200;
     private static final String API_KEY = "t0ffL1YMYJdWoGmEwkozuorP21pLnPtVaPvXdsi2";
     private static final String BASE_URL = "https://api.nasa.gov/planetary/apod";
 
@@ -49,7 +50,7 @@ public class AstronomyPictureApiDataAccessObject {
             final int responseCode = connection.getResponseCode();
             System.out.println("Response Code: " + responseCode);
 
-            if (responseCode == 200) {
+            if (responseCode == VALID_RESPONSE_CODE) {
                 final BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 final StringBuilder response = new StringBuilder();
                 String inputLine;

@@ -34,4 +34,3 @@ public class NearEarthObjectEntity {
         return relativeVelocity;
     }
 }
-

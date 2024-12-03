@@ -63,13 +63,8 @@ public class EventsList {
      * @return {@code true} if longitude is valid, otherwise {@code false}.
      */
     public boolean isValidLongitude() {
-        if (!NumberFormatChecker.checkDouble(this.longitude)) {
-            return false;
-        }
-        else {
-            return Double.parseDouble(this.longitude) >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.longitude)
-                    <= MAX_LONGITUDE_LATITUDE;
-        }
+        return !NumberFormatChecker.checkDouble(this.longitude) && Double.parseDouble(this.longitude)
+                >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.longitude) <= MAX_LONGITUDE_LATITUDE;
     }
 
     /**
@@ -78,13 +73,8 @@ public class EventsList {
      * @return {@code true} if latitude is valid, otherwise {@code false}.
      */
     public boolean isValidLatitude() {
-        if (!NumberFormatChecker.checkDouble(this.latitude)) {
-            return false;
-        }
-        else {
-            return Double.parseDouble(this.latitude) >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.latitude)
-                    <= MAX_LONGITUDE_LATITUDE;
-        }
+        return !NumberFormatChecker.checkDouble(this.latitude) && Double.parseDouble(this.latitude)
+                >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.latitude) <= MAX_LONGITUDE_LATITUDE;
     }
 
     /**

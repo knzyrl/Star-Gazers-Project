@@ -3,7 +3,7 @@ package data_access;
 import java.util.List;
 
 /**
- * Abstract class for accessing geocoding data from an API.
+ * Interface for accessing geocoding data from an API.
  * Provides a base structure for implementing geocoding functionality, such as converting
  * an address into geographical coordinates or other location-based data.
  */

@@ -23,18 +23,19 @@ public class GeocoderDataAccessObject implements GeocoderApiDataAccessObject {
      */
 
     public List<String> converter(String address) {
-        final String API_KEY = "6733f872eb948162981545fld4fe0b0";
+        final String apiKey = "6733f872eb948162981545fld4fe0b0";
         final List<String> longlat = new ArrayList();
+        final int validResponseCode = 200;
 
         final String encodedAddress = "1600+Amphitheatre+Parkway+Mountain+View";
         final String newAddress = address.replace("\\s", "+");
 
-        final String url = "https://geocode.maps.co/search?q=" + newAddress + "&api_key=" + API_KEY;
+        final String url = "https://geocode.maps.co/search?q=" + newAddress + "&api_key=" + apiKey;
 
         final HttpResponse<String> response = Unirest.get(url).asString();
 
         // Handle the response
-        if (response.getStatus() == 200) {
+        if (response.getStatus() == validResponseCode) {
             final String responseBody = response.getBody();
 
             String lat = null;
@@ -77,13 +78,5 @@ public class GeocoderDataAccessObject implements GeocoderApiDataAccessObject {
         }
 
     }
-
-    /**
-     * Main method for testing the functionality of the GeocoderDataAccessObject.
-     * Sends a sample query to the Geocode API to fetch the latitude, longitude,
-     * and display name for a specified address.
-     *
-     * @param args Command-line arguments (not used).
-     */
 
 }

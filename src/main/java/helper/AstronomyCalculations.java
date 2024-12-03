@@ -5,6 +5,10 @@ import static java.time.temporal.ChronoUnit.DAYS;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Class to perform Astronomy calculations for Star Chart use case.
+ */
+
 public class AstronomyCalculations {
     private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final LocalDate MJD_START = LocalDate.of(1858, 11, 17);
