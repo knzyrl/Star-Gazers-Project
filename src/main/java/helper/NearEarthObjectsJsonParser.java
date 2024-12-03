@@ -19,41 +19,64 @@ public class NearEarthObjectsJsonParser {
      * @throws IllegalArgumentException If the JSON parsing fails.
      */
     public static List<NearEarthObjectEntity> parse(String rawJson) {
+        if (rawJson == null || rawJson.isEmpty()) {
+            throw new IllegalArgumentException("Input JSON string is null or empty.");
+        }
+
         final List<NearEarthObjectEntity> neoEntities = new ArrayList<>();
 
         try {
-
             final JSONObject root = new JSONObject(rawJson);
-            final JSONObject nearEarthObjects = root.getJSONObject("near_earth_objects");
+            final JSONObject nearEarthObjects = root.optJSONObject("near_earth_objects");
 
-            for (String date : nearEarthObjects.keySet()) {
-                final JSONArray asteroids = nearEarthObjects.getJSONArray(date);
-
-                for (int i = 0; i < asteroids.length(); i++) {
-                    final JSONObject asteroid = asteroids.getJSONObject(i);
-
-                    final String name = asteroid.getString("name");
-                    final JSONArray closeApproachData = asteroid.getJSONArray("close_approach_data");
-                    final JSONObject firstCloseApproach = closeApproachData.getJSONObject(0);
-                    final String closestApproachDate = firstCloseApproach.getString("close_approach_date");
-                    final double closestDistanceKm = firstCloseApproach.getJSONObject("miss_distance")
-                            .getDouble("kilometers");
-                    final double relativeVelocity = firstCloseApproach.getJSONObject("relative_velocity")
-                            .getDouble("kilometers_per_hour");
-
-                    neoEntities.add(new NearEarthObjectEntity(name, closestApproachDate, closestDistanceKm,
-                            relativeVelocity));
-                }
+            if (nearEarthObjects == null) {
+                // Return an empty list instead of throwing an exception
+                return neoEntities;
             }
 
+            for (String date : nearEarthObjects.keySet()) {
+                final JSONArray asteroids = nearEarthObjects.optJSONArray(date);
+                if (asteroids == null) {
+                    continue;
+                }
+
+                for (int i = 0; i < asteroids.length(); i++) {
+                    final JSONObject asteroid = asteroids.optJSONObject(i);
+                    if (asteroid == null) {
+                        continue;
+                    }
+
+                    final String name = asteroid.optString("name", "Unknown");
+                    final JSONArray closeApproachData = asteroid.optJSONArray("close_approach_data");
+
+                    if (closeApproachData != null && !closeApproachData.isEmpty()) {
+                        final JSONObject firstCloseApproach = closeApproachData.optJSONObject(0);
+                        if (firstCloseApproach != null) {
+                            final String closestApproachDate = firstCloseApproach.optString("close_approach_date",
+                                    "Unknown");
+                            final double closestDistanceKm = firstCloseApproach.optJSONObject("miss_distance")
+                                    .optDouble("kilometers", -1);
+                            final double relativeVelocity = firstCloseApproach.optJSONObject("relative_velocity")
+                                    .optDouble("kilometers_per_hour", -1);
+
+                            neoEntities.add(new NearEarthObjectEntity(name, closestApproachDate, closestDistanceKm,
+                                    relativeVelocity));
+                        }
+                    }
+                    else {
+
+                        neoEntities.add(new NearEarthObjectEntity(name, "Unknown",
+                                -1, -1));
+                    }
+                }
+            }
         }
-        catch (JSONException jsonException) {
-            throw new IllegalArgumentException(
-                    "Error parsing JSON data for Near Earth Objects: " + jsonException.getMessage(),
-                    jsonException
-            );
+        catch (JSONException exception) {
+            throw new IllegalArgumentException("Error parsing JSON data for Near Earth Objects: "
+                    + exception.getMessage(), exception);
         }
 
         return neoEntities;
     }
+
 }
