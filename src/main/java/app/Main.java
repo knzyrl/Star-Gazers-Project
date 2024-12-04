@@ -2,6 +2,9 @@ package app;
 
 import javax.swing.JFrame;
 
+/**
+ * Main class to run the program.
+ */
 public class Main {
     /**
      * Builds and runs the CA architecture of the application.
