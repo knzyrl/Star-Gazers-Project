@@ -45,7 +45,7 @@ public class MoonPhaseInteractor implements MoonPhaseInputBoundary {
         if (!(moonPhase.validLatitudeFormat()) || !(moonPhase.validLongitudeFormat())
                 || !(moonPhase.validDateFormat())) {
             moonPhasePresenter.prepareFailView("Invalid format. Please ensure that the date is in YYYY-MM-DD format,"
-                    + "and that the latitude and longitude are both in decimal format.");
+                    + " and that the latitude and longitude are both in decimal format.");
         }
         else if (!(moonPhase.validLatitudeValue()) || !(moonPhase.validLongitudeValue())) {
             moonPhasePresenter.prepareFailView("Invalid value. Ensure that latitude is between -90.00 and 90.00 and "
