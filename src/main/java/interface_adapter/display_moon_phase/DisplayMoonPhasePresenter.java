@@ -1,6 +1,6 @@
 package interface_adapter.display_moon_phase;
 
-import view.ViewManager;
+import interface_adapter.ViewManager;
 
 /**
  * Class for DisplayMoonPhasePresenter.

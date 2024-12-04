@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 import use_case.apod_date.ApodInteractor;
 import use_case.apod_date.ApodOutputBoundary;
 import use_case.apod_date.ApodOutputData;
-import view.ViewManager;
+import interface_adapter.ViewManager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

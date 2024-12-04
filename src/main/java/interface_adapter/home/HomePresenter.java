@@ -1,6 +1,6 @@
 package interface_adapter.home;
 
-import view.ViewManager;
+import interface_adapter.ViewManager;
 
 /**
  * Class for the Presenter for Home.

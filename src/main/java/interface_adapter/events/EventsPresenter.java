@@ -2,7 +2,7 @@ package interface_adapter.events;
 
 import use_case.events.EventsOutputBoundary;
 import use_case.events.EventsOutputData;
-import view.ViewManager;
+import interface_adapter.ViewManager;
 
 /**
  * Class for Presenter for the Events class.

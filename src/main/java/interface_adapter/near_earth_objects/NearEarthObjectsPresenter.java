@@ -3,9 +3,10 @@ package interface_adapter.near_earth_objects;
 import java.util.List;
 
 import entity.NearEarthObjectEntity;
+import interface_adapter.ViewManager;
 import use_case.near_earth_objects.NearEarthObjectsOutputBoundary;
+import use_case.near_earth_objects.NearEarthObjectsOutputData;
 import view.DisplayNearEarthObjectsView;
-import view.ViewManager;
 
 /**
  * Class for the Presenter for the Near Earth Objects use case.
@@ -26,8 +27,8 @@ public class NearEarthObjectsPresenter implements NearEarthObjectsOutputBoundary
     }
 
     @Override
-    public void presentNearEarthObjectsData(List<NearEarthObjectEntity> neoEntities) {
-        displayNearEarthObjectsView.displayNearEarthObjectsData(neoEntities);
+    public void presentNearEarthObjectsData(List<NearEarthObjectsOutputData> neoOutputData) {
+        viewManager.displayNearEarthObjectsData(neoOutputData);
         viewManager.getViews().add(displayNearEarthObjectsView, displayNearEarthObjectsView.getViewName());
         viewManager.show(displayNearEarthObjectsView.getViewName());
     }

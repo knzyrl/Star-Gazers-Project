@@ -1,20 +1,17 @@
 package interface_adapter.geocoding;
 
+import interface_adapter.ViewManager;
 import use_case.geocoding.GeocodingOutputBoundary;
 import use_case.geocoding.GeocodingOutputData;
-import view.DisplayGeocoderView;
-import view.ViewManager;
 
 /**
  * Presenter for the geocoding use case.
  */
 public class GeocodingPresenter implements GeocodingOutputBoundary {
     private ViewManager viewManager;
-    private DisplayGeocoderView displayGeocoderView;
 
-    public GeocodingPresenter(ViewManager viewManager, DisplayGeocoderView displayGeocoderView) {
+    public GeocodingPresenter(ViewManager viewManager) {
         this.viewManager = viewManager;
-        this.displayGeocoderView = displayGeocoderView;
     }
 
     /**
@@ -22,12 +19,7 @@ public class GeocodingPresenter implements GeocodingOutputBoundary {
      * @param geocodingOutputData the data from the interactor
      */
     public void execute(GeocodingOutputData geocodingOutputData) {
-        displayGeocoderView.setLocation(geocodingOutputData);
-
-        displayGeocoderView.displayLocation();
-
-        viewManager.getViews().add(displayGeocoderView, "display geocoder");
-        viewManager.show("display geocoder");
+        viewManager.displayLocation(geocodingOutputData);
     }
 
     /**

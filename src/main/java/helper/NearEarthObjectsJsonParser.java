@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import entity.NearEarthObjectEntity;
+import use_case.near_earth_objects.NearEarthObjectsOutputData;
 
 /**
  * Class to parse through raw JSON data for Near Earth Objects use case.
@@ -22,12 +23,12 @@ public class NearEarthObjectsJsonParser {
      * @return A list of NearEarthObjectEntity objects.
      * @throws IllegalArgumentException If the JSON parsing fails.
      */
-    public static List<NearEarthObjectEntity> parse(String rawJson) {
+    public static List<NearEarthObjectsOutputData> parse(String rawJson) {
         if (rawJson == null || rawJson.isEmpty()) {
             throw new IllegalArgumentException("Input JSON string is null or empty.");
         }
 
-        final List<NearEarthObjectEntity> neoEntities = new ArrayList<>();
+        final List<NearEarthObjectsOutputData> neoOutputData = new ArrayList<>();
 
         try {
             final JSONObject root = new JSONObject(rawJson);
@@ -35,7 +36,7 @@ public class NearEarthObjectsJsonParser {
 
             if (nearEarthObjects == null) {
                 // Return an empty list instead of throwing an exception
-                return neoEntities;
+                return neoOutputData;
             }
 
             for (String date : nearEarthObjects.keySet()) {
@@ -63,14 +64,12 @@ public class NearEarthObjectsJsonParser {
                             final double relativeVelocity = firstCloseApproach.optJSONObject("relative_velocity")
                                     .optDouble("kilometers_per_hour", -1);
 
-                            neoEntities.add(new NearEarthObjectEntity(name, closestApproachDate, closestDistanceKm,
-                                    relativeVelocity));
+                            neoOutputData.add(new NearEarthObjectsOutputData(name, closestApproachDate, closestDistanceKm, relativeVelocity));
                         }
                     }
                     else {
 
-                        neoEntities.add(new NearEarthObjectEntity(name, "Unknown",
-                                -1, -1));
+                        neoOutputData.add(new NearEarthObjectsOutputData(name, "Unknown", -1, -1));
                     }
                 }
             }
@@ -80,7 +79,7 @@ public class NearEarthObjectsJsonParser {
                     + exception.getMessage(), exception);
         }
 
-        return neoEntities;
+        return neoOutputData;
     }
 
 }

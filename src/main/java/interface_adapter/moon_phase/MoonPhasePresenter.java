@@ -1,8 +1,8 @@
 package interface_adapter.moon_phase;
 
+import interface_adapter.ViewManager;
 import use_case.moon_phase.MoonPhaseOutputBoundary;
 import use_case.moon_phase.MoonPhaseOutputData;
-import view.ViewManager;
 
 /**
  * Class for Presenter for the Moon Phase use case.
@@ -19,7 +19,7 @@ public class MoonPhasePresenter implements MoonPhaseOutputBoundary {
 
     /**
      * Calls the ViewManager to display the ouput.
-     * @param moonPhaseOutputData output data from the interactor
+     * @param moonPhaseOutputData output data from the interactor.
      */
     public void displayMoonPhase(MoonPhaseOutputData moonPhaseOutputData) {
         viewManager.displayMoonPhase(moonPhaseOutputData);

@@ -149,7 +149,7 @@ public class NearEarthObjectsInteractorTest {
                 }
                 """;
 
-        List<NearEarthObjectEntity> result = NearEarthObjectsJsonParser.parse(validJsonResponse);
+        List<NearEarthObjectsOutputData> result = NearEarthObjectsJsonParser.parse(validJsonResponse);
         assertEquals(1, result.size());
         assertEquals("Asteroid A", result.get(0).getName());
         assertEquals(120000.5, result.get(0).getClosestDistanceKm());
@@ -172,7 +172,7 @@ public class NearEarthObjectsInteractorTest {
     public void testParseResponse_EmptyJSON() {
         String emptyJson = "{}";
 
-        List<NearEarthObjectEntity> result = NearEarthObjectsJsonParser.parse(emptyJson);
+        List<NearEarthObjectsOutputData> result = NearEarthObjectsJsonParser.parse(emptyJson);
 
         assertTrue(result.isEmpty(), "The result should be an empty list when 'near_earth_objects' is missing.");
     }
