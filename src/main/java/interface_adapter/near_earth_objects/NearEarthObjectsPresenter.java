@@ -21,8 +21,8 @@ public class NearEarthObjectsPresenter implements NearEarthObjectsOutputBoundary
         this.viewManager = viewManager;
     }
 
-    public void setDisplayNeoView(DisplayNearEarthObjectsView displayNearEarthObjectsView) {
-        this.displayNearEarthObjectsView = displayNearEarthObjectsView;
+    public void setDisplayNeoView(DisplayNearEarthObjectsView view) {
+        this.displayNearEarthObjectsView = view;
     }
 
     @Override

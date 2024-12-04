@@ -115,8 +115,8 @@ public class GeocoderView extends JPanel {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
-    public void setGeoCodingController(GeocodingController geocodingController) {
-        this.geocodingController = geocodingController;
+    public void setGeoCodingController(GeocodingController controller) {
+        this.geocodingController = controller;
     }
 
     public String getViewName() {
