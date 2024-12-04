@@ -1,10 +1,5 @@
 package view;
 
-import interface_adapter.display_moon_phase.DisplayMoonPhaseController;
-import use_case.moon_phase.MoonPhaseOutputData;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +7,15 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+import interface_adapter.display_moon_phase.DisplayMoonPhaseController;
+import use_case.moon_phase.MoonPhaseOutputData;
+
+/**
+ * Class to display the moon phase to the user.
+ */
 public class DisplayMoonPhaseView extends JPanel {
     private final String viewName = "display Moon Phase";
     private DisplayMoonPhaseController displayMoonPhaseController;
@@ -25,21 +29,27 @@ public class DisplayMoonPhaseView extends JPanel {
         this.displayMoonPhaseController = displayMoonPhaseController;
     }
 
+    /**
+     * Method to display the moon phase to the user based on their inputs.
+     * @param moonPhaseOutputData according to which the Moon Phase must be displayed.
+     */
     public void refresh(MoonPhaseOutputData moonPhaseOutputData) {
         this.removeAll();
 
-        final JLabel title = new JLabel(String.format("Moon Phase for %s, %s on %s", moonPhaseOutputData.getLongitude(), moonPhaseOutputData.getLatitude(), moonPhaseOutputData.getDate()));
+        final JLabel title = new JLabel(String.format("Moon Phase for %s, %s on %s", moonPhaseOutputData.getLongitude(),
+                moonPhaseOutputData.getLatitude(), moonPhaseOutputData.getDate()));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        String imgURL = moonPhaseOutputData.getImageURL();
+        final String imgURL = moonPhaseOutputData.getImageURL();
         BufferedImage image = null;
         try {
-            URL url = new URL(imgURL);
+            final URL url = new URL(imgURL);
             image = ImageIO.read(url);
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
         }
-        JLabel moonPhaseImg = new JLabel(new ImageIcon(image));
+        catch (IOException action) {
+            System.err.println(action.getMessage());
+        }
+        final JLabel moonPhaseImg = new JLabel(new ImageIcon(image));
 
         final JPanel backButtonPanel = new JPanel();
         back = new JButton("Back");

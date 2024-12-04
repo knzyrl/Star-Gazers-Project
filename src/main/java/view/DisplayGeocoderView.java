@@ -1,17 +1,15 @@
 package view;
 
-import entity.Location;
-import entity.StarChart;
-import interface_adapter.display_star_chart.DisplayStarChartController;
-import interface_adapter.geocoding.DisplayGeocodingController;
-import interface_adapter.geocoding.GeocodingController;
-import use_case.geocoding.GeocodingOutputData;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+
+import javax.swing.*;
+
+import interface_adapter.geocoding.DisplayGeocodingController;
+import interface_adapter.geocoding.GeocodingController;
+import use_case.geocoding.GeocodingOutputData;
 
 /**
  * Display for the longtitude and latitude of the address.
@@ -31,31 +29,35 @@ public class DisplayGeocoderView extends JPanel {
         this.geocodingController = geocodingController;
     }
 
+    /**
+     * Method to display the longitude and latitude of the location.
+     */
     public void displayLocation() {
         this.removeAll();
 
-        JLabel title = new JLabel(geocodingOutputData.getAddress());
+        final JLabel title = new JLabel(geocodingOutputData.getAddress());
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Label for the lat and long
-        JLabel latitude = new JLabel("The latitude for the address is " +geocodingOutputData.getLatitude());
-        JLabel longtitude = new JLabel("The longitude for the address is " +geocodingOutputData.getLongitude());
+        final JLabel latitude = new JLabel("The latitude for the address is " + geocodingOutputData.getLatitude());
+        final JLabel longtitude = new JLabel("The longitude for the address is " + geocodingOutputData.getLongitude());
 
         latitude.setAlignmentX(Component.CENTER_ALIGNMENT);
         longtitude.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Home button panel
-        JPanel backPanel = new JPanel();
+        final JPanel backPanel = new JPanel();
         home = new JButton("Home");
         backPanel.add(home);
 
         home.addActionListener(new ActionListener() {
 
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource().equals(home)) {
+            public void actionPerformed(ActionEvent action) {
+                if (action.getSource().equals(home)) {
                     try {
                         geocodingController.executeHome();
-                    } catch (IOException ex) {
+                    }
+                    catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
                 }
@@ -74,4 +76,3 @@ public class DisplayGeocoderView extends JPanel {
         return viewName;
     }
 }
-

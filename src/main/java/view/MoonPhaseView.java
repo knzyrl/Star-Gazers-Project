@@ -1,8 +1,5 @@
 package view;
 
-import interface_adapter.moon_phase.MoonPhaseController;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,8 +7,16 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import javax.swing.*;
+
+import interface_adapter.moon_phase.MoonPhaseController;
+
+/**
+ * Class for the view for the Moon Phase use case where the user enters their input.
+ */
 public class MoonPhaseView extends JPanel {
 
+    private static final int DATE_FIELD_COLUMNS = 20;
     private final String viewName = "moon phase";
 
     private MoonPhaseController moonPhaseController;
@@ -33,7 +38,7 @@ public class MoonPhaseView extends JPanel {
 
         final LabelTextPanel longInfo = new LabelTextPanel(new JLabel("Longitude"), longInputField);
         final LabelTextPanel latInfo = new LabelTextPanel(new JLabel("Latitude"), latInputField);
-        dateInputField.setColumns(20);
+        dateInputField.setColumns(DATE_FIELD_COLUMNS);
         final LabelTextPanel dateInfo = new LabelTextPanel(new JLabel("Date (YYYY-MM-DD)"), dateInputField);
 
         final JPanel generateButtonPanel = new JPanel();
@@ -44,12 +49,13 @@ public class MoonPhaseView extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource().equals(generate)) {
-                            String longitude = longInputField.getText();
-                            String latitude = latInputField.getText();
-                            String date = dateInputField.getText();
+                            final String longitude = longInputField.getText();
+                            final String latitude = latInputField.getText();
+                            final String date = dateInputField.getText();
                             try {
                                 moonPhaseController.execute(longitude, latitude, date);
-                            } catch (IOException ex) {
+                            }
+                            catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
                         }

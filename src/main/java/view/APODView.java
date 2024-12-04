@@ -1,12 +1,29 @@
 package view;
 
-import interface_adapter.apod_date.ApodController; //rename
-
-import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
 
+import javax.swing.*;
+
+// rename
+import interface_adapter.apod_date.ApodController;
+
+/**
+ * Class for the View displayed to the user when they select the Astronomical Picture of the Day use case from the
+ * Home View.
+ */
 public class APODView extends JPanel {
+    private static final int FETCH_BUTTON_WIDTH = 200;
+    private static final int FETCH_BUTTON_HEIGHT = 30;
+    private static final int FETCH_BY_DATE_BUTTON_WIDTH = 150;
+    private static final int FETCH_BY_DATE_BUTTON_HEIGHT = 30;
+    private static final int BACK_BUTTON_WIDTH = 100;
+    private static final int BACK_BUTTON_HEIGHT = 30;
+    private static final int DATE_INPUT_FIELD_WIDTH = 100;
+    private static final int DATE_INPUT_FIELD_HEIGHT = 30;
+    private static final int PLAY_BUTTON_WIDTH = 150;
+    private static final int PLAY_BUTTON_HEIGHT = 30;
+    private static final int TITLE_LABEL_SIZE = 18;
     private final JLabel titleLabel = new JLabel();
     private final JTextArea descriptionArea = new JTextArea();
     private final JLabel imageLabel = new JLabel();
@@ -14,8 +31,9 @@ public class APODView extends JPanel {
     private final JButton backButton = new JButton("Back");
     private final JButton fetchByDateButton = new JButton("Fetch by Date");
     private final JTextField dateInputField = new JTextField("YYYY-MM-DD", 10);
-    private final JPanel persistentButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Persistent Buttons
-    private JButton playButton = null;
+    // Persistent Buttons
+    private final JPanel persistentButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    private JButton playButton;
     private String currentImageUrl;
 
     public APODView() {
@@ -23,7 +41,7 @@ public class APODView extends JPanel {
 
         // Title label
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, TITLE_LABEL_SIZE));
         add(titleLabel, BorderLayout.NORTH);
 
         // Description area
@@ -37,10 +55,10 @@ public class APODView extends JPanel {
         add(imageLabel, BorderLayout.EAST);
 
         // Persistent Buttons
-        fetchButton.setPreferredSize(new Dimension(200, 30));
-        fetchByDateButton.setPreferredSize(new Dimension(150, 30));
-        backButton.setPreferredSize(new Dimension(100, 30));
-        dateInputField.setPreferredSize(new Dimension(100, 30));
+        fetchButton.setPreferredSize(new Dimension(FETCH_BUTTON_WIDTH, FETCH_BUTTON_HEIGHT));
+        fetchByDateButton.setPreferredSize(new Dimension(FETCH_BY_DATE_BUTTON_WIDTH, FETCH_BY_DATE_BUTTON_HEIGHT));
+        backButton.setPreferredSize(new Dimension(BACK_BUTTON_WIDTH, BACK_BUTTON_HEIGHT));
+        dateInputField.setPreferredSize(new Dimension(DATE_INPUT_FIELD_WIDTH, DATE_INPUT_FIELD_HEIGHT));
 
         persistentButtonPanel.add(fetchButton);
         persistentButtonPanel.add(dateInputField);
@@ -54,36 +72,48 @@ public class APODView extends JPanel {
         return "apod";
     }
 
+    /**
+     * Method to set controller for the APOD use case.
+     * @param controller controller for the APOD use case.
+     */
     public void setController(ApodController controller) {
         // Fetch by Date Button Action
-        fetchByDateButton.addActionListener(e -> {
-            String date = dateInputField.getText();
+        fetchByDateButton.addActionListener(action -> {
+            final String date = dateInputField.getText();
             System.out.println("Fetching AstronomyPicture for date: " + date);
             controller.fetchAPODByDate(date);
         });
 
         // Fetch Button Action
-        fetchButton.addActionListener(e -> {
+        fetchButton.addActionListener(action -> {
             System.out.println("Fetch AstronomyPicture button clicked!");
             controller.fetchAPOD();
         });
 
         // Back Button Action
-        backButton.addActionListener(e -> controller.navigateToHome());
+        backButton.addActionListener(action -> controller.navigateToHome());
     }
 
+    /**
+     * Method to display the Astronomical Picture of the Day to the user.
+     * @param title of the picture/video which becomes the title of the frame.
+     * @param description of the image.
+     * @param mediaType picture or video.
+     * @param url of the picture.
+     * @param thumbnailUrl of the video.
+     */
     public void displayAPOD(String title, String description, String mediaType, String url, String thumbnailUrl) {
         SwingUtilities.invokeLater(() -> {
             titleLabel.setText(title);
             descriptionArea.setText(description);
 
             // Store the current URL for saving or playing
-            currentImageUrl = mediaType.equals("image") ? url : thumbnailUrl;
+            currentImageUrl = "image".equals(mediaType) ? url : thumbnailUrl;
 
             try {
-                if (mediaType.equals("image")) {
+                if ("image".equals(mediaType)) {
                     // Display the image
-                    ImageIcon image = new ImageIcon(new URL(url));
+                    final ImageIcon image = new ImageIcon(new URL(url));
                     imageLabel.setIcon(image);
 
                     // Remove the Play Video button if it exists
@@ -91,21 +121,25 @@ public class APODView extends JPanel {
                         persistentButtonPanel.remove(playButton);
                         playButton = null;
                     }
-                } else if (mediaType.equals("video")) {
+                }
+                else if ("video".equals(mediaType)) {
                     // Display the video thumbnail
-                    ImageIcon thumbnail = new ImageIcon(new URL(thumbnailUrl));
+                    final ImageIcon thumbnail = new ImageIcon(new URL(thumbnailUrl));
                     imageLabel.setIcon(thumbnail);
 
                     // Add a "Play Video" button for video playback
                     if (playButton == null) {
                         playButton = new JButton("Play Video");
-                        playButton.setPreferredSize(new Dimension(150, 30)); // Match other button sizes
-                        playButton.addActionListener(e -> {
+                        // Match other button sizes
+                        playButton.setPreferredSize(new Dimension(PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT));
+                        playButton.addActionListener(action -> {
                             try {
                                 Desktop.getDesktop().browse(new URL(url).toURI());
-                            } catch (Exception ex) {
+                            }
+                            catch (Exception ex) {
                                 ex.printStackTrace();
-                                JOptionPane.showMessageDialog(this, "Failed to open video.", "Error", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(this, "Failed to open video.",
+                                        "Error", JOptionPane.ERROR_MESSAGE);
                             }
                         });
                         persistentButtonPanel.add(playButton);
@@ -116,10 +150,12 @@ public class APODView extends JPanel {
                 persistentButtonPanel.revalidate();
                 persistentButtonPanel.repaint();
 
-                revalidate(); // Refresh the overall layout
+                // Refresh the overall layout
+                revalidate();
                 repaint();
-            } catch (Exception e) {
-                e.printStackTrace();
+            }
+            catch (Exception ex) {
+                ex.printStackTrace();
                 imageLabel.setText("Failed to load media.");
             }
         });

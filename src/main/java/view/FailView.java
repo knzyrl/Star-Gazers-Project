@@ -1,11 +1,15 @@
 package view;
 
-import interface_adapter.fail.FailController;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.*;
+
+import interface_adapter.fail.FailController;
+
+/**
+ * Class to display the view to the user when their input is invalid.
+ */
 public class FailView extends JPanel {
     private final String viewName = "fail";
     private FailController failController;
@@ -19,6 +23,10 @@ public class FailView extends JPanel {
         this.failController = failViewController;
     }
 
+    /**
+     * Method responsible to display the error view.
+     * @param errorMessage is the message to be displayed in the view.
+     */
     public void refresh(String errorMessage) {
         this.removeAll();
 

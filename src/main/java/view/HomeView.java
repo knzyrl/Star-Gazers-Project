@@ -1,12 +1,16 @@
 package view;
 
-import interface_adapter.home.HomeController;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.*;
+
+import interface_adapter.home.HomeController;
+
+/**
+ * Class for the home screen.
+ */
 public class HomeView extends JPanel {
     private String viewName = "home";
     private HomeController homeController;
@@ -66,8 +70,8 @@ public class HomeView extends JPanel {
         result.add(moonPhase);
         moonPhase.addActionListener(
                 new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        if (e.getSource().equals(moonPhase)) {
+                    public void actionPerformed(ActionEvent action) {
+                        if (action.getSource().equals(moonPhase)) {
                             System.out.println("moon phase pressed");
                             homeController.execute("moon phase");
                         }

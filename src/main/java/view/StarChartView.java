@@ -1,18 +1,21 @@
 package view;
 
-import helper.NumberFormatChecker;
-import interface_adapter.star_chart.StarChartController;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.swing.*;
+
+import interface_adapter.star_chart.StarChartController;
+
+/**
+ * Class for the view displayed to the user when they select the Star Chart use case from the Home View.
+ */
 public class StarChartView extends JPanel {
+    private static final int DATE_FIELD_COLUMNS = 20;
     private final String viewName = "star chart";
     private StarChartController starChartController;
     private final JTextField longInputField = new JTextField(20);
@@ -28,7 +31,7 @@ public class StarChartView extends JPanel {
 
         final LabelTextPanel longInfo = new LabelTextPanel(new JLabel("Longitude"), longInputField);
         final LabelTextPanel latInfo = new LabelTextPanel(new JLabel("Latitude"), latInputField);
-        dateInputField.setColumns(20);
+        dateInputField.setColumns(DATE_FIELD_COLUMNS);
         final LabelTextPanel dateInfo = new LabelTextPanel(new JLabel("Date (YYYY-MM-DD)"), dateInputField);
 
         final JPanel generateButtonPanel = new JPanel();
@@ -39,12 +42,13 @@ public class StarChartView extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource().equals(generate)) {
-                            String longitude = longInputField.getText();
-                            String latitude = latInputField.getText();
-                            String date = dateInputField.getText();
+                            final String longitude = longInputField.getText();
+                            final String latitude = latInputField.getText();
+                            final String date = dateInputField.getText();
                             try {
                                 starChartController.execute(longitude, latitude, date);
-                            } catch (IOException ioException) {
+                            }
+                            catch (IOException ioException) {
                                 System.err.println(ioException.getMessage());
                             }
                         }
