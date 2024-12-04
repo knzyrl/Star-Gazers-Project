@@ -1,11 +1,17 @@
 package view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import interface_adapter.geocoding.GeocodingController;
 
@@ -15,10 +21,11 @@ import interface_adapter.geocoding.GeocodingController;
 public class GeocoderView extends JPanel {
     private GeocodingController geocodingController;
     private final String viewname = "Geocoder view";
+    private final String addressText = "Address";
     private final JTextField addressInput = new JTextField(20);
     private final JButton convert;
     private final JButton home;
-    private final JComboBox addressNameSwitch = new JComboBox(new String[] {"Address", "Name"});
+    private final JComboBox addressNameSwitch = new JComboBox(new String[] {addressText, "Name"});
 
     public GeocoderView() {
         final JLabel title = new JLabel("Geocoder Converter");
@@ -75,7 +82,7 @@ public class GeocoderView extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource().equals(addressNameSwitch)) {
-                            if (addressNameSwitch.getSelectedItem().equals("Address")) {
+                            if (addressNameSwitch.getSelectedItem().equals(addressText)) {
                                 try {
                                     geocodingController.executeBack();
                                 }
@@ -93,7 +100,7 @@ public class GeocoderView extends JPanel {
                                 }
 
                             }
-                            addressNameSwitch.setSelectedItem("Address");
+                            addressNameSwitch.setSelectedItem(addressText);
                         }
                     }
                 }

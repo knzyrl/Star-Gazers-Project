@@ -24,16 +24,4 @@ public class EventsDataAccessObject implements AstronomyApiDataAccessObject {
                 .getObject().getJSONObject("data").getJSONObject("table");
         return response;
     }
-
-    /**
-     * Main method for testing the EventsDataAccessObject functionality.
-     *
-     * @param args Command-line arguments (not used).
-     */
-    public static void main(String[] args) {
-        final EventsDataAccessObject dao = new EventsDataAccessObject();
-        System.out.println(dao.executeQuery("https://api.astronomyapi.com/api/v2/bodies/events/moon?longitude="
-                + "-84.39733&latitude=33.775867&elevation=1&from_date=2020-12-20&to_date=2022-12-"
-                + "23&time=00%3A00%3A00"));
-    }
 }

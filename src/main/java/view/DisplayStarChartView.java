@@ -7,7 +7,11 @@ import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import interface_adapter.display_star_chart.DisplayStarChartController;
 import use_case.star_chart.StarChartOutputData;
@@ -40,10 +44,10 @@ public class DisplayStarChartView extends JPanel {
         final JPanel titlePanel = new JPanel();
         titlePanel.add(title);
 
-        final String imgURL = starChartOutputData.getImgURL();
+        final String imgUrl = starChartOutputData.getImgUrl();
         BufferedImage image = null;
         try {
-            final URL url = new URL(imgURL);
+            final URL url = new URL(imgUrl);
             image = ImageIO.read(url);
         }
         catch (IOException action) {

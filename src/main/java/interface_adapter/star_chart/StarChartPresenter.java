@@ -1,8 +1,8 @@
 package interface_adapter.star_chart;
 
+import interface_adapter.ViewManager;
 import use_case.star_chart.StarChartOutputBoundary;
 import use_case.star_chart.StarChartOutputData;
-import interface_adapter.ViewManager;
 
 /**
  * Class for the Presenter for the Star Chart use case.

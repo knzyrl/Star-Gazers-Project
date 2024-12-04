@@ -40,13 +40,13 @@ public class StarChartInteractor implements StarChartInputBoundary {
             final String dec = starChart.calcdec();
 
             final String query = String.format("{\"style\":\"inverted\",\"observer\":{\"latitude\":%s,\"longitude\":%s,"
-                            + "\"date\":\"%s\"},\"view\":{\"type\":\"area\",\"parameters\":{\"position\":{\"equatorial\":"
-                            + "{\"rightAscension\":%s,\"declination\":%s}},\"zoom\":6}}}", starChart.getLatitude(),
-                    starChart.getLongitude(), starChart.getDate(), ra, dec);
-            final String imgURL = starChartDataAccessObject.executeQuery(query);
+                            + "\"date\":\"%s\"},\"view\":{\"type\":\"area\",\"parameters\":{\"position\":"
+                            + "{\"equatorial\":{\"rightAscension\":%s,\"declination\":%s}},\"zoom\":6}}}",
+                    starChart.getLatitude(), starChart.getLongitude(), starChart.getDate(), ra, dec);
+            final String imgUrl = starChartDataAccessObject.executeQuery(query);
 
             final StarChartOutputData starChartOutputData = new StarChartOutputData(starChart.getLongitude(),
-                    starChart.getLatitude(), starChart.getDate(), imgURL);
+                    starChart.getLatitude(), starChart.getDate(), imgUrl);
             starChartPresenter.displayStarChart(starChartOutputData);
         }
     }

@@ -2,7 +2,6 @@ package interface_adapter.near_earth_objects;
 
 import java.util.List;
 
-import entity.NearEarthObjectEntity;
 import interface_adapter.ViewManager;
 import use_case.near_earth_objects.NearEarthObjectsOutputBoundary;
 import use_case.near_earth_objects.NearEarthObjectsOutputData;

@@ -27,29 +27,27 @@ public class EventsInteractor implements EventsInputBoundary {
         if (!eventsList.isValidLongitude()) {
             eventsPresenter.prepareFailView("Longitude value invalid. Please ensure the input is a "
                     + "decimal between -180.00 and 180.00.");
-            return;
         }
         else if (!eventsList.isValidLatitude()) {
             eventsPresenter.prepareFailView("Latitude value invalid. Please ensure the input is a "
                     + "decimal between -90.00 and 90.00.");
-            return;
         }
         else if (!eventsList.isValidDates()) {
             eventsPresenter.prepareFailView("Dates invalid. Please ensure the inputs are valid dates "
                     + "in YYYY-MM-DD format.");
-            return;
         }
+        else {
+            final String query = String.format("https://api.astronomyapi.com/api/v2/bodies/events/%s?longitude=%s"
+                            + "&latitude=%s&elevation=1&from_date=%s&to_date=%s&time=%s", eventsList.getBody(),
+                    eventsList.getLongitude(), eventsList.getLatitude(), eventsList.getDateStart(),
+                    eventsList.getDateEnd(), "00%3A00%3A00");
+            final JSONObject response = eventsDataAccessObject.executeQuery(query);
 
-        final String query = String.format("https://api.astronomyapi.com/api/v2/bodies/events/%s?longitude=%s"
-                        + "&latitude=%s&elevation=1&from_date=%s&to_date=%s&time=%s", eventsList.getBody(),
-                eventsList.getLongitude(), eventsList.getLatitude(), eventsList.getDateStart(),
-                eventsList.getDateEnd(), "00%3A00%3A00");
-        final JSONObject response = eventsDataAccessObject.executeQuery(query);
-
-        final EventsOutputData eventsOutputData = new EventsOutputData(eventsList.getLongitude(),
-                eventsList.getLatitude(), eventsList.getDateStart(), eventsList.getDateEnd(), eventsList.getBody(),
-                response);
-        eventsPresenter.displayEvents(eventsOutputData);
+            final EventsOutputData eventsOutputData = new EventsOutputData(eventsList.getLongitude(),
+                    eventsList.getLatitude(), eventsList.getDateStart(), eventsList.getDateEnd(), eventsList.getBody(),
+                    response);
+            eventsPresenter.displayEvents(eventsOutputData);
+        }
     }
 
     @Override

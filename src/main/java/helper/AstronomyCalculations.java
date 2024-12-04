@@ -14,6 +14,11 @@ public class AstronomyCalculations {
     private static final LocalDate MJD_START = LocalDate.of(1858, 11, 17);
     private static final int DEGREES = 360;
     private static final int HOURS = 15;
+    private static final double MAGIC_NUMBER_1 = 280.46061837;
+    private static final double MAGIC_NUMBER_2 = 360.98564736629;
+    private static final double MAGIC_NUMBER_3 = 51544.5;
+    private static final double MAGIC_NUMBER_4 = 0.000387933;
+    private static final double MAGIC_NUMBER_5 = 38710000.0;
 
     /**
      * Calculates the right-ascension coordinate at the zenith of a location given its longitude and the date.
@@ -35,8 +40,8 @@ public class AstronomyCalculations {
         // calculate T
         final double t = (mjd - 51544.5) / 36525.0;
         // do calculation
-        double gmst = ((280.46061837 + 360.98564736629 * (mjd - 51544.5)) + 0.000387933 * t * t - t
-                * t * t / 38710000.0) % 360.0;
+        double gmst = ((MAGIC_NUMBER_1 + MAGIC_NUMBER_2 * (mjd - MAGIC_NUMBER_3)) + MAGIC_NUMBER_4 * t * t - t
+                * t * t / MAGIC_NUMBER_5) % DEGREES;
         // make positive
         if (gmst < 0) {
             gmst += DEGREES;

@@ -15,6 +15,7 @@ import java.net.URL;
 public class AstronomyPictureApiDataAccessObject implements AstronomyPictureDataAccessObject {
     private static final String API_KEY = "t0ffL1YMYJdWoGmEwkozuorP21pLnPtVaPvXdsi2";
     private static final String BASE_URL = "https://api.nasa.gov/planetary/apod";
+    private static final int HTTP_RESPONSE = 200;
 
     @Override
     public String fetchAstronomyPicture() {
@@ -34,7 +35,7 @@ public class AstronomyPictureApiDataAccessObject implements AstronomyPictureData
             connection.setRequestMethod("GET");
 
             final int responseCode = connection.getResponseCode();
-            if (responseCode == 200) {
+            if (responseCode == HTTP_RESPONSE) {
                 final BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 final StringBuilder response = new StringBuilder();
 

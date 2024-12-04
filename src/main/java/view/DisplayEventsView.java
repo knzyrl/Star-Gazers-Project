@@ -3,12 +3,13 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import entity.Event;
-
 import interface_adapter.display_events.DisplayEventsController;
-
 import use_case.events.EventsOutputData;
 
 /**

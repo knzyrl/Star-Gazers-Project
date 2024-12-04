@@ -10,6 +10,8 @@ import kong.unirest.core.Unirest;
  * Provides methods to execute queries and retrieve star chart data from the Astronomy API.
  */
 public class StarChartDataAccessObject implements AstronomyApiDataAccessObject {
+    private final int magicNumber1 = 21;
+    private final int magicNumber2 = 3;
 
     /**
      * Executes an HTTP POST query to retrieve star chart data from the Astronomy API.
@@ -33,22 +35,6 @@ public class StarChartDataAccessObject implements AstronomyApiDataAccessObject {
                 .header("Authorization", String.format("Basic %s", authString))
                 .body(query)
                 .asString();
-        return response.getBody().substring(21, response.getBody().length() - 3);
-    }
-
-    /**
-     * Main method for testing the functionality of the StarChartDataAccessObject.
-     * Sends a sample JSON query to the Star Chart API and prints the result.
-     * The query includes the observer's location, date, and parameters for the star chart view.
-     *
-     * @param args Command-line arguments (not used in this implementation).
-     */
-    public static void main(String[] args) {
-        final StarChartDataAccessObject dao = new StarChartDataAccessObject();
-        System.out.println(dao.executeQuery("{\"style\":\"inverted\",\"observer\":{\"latitude\":33.775867,"
-                +
-                "\"longitude\":-84.39733,\"date\":\"2024-11-04\"},\"view\":{\"type\":\"area\",\"parameters\":"
-                +
-                "{\"position\":{\"equatorial\":{\"rightAscension\":0,\"declination\":0}},\"zoom\":6}}}"));
+        return response.getBody().substring(magicNumber1, response.getBody().length() - magicNumber2);
     }
 }

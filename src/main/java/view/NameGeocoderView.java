@@ -1,11 +1,17 @@
 package view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import interface_adapter.geocoding.GeocodingController;
 
@@ -16,10 +22,11 @@ import interface_adapter.geocoding.GeocodingController;
 public class NameGeocoderView extends JPanel {
     private GeocodingController geocodingController;
     private final String viewname = "Name Geocoder view";
+    private final String nameText = "Name";
     private final JTextField nameInput = new JTextField(20);
     private final JButton convert;
     private final JButton home;
-    private final JComboBox addressNameSwitch = new JComboBox(new String[] {"Address", "Name"});
+    private final JComboBox addressNameSwitch = new JComboBox(new String[] {"Address", nameText});
 
     public NameGeocoderView() {
         final JLabel title = new JLabel("Geocoder Converter");
@@ -96,7 +103,7 @@ public class NameGeocoderView extends JPanel {
                                 }
 
                             }
-                            addressNameSwitch.setSelectedItem("Name");
+                            addressNameSwitch.setSelectedItem(nameText);
                         }
                     }
                 }

@@ -7,14 +7,14 @@ public class MoonPhaseOutputData {
     private final String latitude;
     private final String longitude;
     private final String date;
-    private final String imageURL;
+    private final String imageUrl;
     private final boolean useCaseFailed;
 
-    public MoonPhaseOutputData(String latitude, String longitude, String date, String imageURL, boolean useCaseFailed) {
+    public MoonPhaseOutputData(String latitude, String longitude, String date, String imageUrl, boolean useCaseFailed) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.date = date;
-        this.imageURL = imageURL;
+        this.imageUrl = imageUrl;
         this.useCaseFailed = useCaseFailed;
     }
 
@@ -30,7 +30,7 @@ public class MoonPhaseOutputData {
         return date;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public String getImageUrl() {
+        return imageUrl;
     }
 }
