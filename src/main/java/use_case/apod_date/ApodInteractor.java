@@ -6,7 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import data_access.AstronomyPictureDataAccessObject;
-import view.ViewManager;
+import interface_adapter.ViewManager;
 /**
  * Interactor for fetching Astronomy Picture of the Day (APOD) data.
  * Implements the input boundary to handle APOD-related use cases.

@@ -1,6 +1,6 @@
 package interface_adapter.fail;
 
-import view.ViewManager;
+import interface_adapter.ViewManager;
 
 /**
  * Class for Presenter for the Fail View.

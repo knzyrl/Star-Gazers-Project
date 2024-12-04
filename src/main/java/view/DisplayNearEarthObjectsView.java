@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import entity.NearEarthObjectEntity;
 import interface_adapter.near_earth_objects.NearEarthObjectsPresenter;
+import use_case.near_earth_objects.NearEarthObjectsOutputData;
 
 /**
  * Class consisting of methods to display information on asteroids near the Earth.
@@ -59,18 +59,18 @@ public class DisplayNearEarthObjectsView extends JPanel {
     /**
      * Displays the Near-Earth Object (NEO) data in the text area.
      *
-     * @param neoEntities List of Near-Earth Object entities to display.
+     * @param neoOutputData List of Near-Earth Object entities to display.
      */
-    public void displayNearEarthObjectsData(List<NearEarthObjectEntity> neoEntities) {
+    public void displayNearEarthObjectsData(List<NearEarthObjectsOutputData> neoOutputData) {
         final StringBuilder builder = new StringBuilder();
 
-        if (neoEntities.isEmpty()) {
+        if (neoOutputData.isEmpty()) {
             builder.append("No Near-Earth Objects found for the specified date range.");
         }
         else {
             builder.append("Nearby Asteroids:\n");
             builder.append("========================================\n");
-            for (NearEarthObjectEntity neo : neoEntities) {
+            for (NearEarthObjectsOutputData neo : neoOutputData) {
                 builder.append(String.format("Name: %s%n", neo.getName()));
                 builder.append(String.format("Closest Approach Date: %s%n", neo.getClosestApproachDate()));
                 builder.append(String.format("Distance: %.2f km%n", neo.getClosestDistanceKm()));

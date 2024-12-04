@@ -1,6 +1,6 @@
 package interface_adapter.geocoding;
 
-import view.ViewManager;
+import interface_adapter.ViewManager;
 
 /**
  * Class for Presenter for DisplayGeocoding.

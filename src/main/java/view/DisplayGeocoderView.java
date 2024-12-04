@@ -19,11 +19,6 @@ public class DisplayGeocoderView extends JPanel {
     private GeocodingOutputData geocodingOutputData;
     private GeocodingController geocodingController;
     private JButton home;
-    private DisplayGeocodingController displayGeocodingController;
-
-    public void setLocation(GeocodingOutputData geocodingOutputData) {
-        this.geocodingOutputData = geocodingOutputData;
-    }
 
     public void setDisplayStarChartController(GeocodingController geocodingController) {
         this.geocodingController = geocodingController;
@@ -32,7 +27,7 @@ public class DisplayGeocoderView extends JPanel {
     /**
      * Method to display the longitude and latitude of the location.
      */
-    public void displayLocation() {
+    public void displayLocation(GeocodingOutputData geocodingOutputData) {
         this.removeAll();
 
         final JLabel title = new JLabel(geocodingOutputData.getAddress());

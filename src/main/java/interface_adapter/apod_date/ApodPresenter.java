@@ -1,18 +1,18 @@
 package interface_adapter.apod_date;
 
+import interface_adapter.ViewManager;
 import use_case.apod_date.ApodOutputBoundary;
 import use_case.apod_date.ApodOutputData;
-import view.ApodView;
 
 /**
  * Presenter for the APOD use case.
  * Formats and presents the Astronomy Picture of the Day (APOD) data to the view.
  */
 public class ApodPresenter implements ApodOutputBoundary {
-    private final ApodView view;
+    private final ViewManager viewManager;
 
-    public ApodPresenter(ApodView view) {
-        this.view = view;
+    public ApodPresenter(ViewManager viewManager) {
+        this.viewManager = viewManager;
     }
 
     /**
@@ -22,12 +22,6 @@ public class ApodPresenter implements ApodOutputBoundary {
      */
     @Override
     public void presentApod(ApodOutputData outputData) {
-        view.displayApod(
-                outputData.getTitle(),
-                outputData.getDescription(),
-                outputData.getMediaType(),
-                outputData.getUrl(),
-                outputData.getThumbnailUrl()
-        );
+        viewManager.displayApod(outputData);
     }
 }

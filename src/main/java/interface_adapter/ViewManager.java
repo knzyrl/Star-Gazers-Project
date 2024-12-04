@@ -1,12 +1,17 @@
-package view;
+package interface_adapter;
 
 import java.awt.*;
+import java.util.List;
 
 import javax.swing.*;
 
+import use_case.apod_date.ApodOutputData;
 import use_case.events.EventsOutputData;
+import use_case.geocoding.GeocodingOutputData;
 import use_case.moon_phase.MoonPhaseOutputData;
+import use_case.near_earth_objects.NearEarthObjectsOutputData;
 import use_case.star_chart.StarChartOutputData;
+import view.*;
 
 /**
  * Class for managing the views displayed to the user.
@@ -70,6 +75,29 @@ public class ViewManager {
         cardLayout.show(views, "display events");
         final DisplayEventsView displayEventsView = (DisplayEventsView) getCurrentCard();
         displayEventsView.refresh(eventsOutputData);
+    }
+
+    /**
+     * Method to display the Astronomical Picture/Video of the day to the user.
+     * @param apodOutputData is the output data to be presented.
+     */
+    public void displayApod(ApodOutputData apodOutputData) {
+        cardLayout.show(views, "display apod");
+        final ApodView displayApodView = (ApodView) getCurrentCard();
+        displayApodView.displayApod(apodOutputData.getTitle(), apodOutputData.getDescription(),
+                apodOutputData.getMediaType(), apodOutputData.getUrl(), apodOutputData.getThumbnailUrl());
+    }
+
+    public void displayNearEarthObjectsData(List<NearEarthObjectsOutputData> neoOutputData) {
+        cardLayout.show(views, "display NEO view");
+        final DisplayNearEarthObjectsView displayNearEarthObjectsView = (DisplayNearEarthObjectsView) getCurrentCard();
+        displayNearEarthObjectsView.displayNearEarthObjectsData(neoOutputData);
+    }
+
+    public void displayLocation(GeocodingOutputData geocodingOutputData) {
+        cardLayout.show(views, "display geocoded information");
+        final DisplayGeocoderView displayGeocoderView = (DisplayGeocoderView) getCurrentCard();
+        displayGeocoderView.displayLocation(geocodingOutputData);
     }
 
     private JPanel getCurrentCard() {

@@ -55,7 +55,7 @@ import view.NameGeocoderView;
 import view.NearEarthObjectsView;
 import view.NoAddressFoundView;
 import view.StarChartView;
-import view.ViewManager;
+import interface_adapter.ViewManager;
 
 public class AppBuilder {
     private final JPanel cardPanel = new JPanel();
@@ -121,7 +121,7 @@ public class AppBuilder {
     public AppBuilder addApodView() { // will need to rename
         apodView = new ApodView();
         AstronomyPictureApiDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
-        ApodPresenter presenter = new ApodPresenter(apodView);
+        ApodPresenter presenter = new ApodPresenter(viewManager);
         ApodInteractor interactor = new ApodInteractor(presenter, dataAccessObject, viewManager);
         ApodController controller = new ApodController(interactor);
         apodView.setController(controller);
@@ -303,7 +303,7 @@ public class AppBuilder {
      */
     public AppBuilder addGeocoderUseCase() {
 
-        final GeocodingPresenter geocodingPresenter = new GeocodingPresenter(viewManager, displayGeocoderView);
+        final GeocodingPresenter geocodingPresenter = new GeocodingPresenter(viewManager);
         final GeocodingInteractor geocodingInteractor = new GeocodingInteractor(geocoderDao, geocodingPresenter);
         final GeocodingController geocodingController =
                 new GeocodingController(geocodingInteractor, geocodingPresenter);
