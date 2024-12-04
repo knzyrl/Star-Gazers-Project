@@ -14,8 +14,8 @@ import interface_adapter.events.EventsController;
  * Class to display the events to the user.
  */
 public class EventsView extends JPanel {
-    private static final int START_DATE_FIELD_COLUMNS = 200;
-    private static final int END_DATE_FIELD_COLUMNS = 200;
+    private static final int START_DATE_FIELD_COLUMNS = 20;
+    private static final int END_DATE_FIELD_COLUMNS = 20;
     private final String viewName = "events";
     private EventsController eventsController;
     private final JTextField longInputField = new JTextField(20);
