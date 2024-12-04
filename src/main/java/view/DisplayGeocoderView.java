@@ -21,8 +21,8 @@ public class DisplayGeocoderView extends JPanel {
     private GeocodingController geocodingController;
     private JButton home;
 
-    public void setDisplayGeocodingController(GeocodingController geocodingController) {
-        this.geocodingController = geocodingController;
+    public void setDisplayGeocodingController(GeocodingController controller) {
+        this.geocodingController = controller;
     }
 
     /**
