@@ -26,31 +26,29 @@ public class StarChartInteractor implements StarChartInputBoundary {
         if (!starChart.isValidLongitude()) {
             starChartPresenter.prepareFailView("Longitude value invalid. Please ensure the input is a "
                     + "decimal between -180.00 and 180.00.");
-            return;
         }
         else if (!starChart.isValidLatitude()) {
             starChartPresenter.prepareFailView("Latitude value invalid. Please ensure the input is a "
                     + "decimal between -90.00 and 90.00.");
-            return;
         }
         else if (!starChart.isValidDate()) {
             starChartPresenter.prepareFailView("Date invalid. Please ensure the input is a valid date "
                     + "in YYYY-MM-DD format.");
-            return;
         }
+        else {
+            final String ra = starChart.calcRa();
+            final String dec = starChart.calcdec();
 
-        final String ra = starChart.calcRa();
-        final String dec = starChart.calcdec();
+            final String query = String.format("{\"style\":\"inverted\",\"observer\":{\"latitude\":%s,\"longitude\":%s,"
+                            + "\"date\":\"%s\"},\"view\":{\"type\":\"area\",\"parameters\":{\"position\":{\"equatorial\":"
+                            + "{\"rightAscension\":%s,\"declination\":%s}},\"zoom\":6}}}", starChart.getLatitude(),
+                    starChart.getLongitude(), starChart.getDate(), ra, dec);
+            final String imgURL = starChartDataAccessObject.executeQuery(query);
 
-        final String query = String.format("{\"style\":\"inverted\",\"observer\":{\"latitude\":%s,\"longitude\":%s,"
-                        + "\"date\":\"%s\"},\"view\":{\"type\":\"area\",\"parameters\":{\"position\":{\"equatorial\":"
-                        + "{\"rightAscension\":%s,\"declination\":%s}},\"zoom\":6}}}", starChart.getLatitude(),
-                starChart.getLongitude(), starChart.getDate(), ra, dec);
-        final String imgURL = starChartDataAccessObject.executeQuery(query);
-
-        final StarChartOutputData starChartOutputData = new StarChartOutputData(starChart.getLongitude(),
-                starChart.getLatitude(), starChart.getDate(), imgURL);
-        starChartPresenter.displayStarChart(starChartOutputData);
+            final StarChartOutputData starChartOutputData = new StarChartOutputData(starChart.getLongitude(),
+                    starChart.getLatitude(), starChart.getDate(), imgURL);
+            starChartPresenter.displayStarChart(starChartOutputData);
+        }
     }
 
     @Override

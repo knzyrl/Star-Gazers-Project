@@ -45,13 +45,13 @@ public class StarChart {
      * @return {@code true} if the longitude is valid, {@code false} otherwise.
      */
     public boolean isValidLongitude() {
-        boolean result = false;
+        boolean result = true;
         if (!NumberFormatChecker.checkDouble(this.longitude)) {
             result = false;
         }
-        else if (Double.parseDouble(this.longitude) >= MIN_LONGITUDE && Double.parseDouble(this.longitude)
-                <= MAX_LONGITUDE) {
-            result = true;
+        else if (Double.parseDouble(this.longitude) < MIN_LONGITUDE || Double.parseDouble(this.longitude)
+                > MAX_LONGITUDE) {
+            result = false;
         }
         return result;
     }
@@ -62,13 +62,13 @@ public class StarChart {
      * @return {@code true} if the latitude is valid, {@code false} otherwise.
      */
     public boolean isValidLatitude() {
-        boolean result = false;
-        if (!NumberFormatChecker.checkDouble(this.longitude)) {
+        boolean result = true;
+        if (!NumberFormatChecker.checkDouble(this.latitude)) {
             result = false;
         }
-        else if (Double.parseDouble(this.longitude) >= MIN_LATITUDE && Double.parseDouble(this.longitude)
-                <= MAX_LATITUDE) {
-            result = true;
+        else if (Double.parseDouble(this.latitude) < MIN_LATITUDE || Double.parseDouble(this.latitude)
+                > MAX_LATITUDE) {
+            result = false;
         }
         return result;
     }
@@ -79,14 +79,13 @@ public class StarChart {
      * @return {@code true} if the date format is valid, {@code false} otherwise.
      */
     public boolean isValidDate() {
-        boolean result = false;
+        boolean result = true;
         try {
             fmt.parse(this.date);
         }
         catch (ParseException parseException) {
             result = false;
         }
-        result = true;
         return result;
     }
 
