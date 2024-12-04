@@ -244,4 +244,33 @@ public class MoonPhaseInteractorTest {
         moonPhaseInteractor.execute(moonPhaseInputData);
     }
 
+    @Test
+    public void backTest() {
+        AstronomyApiDataAccessObject moonPhaseDAO = new MoonPhaseDataAccessObject() {
+            @Override
+            public String executeQuery(String query) {
+                return "moonChartImgURL.png";
+            }
+        };
+
+        MoonPhaseOutputBoundary moonPhasePresenter = new MoonPhaseOutputBoundary() {
+            @Override
+            public void displayMoonPhase(MoonPhaseOutputData moonPhaseOutputData) {
+                fail("Successful display is unexpected");
+            }
+
+            @Override
+            public void prepareFailView(String error) {
+                fail("Fail view is unexpected");
+            }
+            @Override
+            public void back() {
+                // Expected case
+            }
+        };
+
+        MoonPhaseInputBoundary moonPhaseInteractor = new MoonPhaseInteractor(moonPhaseDAO, moonPhasePresenter);
+        moonPhaseInteractor.execute();
+    }
+
 }
