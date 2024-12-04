@@ -3,14 +3,14 @@ package use_case.apod_date;
 /**
  * Class for output data for the Astronomy Picture of the Day use case.
  */
-public class APODOutputData {
+public class ApodOutputData {
     private final String title;
     private final String description;
     private final String mediaType;
     private final String url;
     private final String thumbnailUrl;
 
-    public APODOutputData(String title, String description, String mediaType, String url, String thumbnailUrl) {
+    public ApodOutputData(String title, String description, String mediaType, String url, String thumbnailUrl) {
         this.title = title;
         this.description = description;
         this.mediaType = mediaType;

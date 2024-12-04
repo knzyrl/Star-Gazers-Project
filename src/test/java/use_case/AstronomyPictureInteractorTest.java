@@ -1,14 +1,14 @@
 package use_case;
-import use_case.apod_date.APODInputData;
+import use_case.apod_date.ApodInputData;
 
 import data_access.AstronomyPictureApiDataAccessObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.mockito.Mockito;
-import use_case.apod_date.APODInteractor;
-import use_case.apod_date.AstronomicalPictureOutputBoundary;
-import use_case.apod_date.APODOutputData;
+import use_case.apod_date.ApodInteractor;
+import use_case.apod_date.ApodOutputBoundary;
+import use_case.apod_date.ApodOutputData;
 import view.ViewManager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,18 +18,18 @@ import static org.mockito.Mockito.*;
 
 public class AstronomyPictureInteractorTest {
 
-    private APODInteractor interactor;
-    private AstronomicalPictureOutputBoundary mockOutputBoundary;
+    private ApodInteractor interactor;
+    private ApodOutputBoundary mockOutputBoundary;
     private AstronomyPictureApiDataAccessObject mockDataAccessObject;
     private ViewManager mockViewManager;
 
     @BeforeEach
     public void setUp() {
-        mockOutputBoundary = Mockito.mock(AstronomicalPictureOutputBoundary.class);
+        mockOutputBoundary = Mockito.mock(ApodOutputBoundary.class);
         mockDataAccessObject = Mockito.mock(AstronomyPictureApiDataAccessObject.class);
         mockViewManager = Mockito.mock(ViewManager.class);
 
-        interactor = new APODInteractor(mockOutputBoundary, mockDataAccessObject, mockViewManager);
+        interactor = new ApodInteractor(mockOutputBoundary, mockDataAccessObject, mockViewManager);
     }
 
     @Test
@@ -45,22 +45,22 @@ public class AstronomyPictureInteractorTest {
 
         when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(jsonResponse);
 
-        interactor.fetchAstronomicalPictureOfTheDay();
+        interactor.fetchApod();
 
-        verify(mockOutputBoundary, times(1)).presentAstronomicalPicture(any(APODOutputData.class));
+        verify(mockOutputBoundary, times(1)).presentApod(any(ApodOutputData.class));
     }
 
     @Test
-    public void testFetchAPOD_InvalidJSON() {
+    public void testFetchApod_InvalidJSON() {
         String invalidJsonResponse = "{ \"title\" \"Sample AstronomyPicture\" }"; // Malformed JSON
 
         when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(invalidJsonResponse);
 
         // Invoke the method
-        interactor.fetchAstronomicalPictureOfTheDay();
+        interactor.fetchApod();
 
         // Ensure no output boundary calls were made
-        verify(mockOutputBoundary, never()).presentAstronomicalPicture(any(APODOutputData.class));
+        verify(mockOutputBoundary, never()).presentApod(any(ApodOutputData.class));
     }
 
     @Test
@@ -74,13 +74,13 @@ public class AstronomyPictureInteractorTest {
 
         when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(jsonResponse);
 
-        interactor.fetchAstronomicalPictureOfTheDay();
+        interactor.fetchApod();
 
-        verify(mockOutputBoundary, times(1)).presentAstronomicalPicture(any(APODOutputData.class));
+        verify(mockOutputBoundary, times(1)).presentApod(any(ApodOutputData.class));
     }
 
     @Test
-    public void testFetchAPODByDate_Success() {
+    public void testFetchApodByDate_Success() {
         String jsonResponse = """
                 {
                     "title": "Sample AstronomyPicture",
@@ -93,9 +93,9 @@ public class AstronomyPictureInteractorTest {
         String date = "2023-12-01";
         when(mockDataAccessObject.fetchAstronomyPictureByDate(date)).thenReturn(jsonResponse);
 
-        interactor.fetchAstronomicalPictureByDate(date);
+        interactor.fetchApodByDate(date);
 
-        verify(mockOutputBoundary, times(1)).presentAstronomicalPicture(any(APODOutputData.class));
+        verify(mockOutputBoundary, times(1)).presentApod(any(ApodOutputData.class));
     }
 
     @Test
@@ -105,10 +105,10 @@ public class AstronomyPictureInteractorTest {
         when(mockDataAccessObject.fetchAstronomyPictureByDate("2023-12-01")).thenReturn(invalidJsonResponse);
 
         // Invoke the method
-        interactor.fetchAstronomicalPictureByDate("2023-12-01");
+        interactor.fetchApodByDate("2023-12-01");
 
         // Ensure no output boundary calls were made
-        verify(mockOutputBoundary, never()).presentAstronomicalPicture(any(APODOutputData.class));
+        verify(mockOutputBoundary, never()).presentApod(any(ApodOutputData.class));
     }
 
     @Test
@@ -124,9 +124,9 @@ public class AstronomyPictureInteractorTest {
 
         when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(emptyJsonResponse);
 
-        interactor.fetchAstronomicalPictureOfTheDay();
+        interactor.fetchApod();
 
-        verify(mockOutputBoundary, times(1)).presentAstronomicalPicture(any(APODOutputData.class));
+        verify(mockOutputBoundary, times(1)).presentApod(any(ApodOutputData.class));
     }
 
     @Test
@@ -140,13 +140,13 @@ public class AstronomyPictureInteractorTest {
 
         when(mockDataAccessObject.fetchAstronomyPicture()).thenReturn(invalidDataTypeJson);
 
-        interactor.fetchAstronomicalPictureOfTheDay();
+        interactor.fetchApod();
 
-        verify(mockOutputBoundary, times(1)).presentAstronomicalPicture(any(APODOutputData.class));
+        verify(mockOutputBoundary, times(1)).presentApod(any(ApodOutputData.class));
     }
 
     @Test
-    public void testAPODOutputData_AllFields() {
+    public void testApodOutputData_AllFields() {
         String title = "A Beautiful Galaxy";
         String description = "A description of a beautiful galaxy.";
         String mediaType = "image";
@@ -154,7 +154,7 @@ public class AstronomyPictureInteractorTest {
         String thumbnailUrl = "http://example.com/thumb.jpg";
 
         // Create an APODOutputData object
-        APODOutputData outputData = new APODOutputData(title, description, mediaType, url, thumbnailUrl);
+        ApodOutputData outputData = new ApodOutputData(title, description, mediaType, url, thumbnailUrl);
 
         // Assert all fields
         assertEquals(title, outputData.getTitle());
@@ -165,7 +165,7 @@ public class AstronomyPictureInteractorTest {
     }
 
     @Test
-    public void testAPODOutputData_DefaultThumbnailUrl() {
+    public void testApodOutputData_DefaultThumbnailUrl() {
         String title = "A Beautiful Galaxy";
         String description = "A description of a beautiful galaxy.";
         String mediaType = "image";
@@ -173,7 +173,7 @@ public class AstronomyPictureInteractorTest {
         String thumbnailUrl = "";
 
         // Create an APODOutputData object
-        APODOutputData outputData = new APODOutputData(title, description, mediaType, url, thumbnailUrl);
+        ApodOutputData outputData = new ApodOutputData(title, description, mediaType, url, thumbnailUrl);
 
         // Assert all fields, including default thumbnail
         assertEquals(title, outputData.getTitle());
@@ -184,7 +184,7 @@ public class AstronomyPictureInteractorTest {
     }
 
     @Test
-    public void testAPODOutputData_EmptyFields() {
+    public void testApodOutputData_EmptyFields() {
         String title = "";
         String description = "";
         String mediaType = "";
@@ -192,7 +192,7 @@ public class AstronomyPictureInteractorTest {
         String thumbnailUrl = "";
 
         // Create an APODOutputData object
-        APODOutputData outputData = new APODOutputData(title, description, mediaType, url, thumbnailUrl);
+        ApodOutputData outputData = new ApodOutputData(title, description, mediaType, url, thumbnailUrl);
 
         // Assert all fields
         assertEquals(title, outputData.getTitle());
@@ -203,9 +203,9 @@ public class AstronomyPictureInteractorTest {
     }
 
     @Test
-    public void testAPODInputData_Instantiation() {
+    public void testApodInputData_Instantiation() {
         // Instantiate the APODInputData class
-        APODInputData inputData = new APODInputData();
+        ApodInputData inputData = new ApodInputData();
 
         // Verify that the instance is not null
         assertNotNull(inputData, "APODInputData instance should not be null");

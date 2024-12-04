@@ -29,14 +29,14 @@ public class AstronomyPictureApiDataAccessObject implements AstronomyPictureData
                 urlStr += "&date=" + date;
             }
 
-            URL url = new URL(urlStr);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            final URL url = new URL(urlStr);
+            final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
 
-            int responseCode = connection.getResponseCode();
+            final int responseCode = connection.getResponseCode();
             if (responseCode == 200) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                StringBuilder response = new StringBuilder();
+                final BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                final StringBuilder response = new StringBuilder();
 
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {

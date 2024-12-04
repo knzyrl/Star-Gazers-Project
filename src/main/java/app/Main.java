@@ -25,7 +25,7 @@ public class Main {
                 .addDisplayEventsView()
                 .addNeoView()
                 .addDisplayNeoView()
-                .addApodView() //rename
+                .addApodView()
                 .addHomeInterface()
                 .addFailInterface()
                 .addStarChartUseCase()

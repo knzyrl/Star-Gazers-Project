@@ -34,7 +34,7 @@ import interface_adapter.near_earth_objects.NearEarthObjectsController;
 import interface_adapter.near_earth_objects.NearEarthObjectsPresenter;
 import interface_adapter.star_chart.StarChartController;
 import interface_adapter.star_chart.StarChartPresenter;
-import use_case.apod_date.APODInteractor;
+import use_case.apod_date.ApodInteractor;
 import use_case.events.EventsInteractor;
 import use_case.geocoding.GeocodingInteractor;
 import use_case.moon_phase.MoonPhaseInteractor;
@@ -122,7 +122,7 @@ public class AppBuilder {
         apodView = new APODView();
         AstronomyPictureApiDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
         ApodPresenter presenter = new ApodPresenter(apodView);
-        APODInteractor interactor = new APODInteractor(presenter, dataAccessObject, viewManager);
+        ApodInteractor interactor = new ApodInteractor(presenter, dataAccessObject, viewManager);
         ApodController controller = new ApodController(interactor);
         apodView.setController(controller);
         cardPanel.add(apodView, apodView.getViewName());
