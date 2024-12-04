@@ -1,12 +1,13 @@
 package view;
 
-import interface_adapter.geocoding.GeocodingController;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+
+import javax.swing.*;
+
+import interface_adapter.geocoding.GeocodingController;
 
 /**
  * View for the geocoder use case.
@@ -36,10 +37,11 @@ public class GeocoderView extends JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource().equals(convert)) {
-                            String address = addressInput.getText();
+                            final String address = addressInput.getText();
                             try {
                                 geocodingController.execute(address);
-                            } catch (IOException ex) {
+                            }
+                            catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
                         }
@@ -58,7 +60,8 @@ public class GeocoderView extends JPanel {
                         if (e.getSource().equals(home)) {
                             try {
                                 geocodingController.executeHome();
-                            } catch (IOException ex) {
+                            }
+                            catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
                         }
@@ -80,7 +83,7 @@ public class GeocoderView extends JPanel {
                                     throw new RuntimeException(ex);
                                 }
                             }
-                            else{
+                            else {
                                 try {
                                     geocodingController.executeName();
 
@@ -95,7 +98,6 @@ public class GeocoderView extends JPanel {
                     }
                 }
         );
-
 
         this.add(title);
         this.add(addressInfo);
@@ -114,7 +116,3 @@ public class GeocoderView extends JPanel {
         return viewname;
     }
 }
-
-
-
-

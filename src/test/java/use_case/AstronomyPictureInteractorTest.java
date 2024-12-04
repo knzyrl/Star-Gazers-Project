@@ -33,7 +33,7 @@ public class AstronomyPictureInteractorTest {
     }
 
     @Test
-    public void testFetchApod_Success() {
+    public void testFetchAPOD_Success() {
         String jsonResponse = """
                 {
                     "title": "Sample AstronomyPicture",
@@ -64,7 +64,7 @@ public class AstronomyPictureInteractorTest {
     }
 
     @Test
-    public void testFetchApod_MissingFields() {
+    public void testFetchAPOD_MissingFields() {
         String jsonResponse = """
                 {
                     "title": "Sample AstronomyPicture",
@@ -99,7 +99,7 @@ public class AstronomyPictureInteractorTest {
     }
 
     @Test
-    public void testFetchApodByDate_InvalidJSON() {
+    public void testFetchAPODByDate_InvalidJSON() {
         String invalidJsonResponse = "{ \"title\" \"Sample AstronomyPicture\" }"; // Malformed JSON
 
         when(mockDataAccessObject.fetchAstronomyPictureByDate("2023-12-01")).thenReturn(invalidJsonResponse);

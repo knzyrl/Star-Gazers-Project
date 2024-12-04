@@ -1,5 +1,8 @@
 package use_case.events;
 
+/**
+ * Class for input data for the Events use case.
+ */
 public class EventsInputData {
     private String longitude;
     private String latitude;

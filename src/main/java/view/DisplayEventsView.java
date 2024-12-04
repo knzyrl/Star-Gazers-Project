@@ -1,14 +1,19 @@
 package view;
 
-import entity.EventsList;
-import entity.Event;
-import interface_adapter.display_events.DisplayEventsController;
-import use_case.events.EventsOutputData;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.*;
+
+import entity.Event;
+
+import interface_adapter.display_events.DisplayEventsController;
+
+import use_case.events.EventsOutputData;
+
+/**
+ * Class for the View displayed to the user when they select the Events use case from the Home View.
+ */
 public class DisplayEventsView extends JPanel {
     private final String viewName = "display events";
     private DisplayEventsController displayEventsController;
@@ -22,11 +27,18 @@ public class DisplayEventsView extends JPanel {
         this.displayEventsController = displayEventsController;
     }
 
+    /**
+     * Method responsible for displaying the output of the use case, the events, to the user.
+     * @param eventsOutputData the output data to be displayed.
+     */
     public void refresh(EventsOutputData eventsOutputData) {
         this.removeAll();
 
-        JPanel titlePanel = new JPanel();
-        final JLabel title = new JLabel(String.format("<html><div style='text-align: center;'>Events for the %s <br/> at %s, %s <br/> from %s to %s</div></html>", eventsOutputData.getBody(), eventsOutputData.getLongitude(), eventsOutputData.getLatitude(), eventsOutputData.getDateStart(), eventsOutputData.getDateEnd()));
+        final JPanel titlePanel = new JPanel();
+        final JLabel title = new JLabel(String.format("<html><div style='text-align: center;'>Events for the %s <br/>"
+                + "at %s, %s <br/> from %s to %s</div></html>", eventsOutputData.getBody(),
+                eventsOutputData.getLongitude(), eventsOutputData.getLatitude(), eventsOutputData.getDateStart(),
+                eventsOutputData.getDateEnd()));
         titlePanel.add(title);
 
         JPanel eventsPanel = new JPanel();
@@ -62,7 +74,7 @@ public class DisplayEventsView extends JPanel {
     private JPanel generateEventsPanel(EventsOutputData eventsOutputData) {
         final JPanel eventsPanel = new JPanel();
         for (Event event : eventsOutputData.getEventsList()) {
-            String eventType = switch (event.getType()) {
+            final String eventType = switch (event.getType()) {
                 case "total_solar_eclipse" -> "Total Solar Eclipse";
                 case "annular_solar_eclipse" -> "Annular Solar Eclipse";
                 case "partial_solar_eclipse" -> "Partial Solar Eclipse";

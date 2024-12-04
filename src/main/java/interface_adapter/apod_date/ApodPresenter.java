@@ -1,7 +1,7 @@
 package interface_adapter.apod_date;
 
-import use_case.apod_date.ApodOutputBoundary;
 import use_case.apod_date.ApodOutputData;
+import use_case.apod_date.ApodOutputBoundary;
 import view.APODView;
 
 /**

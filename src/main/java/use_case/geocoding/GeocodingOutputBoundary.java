@@ -1,7 +1,5 @@
 package use_case.geocoding;
 
-import entity.Location;
-
 /**
  * Output boundry for the geocoding use case.
  */

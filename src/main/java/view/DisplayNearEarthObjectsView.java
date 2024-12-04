@@ -13,6 +13,9 @@ import javax.swing.JTextArea;
 import entity.NearEarthObjectEntity;
 import interface_adapter.near_earth_objects.NearEarthObjectsPresenter;
 
+/**
+ * Class consisting of methods to display information on asteroids near the Earth.
+ */
 public class DisplayNearEarthObjectsView extends JPanel {
     private static final int TEXT_AREA_ROWS = 15;
     private static final int TEXT_AREA_COLUMNS = 40;

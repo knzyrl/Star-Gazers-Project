@@ -13,6 +13,9 @@ import javax.swing.JTextField;
 
 import interface_adapter.near_earth_objects.NearEarthObjectsController;
 
+/**
+ * Class for the view displayed to the user when they select the Near Earth Objects use case in the Home View.
+ */
 public class NearEarthObjectsView extends JPanel {
     private final String viewName = "NEO view";
     private final JTextField startDateInput = new JTextField(10);
