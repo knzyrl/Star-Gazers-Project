@@ -1,12 +1,11 @@
 package use_case.apod_date;
 
-import java.util.logging.Logger;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import data_access.AstronomyPictureDataAccessObject;
+import org.json.JSONObject;
+import org.json.JSONException;
 import view.ViewManager;
+
+import java.util.logging.Logger;
 
 /**
  * Interactor for fetching Astronomy Picture of the Day (APOD) data.
@@ -37,9 +36,12 @@ public class ApodInteractor implements ApodInputBoundary {
         this.viewManager = viewManager;
     }
 
+    /**
+     * Fetches the Astronomy Picture of the Day for today.
+     */
     @Override
     public void fetchApod() {
-        final String astronomyPictureJsonResponse = dataAccessObject.fetchAstronomyPicture();
+        String astronomyPictureJsonResponse = dataAccessObject.fetchAstronomyPicture();
         processResponse(astronomyPictureJsonResponse);
     }
 
@@ -49,7 +51,7 @@ public class ApodInteractor implements ApodInputBoundary {
      * @param date The date for which the APOD should be fetched, formatted as YYYY-MM-DD.
      */
     public void fetchApodByDate(String date) {
-        final String astronomyPictureJsonResponse = dataAccessObject.fetchAstronomyPictureByDate(date);
+        String astronomyPictureJsonResponse = dataAccessObject.fetchAstronomyPictureByDate(date);
         processResponse(astronomyPictureJsonResponse);
     }
 
@@ -61,6 +63,11 @@ public class ApodInteractor implements ApodInputBoundary {
         viewManager.show("home");
     }
 
+    /**
+     * Processes the JSON response from the data access object and extracts relevant APOD data.
+     *
+     * @param astronomyPictureJsonResponse The JSON response containing APOD data.
+     */
     private void processResponse(String astronomyPictureJsonResponse) {
         try {
             final JSONObject json = new JSONObject(astronomyPictureJsonResponse);
@@ -72,8 +79,7 @@ public class ApodInteractor implements ApodInputBoundary {
 
             final ApodOutputData outputData = new ApodOutputData(title, description, mediaType, url, thumbnailUrl);
             outputBoundary.presentApod(outputData);
-        }
-        catch (JSONException jsonException) {
+        } catch (JSONException jsonException) {
             LOGGER.severe("Failed to process response: Invalid JSON format");
         }
     }

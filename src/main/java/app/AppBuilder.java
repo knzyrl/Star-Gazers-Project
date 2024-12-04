@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import data_access.AstronomyPictureApiDataAccessObject;
+import data_access.AstronomyPictureApiDataAccessObject; // will need to rename
 import data_access.EventsDataAccessObject;
 import data_access.GeocoderDataAccessObject;
 import data_access.MoonPhaseDataAccessObject;
@@ -118,12 +118,12 @@ public class AppBuilder {
      * @return this builder
      */
 
-    public AppBuilder addApodView() {
+    public AppBuilder addApodView() { // will need to rename
         apodView = new APODView();
-        final AstronomyPictureApiDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
-        final ApodPresenter presenter = new ApodPresenter(apodView);
-        final ApodInteractor interactor = new ApodInteractor(presenter, dataAccessObject, viewManager);
-        final ApodController controller = new ApodController(interactor);
+        AstronomyPictureApiDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
+        ApodPresenter presenter = new ApodPresenter(apodView);
+        ApodInteractor interactor = new ApodInteractor(presenter, dataAccessObject, viewManager);
+        ApodController controller = new ApodController(interactor);
         apodView.setController(controller);
         cardPanel.add(apodView, apodView.getViewName());
         return this;
