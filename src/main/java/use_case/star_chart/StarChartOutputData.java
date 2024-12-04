@@ -7,13 +7,13 @@ public class StarChartOutputData {
     private String longitude;
     private String latitude;
     private String date;
-    private String imgURL;
+    private String imgUrl;
 
-    public StarChartOutputData(String longitude, String latitude, String date, String imgURL) {
+    public StarChartOutputData(String longitude, String latitude, String date, String imgUrl) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.date = date;
-        this.imgURL = imgURL;
+        this.imgUrl = imgUrl;
     }
 
     public String getLongitude() {
@@ -28,7 +28,7 @@ public class StarChartOutputData {
         return date;
     }
 
-    public String getImgURL() {
-        return imgURL;
+    public String getImgUrl() {
+        return imgUrl;
     }
 }

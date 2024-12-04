@@ -1,13 +1,15 @@
 package view;
 
-import java.awt.*;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-import interface_adapter.geocoding.DisplayGeocodingController;
 import interface_adapter.geocoding.GeocodingController;
 import use_case.geocoding.GeocodingOutputData;
 
@@ -16,16 +18,16 @@ import use_case.geocoding.GeocodingOutputData;
  */
 public class DisplayGeocoderView extends JPanel {
     private final String viewName = "display geocoded information";
-    private GeocodingOutputData geocodingOutputData;
     private GeocodingController geocodingController;
     private JButton home;
 
-    public void setDisplayStarChartController(GeocodingController geocodingController) {
+    public void setDisplayGeocodingController(GeocodingController geocodingController) {
         this.geocodingController = geocodingController;
     }
 
     /**
      * Method to display the longitude and latitude of the location.
+     * @param geocodingOutputData output data for geocoding use case
      */
     public void displayLocation(GeocodingOutputData geocodingOutputData) {
         this.removeAll();

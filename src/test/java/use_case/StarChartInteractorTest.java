@@ -26,7 +26,7 @@ class StarChartInteractorTest {
                 assertEquals("0.00", starChartOutputData.getLongitude());
                 assertEquals("0.00", starChartOutputData.getLatitude());
                 assertEquals("1970-01-01", starChartOutputData.getDate());
-                assertEquals("starChartImgURL.png", starChartOutputData.getImgURL());
+                assertEquals("starChartImgURL.png", starChartOutputData.getImgUrl());
             }
 
             @Override

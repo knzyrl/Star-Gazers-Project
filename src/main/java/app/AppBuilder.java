@@ -6,12 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import data_access.AstronomyPictureApiDataAccessObject; // will need to rename
+import data_access.AstronomyPictureApiDataAccessObject;
 import data_access.EventsDataAccessObject;
 import data_access.GeocoderDataAccessObject;
 import data_access.MoonPhaseDataAccessObject;
 import data_access.NasaNeoApiDataAccessObject;
 import data_access.StarChartDataAccessObject;
+import interface_adapter.ViewManager;
 import interface_adapter.apod_date.ApodController;
 import interface_adapter.apod_date.ApodPresenter;
 import interface_adapter.display_events.DisplayEventsController;
@@ -55,7 +56,6 @@ import view.NameGeocoderView;
 import view.NearEarthObjectsView;
 import view.NoAddressFoundView;
 import view.StarChartView;
-import interface_adapter.ViewManager;
 
 public class AppBuilder {
     private final JPanel cardPanel = new JPanel();
@@ -118,12 +118,12 @@ public class AppBuilder {
      * @return this builder
      */
 
-    public AppBuilder addApodView() { // will need to rename
+    public AppBuilder addApodView() {
         apodView = new ApodView();
-        AstronomyPictureApiDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
-        ApodPresenter presenter = new ApodPresenter(viewManager);
-        ApodInteractor interactor = new ApodInteractor(presenter, dataAccessObject, viewManager);
-        ApodController controller = new ApodController(interactor);
+        final AstronomyPictureApiDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
+        final ApodPresenter presenter = new ApodPresenter(viewManager);
+        final ApodInteractor interactor = new ApodInteractor(presenter, dataAccessObject, viewManager);
+        final ApodController controller = new ApodController(interactor);
         apodView.setController(controller);
         cardPanel.add(apodView, apodView.getViewName());
         return this;
@@ -308,7 +308,7 @@ public class AppBuilder {
         final GeocodingController geocodingController =
                 new GeocodingController(geocodingInteractor, geocodingPresenter);
 
-        displayGeocoderView.setDisplayStarChartController(geocodingController);
+        displayGeocoderView.setDisplayGeocodingController(geocodingController);
 
         geocoderView.setGeoCodingController(geocodingController);
         noAddressFoundView.setGeocodingController(geocodingController);

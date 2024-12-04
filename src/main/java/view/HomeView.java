@@ -1,10 +1,13 @@
 package view;
 
-import java.awt.*;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import interface_adapter.home.HomeController;
 
@@ -30,8 +33,8 @@ public class HomeView extends JPanel {
         this.add(createStarChartButtonPanel());
         this.add(createMoonPhaseButtonPanel());
         this.add(createEventsButtonPanel());
-        this.add(createNEOButtonPanel());
-        this.add(createAPODButtonPanel());
+        this.add(createNeoButtonPanel());
+        this.add(createApodButtonPanel());
         this.add(createGeocoderButtonPanel());
 
         // Layout
@@ -99,7 +102,7 @@ public class HomeView extends JPanel {
         return result;
     }
 
-    private JPanel createNEOButtonPanel() {
+    private JPanel createNeoButtonPanel() {
         final JPanel result = new JPanel();
         neo = new JButton("Show Near-Earth Objects");
         result.add(neo);
@@ -117,7 +120,7 @@ public class HomeView extends JPanel {
         return result;
     }
 
-    private JPanel createAPODButtonPanel() {
+    private JPanel createApodButtonPanel() {
         final JPanel result = new JPanel();
         apod = new JButton("View Astronomy Picture of the Day");
         result.add(apod);

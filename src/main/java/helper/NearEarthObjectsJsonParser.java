@@ -7,7 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import entity.NearEarthObjectEntity;
 import use_case.near_earth_objects.NearEarthObjectsOutputData;
 
 /**
@@ -24,6 +23,8 @@ public class NearEarthObjectsJsonParser {
      * @throws IllegalArgumentException If the JSON parsing fails.
      */
     public static List<NearEarthObjectsOutputData> parse(String rawJson) {
+        final String unknownText = "Unknown";
+
         if (rawJson == null || rawJson.isEmpty()) {
             throw new IllegalArgumentException("Input JSON string is null or empty.");
         }
@@ -34,42 +35,39 @@ public class NearEarthObjectsJsonParser {
             final JSONObject root = new JSONObject(rawJson);
             final JSONObject nearEarthObjects = root.optJSONObject("near_earth_objects");
 
-            if (nearEarthObjects == null) {
-                // Return an empty list instead of throwing an exception
-                return neoOutputData;
-            }
-
-            for (String date : nearEarthObjects.keySet()) {
-                final JSONArray asteroids = nearEarthObjects.optJSONArray(date);
-                if (asteroids == null) {
-                    continue;
-                }
-
-                for (int i = 0; i < asteroids.length(); i++) {
-                    final JSONObject asteroid = asteroids.optJSONObject(i);
-                    if (asteroid == null) {
+            if (nearEarthObjects != null) {
+                for (String date : nearEarthObjects.keySet()) {
+                    final JSONArray asteroids = nearEarthObjects.optJSONArray(date);
+                    if (asteroids == null) {
                         continue;
                     }
 
-                    final String name = asteroid.optString("name", "Unknown");
-                    final JSONArray closeApproachData = asteroid.optJSONArray("close_approach_data");
-
-                    if (closeApproachData != null && !closeApproachData.isEmpty()) {
-                        final JSONObject firstCloseApproach = closeApproachData.optJSONObject(0);
-                        if (firstCloseApproach != null) {
-                            final String closestApproachDate = firstCloseApproach.optString("close_approach_date",
-                                    "Unknown");
-                            final double closestDistanceKm = firstCloseApproach.optJSONObject("miss_distance")
-                                    .optDouble("kilometers", -1);
-                            final double relativeVelocity = firstCloseApproach.optJSONObject("relative_velocity")
-                                    .optDouble("kilometers_per_hour", -1);
-
-                            neoOutputData.add(new NearEarthObjectsOutputData(name, closestApproachDate, closestDistanceKm, relativeVelocity));
+                    for (int i = 0; i < asteroids.length(); i++) {
+                        final JSONObject asteroid = asteroids.optJSONObject(i);
+                        if (asteroid == null) {
+                            continue;
                         }
-                    }
-                    else {
 
-                        neoOutputData.add(new NearEarthObjectsOutputData(name, "Unknown", -1, -1));
+                        final String name = asteroid.optString("name", unknownText);
+                        final JSONArray closeApproachData = asteroid.optJSONArray("close_approach_data");
+
+                        if (closeApproachData != null && !closeApproachData.isEmpty()) {
+                            final JSONObject firstCloseApproach = closeApproachData.optJSONObject(0);
+                            if (firstCloseApproach != null) {
+                                final String closestApproachDate = firstCloseApproach.optString("close_approach_date",
+                                        unknownText);
+                                final double closestDistanceKm = firstCloseApproach.optJSONObject("miss_distance")
+                                        .optDouble("kilometers", -1);
+                                final double relativeVelocity = firstCloseApproach.optJSONObject("relative_velocity")
+                                        .optDouble("kilometers_per_hour", -1);
+
+                                neoOutputData.add(new NearEarthObjectsOutputData(name, closestApproachDate,
+                                        closestDistanceKm, relativeVelocity));
+                            }
+                        }
+                        else {
+                            neoOutputData.add(new NearEarthObjectsOutputData(name, unknownText, -1, -1));
+                        }
                     }
                 }
             }

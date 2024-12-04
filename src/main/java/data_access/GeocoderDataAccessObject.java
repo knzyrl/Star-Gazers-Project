@@ -23,8 +23,9 @@ public class GeocoderDataAccessObject implements GeocoderApiDataAccessObject {
      */
     public List<String> converter(String address) {
         final String apiKey = "6733f872eb948162981545fld4fe0b0";
-        final List<String> longlat = new ArrayList();
+        List<String> longlat = null;
         final int validResponseCode = 200;
+        final String backslash = "\"";
 
         final String newAddress = address.replace("\\s", "+");
 
@@ -34,6 +35,8 @@ public class GeocoderDataAccessObject implements GeocoderApiDataAccessObject {
 
         // Handle the response
         if (response.getStatus() == validResponseCode) {
+            longlat = new ArrayList<>();
+
             final String responseBody = response.getBody();
 
             String lat = null;
@@ -44,7 +47,7 @@ public class GeocoderDataAccessObject implements GeocoderApiDataAccessObject {
             final int latIndex = responseBody.indexOf("\"lat\":\"");
             if (latIndex != -1) {
                 final int latStart = latIndex + 7;
-                final int latEnd = responseBody.indexOf("\"", latStart);
+                final int latEnd = responseBody.indexOf(backslash, latStart);
                 lat = responseBody.substring(latStart, latEnd);
             }
 
@@ -52,7 +55,7 @@ public class GeocoderDataAccessObject implements GeocoderApiDataAccessObject {
             final int lonIndex = responseBody.indexOf("\"lon\":\"");
             if (lonIndex != -1) {
                 final int lonStart = lonIndex + 7;
-                final int lonEnd = responseBody.indexOf("\"", lonStart);
+                final int lonEnd = responseBody.indexOf(backslash, lonStart);
                 lon = responseBody.substring(lonStart, lonEnd);
             }
 
@@ -60,21 +63,15 @@ public class GeocoderDataAccessObject implements GeocoderApiDataAccessObject {
             final int addressIndex = responseBody.indexOf("\"display_name\":\"");
             if (addressIndex != -1) {
                 final int addressStart = addressIndex + 16;
-                final int addressEnd = responseBody.indexOf("\"", addressStart);
+                final int addressEnd = responseBody.indexOf(backslash, addressStart);
                 properAddress = responseBody.substring(addressStart, addressEnd);
             }
 
             longlat.add(lon);
             longlat.add(lat);
             longlat.add(properAddress);
-
-            return longlat;
-
         }
-        else {
-            return null;
-        }
-
+        return longlat;
     }
 
 }

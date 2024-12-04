@@ -1,6 +1,6 @@
 package view;
 
-import java.awt.*;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -8,7 +8,11 @@ import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import interface_adapter.display_moon_phase.DisplayMoonPhaseController;
 import use_case.moon_phase.MoonPhaseOutputData;
@@ -40,10 +44,10 @@ public class DisplayMoonPhaseView extends JPanel {
                 moonPhaseOutputData.getLatitude(), moonPhaseOutputData.getDate()));
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        final String imgURL = moonPhaseOutputData.getImageURL();
+        final String imgUrl = moonPhaseOutputData.getImageUrl();
         BufferedImage image = null;
         try {
-            final URL url = new URL(imgURL);
+            final URL url = new URL(imgUrl);
             image = ImageIO.read(url);
         }
         catch (IOException action) {

@@ -11,6 +11,8 @@ import kong.unirest.core.Unirest;
  * Provides methods to execute queries for moon phase data using Astronomy API.
  */
 public class MoonPhaseDataAccessObject implements AstronomyApiDataAccessObject {
+    private final int magicNumber1 = 21;
+    private final int magicNumber2 = 3;
 
     /**
      * Executes an HTTP POST query to retrieve moon phase data from the Astronomy API.
@@ -21,8 +23,6 @@ public class MoonPhaseDataAccessObject implements AstronomyApiDataAccessObject {
      *         The method trims unnecessary metadata from the response.
      * @throws RuntimeException If an error occurs while executing the query.
      */
-
-    @SuppressWarnings("checkstyle:MagicNumber")
     @Override
     public String executeQuery(String query) {
         final String appId = "44f82562-233e-4f52-af5d-ca47ea0decc6";
@@ -35,7 +35,7 @@ public class MoonPhaseDataAccessObject implements AstronomyApiDataAccessObject {
                 .header("Authorization", String.format("Basic %s", authString))
                 .body(query)
                 .asString();
-        return response.getBody().substring(21, response.getBody().length() - 3);
+        return response.getBody().substring(magicNumber1, response.getBody().length() - magicNumber2);
     }
 
 }

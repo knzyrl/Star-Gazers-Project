@@ -27,7 +27,7 @@ public class MoonPhaseInteractorTest {
                 assertEquals("-84.39733", moonPhaseOutputData.getLongitude());
                 assertEquals("33.775867", moonPhaseOutputData.getLatitude());
                 assertEquals("2024-11-06", moonPhaseOutputData.getDate());
-                assertEquals("moonChartImgURL.png", moonPhaseOutputData.getImageURL());
+                assertEquals("moonChartImgURL.png", moonPhaseOutputData.getImageUrl());
             }
 
             @Override

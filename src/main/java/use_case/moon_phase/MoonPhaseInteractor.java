@@ -38,9 +38,9 @@ public class MoonPhaseInteractor implements MoonPhaseInputBoundary {
                 + "\"backgroundColor\":\"#000000\",\"headingColor\":\"#ffffff\",\"textColor\":\"#ffffff\"},"
                 + "\"observer\":{\"latitude\":%s,\"longitude\":%s,\"date\":\"%s\"},"
                 + "\"view\":{\"type\":\"portrait-simple\",\"parameters\":{}}}", latitude, longitude, date);
-        final String imageURL = moonPhaseDataAccessObject.executeQuery(query);
+        final String imageUrl = moonPhaseDataAccessObject.executeQuery(query);
 
-        final MoonPhase moonPhase = new MoonPhase(longitude, latitude, date, imageURL);
+        final MoonPhase moonPhase = new MoonPhase(longitude, latitude, date, imageUrl);
 
         if (!(moonPhase.validLatitudeFormat()) || !(moonPhase.validLongitudeFormat())
                 || !(moonPhase.validDateFormat())) {

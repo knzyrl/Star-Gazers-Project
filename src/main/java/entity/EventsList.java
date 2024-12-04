@@ -10,8 +10,10 @@ import helper.NumberFormatChecker;
  * Parses a JSON response to extract event details and encapsulates them in an {@link EventsList}.
  */
 public class EventsList {
-    private static final double MIN_LONGITUDE_LATITUDE = -180.00;
-    private static final double MAX_LONGITUDE_LATITUDE = 180.00;
+    private static final double MAX_LONGITUDE = 180.0;
+    private static final double MIN_LONGITUDE = -180.0;
+    private static final double MAX_LATITUDE = 90.0;
+    private static final double MIN_LATITUDE = -90.0;
 
     private String longitude;
     private String latitude;
@@ -63,8 +65,15 @@ public class EventsList {
      * @return {@code true} if longitude is valid, otherwise {@code false}.
      */
     public boolean isValidLongitude() {
-        return NumberFormatChecker.checkDouble(this.longitude) && Double.parseDouble(this.longitude)
-                >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.longitude) <= MAX_LONGITUDE_LATITUDE;
+        boolean result = true;
+        if (!NumberFormatChecker.checkDouble(this.longitude)) {
+            result = false;
+        }
+        else if (Double.parseDouble(this.longitude) < MIN_LONGITUDE || Double.parseDouble(this.longitude)
+                > MAX_LONGITUDE) {
+            result = false;
+        }
+        return result;
     }
 
     /**
@@ -73,8 +82,15 @@ public class EventsList {
      * @return {@code true} if latitude is valid, otherwise {@code false}.
      */
     public boolean isValidLatitude() {
-        return NumberFormatChecker.checkDouble(this.latitude) && Double.parseDouble(this.latitude)
-                >= MIN_LONGITUDE_LATITUDE && Double.parseDouble(this.latitude) <= MAX_LONGITUDE_LATITUDE;
+        boolean result = true;
+        if (!NumberFormatChecker.checkDouble(this.latitude)) {
+            result = false;
+        }
+        else if (Double.parseDouble(this.latitude) < MIN_LATITUDE || Double.parseDouble(this.latitude)
+                > MAX_LATITUDE) {
+            result = false;
+        }
+        return result;
     }
 
     /**
@@ -83,13 +99,14 @@ public class EventsList {
      * @return {@code true} if both dates are valid, otherwise {@code false}.
      */
     public boolean isValidDates() {
+        boolean result = true;
         try {
             fmt.parse(this.dateStart);
             fmt.parse(this.dateEnd);
         }
         catch (ParseException parseException) {
-            return false;
+            result = false;
         }
-        return true;
+        return result;
     }
 }

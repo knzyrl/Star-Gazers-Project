@@ -1,9 +1,10 @@
 package interface_adapter;
 
-import java.awt.*;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 import use_case.apod_date.ApodOutputData;
 import use_case.events.EventsOutputData;
@@ -11,7 +12,13 @@ import use_case.geocoding.GeocodingOutputData;
 import use_case.moon_phase.MoonPhaseOutputData;
 import use_case.near_earth_objects.NearEarthObjectsOutputData;
 import use_case.star_chart.StarChartOutputData;
-import view.*;
+import view.ApodView;
+import view.DisplayEventsView;
+import view.DisplayGeocoderView;
+import view.DisplayMoonPhaseView;
+import view.DisplayNearEarthObjectsView;
+import view.DisplayStarChartView;
+import view.FailView;
 
 /**
  * Class for managing the views displayed to the user.
@@ -88,12 +95,20 @@ public class ViewManager {
                 apodOutputData.getMediaType(), apodOutputData.getUrl(), apodOutputData.getThumbnailUrl());
     }
 
+    /**
+     * Method to display the Near-Earth Objects list to the user.
+     * @param neoOutputData output data to be presented
+     */
     public void displayNearEarthObjectsData(List<NearEarthObjectsOutputData> neoOutputData) {
         cardLayout.show(views, "display NEO view");
         final DisplayNearEarthObjectsView displayNearEarthObjectsView = (DisplayNearEarthObjectsView) getCurrentCard();
         displayNearEarthObjectsView.displayNearEarthObjectsData(neoOutputData);
     }
 
+    /**
+     * Method to display the results of the geocoding use case to the user.
+     * @param geocodingOutputData output data to be presented
+     */
     public void displayLocation(GeocodingOutputData geocodingOutputData) {
         cardLayout.show(views, "display geocoded information");
         final DisplayGeocoderView displayGeocoderView = (DisplayGeocoderView) getCurrentCard();
