@@ -57,6 +57,9 @@ import view.NearEarthObjectsView;
 import view.NoAddressFoundView;
 import view.StarChartView;
 
+/**
+ * Class to build the program's display.
+ */
 public class AppBuilder {
     private final JPanel cardPanel = new JPanel();
     private final CardLayout cardLayout = new CardLayout();
