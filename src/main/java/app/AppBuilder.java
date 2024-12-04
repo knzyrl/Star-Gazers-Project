@@ -40,7 +40,7 @@ import use_case.geocoding.GeocodingInteractor;
 import use_case.moon_phase.MoonPhaseInteractor;
 import use_case.near_earth_objects.NearEarthObjectsInteractor;
 import use_case.star_chart.StarChartInteractor;
-import view.APODView;
+import view.ApodView;
 import view.DisplayEventsView;
 import view.DisplayGeocoderView;
 import view.DisplayMoonPhaseView;
@@ -73,7 +73,7 @@ public class AppBuilder {
     private DisplayStarChartView displayStarChartView;
     private EventsView eventsView;
     private DisplayEventsView displayEventsView;
-    private APODView apodView;
+    private ApodView apodView;
     private DisplayMoonPhaseView displayMoonPhaseView;
     private GeocoderView geocoderView;
     private NameGeocoderView nameGeocoderView;
@@ -119,7 +119,7 @@ public class AppBuilder {
      */
 
     public AppBuilder addApodView() { // will need to rename
-        apodView = new APODView();
+        apodView = new ApodView();
         AstronomyPictureApiDataAccessObject dataAccessObject = new AstronomyPictureApiDataAccessObject();
         ApodPresenter presenter = new ApodPresenter(apodView);
         ApodInteractor interactor = new ApodInteractor(presenter, dataAccessObject, viewManager);
